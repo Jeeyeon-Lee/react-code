@@ -2,14 +2,9 @@ import React from 'react';
 import { Col, Steps, Button, message } from 'antd';
 import { theme } from 'antd';
 
-interface RightContentProps {
-    selectedNav: string;
-}
-
-const RightContent: React.FC<RightContentProps> = ({ selectedNav }) => {
+const RightContent: React.FC = () => {
     const { token: { colorTextTertiary, colorFillAlter, borderRadiusLG, colorBorder } } = theme.useToken();
     const [current, setCurrent] = React.useState(0);
-    const [leftTime, setLeftTime] = React.useState(0);
     const steps = [
         {
             title: 'First',
@@ -18,7 +13,6 @@ const RightContent: React.FC<RightContentProps> = ({ selectedNav }) => {
         {
             title: 'Second',
             content: 'Second-content',
-            subTitle: '남은시간 :'+ {leftTime},
         },
         {
             title: 'Last',

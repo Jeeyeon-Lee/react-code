@@ -1,11 +1,11 @@
 import React from 'react';
 import { Layout, Breadcrumb } from 'antd';
 import { theme } from 'antd';
-import MainContent from './contents/MainContent';
-import ConsultContent from './contents/ConsultContent';
-import SystemContent from './contents/SystemContent';
+import MainContent from '../contents/MainContent';
+import ConsultContent from '../contents/ConsultContent';
+import SystemContent from '../contents/SystemContent';
 
-const { Content: AntContent, Footer } = Layout;
+const { Content: AntContent } = Layout;
 
 interface ContentProps {
     selectedNav: string;
@@ -66,7 +66,6 @@ const Content: React.FC<ContentProps> = ({ selectedNav, selectedSidebar }) => {
             >
                 {renderContent()}
             </AntContent>
-            <Footer style={{ textAlign: 'center' }}>@2025 SRPOST TEST</Footer>
         </Layout>
     );
 };

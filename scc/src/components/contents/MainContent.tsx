@@ -1,9 +1,11 @@
 import React from 'react';
 import { Row } from 'antd';
-import LeftContent from '../LeftContent';
-import RightContent from '../RightContent';
+import LeftContent from '@components/contents/LeftContent';
+import RightContent from '@components/contents/RightContent';
 
-const MainContent: React.FC = () => {
+
+const MainLayout: React.FC = () => {
+
     return (
         <Row gutter={16} style={{ flex: 1 }}>
             <LeftContent />
@@ -12,4 +14,4 @@ const MainContent: React.FC = () => {
     );
 };
 
-export default MainContent; 
+export default MainLayout; 

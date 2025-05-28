@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { Layout } from 'antd';
 import Navbar from './components/basic/Navbar.tsx';
 import Sidebar from './components/basic/Sidebar.tsx';
-import Content from './components/Content';
+import Content from './components/basic/Content';
+import Footer from './components/basic/Footer';
 
-const { Header, Sider, Content: AntContent } = Layout;
+// @ts-ignore
+const { Header, Content: AntContent } = Layout;
 
 const App: React.FC = () => {
     const [selectedNav, setSelectedNav] = useState('1');
@@ -39,6 +41,7 @@ const App: React.FC = () => {
                     selectedNav={selectedNav}
                     selectedSidebar={selectedSidebar}
                 />
+                <Footer />
             </Layout>
         </Layout>
     );

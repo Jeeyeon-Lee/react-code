@@ -60,7 +60,7 @@ const ConsultContent: React.FC = () => {
         {
             title: '액션',
             key: 'action',
-            render: (_, record) => (
+            render: (_) => (
                 <Space size="middle">
                     <Button type="link">상세보기</Button>
                     <Button type="link">수정</Button>

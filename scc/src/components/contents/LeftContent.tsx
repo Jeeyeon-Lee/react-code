@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Col, Input, Button, Avatar, Upload, message, Tooltip } from 'antd';
+import { Col, Input, Button, Avatar } from 'antd';
 import { SendOutlined, PaperClipOutlined, UserOutlined, CustomerServiceOutlined } from '@ant-design/icons';
-import type { UploadProps } from 'antd';
 import type { UploadFile } from 'antd/es/upload/interface';
 
 interface Message {
@@ -11,6 +10,7 @@ interface Message {
     timestamp: Date;
     files?: UploadFile[];
 }
+
 
 const LeftContent: React.FC = () => {
     const [messages, setMessages] = useState<Message[]>([

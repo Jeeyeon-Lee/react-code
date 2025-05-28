@@ -27,7 +27,7 @@ const Sidebar: React.FC<SidebarProps> = ({ selectedNav, onSidebarSelect }) => {
                 return [
                     UserOutlined,
                     LaptopOutlined,
-                ].map((icon, index) => ({
+                ].map((_icon, index) => ({
                     key: `sub${index + 1}`,
                     icon: <FormOutlined />,
                     label: `상담 관리 ${index + 1}`,
@@ -39,7 +39,7 @@ const Sidebar: React.FC<SidebarProps> = ({ selectedNav, onSidebarSelect }) => {
             case '3':
                 return [
                     NotificationOutlined,
-                ].map((icon, index) => ({
+                ].map((_icon, index) => ({
                     key: `sub${index + 1}`,
                     icon: <SettingOutlined />,
                     label: `시스템 관리 ${index + 1}`,
