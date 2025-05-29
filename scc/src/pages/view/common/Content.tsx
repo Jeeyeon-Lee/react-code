@@ -1,9 +1,9 @@
 import React from 'react';
 import { Layout, Breadcrumb } from 'antd';
 import { theme } from 'antd';
-import MainContent from '../contents/MainContent';
-import ConsultContent from '../contents/ConsultContent';
-import SystemContent from '../contents/SystemContent';
+import MainContent from '@pages/view/main/MainContent';
+import ConsultContent from '@pages/view/consult/ConsultContent';
+import SystemContent from '@pages/view/system/SystemContent';
 
 const { Content: AntContent } = Layout;
 
@@ -49,7 +49,7 @@ const Content: React.FC<ContentProps> = ({ selectedNav, selectedSidebar }) => {
     };
 
     return (
-        <Layout style={{ padding: '0 24px 24px', flex: 1 }}>
+        <Layout style={{ height: '90vh', padding: '0 24px 24px', flex: 1 }}>
             <Breadcrumb
                 items={getBreadcrumbItems()}
                 style={{ margin: '16px 0' }}
@@ -61,7 +61,7 @@ const Content: React.FC<ContentProps> = ({ selectedNav, selectedSidebar }) => {
                     justifyContent: 'center',
                     background: colorBgContainer,
                     borderRadius: borderRadiusLG,
-                    padding: '24px',
+                    padding: '5px',
                 }}
             >
                 {renderContent()}

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Col, Input, Button, Avatar } from 'antd';
-import { SendOutlined, PaperClipOutlined, UserOutlined, CustomerServiceOutlined } from '@ant-design/icons';
+import { SendOutlined, UserOutlined, CustomerServiceOutlined } from '@ant-design/icons';
 import type { UploadFile } from 'antd/es/upload/interface';
 
 interface Message {
@@ -8,9 +8,7 @@ interface Message {
     text: string;
     sender: 'user' | 'consultant';
     timestamp: Date;
-    files?: UploadFile[];
 }
-
 
 const LeftContent: React.FC = () => {
     const [messages, setMessages] = useState<Message[]>([
@@ -48,7 +46,6 @@ const LeftContent: React.FC = () => {
             text: inputText,
             sender: 'consultant',
             timestamp: new Date(),
-            files: fileList.length > 0 ? [...fileList] : undefined,
         };
         setMessages(prev => [...prev, consultantMessage]);
         setInputText('');
@@ -66,47 +63,23 @@ const LeftContent: React.FC = () => {
         }, 2000);
     };
 
-    const renderFileList = (files?: UploadFile[]) => {
-        if (!files || files.length === 0) return null;
-        
-        return (
-            <div style={{ marginTop: '8px' }}>
-                {files.map(file => (
-                    <div key={file.uid} style={{ 
-                        display: 'flex', 
-                        alignItems: 'center',
-                        gap: '8px',
-                        background: '#f5f5f5',
-                        padding: '4px 8px',
-                        borderRadius: '4px',
-                        marginBottom: '4px'
-                    }}>
-                        <PaperClipOutlined />
-                        <span>{file.name}</span>
-                    </div>
-                ))}
-            </div>
-        );
-    };
-
     return (
-        <Col span={12} style={{ 
-            background: '#f6cbcb', 
+        <>
+        <Col style={{
             padding: '16px',
             display: 'flex',
             flexDirection: 'column',
-            height: '80vh', // 고정된 높이 설정
-            position: 'relative' // 상대 위치 설정
+            height: '70vh',
+            position: 'relative'
         }}>
-            <div style={{ 
+            <div style={{
                 flex: 1,
                 overflowY: 'auto',
                 marginBottom: '16px',
                 padding: '16px',
-                background: '#fff',
                 borderRadius: '8px',
-                height: 'calc(100% - 80px)', // 입력창 높이를 제외한 나머지 공간
-                position: 'absolute', // 절대 위치 설정
+                height: 'calc(100% - 80px)',
+                position: 'absolute',
                 top: '16px',
                 left: '16px',
                 right: '16px',
@@ -139,8 +112,7 @@ const LeftContent: React.FC = () => {
                                 }}>
                                     {message.text}
                                 </div>
-                                {renderFileList(message.files)}
-                                <div style={{ 
+                                <div style={{
                                     fontSize: '12px', 
                                     color: '#999',
                                     marginTop: '4px',
@@ -164,7 +136,6 @@ const LeftContent: React.FC = () => {
                 bottom: '16px',
                 left: '16px',
                 right: '16px',
-                background: '#f6cbcb',
                 padding: '8px 0'
             }}>
                 <Input
@@ -183,6 +154,7 @@ const LeftContent: React.FC = () => {
                 </Button>
             </div>
         </Col>
+        </>
     );
 };
 

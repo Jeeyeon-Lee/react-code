@@ -10,13 +10,18 @@ export default defineConfig({
     port: 3000,
   },
   resolve:{ //추가
-    alias:[{
+    alias:[
+      {
       find : "@src",
       replacement : path.resolve(__dirname, "src")
-    },
+      },
       {
         find:"@components",
         replacement: path.resolve(__dirname,"src/components")
+      },
+      {
+        find:"@pages",
+        replacement: path.resolve(__dirname,"src/pages")
       }
     ]
   },

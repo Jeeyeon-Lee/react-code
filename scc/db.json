@@ -1,0 +1,126 @@
+{
+  "chat": [
+    {
+      "id": 1,
+      "chatSeq": 1,
+      "chatNo": 1,
+      "userId": 1,
+      "text": "안녕하세요, 상담사님. 문의드립니다.",
+      "sender": "user",
+      "timestamp": "2025-05-29T10:00:00Z",
+      "status": "end",
+      "type": "call"
+    },
+    {
+      "id": 2,
+      "chatSeq": 1,
+      "chatNo": 2,
+      "userId": 1,
+      "text": "네, 어떤 도움이 필요하신가요?",
+      "sender": "mgr",
+      "timestamp": "2025-05-29T10:01:00Z",
+      "status": "end",
+      "type": "call"
+    },
+    {
+      "id": 3,
+      "chatSeq": 2,
+      "chatNo": 1,
+      "userId": 2,
+      "text": "상품 배송이 아직 도착하지 않았어요.",
+      "sender": "user",
+      "timestamp": "2025-05-29T11:00:00Z",
+      "status": "process",
+      "type": "chat"
+    },
+    {
+      "id": 4,
+      "chatSeq": 2,
+      "chatNo": 2,
+      "userId": 2,
+      "text": "확인 후 연락드리겠습니다.",
+      "sender": "mgr",
+      "timestamp": "2025-05-29T11:01:00Z",
+      "status": "process",
+      "type": "chat"
+    },
+    {
+      "id": 5,
+      "chatSeq": 3,
+      "chatNo": 1,
+      "userId": 3,
+      "text": "IB 콜백 요청드립니다.",
+      "sender": "user",
+      "timestamp": "2025-05-29T12:00:00Z",
+      "status": "new",
+      "type": "call"
+    },
+    {
+      "id": 6,
+      "chatSeq": 4,
+      "chatNo": 1,
+      "userId": 4,
+      "text": "오늘 상담 가능한가요?",
+      "sender": "user",
+      "timestamp": "2025-05-29T13:00:00Z",
+      "status": "new",
+      "type": "chat"
+    },
+    {
+      "id": 7,
+      "chatSeq": 4,
+      "chatNo": 2,
+      "userId": 4,
+      "text": "오후 3시 이후 가능합니다.",
+      "sender": "mgr",
+      "timestamp": "2025-05-29T13:01:00Z",
+      "status": "new",
+      "type": "chat"
+    },
+    {
+      "id": 8,
+      "chatSeq": 5,
+      "chatNo": 1,
+      "userId": 5,
+      "text": "전화가 계속 끊겨요.",
+      "sender": "user",
+      "timestamp": "2025-05-29T14:00:00Z",
+      "status": "process",
+      "type": "call"
+    },
+    {
+      "id": 9,
+      "chatSeq": 5,
+      "chatNo": 2,
+      "userId": 5,
+      "text": "불편을 드려 죄송합니다. 다시 시도해보겠습니다.",
+      "sender": "mgr",
+      "timestamp": "2025-05-29T14:01:00Z",
+      "status": "process",
+      "type": "call"
+    },
+    {
+      "id": 10,
+      "chatSeq": 6,
+      "chatNo": 1,
+      "userId": 1,
+      "text": "계좌 변경하려면 어떻게 하나요?",
+      "sender": "user",
+      "timestamp": "2025-05-29T15:00:00Z",
+      "status": "new",
+      "type": "chat"
+    }
+  ],
+  "users": [
+    { "id": 1, "userId": 1, "userNm": "홍길동", "mobile": "010-1111-1111" },
+    { "id": 2, "userId": 2, "userNm": "둘리", "mobile": "010-2222-2222" },
+    { "id": 3, "userId": 3, "userNm": "또치", "mobile": "010-3333-3333" },
+    { "id": 4, "userId": 4, "userNm": "마이콜", "mobile": "010-4444-4444" },
+    { "id": 5, "userId": 5, "userNm": "희동이", "mobile": "010-5555-5555" }
+  ],
+  "mgr": [
+    { "id": 1, "mgrId": 1, "mgrNm": "김상담원", "dptNm": "상담1팀", "status": "working" },
+    { "id": 2, "mgrId": 2, "mgrNm": "이상담원", "dptNm": "상담1팀", "status": "working" },
+    { "id": 3, "mgrId": 3, "mgrNm": "최상담원", "dptNm": "상담2팀", "status": "holiday" }
+  ]
+}

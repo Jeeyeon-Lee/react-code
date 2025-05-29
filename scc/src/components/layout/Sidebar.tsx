@@ -2,11 +2,9 @@ import React, { useState } from 'react';
 import { Layout, Menu, Button } from 'antd';
 import type { MenuProps } from 'antd';
 import {
-    UserOutlined,
-    LaptopOutlined,
     NotificationOutlined,
     MenuFoldOutlined,
-    MenuUnfoldOutlined, SettingOutlined, FormOutlined,
+    MenuUnfoldOutlined, SettingOutlined
 } from '@ant-design/icons';
 
 const { Sider } = Layout;
@@ -25,13 +23,12 @@ const Sidebar: React.FC<SidebarProps> = ({ selectedNav, onSidebarSelect }) => {
                 return [];
             case '2':
                 return [
-                    UserOutlined,
-                    LaptopOutlined,
+                    NotificationOutlined,
                 ].map((_icon, index) => ({
                     key: `sub${index + 1}`,
-                    icon: <FormOutlined />,
+                    icon: <SettingOutlined />,
                     label: `상담 관리 ${index + 1}`,
-                    children: Array.from({ length: 3 }).map((_, j) => ({
+                    children: Array.from({ length: 2 }).map((_, j) => ({
                         key: `${index}-${j}`,
                         label: `상담 관리 서브메뉴 ${j + 1}`,
                     })),
