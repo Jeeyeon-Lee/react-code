@@ -1,30 +1,31 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 import { Col, Input, Button, Avatar } from 'antd';
 import { SendOutlined, UserOutlined, CustomerServiceOutlined } from '@ant-design/icons';
 import type { UploadFile } from 'antd/es/upload/interface';
+import type {Chat} from '@/types';
+import { getChatDetail } from '@api/chatApi';
 
 interface Message {
     id: number;
     text: string;
-    sender: 'user' | 'consultant';
-    timestamp: Date;
+    sender: 'user' | 'mgr';
+    timestamp: string;
+    chatSeq: number;
+    chatNo: number;
+    userId: number;
+    userNm: string;
+    mgrNm: string;
 }
 
-const LeftContent: React.FC = () => {
-    const [messages, setMessages] = useState<Message[]>([
-        {
-            id: 1,
-            text: "안녕하세요, 상담사님. 문의드립니다.",
-            sender: 'user',
-            timestamp: new Date(Date.now() - 3600000),
-        },
-        {
-            id: 2,
-            text: "네, 안녕하세요. 어떤 문의사항이 있으신가요?",
-            sender: 'consultant',
-            timestamp: new Date(Date.now() - 3500000),
-        }
-    ]);
+interface LeftContentProps {
+    chatSeq: Chat['chatSeq'];
+    templateContent: string;
+    setTemplateContent: Dispatch<SetStateAction<string>>;
+}
+
+const LeftContent = ({ chatSeq, templateContent, setTemplateContent }: LeftContentProps) => {
+    const [messages, setMessages] = useState<Message[]>([]);
     const [inputText, setInputText] = useState('');
     const [fileList, setFileList] = useState<UploadFile[]>([]);
     const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -33,109 +34,145 @@ const LeftContent: React.FC = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     };
 
+    const fetchChatMessages = async () => {
+        if (!chatSeq) return;
+
+        try {
+            const res = await getChatDetail(chatSeq);
+            const formattedMessages: Message[] = res.map((msg: any) => ({
+                ...msg,
+                timestamp: msg.timestamp
+            }));
+            setMessages(formattedMessages);
+        } catch (error) {
+            console.error('채팅 데이터 가져오기 실패:', error);
+        }
+    }
+
     useEffect(() => {
-        scrollToBottom();
+        fetchChatMessages();
+    }, [chatSeq]);
+
+    useEffect(() => {
+        if (messages.length > 0) {
+            const lastMessage = messages[messages.length - 1];
+            if (lastMessage.sender === 'mgr') {
+                scrollToBottom();
+            }
+        }
     }, [messages]);
 
-    const handleSend = () => {
+    useEffect(() => {
+        if (templateContent) {
+            setInputText(templateContent);
+            setTemplateContent('');
+        }
+    }, [templateContent, setTemplateContent]);
+
+    const handleSend = async () => {
         if (!inputText.trim() && fileList.length === 0) return;
 
-        // 상담사 메시지 추가
-        const consultantMessage: Message = {
+        const newMessage: Message = {
             id: Date.now(),
             text: inputText,
-            sender: 'consultant',
-            timestamp: new Date(),
+            sender: 'mgr',
+            timestamp: new Date().toISOString(),
+            chatSeq,
+            chatNo: messages.length + 1,
+            userId: 0,
+            userNm: '',
+            mgrNm: '',
         };
-        setMessages(prev => [...prev, consultantMessage]);
+
+        setMessages(prev => [...prev, newMessage]);
         setInputText('');
         setFileList([]);
 
-        // 사용자 응답 시뮬레이션 (실제로는 API 호출 등으로 대체)
         setTimeout(() => {
-            const userMessage: Message = {
+            const userResponse: Message = {
                 id: Date.now() + 1,
-                text: "네, 알겠습니다. 답변 감사합니다.",
+                text: "문의 사항이 있습니다.",
                 sender: 'user',
-                timestamp: new Date(),
+                timestamp: new Date().toISOString(),
+                chatSeq,
+                chatNo: messages.length + 2,
+                userId: 0,
+                userNm: '',
+                mgrNm: '',
             };
-            setMessages(prev => [...prev, userMessage]);
+            setMessages(prev => [...prev, userResponse]);
         }, 2000);
     };
 
     return (
-        <>
         <Col style={{
             padding: '16px',
             display: 'flex',
             flexDirection: 'column',
-            height: '70vh',
+            height: '100%',
             position: 'relative'
         }}>
-            <div style={{
-                flex: 1,
-                overflowY: 'auto',
-                marginBottom: '16px',
-                padding: '16px',
-                borderRadius: '8px',
-                height: 'calc(100% - 80px)',
-                position: 'absolute',
-                top: '16px',
-                left: '16px',
-                right: '16px',
-                bottom: '80px'
-            }}>
-                {messages.map(message => (
-                    <div
-                        key={message.id}
-                        style={{
-                            display: 'flex',
-                            justifyContent: message.sender === 'consultant' ? 'flex-end' : 'flex-start',
-                            marginBottom: '16px',
-                        }}
-                    >
-                        <div style={{
-                            display: 'flex',
-                            alignItems: 'flex-start',
-                            maxWidth: '70%',
-                        }}>
-                            {message.sender === 'user' && (
-                                <Avatar icon={<UserOutlined />} style={{ marginRight: '8px' }} />
-                            )}
-                            <div>
-                                <div style={{
-                                    background: message.sender === 'consultant' ? '#1890ff' : '#f0f0f0',
-                                    color: message.sender === 'consultant' ? '#fff' : '#000',
-                                    padding: '8px 12px',
-                                    borderRadius: '8px',
-                                    wordBreak: 'break-word',
-                                }}>
-                                    {message.text}
+            <div 
+                style={{
+                    flex: 1,
+                    overflowY: 'auto',
+                    padding: '16px',
+                    borderRadius: '8px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    maxHeight: 'calc(100% - 60px)'
+                }}
+            >
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    {messages.map(message => (
+                        <div
+                            key={`${message.chatSeq}-${message.chatNo}`}
+                            style={{
+                                display: 'flex',
+                                justifyContent: message.sender === 'mgr' ? 'flex-end' : 'flex-start',
+                                marginBottom: '16px',
+                            }}
+                        >
+                            <div style={{
+                                display: 'flex',
+                                alignItems: 'flex-start',
+                                maxWidth: '70%',
+                            }}>
+                                {message.sender === 'user' && (
+                                    <Avatar icon={<UserOutlined />} style={{ marginRight: '8px' }} />
+                                )}
+                                <div>
+                                    <div style={{
+                                        background: message.sender === 'mgr' ? '#1890ff' : '#f0f0f0',
+                                        color: message.sender === 'mgr' ? '#fff' : '#000',
+                                        padding: '8px 12px',
+                                        borderRadius: '8px',
+                                        wordBreak: 'break-word',
+                                    }}>
+                                        {message.text}
+                                    </div>
+                                    <div style={{
+                                        fontSize: '12px',
+                                        color: '#999',
+                                        marginTop: '4px',
+                                        textAlign: message.sender === 'mgr' ? 'right' : 'left'
+                                    }}>
+                                        {new Date(message.timestamp).toLocaleTimeString()}
+                                    </div>
                                 </div>
-                                <div style={{
-                                    fontSize: '12px', 
-                                    color: '#999',
-                                    marginTop: '4px',
-                                    textAlign: message.sender === 'consultant' ? 'right' : 'left'
-                                }}>
-                                    {message.timestamp.toLocaleTimeString()}
-                                </div>
+                                {message.sender === 'mgr' && (
+                                    <Avatar icon={<CustomerServiceOutlined />} style={{ marginLeft: '8px' }} />
+                                )}
                             </div>
-                            {message.sender === 'consultant' && (
-                                <Avatar icon={<CustomerServiceOutlined />} style={{ marginLeft: '8px' }} />
-                            )}
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
                 <div ref={messagesEndRef} />
             </div>
-            <div style={{ 
-                display: 'flex', 
+
+            <div style={{
+                display: 'flex',
                 gap: '8px',
-                position: 'absolute', // 절대 위치 설정
-                bottom: '16px',
-                left: '16px',
-                right: '16px',
                 padding: '8px 0'
             }}>
                 <Input
@@ -145,8 +182,8 @@ const LeftContent: React.FC = () => {
                     placeholder="답변을 입력하세요..."
                     style={{ flex: 1 }}
                 />
-                <Button 
-                    type="primary" 
+                <Button
+                    type="primary"
                     icon={<SendOutlined />}
                     onClick={handleSend}
                 >
@@ -154,7 +191,6 @@ const LeftContent: React.FC = () => {
                 </Button>
             </div>
         </Col>
-        </>
     );
 };
 

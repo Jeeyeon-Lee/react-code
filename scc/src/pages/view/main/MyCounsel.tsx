@@ -1,75 +1,57 @@
 import { useState, useEffect } from 'react';
-import { Input, Button, Select, List, Tag } from 'antd';
+import { Input, Button, List, Tag } from 'antd';
 import { PhoneTwoTone, MessageTwoTone } from '@ant-design/icons';
-import axios from 'axios';
+import { getChatList } from '@api/chatApi';
+import SelectBox from '@components/cmm/Sellect'
+import type { Chat } from '@/types';
 
 const { Search } = Input;
-const { Option } = Select;
 
-interface ChatlItem {
-    id: number;
-    chatSeq: number;
-    chatNo: number;
-    userId: string;
-    text: string;
-    sender: string;
-    timestamp: Date;
-    status: string;
-    type: string;
-}
-
-function MyCounsel() {
-
-    const [counselList, setCounselList] = useState<ChatlItem[]>([]);
+// @ts-ignore
+function MyCounsel({handleChatSeq}) {
+    /*상태관리 영역*/
+    const [chatList, setChatList] = useState<Chat[]>([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [statusFilter, setStatusFilter] = useState('all');
     const [typeFilter, setTypeFilter] = useState('all');
 
+    //채팅리스트
+    const fetchChats = async () => {
+        try {
+            const res = await getChatList();
+            setChatList(res.data);
+        } catch (err) {
+            console.error('채팅 목록 불러오기 실패', err);
+        }
+    };
+    
     useEffect(() => {
-        axios.get<ChatlItem[]>('http://localhost:3001/chat')
-            .then(res => setCounselList(res.data))
-            .catch(err => console.error('데이터 불러오기 실패', err));
+        fetchChats();
     }, []);
 
-    const filteredCounselList = counselList.filter(item => {
-        const matchesSearch = item.text.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    
+    const filteredCounselList = chatList.filter(item => {
+        const matchesSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                                 String(item.userId).includes(searchTerm);
         const matchesStatus = statusFilter === 'all' || item.status === statusFilter;
         const matchesType = typeFilter === 'all' || item.type === typeFilter;
         return matchesSearch && matchesStatus && matchesType;
     });
 
-    const getStatusTagColor = (status: ChatlItem['status']) => {
+    const getStatusTagColor = (status: Chat['status']) => {
         switch (status) {
-            case 'new': return 'red';
-            case 'process': return 'blue';
-            case 'end': return 'green';
+            case '미처리': return 'red';
+            case '처리중': return 'blue';
+            case '처리완료': return 'green';
             default: return 'default';
         }
     };
 
-    const getStatusTagText = (status: ChatlItem['status']) => {
-        switch (status) {
-            case 'new': return '미처리';
-            case 'process': return '처리중';
-            case 'end': return '처리완료';
-            default: return status;
-        }
-    };
-
-    const getTypeTagColor = (type: ChatlItem['type']) => {
+    const getTypeTagColor = (type: Chat['type']) => {
         switch (type) {
-            case 'call': return 'purple';
-            case 'chat': return 'geekblue';
+            case '콜': return 'purple';
+            case '챗': return 'geekblue';
             default: return 'default';
-        }
-    };
-
-    const getTypeTagText = (type: ChatlItem['type']) => {
-        switch (type) {
-            case 'call': return '콜';
-            case 'chat': return '챗';
-            default: return type;
         }
     };
 
@@ -91,27 +73,8 @@ function MyCounsel() {
                 />
 
                 <div style={{display: 'flex', gap: '8px', marginBottom: '8px'}}>
-                    <Select
-                        defaultValue="all" 
-                        size="small" 
-                        style={{flex: 1}}
-                        onChange={value => setStatusFilter(value)}
-                    >
-                        <Option value="all">상태 전체</Option>
-                        <Option value="new">미처리</Option>
-                        <Option value="process">처리중</Option>
-                        <Option value="end">처리완료</Option>
-                    </Select>
-                    <Select
-                        defaultValue="all"
-                        size="small"
-                        style={{flex: 1}}
-                        onChange={value => setTypeFilter(value)}
-                    >
-                        <Option value="all">유형 전체</Option>
-                        <Option value="call">콜</Option>
-                        <Option value="chat">챗</Option>
-                    </Select>
+                    <SelectBox group="상담상태" value={statusFilter} onChange={(value) => setStatusFilter(value)} />
+                    <SelectBox group="상담유형" value={typeFilter} onChange={(value) => setTypeFilter(value)} />
                 </div>
             </div>
 
@@ -124,18 +87,20 @@ function MyCounsel() {
                             <List.Item.Meta
                                 title={
                                     <>
-                                        {item.userId}
-                                        <Tag color={getTypeTagColor(item.type)} style={{ marginLeft: 8 }}>
-                                            {getTypeTagText(item.type)}
-                                        </Tag>
-                                        <Tag color={getStatusTagColor(item.status)}>
-                                            {getStatusTagText(item.status)}
-                                        </Tag>
+                                        <a onClick={() => handleChatSeq(item.chatSeq)}>
+                                            {item.userNm} ({item.mgrNm})
+                                            <Tag color={getTypeTagColor(item.type)} style={{marginLeft: 8}}>
+                                                {item.type}
+                                            </Tag>
+                                            <Tag color={getStatusTagColor(item.status)}>
+                                                {item.status}
+                                            </Tag>
+                                        </a>
                                     </>
                                 }
-                                description={item.userId}
+                                description={item.title}
                             />
-                            <div>{item.type == 'call' ? <PhoneTwoTone /> : <MessageTwoTone /> }</div>
+                            <div>{item.type == '콜' ? <PhoneTwoTone/> : <MessageTwoTone/>}</div>
                         </List.Item>
                     )}
                 />
