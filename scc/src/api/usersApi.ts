@@ -1,7 +1,7 @@
-import api from './api';
+import Api from './api';
 
-// user List
-export const getUsers = () => { api.get('/users') };
-export const createUsers = () => { api.get('/users') };
-export const updateUsers = () => { api.get('/users') };
-export const deleteUsers = () => { api.get('/users') };
+//고객 관련 api(WIP)
+export const getUsers = () => { Api.get('/users') };
+export const createUsers = () => { Api.get('/users') };
+export const updateUsers = () => { Api.get('/users') };
+export const deleteUsers = () => { Api.get('/users') };

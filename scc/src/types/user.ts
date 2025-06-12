@@ -2,5 +2,6 @@
 export interface User {
     id: number;
     userNm: string;
+    userId: string;
     mobile: string;
 }

@@ -1,5 +1,4 @@
-// @ts-ignore
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 
 const Api = axios.create({
     baseURL : 'http://localhost:3001',

@@ -4,9 +4,15 @@
     "paths": {
       "@pages/*": ["src/pages/*"],
       "@api/*": ["src/api/*"],
+      "@contexts/*": ["src/contexts/*"],
+      "@query/*": ["src/query/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@stores/*": ["src/stores/*"],
       "@components/*": ["src/components/*"],
       "@src/*": ["src/*"]
-    }
+    },
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   },
   "files": [],
   "references": [

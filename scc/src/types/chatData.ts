@@ -1,12 +1,13 @@
 // ✅ 채팅/콜 정보
 export interface ChatData {
-    id: number;
-    userId: number;
-    text: string;
+    id: string;
+    chatSeq: string;
+    chatNo: number;
+    userId: string;
     userNm: string;
+    mgrId: string;
     mgrNm: string;
+    text: string;
     sender: 'user' | 'mgr';
-    timestamp: Date;
-    status: 'new' | 'process' | 'end';
-    type: 'chat' | 'call';
+    sendTime: string;
 }

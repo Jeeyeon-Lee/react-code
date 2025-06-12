@@ -1,41 +1,47 @@
-import { useState, useEffect } from 'react';
-import { Input, Button, List, Tag } from 'antd';
-import { PhoneTwoTone, MessageTwoTone } from '@ant-design/icons';
-import { getChatList } from '@api/chatApi';
+import { useState } from 'react';
+import { Input, Button, List, Space, Badge } from 'antd';
+import { PhoneTwoTone, MessageTwoTone, RedoOutlined } from '@ant-design/icons';
 import SelectBox from '@components/cmm/Sellect'
 import type { Chat } from '@/types';
+import { useChatStore } from '@stores/chatStore';
+import { useUserStore } from '@stores/userStore';
+import CmmTag from '@components/cmm/CmmTag';
+import { useLogin } from '@hooks/useLogin';
+import { useChat } from '@hooks/useChat';
 
-const { Search } = Input;
 
-// @ts-ignore
-function MyCounsel({handleChatSeq}) {
+function MyCounsel() {
     /*상태관리 영역*/
-    const [chatList, setChatList] = useState<Chat[]>([]);
     const [searchTerm, setSearchTerm] = useState('');
-    const [statusFilter, setStatusFilter] = useState('all');
-    const [typeFilter, setTypeFilter] = useState('all');
+    const [status, setStatus] = useState('all');
+    const [type, setType] = useState('all');
 
-    //채팅리스트
-    const fetchChats = async () => {
-        try {
-            const res = await getChatList();
-            setChatList(res.data);
-        } catch (err) {
-            console.error('채팅 목록 불러오기 실패', err);
-        }
+    /*클라이언트 영역 : zustand 관리*/
+    const { setChatSeq } = useChatStore();
+    const { setUserId } = useUserStore();
+
+    /*서버 영역 : react-query 관리*/
+    const { loginInfo, isLoading } = useLogin();
+    const { useChatList } = useChat();
+    const { data: chatList = [] } = useChatList(loginInfo?.mgrId ?? '', status, type);
+    const { data: fullChatList = [] } = useChatList(loginInfo?.mgrId ?? '', 'all', 'all');
+    const { Search } = Input;
+
+    /*상담 내역 카운트 : 다른영역에서도 쓰이는거면 상단에 올려서 관리 but 여기서만 사용할듯?! */
+    const 미처리Count = fullChatList?.filter(c => c.status === '미처리').length ?? 0;
+    const 보류Count = fullChatList?.filter(c => c.status === '보류').length ?? 0;
+    const 처리중Count = fullChatList?.filter(c => c.status === '처리중').length ?? 0;
+    const 처리완료Count = fullChatList?.filter(c => c.status === '처리완료').length ?? 0;
+
+    const handleSelectChat = (chatSeq: Chat['chatSeq'], userId: Chat['userId']) => {
+        setChatSeq(chatSeq);
+        setUserId(userId);
     };
-    
-    useEffect(() => {
-        fetchChats();
-    }, []);
 
-    
-    const filteredCounselList = chatList.filter(item => {
+    const filteredCounselList = (chatList ?? []).filter(item => {
         const matchesSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                                 String(item.userId).includes(searchTerm);
-        const matchesStatus = statusFilter === 'all' || item.status === statusFilter;
-        const matchesType = typeFilter === 'all' || item.type === typeFilter;
-        return matchesSearch && matchesStatus && matchesType;
+        return matchesSearch;
     });
 
     const getStatusTagColor = (status: Chat['status']) => {
@@ -55,15 +61,38 @@ function MyCounsel({handleChatSeq}) {
         }
     };
 
+    if (isLoading) return <div>로딩중...</div>;
+
     return (
         <div style={{ height: '70vh', display: 'flex', flexDirection: 'column', background: '#fff', borderRadius: '8px', padding: '16px' }}>
             {/*나의 상담 : 상단고정*/}
             <div style={{ marginBottom: '16px' }}>
-                <h4>나의 상담</h4>
-                <div style={{display: 'flex', gap: '8px', marginBottom: '8px'}}>
-                    <Button size="small">콜백</Button>
-                    <Button size="small">전화 끊기</Button>
+                <div style={{position:'relative', display:'flex'}}>
+                    <h4>나의 상담 ({loginInfo?.mgrNm} - {loginInfo?.status} )</h4>
+
                 </div>
+                <Space size="middle" style={{ marginBottom: 8 }}>
+                    <Badge count={미처리Count} size="small" showZero>
+                        <Button size="small" onClick={()=>setStatus('미처리')}>미처리</Button>
+                    </Badge>
+                    <Badge count={처리중Count} size="small" showZero>
+                        <Button size="small" onClick={()=>setStatus('처리중')}>처리중</Button>
+                    </Badge>
+                    <Badge count={보류Count} size="small" showZero>
+                        <Button size="small" onClick={()=>setStatus('보류')}>보류</Button>
+                    </Badge>
+                    <Badge count={처리완료Count} size="small" showZero>
+                        <Button size="small" onClick={()=>setStatus('처리완료')}>처리완료</Button>
+                    </Badge>
+                    <Badge count={fullChatList.length} size="small" showZero>
+                        <Button
+                            size="small"
+                            style={{color:"red"}}
+                            title={"초기화"}
+                            icon={<RedoOutlined onClick={()=> { setStatus('all'); setType('all');}}/>}
+                        />
+                    </Badge>
+                </Space>
                 <Search
                     placeholder="상담 ID 또는 제목 검색"
                     size="small"
@@ -73,8 +102,8 @@ function MyCounsel({handleChatSeq}) {
                 />
 
                 <div style={{display: 'flex', gap: '8px', marginBottom: '8px'}}>
-                    <SelectBox group="상담상태" value={statusFilter} onChange={(value) => setStatusFilter(value)} />
-                    <SelectBox group="상담유형" value={typeFilter} onChange={(value) => setTypeFilter(value)} />
+                    <SelectBox group="상담상태" value={status} onChange={(value) => setStatus(value)} />
+                    <SelectBox group="상담유형" value={type} onChange={(value) => setType(value)} />
                 </div>
             </div>
 
@@ -87,14 +116,20 @@ function MyCounsel({handleChatSeq}) {
                             <List.Item.Meta
                                 title={
                                     <>
-                                        <a onClick={() => handleChatSeq(item.chatSeq)}>
+                                        <a onClick={() => handleSelectChat(item.chatSeq, item.userId)}>
                                             {item.userNm} ({item.mgrNm})
-                                            <Tag color={getTypeTagColor(item.type)} style={{marginLeft: 8}}>
+                                            {item.status == '처리완료' && item.ed.split(' ')[0]}
+                                            <CmmTag color={getTypeTagColor(item.type)}>
                                                 {item.type}
-                                            </Tag>
-                                            <Tag color={getStatusTagColor(item.status)}>
+                                            </CmmTag>
+                                            <CmmTag color={getStatusTagColor(item.status)}>
                                                 {item.status}
-                                            </Tag>
+                                            </CmmTag>
+                                            {(item.transferYn &&
+                                                <CmmTag color={'grey'}>
+                                                    {item.transferYn==='Y'&&'이관'}
+                                                </CmmTag>
+                                            )}
                                         </a>
                                     </>
                                 }

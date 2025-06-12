@@ -2,44 +2,31 @@ import { useState, useRef, useEffect } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 import { Col, Input, Button, Avatar } from 'antd';
 import { SendOutlined, UserOutlined, CustomerServiceOutlined } from '@ant-design/icons';
-import type { UploadFile } from 'antd/es/upload/interface';
-import type {Chat} from '@/types';
 import { getChatDetail } from '@api/chatApi';
-
-interface Message {
-    id: number;
-    text: string;
-    sender: 'user' | 'mgr';
-    timestamp: string;
-    chatSeq: number;
-    chatNo: number;
-    userId: number;
-    userNm: string;
-    mgrNm: string;
-}
+import type { ChatData } from '@/types';
+import { useChatStore } from '@stores/chatStore';
 
 interface LeftContentProps {
-    chatSeq: Chat['chatSeq'];
     templateContent: string;
     setTemplateContent: Dispatch<SetStateAction<string>>;
 }
 
-const LeftContent = ({ chatSeq, templateContent, setTemplateContent }: LeftContentProps) => {
-    const [messages, setMessages] = useState<Message[]>([]);
+const LeftContent = ({ templateContent, setTemplateContent }: LeftContentProps) => {
+    const [messages, setMessages] = useState<ChatData[]>([]);
     const [inputText, setInputText] = useState('');
-    const [fileList, setFileList] = useState<UploadFile[]>([]);
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     };
+    const { chatSeq } = useChatStore();
 
     const fetchChatMessages = async () => {
         if (!chatSeq) return;
 
         try {
             const res = await getChatDetail(chatSeq);
-            const formattedMessages: Message[] = res.map((msg: any) => ({
+            const formattedMessages: ChatData[] = res.map((msg: any) => ({
                 ...msg,
                 timestamp: msg.timestamp
             }));
@@ -70,38 +57,7 @@ const LeftContent = ({ chatSeq, templateContent, setTemplateContent }: LeftConte
     }, [templateContent, setTemplateContent]);
 
     const handleSend = async () => {
-        if (!inputText.trim() && fileList.length === 0) return;
 
-        const newMessage: Message = {
-            id: Date.now(),
-            text: inputText,
-            sender: 'mgr',
-            timestamp: new Date().toISOString(),
-            chatSeq,
-            chatNo: messages.length + 1,
-            userId: 0,
-            userNm: '',
-            mgrNm: '',
-        };
-
-        setMessages(prev => [...prev, newMessage]);
-        setInputText('');
-        setFileList([]);
-
-        setTimeout(() => {
-            const userResponse: Message = {
-                id: Date.now() + 1,
-                text: "문의 사항이 있습니다.",
-                sender: 'user',
-                timestamp: new Date().toISOString(),
-                chatSeq,
-                chatNo: messages.length + 2,
-                userId: 0,
-                userNm: '',
-                mgrNm: '',
-            };
-            setMessages(prev => [...prev, userResponse]);
-        }, 2000);
     };
 
     return (
@@ -157,7 +113,7 @@ const LeftContent = ({ chatSeq, templateContent, setTemplateContent }: LeftConte
                                         marginTop: '4px',
                                         textAlign: message.sender === 'mgr' ? 'right' : 'left'
                                     }}>
-                                        {new Date(message.timestamp).toLocaleTimeString()}
+                                        {new Date(message.sendTime).toLocaleTimeString()}
                                     </div>
                                 </div>
                                 {message.sender === 'mgr' && (

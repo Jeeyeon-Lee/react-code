@@ -26,6 +26,26 @@ export default defineConfig({
       {
         find:"@api",
         replacement: path.resolve(__dirname,"src/api")
+      },
+      {
+        find:"@contexts",
+        replacement: path.resolve(__dirname,"src/contexts")
+      },
+      {
+        find:"@query",
+        replacement: path.resolve(__dirname,"src/query")
+      },
+      {
+        find:"@hooks",
+        replacement: path.resolve(__dirname,"src/hooks")
+      },
+      {
+        find:"@stores",
+        replacement: path.resolve(__dirname,"src/stores")
+      },
+      {
+        find:"@types",
+        replacement: path.resolve(__dirname,"src/types")
       }
     ]
   },

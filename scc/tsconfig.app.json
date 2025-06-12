@@ -12,7 +12,11 @@
       "@/*": ["./src/*"],
       "@pages/*": ["./src/pages/*"],
       "@api/*": ["./src/api/*"],
-      "@components/*": ["./src/components/*"]
+      "@contexts/*": ["./src/contexts/*"],
+      "@stores/*": ["./src/stores/*"],
+      "@components/*": ["./src/components/*"],
+      "@query/*": ["./src/query/*"],
+      "@hooks/*": ["./src/hooks/*"]
     },
 
     /* Bundler mode */
@@ -31,6 +35,7 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "noUncheckedSideEffectImports": true
   },

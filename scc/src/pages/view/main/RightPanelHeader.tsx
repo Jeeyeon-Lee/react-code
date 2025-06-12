@@ -1,85 +1,226 @@
-import { Typography, Button, Space } from 'antd';
-import { SearchOutlined,
-         FileTextOutlined,
-         CommentOutlined,
-         RedoOutlined,
-         CustomerServiceOutlined,
-         SaveOutlined } from '@ant-design/icons';
-import type {Chat, ChatData} from '@/types';
+import { Modal, message, Typography, Popover, Button, Space, Select } from 'antd';
+import {
+    StopTwoTone,
+    FileTextOutlined,
+    PhoneTwoTone,
+    RedoOutlined,
+    SmileOutlined,
+    DownCircleTwoTone
+} from '@ant-design/icons';
+import type { Mgr, Login, Chat } from '@/types';
 import { useEffect, useState } from 'react';
-import { getChatDetail } from '@api/chatApi';
+import { getMgrList } from '@api/mgrApi';
+import { useChatStore } from '@stores/chatStore';
+import { useUserStore } from '@stores/userStore';
+import { useLogin, useSaveLoginMgrMutation, useUpdateLoginStatusMutation } from '@hooks/useLogin';
+import { useChat } from '@hooks/useChat';
+
 
 const { Text } = Typography;
+const smileIcon = <SmileOutlined />;
 
-function RightPanelHeader({ chatSeq }: { chatSeq: Chat['chatSeq'] }) {
+function RightPanelHeader() {
     const [userNm, setUserNm] = useState('-');
     const [lastChatDate, setLastChatDate] = useState('-');
-    const [lastConsultantNm, setLastConsultantNm] = useState('-');
+    const [mgrList, setMgrList] = useState<Mgr[]>([]);
+    const { chatSeq} = useChatStore();
+    const { userId } = useUserStore();
+    const { loginInfo} = useLogin();
+    const { mutate: saveLoginMgr } = useSaveLoginMgrMutation();
+    const { mutate: updateLoginStatus } = useUpdateLoginStatusMutation();
+    const { useChatDetail, updateChatStatusMutation, updateChatMgrMutation } = useChat();
+    const { data: chatData } = useChatDetail(chatSeq);
+
+    const fetchMgrList = async () => {
+        try {
+            const res = await getMgrList();
+            setMgrList(res);
+        } catch (error) {
+            console.error('담당자 목록 가져오기 실패:', error);
+        }
+    };
+
 
     useEffect(() => {
-        const fetchData = async () => {
-            if (!chatSeq) {
-                setUserNm('-');
-                setLastChatDate('-');
-                setLastConsultantNm('-');
-                return;
-            }
+        if (chatData && chatData.length > 0) {
+            setUserNm(chatData[0].userNm || '-');
+
+            const lastMessage = chatData[chatData.length - 1];
             try {
-                const chatData: ChatData[] = await getChatDetail(chatSeq);
-                if (chatData && chatData.length > 0) {
-                    setUserNm(chatData[0].userNm || '-');
-
-                    const lastMessage = chatData[chatData.length - 1];
-
-                    try {
-                        const date = new Date(lastMessage.timestamp);
-                        setLastChatDate(date.toLocaleString()); // 혹은 원하는 형식으로 포맷
-                    } catch (error) {
-                        setLastChatDate('-');
-                    }
-
-                    if (lastMessage.sender === 'mgr') {
-                        setLastConsultantNm(lastMessage.mgrNm || '-');
-                    } else {
-                        setLastConsultantNm('-');
-                    }
-
-                } else {
-                    setUserNm('-');
-                    setLastChatDate('-');
-                    setLastConsultantNm('-');
-                }
+                const date = new Date(lastMessage.sendTime);
+                setLastChatDate(date.toLocaleString());
             } catch (error) {
-                console.error(error);
-                setUserNm('-');
                 setLastChatDate('-');
-                setLastConsultantNm('-');
             }
+
+        } else {
+            setUserNm('-');
+            setLastChatDate('-');
+        }
+    }, [chatData]);
+
+    useEffect(() => {
+        fetchMgrList();
+    }, []);
+
+    const handleUpdateChatStatus = (status: Chat['status']) => {
+        updateChatStatusMutation.mutate({ chatSeq, status });
+    };
+
+    //상담 팀원 변경(담당자 변경)
+    //현재 chatSeq는 update(이관Y, 종료)
+    //새로운 chat insert (이관Y, 미처리, mgrId)
+    const handleUpdateChatMgr = (mgrId: Mgr['mgrId']) => {
+        // updateChatMgrMutation.mutate({ chatSeq, mgrId });
+        Modal.confirm({
+            title: '이관 확인',
+            content: `다른 상담원에게 이관하시겠습니까?`,
+            okText: '이관',
+            cancelText: '취소',
+            onOk: async () => {
+                try {
+                    await updateChatMgrMutation.mutateAsync({ chatSeq, mgrId });
+                    message.success(`다른 상담원에게 이관 완료되었습니다.`);
+                } catch (e) {
+                    message.error('이관에 실패했습니다.');
+                }
+            }
+        });
+    };
+
+    const handleLoginStatusUpdate = (status:Login['status']) => {
+        if(loginInfo) {
+            updateLoginStatus({ loginInfo, status });
+            fetchMgrList();
+        }
+    }
+
+    const TeamChangeButton = ({ mgrList }: { mgrList: Mgr[] }) => {
+        if(chatSeq == "-1") return;
+        const handleSelectChange = (mgrId:Mgr['mgrId']) => {
+            if (mgrId) handleUpdateChatMgr(mgrId);
         };
 
-        fetchData();
-    }, [chatSeq]);
+        const content = (
+            <Select
+                style={{ width: 200 }}
+                placeholder="담당자 선택"
+                onChange={handleSelectChange}
+                options={mgrList.map((mgr:Mgr) => ({
+                    label: `${mgr.mgrNm}(${mgr.status})`,
+                    value: mgr.id,
+                    disabled: mgr.status === '휴가',
+                }))}
+            />
+        );
+
+        return (
+            <Popover
+                placement="topLeft"
+                content={content}
+                title="팀원변경"
+                trigger="click"
+            >
+                <Button icon={<FileTextOutlined />}>팀원변경</Button>
+            </Popover>
+        );
+    };
 
     return (
-        <div style={{ padding: '8px 16px', borderBottom: '1px solid #e0e0e0', background: '#fff' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                <Text strong>{userNm}</Text>
+        <div
+            style={{
+                padding: '8px 16px',
+                borderBottom: '1px solid #e0e0e0',
+                background: '#fff',
+            }}
+        >
+            <div
+                style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    marginBottom: '8px',
+                }}
+            >
+
                 <div>
-                    <Text type="secondary" style={{ marginRight: '16px' }}>마지막 상담일: {lastChatDate}</Text>
-                    <Text type="secondary">마지막 상담사: {lastConsultantNm}</Text>
+                    <Text strong>{userNm}</Text>
+                    <Text type="secondary" style={{ marginLeft: '16px' }}>
+                        최근 상담일: {lastChatDate}
+                    </Text>
+                    <Text type="secondary" style={{ marginLeft: '16px' }}>유저정보: {userId}</Text>
+                </div>
+                <div>
+                    {loginInfo && (
+                        <div style={{ position:'relative', right: 10 }} >
+                            <Text strong>{loginInfo.mgrNm}(상태 : {loginInfo.status})</Text>
+                            <Space style={{marginLeft: '16px'}}>
+                                <Select
+                                    prefix="로그인변경 :  "
+                                    suffixIcon={smileIcon}
+                                    style={{width: 250, textAlign:'center'}}
+                                    onChange={(mgrId:Mgr['mgrId']) => {
+                                        if (mgrId) {
+                                            saveLoginMgr(mgrId);
+                                        }
+                                    }}
+                                    placeholder="담당자 선택"
+                                    options={mgrList.map((mgr) => ({
+                                        label: `${mgr.mgrNm}`,
+                                        value: mgr.id,
+                                        disabled: mgr.status === '휴가',
+                                    }))}
+                                >
+                                </Select>
+                            </Space>
+                        </div>
+                    )}
                 </div>
             </div>
 
-            <Space size="small">
-                <Button icon={<FileTextOutlined />}>번호표기</Button>
-                <Button icon={<SearchOutlined />}>검색</Button>
-                <Button icon={<CommentOutlined />}>메모</Button>
-                <Button icon={<RedoOutlined />}>다시쓰기</Button>
-                <Button icon={<CustomerServiceOutlined />}>다시듣기</Button>
-                <Button type="primary" icon={<SaveOutlined />}>저장</Button>
-            </Space>
+            <Space.Compact size="large">
+                <TeamChangeButton mgrList={mgrList} />
+                {/*Todo : chatStatus에 따라 버튼 disabled - 처리완료일때*/}
+                <Button icon={<StopTwoTone />} onClick={() => handleUpdateChatStatus('보류')}>보류</Button>
+                <Button icon={<RedoOutlined />} onClick={() => handleUpdateChatStatus('처리중')}>다시시작</Button>
+                <Button
+                    color="danger"
+                    icon={<PhoneTwoTone />}
+                    onClick={() => handleUpdateChatStatus('처리중')}
+                >
+                    전화걸기
+                </Button>
+                {/*처리완료일때 안보이게*/}
+                <Button
+                    color="danger"
+                    icon={<PhoneTwoTone twoToneColor='red' />}
+                    onClick={() => handleUpdateChatStatus('처리중')}
+                >
+                    전화끊기
+                </Button>
+                <Button
+                    color="danger"
+                    icon={<DownCircleTwoTone />}
+                    onClick={() => handleUpdateChatStatus('처리완료')}
+                >
+                    완료처리
+                </Button>
+            </Space.Compact>
+
+
+            <Space.Compact style={{ position: 'absolute', right: 10 }} size="large">
+                <Button onClick={() => handleLoginStatusUpdate('상담가능')}>
+                    상담가능
+                </Button>
+                <Button onClick={() => handleLoginStatusUpdate('식사')}>
+                    식사
+                </Button>
+                <Button onClick={() => handleLoginStatusUpdate('휴식')}>
+                    휴식
+                </Button>
+            </Space.Compact>
         </div>
     );
-};
+}
 
-export default RightPanelHeader; 
+export default RightPanelHeader;

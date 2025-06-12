@@ -19,8 +19,8 @@ const SelectBox = ({ group, value, onChange, placeholder = '선택하세요', di
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await getCodeList();
-                const filtered = res.data.filter(item => item.groupNm === group);
+                const res = await getCodeList(group);
+                const filtered = res.filter(item => item.group === group);
                 setOptions(filtered);
             } catch (error) {
                 console.error('코드 목록 불러오기 실패', error);
@@ -40,8 +40,8 @@ const SelectBox = ({ group, value, onChange, placeholder = '선택하세요', di
         >
             <Option value="all">전체</Option>
             {options.map(item => (
-                <Option key={item.id} value={item.detailNm}>
-                    {item.detailNm}
+                <Option key={item.id} value={item.detail}>
+                    {item.detail}
                 </Option>
             ))}
         </Select>

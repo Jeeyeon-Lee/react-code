@@ -1,53 +1,640 @@
 {
   "chat": [
-    { "id": 1, "chatSeq": 1, "title": "상담문의", "userId": 1, "userNm": "홍길동", "mgrId": 1, "mgrNm": "김상담원", "status": "처리완료", "statusNm": "처리완료", "type": "콜", "typeNm": "콜", "title": "홍길동님 긴급문의" },
-    { "id": 2, "chatSeq": 2, "title": "상담문의", "userId": 2, "userNm": "둘리", "mgrId": 1, "mgrNm": "김상담원", "status": "처리완료", "statusNm": "처리완료", "type": "콜", "typeNm": "콜", "title": "둘리님 긴급문의" },
-    { "id": 3, "chatSeq": 3, "title": "상담문의", "userId": 3, "userNm": "또치", "mgrId": 1, "mgrNm": "김상담원", "status": "처리중", "statusNm": "처리중", "type": "콜", "typeNm": "콜", "title": "또치님 긴급문의" },
-    { "id": 4, "chatSeq": 4, "title": "상담문의", "userId": 4, "userNm": "마이콜", "mgrId": 2, "mgrNm": "이상담원", "status": "미처리", "statusNm": "미처리", "type": "챗", "typeNm": "챗", "title": "마이콜님 긴급문의" },
-    { "id": 5, "chatSeq": 5, "title": "상담문의", "userId": 5, "userNm": "희동이", "mgrId": 3, "mgrNm": "최상담원", "status": "미처리", "statusNm": "미처리", "type": "챗", "typeNm": "챗", "title": "희동이님 긴급문의" },
-    { "id": 6, "chatSeq": 6, "title": "상담문의", "userId": 5, "userNm": "희동이", "mgrId": 3, "mgrNm": "최상담원", "status": "미처리", "statusNm": "미처리", "type": "챗", "typeNm": "챗", "title": "희동이님 긴급문의" }
-  ],
-  "chatData": [
-    { "id": 1, "chatSeq": 1, "chatNo": 1, "userId": 1, "userNm": "홍길동", "mgrNm": "김상담원", "text": "안녕하세요, 상담사님. 문의드립니다.", "sender": "user", "timestamp": "2025-05-29T10:00:00Z" },
-    { "id": 2, "chatSeq": 1, "chatNo": 2, "userId": 1, "userNm": "홍길동", "mgrNm": "김상담원", "text": "네, 어떤 도움이 필요하신가요?", "sender": "mgr", "timestamp": "2025-05-29T10:01:00Z" },
-    { "id": 3, "chatSeq": 1, "chatNo": 3, "userId": 1, "userNm": "홍길동", "mgrNm": "김상담원", "text": "네, 어떤 도움이 필요하신가요?", "sender": "mgr", "timestamp": "2025-05-29T10:01:00Z" },
-    { "id": 4, "chatSeq": 1, "chatNo": 4, "userId": 1, "userNm": "홍길동", "mgrNm": "김상담원", "text": "네, 어떤 도움이 필요하신가요?", "sender": "mgr", "timestamp": "2025-05-29T10:01:00Z" },
-    { "id": 5, "chatSeq": 1, "chatNo": 5, "userId": 1, "userNm": "홍길동", "mgrNm": "김상담원", "text": "네, 어떤 도움이 필요하신가요?", "sender": "mgr", "timestamp": "2025-05-29T10:01:00Z" },
-    { "id": 6, "chatSeq": 1, "chatNo": 6, "userId": 1, "userNm": "홍길동", "mgrNm": "김상담원", "text": "네, 어떤 도움이 필요하신가요?", "sender": "mgr", "timestamp": "2025-05-29T10:01:00Z" },
-    { "id": 7, "chatSeq": 1, "chatNo": 7, "userId": 1, "userNm": "홍길동", "mgrNm": "김상담원", "text": "네, 어떤 도움이 필요하신가요?", "sender": "mgr", "timestamp": "2025-05-29T10:01:00Z" },
-    { "id": 8, "chatSeq": 1, "chatNo": 8, "userId": 1, "userNm": "홍길동", "mgrNm": "김상담원", "text": "네, 어떤 도움이 필요하신가요?", "sender": "mgr", "timestamp": "2025-05-29T10:01:00Z" },
-    { "id": 9, "chatSeq": 1, "chatNo": 9, "userId": 1, "userNm": "홍길동", "mgrNm": "김상담원", "text": "네, 어떤 도움이 필요하신가요?", "sender": "mgr", "timestamp": "2025-05-29T10:01:00Z" },
-    { "id": 10, "chatSeq": 1, "chatNo": 10, "userId": 1, "userNm": "홍길동", "mgrNm": "김상담원", "text": "네, 어떤 도움이 필요하신가요?", "sender": "mgr", "timestamp": "2025-05-29T10:01:00Z" },
-    { "id": 11, "chatSeq": 1, "chatNo": 11, "userId": 1, "userNm": "홍길동", "mgrNm": "김상담원", "text": "네, 어떤 도움이 필요하신가요?", "sender": "mgr", "timestamp": "2025-05-29T10:01:00Z" },
-    { "id": 12, "chatSeq": 1, "chatNo": 12, "userId": 1, "userNm": "홍길동", "mgrNm": "김상담원", "text": "네, 어떤 도움이 필요하신가요?", "sender": "mgr", "timestamp": "2025-05-29T10:01:00Z" },
-    { "id": 13, "chatSeq": 2, "chatNo": 1, "userId": 2, "userNm": "둘리", "mgrNm": "김상담원", "text": "상품 배송이 아직 도착하지 않았어요.", "sender": "user", "timestamp": "2025-05-29T11:00:00Z" },
-    { "id": 14, "chatSeq": 2, "chatNo": 2, "userId": 2, "userNm": "둘리", "mgrNm": "김상담원", "text": "확인 후 연락드리겠습니다.", "sender": "mgr", "timestamp": "2025-05-29T11:01:00Z" },
-    { "id": 15, "chatSeq": 3, "chatNo": 1, "userId": 3, "userNm": "또치", "mgrNm": "김상담원", "text": "IB 콜백 요청드립니다.", "sender": "user", "timestamp": "2025-05-29T12:00:00Z" },
-    { "id": 16, "chatSeq": 4, "chatNo": 1, "userId": 4, "userNm": "마이콜", "mgrNm": "이상담원", "text": "오늘 상담 가능한가요?", "sender": "user", "timestamp": "2025-05-29T13:00:00Z" },
-    { "id": 17, "chatSeq": 4, "chatNo": 2, "userId": 4, "userNm": "마이콜", "mgrNm": "이상담원", "text": "오후 3시 이후 가능합니다.", "sender": "mgr", "timestamp": "2025-05-29T13:01:00Z" },
-    { "id": 18, "chatSeq": 5, "chatNo": 1, "userId": 5, "userNm": "희동이", "mgrNm": "최상담원", "text": "전화가 계속 끊겨요.", "sender": "user", "timestamp": "2025-05-29T14:00:00Z" },
-    { "id": 19, "chatSeq": 5, "chatNo": 2, "userId": 5, "userNm": "희동이", "mgrNm": "최상담원", "text": "불편을 드려 죄송합니다. 다시 시도해보겠습니다.", "sender": "mgr", "timestamp": "2025-05-29T14:01:00Z" },
-    { "id": 20, "chatSeq": 6, "chatNo": 1, "userId": 1, "userNm": "홍길동", "mgrNm": "김상담원", "text": "계좌 변경하려면 어떻게 하나요?", "sender": "user", "timestamp": "2025-05-29T15:00:00Z" },
-    { "id": 21, "chatSeq": 6, "chatNo": 2, "userId": 1, "userNm": "홍길동", "mgrNm": "김상담원", "text": "계좌 변경은 상담원에게 문의해주세요.", "sender": "mgr", "timestamp": "2025-05-29T15:01:00Z" },
-    { "id": 21, "chatSeq": 7, "chatNo": 1, "userId": 5, "userNm": "희동이", "mgrNm": "최상담원", "text": "빨리 답변주세요.", "sender": "mgr", "timestamp": "2025-05-29T15:01:00Z" }
+    {
+      "id": "1",
+      "chatSeq": 1,
+      "title": "홍길동님 긴급문의",
+      "userId": 1,
+      "userNm": "홍길동",
+      "mgrId": 1,
+      "mgrNm": "김상담원",
+      "status": "처리완료",
+      "type": "콜",
+      "qusetion": "",
+      "transferYn": "Y",
+      "sd": "2025/06/12 14:20:30",
+      "ed": "2025/06/13 08:02:26"
+    },
+    {
+      "id": "2",
+      "chatSeq": 2,
+      "title": "둘리님 긴급문의",
+      "userId": 2,
+      "userNm": "둘리",
+      "mgrId": "2",
+      "mgrNm": "이상담원",
+      "status": "처리완료",
+      "type": "콜",
+      "qusetion": "",
+      "transferYn": "",
+      "sd": "2025/06/12 14:20:30",
+      "ed": "2025/06/12 14:25:30"
+    },
+    {
+      "id": "3",
+      "chatSeq": 3,
+      "title": "또치님 긴급문의",
+      "userId": 3,
+      "userNm": "또치",
+      "mgrId": "2",
+      "mgrNm": "이상담원",
+      "status": "처리완료",
+      "type": "콜",
+      "qusetion": "",
+      "transferYn": "Y",
+      "sd": "",
+      "ed": "2025/06/12 15:10:29"
+    },
+    {
+      "id": "4",
+      "chatSeq": 4,
+      "userNm": "마이콜",
+      "title": "마이콜님 긴급문의",
+      "userId": 4,
+      "mgrId": 3,
+      "mgrNm": "최상담원",
+      "status": "처리중",
+      "type": "챗",
+      "qusetion": "",
+      "transferYn": "",
+      "sd": "2025/06/12 14:20:30",
+      "ed": ""
+    },
+    {
+      "id": "5",
+      "chatSeq": 5,
+      "userNm": "희동이",
+      "title": "희동이님 긴급문의",
+      "userId": 5,
+      "mgrId": 3,
+      "mgrNm": "최상담원",
+      "status": "미처리",
+      "type": "챗",
+      "qusetion": "",
+      "transferYn": "",
+      "sd": "",
+      "ed": ""
+    },
+    {
+      "id": "6",
+      "chatSeq": 6,
+      "title": "희동이님 긴급문의",
+      "userId": 5,
+      "userNm": "희동이",
+      "mgrId": "2",
+      "mgrNm": "이상담원",
+      "status": "처리완료",
+      "type": "챗",
+      "qusetion": "",
+      "transferYn": "Y",
+      "sd": "2025/06/12 14:20:30",
+      "ed": "2025/06/12 14:25:30"
+    },
+    {
+      "id": "1749702816138",
+      "chatSeq": 1749702816138,
+      "title": "희동이님 긴급문의",
+      "userId": 5,
+      "userNm": "희동이",
+      "mgrId": "1",
+      "mgrNm": "김상담원",
+      "status": "처리완료",
+      "type": "챗",
+      "qusetion": "",
+      "transferYn": "Y",
+      "sd": "2025/06/12 14:20:30",
+      "ed": "2025/06/12 14:25:30"
+    },
+    {
+      "id": "1749704893351",
+      "chatSeq": 1749704893351,
+      "title": "희동이님 긴급문의",
+      "userId": 5,
+      "userNm": "희동이",
+      "mgrId": "3",
+      "mgrNm": "최상담원",
+      "status": "처리완료",
+      "type": "챗",
+      "qusetion": "",
+      "transferYn": "Y",
+      "sd": "2025/06/12 14:20:30",
+      "ed": "2025/06/12 14:25:30"
+    },
+    {
+      "id": "1749705494420",
+      "chatSeq": 1749705494420,
+      "title": "희동이님 긴급문의",
+      "userId": 5,
+      "userNm": "희동이",
+      "mgrId": "1",
+      "mgrNm": "김상담원",
+      "status": "처리완료",
+      "type": "챗",
+      "qusetion": "",
+      "transferYn": "Y",
+      "sd": "2025/06/12 14:20:30",
+      "ed": "2025/06/12 14:25:30"
+    },
+    {
+      "id": "20250612_142530",
+      "chatSeq": "20250612_142530",
+      "title": "희동이님 긴급문의",
+      "userId": 5,
+      "userNm": "희동이",
+      "mgrId": "2",
+      "mgrNm": "이상담원",
+      "status": "처리완료",
+      "type": "챗",
+      "qusetion": "",
+      "transferYn": "Y",
+      "sd": "2025/06/12 14:25:30",
+      "ed": "2025/06/13 08:04:49"
+    },
+    {
+      "id": "20250612_151029",
+      "chatSeq": "20250612_151029",
+      "title": "또치님 긴급문의",
+      "userId": 3,
+      "userNm": "또치",
+      "mgrId": "1",
+      "mgrNm": "김상담원",
+      "status": "미처리",
+      "type": "콜",
+      "qusetion": "",
+      "transferYn": "Y",
+      "sd": "2025/06/12 15:10:29",
+      "ed": ""
+    },
+    {
+      "id": "20250613_080226",
+      "chatSeq": "20250613_080226",
+      "title": "홍길동님 긴급문의",
+      "userId": 1,
+      "userNm": "홍길동",
+      "mgrId": 2,
+      "mgrNm": "이상담원",
+      "status": "미처리",
+      "type": "콜",
+      "qusetion": "",
+      "transferYn": "Y",
+      "sd": "2025/06/13 08:02:26",
+      "ed": ""
+    },
+    {
+      "id": "20250613_080449",
+      "chatSeq": "20250613_080449",
+      "title": "희동이님 긴급문의",
+      "userId": 5,
+      "userNm": "희동이",
+      "mgrId": "1",
+      "mgrNm": "김상담원",
+      "status": "처리완료",
+      "type": "챗",
+      "qusetion": "",
+      "transferYn": "Y",
+      "sd": "2025/06/13 08:04:49",
+      "ed": "2025/06/13 08:05:04"
+    },
+    {
+      "id": "20250613_080504",
+      "chatSeq": "20250613_080504",
+      "title": "희동이님 긴급문의",
+      "userId": 5,
+      "userNm": "희동이",
+      "mgrId": "3",
+      "mgrNm": "최상담원",
+      "status": "미처리",
+      "type": "챗",
+      "qusetion": "",
+      "transferYn": "Y",
+      "sd": "2025/06/13 08:05:04",
+      "ed": ""
+    }
   ],
   "users": [
-    { "id": 1, "userId": 1, "userNm": "홍길동", "mobile": "010-1111-1111" },
-    { "id": 2, "userId": 2, "userNm": "둘리", "mobile": "010-2222-2222" },
-    { "id": 3, "userId": 3, "userNm": "또치", "mobile": "010-3333-3333" },
-    { "id": 4, "userId": 4, "userNm": "마이콜", "mobile": "010-4444-4444" },
-    { "id": 5, "userId": 5, "userNm": "희동이", "mobile": "010-5555-5555" }
+    {
+      "id": "1",
+      "userId": 1,
+      "userNm": "홍길동",
+      "mobile": "010-1111-1111"
+    },
+    {
+      "id": "2",
+      "userId": 2,
+      "userNm": "둘리",
+      "mobile": "010-2222-2222"
+    },
+    {
+      "id": "3",
+      "userId": 3,
+      "userNm": "또치",
+      "mobile": "010-3333-3333"
+    },
+    {
+      "id": "4",
+      "userId": 4,
+      "userNm": "마이콜",
+      "mobile": "010-4444-4444"
+    },
+    {
+      "id": "5",
+      "userId": 5,
+      "userNm": "희동이",
+      "mobile": "010-5555-5555"
+    }
   ],
   "mgr": [
-    { "id": 1, "mgrId": 1, "mgrNm": "김상담원", "dptNm": "상담1팀", "status": "working" },
-    { "id": 2, "mgrId": 2, "mgrNm": "이상담원", "dptNm": "상담1팀", "status": "working" },
-    { "id": 3, "mgrId": 3, "mgrNm": "최상담원", "dptNm": "상담2팀", "status": "holiday" }
+    {
+      "id": "1",
+      "mgrId": 1,
+      "mgrNm": "김상담원",
+      "dptNm": "상담1팀",
+      "status": "상담가능"
+    },
+    {
+      "id": "2",
+      "mgrId": 2,
+      "mgrNm": "이상담원",
+      "dptNm": "상담1팀",
+      "status": "식사"
+    },
+    {
+      "id": "3",
+      "mgrId": 3,
+      "mgrNm": "최상담원",
+      "dptNm": "상담2팀",
+      "status": "휴식"
+    },
+    {
+      "id": "4",
+      "mgrId": 4,
+      "mgrNm": "상담팀장",
+      "dptNm": "상담2팀",
+      "status": "휴가"
+    },
+    {
+      "id": "5",
+      "mgrId": 5,
+      "mgrNm": "관리자",
+      "dptNm": "운영팀",
+      "status": "상담가능"
+    }
+  ],
+  "loginMgr": [
+    {
+      "id": "1",
+      "mgrId": 5,
+      "mgrNm": "관리자",
+      "dptNm": "운영팀",
+      "status": "상담가능",
+      "loginTime": "2025-06-12T05:12:13.680Z"
+    }
   ],
   "code": [
-    { "id": 1, "groupNm": "상담상태", "detailNm": "미처리", "color": "green" },
-    { "id": 2, "groupNm": "상담상태", "detailNm": "처리중", "color": "green" },
-    { "id": 3, "groupNm": "상담상태", "detailNm": "처리완료", "color": "green" },
-    { "id": 4, "groupNm": "상담유형", "detailNm": "콜", "color": "purple" },
-    { "id": 5, "groupNm": "상담유형", "detailNm": "채팅", "color": "geekblue" }
+    {
+      "id": "1",
+      "group": "상담상태",
+      "detail": "미처리"
+    },
+    {
+      "id": "2",
+      "group": "상담상태",
+      "detail": "처리중"
+    },
+    {
+      "id": "3",
+      "group": "상담상태",
+      "detail": "처리완료"
+    },
+    {
+      "id": "4",
+      "group": "상담상태",
+      "detail": "보류"
+    },
+    {
+      "id": "5",
+      "group": "상담유형",
+      "detail": "콜"
+    },
+    {
+      "id": "6",
+      "group": "상담유형",
+      "detail": "챗"
+    }
+  ],
+  "chatFormData": [],
+  "chatData": [
+    {
+      "id": "1",
+      "chatSeq": 1,
+      "chatNo": 1,
+      "userId": 1,
+      "userNm": "홍길동",
+      "mgrId": 1,
+      "mgrNm": "김상담원",
+      "text": "안녕하세요, 상담사님. 문의드립니다.",
+      "sender": "user",
+      "sendTime": "2025/06/12 14:25:30"
+    },
+    {
+      "id": "2",
+      "chatSeq": 1,
+      "chatNo": 2,
+      "userId": 1,
+      "userNm": "홍길동",
+      "mgrId": 1,
+      "mgrNm": "김상담원",
+      "text": "네, 어떤 도움이 필요하신가요?",
+      "sender": "mgr",
+      "sendTime": "2025/05/29 10:01:00"
+    },
+    {
+      "id": "3",
+      "chatSeq": 1,
+      "chatNo": 3,
+      "userId": 1,
+      "userNm": "홍길동",
+      "mgrId": 1,
+      "mgrNm": "김상담원",
+      "text": "네, 어떤 도움이 필요하신가요?",
+      "sender": "mgr",
+      "sendTime": "2025/05/29 10:01:00"
+    },
+    {
+      "id": "4",
+      "chatSeq": 1,
+      "chatNo": 4,
+      "userId": 1,
+      "userNm": "홍길동",
+      "mgrId": 1,
+      "mgrNm": "김상담원",
+      "text": "네, 어떤 도움이 필요하신가요?",
+      "sender": "mgr",
+      "sendTime": "2025/05/29 10:01:00"
+    },
+    {
+      "id": "5",
+      "chatSeq": 1,
+      "chatNo": 5,
+      "userId": 1,
+      "userNm": "홍길동",
+      "mgrId": 1,
+      "mgrNm": "김상담원",
+      "text": "네, 어떤 도움이 필요하신가요?",
+      "sender": "mgr",
+      "sendTime": "2025/05/29 10:01:00"
+    },
+    {
+      "id": "6",
+      "chatSeq": 1,
+      "chatNo": 6,
+      "userId": 1,
+      "userNm": "홍길동",
+      "mgrId": 1,
+      "mgrNm": "김상담원",
+      "text": "네, 어떤 도움이 필요하신가요?",
+      "sender": "mgr",
+      "sendTime": "2025/05/29 10:01:00"
+    },
+    {
+      "id": "7",
+      "chatSeq": 1,
+      "chatNo": 7,
+      "userId": 1,
+      "userNm": "홍길동",
+      "mgrId": 1,
+      "mgrNm": "김상담원",
+      "text": "네, 어떤 도움이 필요하신가요?",
+      "sender": "mgr",
+      "sendTime": "2025/05/29 10:01:00"
+    },
+    {
+      "id": "8",
+      "chatSeq": 1,
+      "chatNo": 8,
+      "userId": 1,
+      "userNm": "홍길동",
+      "mgrId": 1,
+      "mgrNm": "김상담원",
+      "text": "네, 어떤 도움이 필요하신가요?",
+      "sender": "mgr",
+      "sendTime": "2025/05/29 10:01:00"
+    },
+    {
+      "id": "9",
+      "chatSeq": 1,
+      "chatNo": 9,
+      "userId": 1,
+      "userNm": "홍길동",
+      "mgrId": 1,
+      "mgrNm": "김상담원",
+      "text": "네, 어떤 도움이 필요하신가요?",
+      "sender": "mgr",
+      "sendTime": "2025/05/29 10:01:00"
+    },
+    {
+      "id": "10",
+      "chatSeq": 1,
+      "chatNo": 10,
+      "userId": 1,
+      "userNm": "홍길동",
+      "mgrId": 1,
+      "mgrNm": "김상담원",
+      "text": "네, 어떤 도움이 필요하신가요?",
+      "sender": "mgr",
+      "sendTime": "2025/05/29 10:01:00"
+    },
+    {
+      "id": "11",
+      "chatSeq": 1,
+      "chatNo": 11,
+      "userId": 1,
+      "userNm": "홍길동",
+      "mgrId": 1,
+      "mgrNm": "김상담원",
+      "text": "네, 어떤 도움이 필요하신가요?",
+      "sender": "mgr",
+      "sendTime": "2025/05/29 10:01:00"
+    },
+    {
+      "id": "12",
+      "chatSeq": 1,
+      "chatNo": 12,
+      "userId": 1,
+      "userNm": "홍길동",
+      "mgrId": 1,
+      "mgrNm": "김상담원",
+      "text": "네, 어떤 도움이 필요하신가요?",
+      "sender": "mgr",
+      "sendTime": "2025/05/29 10:01:00"
+    },
+    {
+      "id": "13",
+      "chatSeq": 2,
+      "chatNo": 1,
+      "userId": 2,
+      "userNm": "둘리",
+      "mgrId": 1,
+      "mgrNm": "김상담원",
+      "text": "상품 배송이 아직 도착하지 않았어요.",
+      "sender": "user",
+      "sendTime": "2025/05/29 11:00:00"
+    },
+    {
+      "id": "14",
+      "chatSeq": 2,
+      "chatNo": 2,
+      "userId": 2,
+      "userNm": "둘리",
+      "mgrId": 1,
+      "mgrNm": "김상담원",
+      "text": "확인 후 연락드리겠습니다.",
+      "sender": "mgr",
+      "sendTime": "2025/05/29 11:01:00"
+    },
+    {
+      "id": "15",
+      "chatSeq": 3,
+      "chatNo": 1,
+      "userId": 3,
+      "userNm": "또치",
+      "mgrId": 1,
+      "mgrNm": "김상담원",
+      "text": "IB 콜백 요청드립니다.",
+      "sender": "user",
+      "sendTime": "2025/05/29 12:00:00"
+    },
+    {
+      "id": "16",
+      "chatSeq": 4,
+      "chatNo": 1,
+      "userId": 4,
+      "userNm": "마이콜",
+      "mgrId": 2,
+      "mgrNm": "이상담원",
+      "text": "오늘 상담 가능한가요?",
+      "sender": "user",
+      "sendTime": "2025/05/29 13:00:00"
+    },
+    {
+      "id": "17",
+      "chatSeq": 4,
+      "chatNo": 2,
+      "userId": 4,
+      "userNm": "마이콜",
+      "mgrId": 2,
+      "mgrNm": "이상담원",
+      "text": "오후 3시 이후 가능합니다.",
+      "sender": "mgr",
+      "sendTime": "2025/05/29 13:01:00"
+    },
+    {
+      "id": "18",
+      "chatSeq": 5,
+      "chatNo": 1,
+      "userId": 5,
+      "userNm": "희동이",
+      "mgrId": 3,
+      "mgrNm": "최상담원",
+      "text": "전화가 계속 끊겨요.",
+      "sender": "user",
+      "sendTime": "2025/05/29 14:00:00"
+    },
+    {
+      "id": "19",
+      "chatSeq": 5,
+      "chatNo": 2,
+      "userId": 5,
+      "userNm": "희동이",
+      "mgrId": 3,
+      "mgrNm": "최상담원",
+      "text": "불편을 드려 죄송합니다. 다시 시도해보겠습니다.",
+      "sender": "mgr",
+      "sendTime": "2025/05/29 14:01:00"
+    },
+    {
+      "id": "20",
+      "chatSeq": 6,
+      "chatNo": 1,
+      "userId": 5,
+      "userNm": "희동이",
+      "mgrId": 1,
+      "mgrNm": "김상담원",
+      "text": "계좌 변경하려면 어떻게 하나요?",
+      "sender": "user",
+      "sendTime": "2025/05/29 15:00:00"
+    },
+    {
+      "id": "21",
+      "chatSeq": 6,
+      "chatNo": 2,
+      "userId": 5,
+      "userNm": "희동이",
+      "mgrId": 1,
+      "mgrNm": "김상담원",
+      "text": "계좌 변경은 상담원에게 문의해주세요.",
+      "sender": "mgr",
+      "sendTime": "2025/05/29 15:01:00"
+    },
+    {
+      "id": "22",
+      "chatSeq": 7,
+      "chatNo": 1,
+      "userId": 5,
+      "userNm": "희동이",
+      "mgrId": 3,
+      "mgrNm": "최상담원",
+      "text": "빨리 답변주세요.",
+      "sender": "mgr",
+      "sendTime": "2025/05/29 15:01:00"
+    },
+    {
+      "id": "20250612_151029",
+      "chatSeq": "20250612_151029",
+      "chatNo": 1,
+      "userId": 3,
+      "userNm": "또치",
+      "text": "이관되었습니다.",
+      "sender": "user",
+      "mgrId": "1",
+      "mgrNm": "김상담원",
+      "sendTime": "2025/06/12 15:10:29"
+    },
+    {
+      "id": "20250613_080226",
+      "chatSeq": "20250613_080226",
+      "chatNo": 1,
+      "userId": 1,
+      "userNm": "홍길동",
+      "text": "이관되었습니다.",
+      "sender": "user",
+      "mgrId": 2,
+      "mgrNm": "이상담원",
+      "sendTime": "2025/06/13 08:02:26"
+    },
+    {
+      "id": "20250613_080449",
+      "chatSeq": "20250613_080449",
+      "chatNo": 1,
+      "userId": 5,
+      "userNm": "희동이",
+      "text": "이관되었습니다.",
+      "sender": "user",
+      "mgrId": "1",
+      "mgrNm": "김상담원",
+      "sendTime": "2025/06/13 08:04:49"
+    },
+    {
+      "id": "20250613_080504",
+      "chatSeq": "20250613_080504",
+      "chatNo": 1,
+      "userId": 5,
+      "userNm": "희동이",
+      "text": "이관되었습니다.",
+      "sender": "user",
+      "mgrId": "3",
+      "mgrNm": "최상담원",
+      "sendTime": "2025/06/13 08:05:04"
+    }
   ]
 }
