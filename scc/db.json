@@ -636,5 +636,10 @@
       "mgrNm": "최상담원",
       "sendTime": "2025/06/13 08:05:04"
     }
+  ],
+  "menus": [
+    { "id": 1, "path": "/main", "icon": "HomeOutlined", "label": "메인" },
+    { "id": 2, "path": "/scc", "icon": "CustomerServiceOutlined", "label": "상담관리" },
+    { "id": 3, "path": "/system", "icon": "SettingOutlined", "label": "시스템관리" }
   ]
 }

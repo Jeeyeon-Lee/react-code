@@ -10,6 +10,8 @@ import 'tui-grid/dist/tui-grid.css';
 import dayjs from 'dayjs';
 import isLeapYear from 'dayjs/plugin/isLeapYear';
 import 'dayjs/locale/ko';
+import AppRouter from "@components/router/AppRouter.tsx";
+import {useLocation} from "react-router-dom";
 
 dayjs.extend(isLeapYear);
 dayjs.locale('ko');
@@ -26,17 +28,12 @@ function App() {
 }
 
 function AppContent() {
-    const [selectedNav, setSelectedNav] = useState('1');
-    const [selectedSidebar, setSelectedSidebar] = useState('sub1');
+    console.log('App 실행!!!');
 
-    const handleNavSelect = (key: string) => {
-        setSelectedNav(key);
-        setSelectedSidebar('sub1');
-    };
-
-    const handleSidebarSelect = (key: string) => {
-        setSelectedSidebar(key);
-    };
+    const location = useLocation();
+    // 사이드바를 보여줄 경로 목록
+    // 현재 경로가 사이드바 포함 대상인지 확인
+    const showSidebar = location.pathname.startsWith('/main');
 
     return (
         <Layout style={{ height: '100vh' }}>
@@ -49,17 +46,11 @@ function AppContent() {
                     width: '100%'
                 }}
             >
-                <Navbar onNavSelect={handleNavSelect} />
+                <Navbar/>
             </Header>
             <Layout>
-                <Sidebar
-                    selectedNav={selectedNav}
-                    onSidebarSelect={handleSidebarSelect}
-                />
-                <Content
-                    selectedNav={selectedNav}
-                    selectedSidebar={selectedSidebar}
-                />
+                {!showSidebar && <Sidebar/>}
+                <Content/>
             </Layout>
             <Layout style={{ height: '5vh', textAlign: 'center' }}>
                 <Footer>@2025 SRPOST TEST</Footer>

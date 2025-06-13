@@ -9,16 +9,11 @@ import {
 
 const { Sider } = Layout;
 
-interface SidebarProps {
-    selectedNav: string;
-    onSidebarSelect: (key: string) => void;
-}
-
-const Sidebar: React.FC<SidebarProps> = ({ selectedNav, onSidebarSelect }) => {
+function Sidebar() {
     const [collapsed, setCollapsed] = useState(false);
 
     const getSidebarItems = (): MenuProps['items'] => {
-        switch (selectedNav) {
+        switch ('2') {
             case '1':
                 return [];
             case '2':
@@ -49,10 +44,6 @@ const Sidebar: React.FC<SidebarProps> = ({ selectedNav, onSidebarSelect }) => {
                 return [];
         }
     };
-
-    if (selectedNav === '1') {
-        return null;
-    }
 
     return (
         <Sider 
