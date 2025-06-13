@@ -1,5 +1,4 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { chatKeys } from '@query/queryKeys';
 import {
     getChatList,
     getChatDetail,
@@ -13,10 +12,14 @@ export const useChat = () => {
     const queryClient = useQueryClient();
 
     const useChatList = (mgrId:Chat['mgrId'], status?:Chat['status'], type?:Chat['type']) => {
+
         return useQuery({
             queryKey: ['chat', mgrId, status, type],
             queryFn: () => getChatList(mgrId, status, type),
             enabled: !!mgrId,
+            staleTime: 3000, // 데이터 신선도 유지 시간
+            refetchInterval: 6000, // 실시간 주기적 업데이트 원함
+            refetchIntervalInBackground: true, //페이지가 포커스 되면 새로고침
         });
     };
 

@@ -1,4 +1,4 @@
-import { Modal, message, Typography, Popover, Button, Space, Select } from 'antd';
+import { message, Typography, Popover, Button, Space, Select } from 'antd';
 import {
     StopTwoTone,
     FileTextOutlined,
@@ -14,7 +14,7 @@ import { useChatStore } from '@stores/chatStore';
 import { useUserStore } from '@stores/userStore';
 import { useLogin, useSaveLoginMgrMutation, useUpdateLoginStatusMutation } from '@hooks/useLogin';
 import { useChat } from '@hooks/useChat';
-
+import { showModal } from '../../../assets/utils/modalUtil';
 
 const { Text } = Typography;
 const smileIcon = <SmileOutlined />;
@@ -24,6 +24,7 @@ function RightPanelHeader() {
     const [mgrList, setMgrList] = useState<Mgr[]>([]);
     const { chatSeq} = useChatStore();
     const { userId } = useUserStore();
+
     const { loginInfo} = useLogin();
     const { mutate: saveLoginMgr } = useSaveLoginMgrMutation();
     const { mutate: updateLoginStatus } = useUpdateLoginStatusMutation();
@@ -60,12 +61,11 @@ function RightPanelHeader() {
     //현재 chatSeq는 update(이관Y, 종료)
     //새로운 chat insert (이관Y, 미처리, mgrId)
     const handleUpdateChatMgr = (mgrId: Mgr['mgrId']) => {
-        // updateChatMgrMutation.mutate({ chatSeq, mgrId });
-        Modal.confirm({
+        // 공통모달 사용(컨펌, 인포, 워닝, 에러 부분만) -> 데이터입력하는 모달창은 CmmModal사용예정
+        showModal({
+            type: 'confirm',
             title: '이관 확인',
             content: `다른 상담원에게 이관하시겠습니까?`,
-            okText: '이관',
-            cancelText: '취소',
             onOk: async () => {
                 try {
                     await updateChatMgrMutation.mutateAsync({ chatSeq, mgrId });
@@ -195,11 +195,7 @@ function RightPanelHeader() {
                         완료처리
                     </Button>
                 )}
-
             </Space.Compact>
-
-
-
 
             <Space.Compact style={{ position: 'absolute', right: 10 }} size="large">
                 <Button onClick={() => handleLoginStatusUpdate('상담가능')}>
