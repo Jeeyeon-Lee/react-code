@@ -3,7 +3,7 @@
     {
       "id": "1",
       "chatSeq": 1,
-      "title": "홍길동님 긴급문의",
+      "title": "홍길동님 긴급문의라요222",
       "userId": 1,
       "userNm": "홍길동",
       "mgrId": 1,
@@ -53,12 +53,12 @@
       "userId": 4,
       "mgrId": 3,
       "mgrNm": "최상담원",
-      "status": "처리중",
+      "status": "처리완료",
       "type": "챗",
       "qusetion": "",
-      "transferYn": "",
+      "transferYn": "Y",
       "sd": "2025/06/12 14:20:30",
-      "ed": ""
+      "ed": "2025/06/13 14:24:57"
     },
     {
       "id": "5",
@@ -68,7 +68,7 @@
       "userId": 5,
       "mgrId": 3,
       "mgrNm": "최상담원",
-      "status": "미처리",
+      "status": "처리중",
       "type": "챗",
       "qusetion": "",
       "transferYn": "",
@@ -158,7 +158,7 @@
       "userNm": "또치",
       "mgrId": "1",
       "mgrNm": "김상담원",
-      "status": "미처리",
+      "status": "처리중",
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
@@ -203,11 +203,71 @@
       "userNm": "희동이",
       "mgrId": "3",
       "mgrNm": "최상담원",
-      "status": "미처리",
+      "status": "처리완료",
       "type": "챗",
       "qusetion": "",
       "transferYn": "Y",
       "sd": "2025/06/13 08:05:04",
+      "ed": "2025/06/13 11:12:37"
+    },
+    {
+      "id": "20250613_111237",
+      "chatSeq": "20250613_111237",
+      "title": "희동이님 긴급문의",
+      "userId": 5,
+      "userNm": "희동이",
+      "mgrId": "2",
+      "mgrNm": "이상담원",
+      "status": "처리완료",
+      "type": "챗",
+      "qusetion": "",
+      "transferYn": "Y",
+      "sd": "2025/06/13 11:12:37",
+      "ed": "2025/06/13 11:14:03"
+    },
+    {
+      "id": "20250613_111403",
+      "chatSeq": "20250613_111403",
+      "title": "희동이님 긴급문의",
+      "userId": 5,
+      "userNm": "희동이",
+      "mgrId": "3",
+      "mgrNm": "최상담원",
+      "status": "처리완료",
+      "type": "챗",
+      "qusetion": "",
+      "transferYn": "Y",
+      "sd": "2025/06/13 11:14:03",
+      "ed": "2025/06/13 11:15:09"
+    },
+    {
+      "id": "20250613_111509",
+      "chatSeq": "20250613_111509",
+      "title": "희동이님 긴급문의",
+      "userId": 5,
+      "userNm": "희동이",
+      "mgrId": "2",
+      "mgrNm": "이상담원",
+      "status": "미처리",
+      "type": "챗",
+      "qusetion": "",
+      "transferYn": "Y",
+      "sd": "2025/06/13 11:15:09",
+      "ed": ""
+    },
+    {
+      "id": "20250613_142457",
+      "chatSeq": "20250613_142457",
+      "userNm": "마이콜",
+      "title": "마이콜님 긴급문의",
+      "userId": 4,
+      "mgrId": "2",
+      "mgrNm": "이상담원",
+      "status": "미처리",
+      "type": "챗",
+      "qusetion": "",
+      "transferYn": "Y",
+      "sd": "2025/06/13 14:24:57",
       "ed": ""
     }
   ],
@@ -287,7 +347,7 @@
       "mgrNm": "관리자",
       "dptNm": "운영팀",
       "status": "상담가능",
-      "loginTime": "2025-06-12T05:12:13.680Z"
+      "loginTime": "2025-06-13T02:11:50.965Z"
     }
   ],
   "code": [
@@ -635,6 +695,54 @@
       "mgrId": "3",
       "mgrNm": "최상담원",
       "sendTime": "2025/06/13 08:05:04"
+    },
+    {
+      "id": "20250613_111237",
+      "chatSeq": "20250613_111237",
+      "chatNo": 1,
+      "userId": 5,
+      "userNm": "희동이",
+      "text": "이관되었습니다.",
+      "sender": "user",
+      "mgrId": "2",
+      "mgrNm": "이상담원",
+      "sendTime": "2025/06/13 11:12:37"
+    },
+    {
+      "id": "20250613_111403",
+      "chatSeq": "20250613_111403",
+      "chatNo": 1,
+      "userId": 5,
+      "userNm": "희동이",
+      "text": "이관되었습니다.",
+      "sender": "user",
+      "mgrId": "3",
+      "mgrNm": "최상담원",
+      "sendTime": "2025/06/13 11:14:03"
+    },
+    {
+      "id": "20250613_111509",
+      "chatSeq": "20250613_111509",
+      "chatNo": 1,
+      "userId": 5,
+      "userNm": "희동이",
+      "text": "이관되었습니다.",
+      "sender": "user",
+      "mgrId": "2",
+      "mgrNm": "이상담원",
+      "sendTime": "2025/06/13 11:15:09"
+    },
+    {
+      "id": "20250613_142457",
+      "chatSeq": "20250613_142457",
+      "chatNo": 1,
+      "userId": 4,
+      "userNm": "마이콜",
+      "text": "이관되었습니다.",
+      "sender": "user",
+      "mgrId": "2",
+      "mgrNm": "이상담원",
+      "sendTime": "2025/06/13 14:24:57"
     }
   ],
   "menus": [
