@@ -22,7 +22,8 @@ export const useChat = () => {
 
     const useChatDetail = (chatSeq:Chat['chatSeq']) => {
         return useQuery({
-            queryKey: chatKeys.detail(chatSeq).queryKey,
+            // queryKey: chatKeys.detail(chatSeq).queryKey,
+            queryKey: ['chat', chatSeq],
             queryFn: () => getChatDetail(chatSeq),
             enabled: !!chatSeq
         });
@@ -30,8 +31,10 @@ export const useChat = () => {
 
     const useChatHistory = (userId:Chat['userId']) => {
         return useQuery({
-            queryKey: chatKeys.list(userId).queryKey,
-            queryFn: () => getChatHistory(userId)
+            // queryKey: chatKeys.list(userId).queryKey,
+            queryKey: ['chat', userId],
+            queryFn: () => getChatHistory(userId),
+            enabled: !!userId
         });
     };
 

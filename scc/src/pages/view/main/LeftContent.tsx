@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 import { Col, Input, Button, Avatar } from 'antd';
 import { SendOutlined, UserOutlined, CustomerServiceOutlined } from '@ant-design/icons';
-import { getChatDetail } from '@api/chatApi';
+import { getChatDataList } from '@api/chatApi';
 import type { ChatData } from '@/types';
 import { useChatStore } from '@stores/chatStore';
 
@@ -25,7 +25,7 @@ const LeftContent = ({ templateContent, setTemplateContent }: LeftContentProps) 
         if (!chatSeq) return;
 
         try {
-            const res = await getChatDetail(chatSeq);
+            const res = await getChatDataList(chatSeq);
             const formattedMessages: ChatData[] = res.map((msg: any) => ({
                 ...msg,
                 timestamp: msg.timestamp

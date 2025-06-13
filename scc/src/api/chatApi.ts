@@ -26,9 +26,16 @@ export const getChatHistory = async (userId: Chat['userId']) => {
 
 //상담 상세 조회
 export const getChatDetail = async (chatSeq: Chat['chatSeq']) => {
+    const response = await Api.get<Chat[]>(`/chat?chatSeq=${chatSeq}`);
+    return response.data;
+};
+
+//상담 데이터 조회
+export const getChatDataList = async (chatSeq: ChatData['chatSeq']) => {
     const response = await Api.get<ChatData[]>(`/chatData?chatSeq=${chatSeq}`);
     return response.data;
 };
+
 
 
 //상담 업데이트

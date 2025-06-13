@@ -21,7 +21,6 @@ const smileIcon = <SmileOutlined />;
 
 function RightPanelHeader() {
     const [userNm, setUserNm] = useState('-');
-    const [lastChatDate, setLastChatDate] = useState('-');
     const [mgrList, setMgrList] = useState<Mgr[]>([]);
     const { chatSeq} = useChatStore();
     const { userId } = useUserStore();
@@ -30,6 +29,7 @@ function RightPanelHeader() {
     const { mutate: updateLoginStatus } = useUpdateLoginStatusMutation();
     const { useChatDetail, updateChatStatusMutation, updateChatMgrMutation } = useChat();
     const { data: chatData } = useChatDetail(chatSeq);
+    const currentStatus = chatData?.[0].status || '';
 
     const fetchMgrList = async () => {
         try {
@@ -40,22 +40,11 @@ function RightPanelHeader() {
         }
     };
 
-
     useEffect(() => {
-        if (chatData && chatData.length > 0) {
-            setUserNm(chatData[0].userNm || '-');
-
-            const lastMessage = chatData[chatData.length - 1];
-            try {
-                const date = new Date(lastMessage.sendTime);
-                setLastChatDate(date.toLocaleString());
-            } catch (error) {
-                setLastChatDate('-');
-            }
-
+        if (chatData) {
+            setUserNm(chatData[0].userNm);
         } else {
             setUserNm('-');
-            setLastChatDate('-');
         }
     }, [chatData]);
 
@@ -145,10 +134,9 @@ function RightPanelHeader() {
 
                 <div>
                     <Text strong>{userNm}</Text>
-                    <Text type="secondary" style={{ marginLeft: '16px' }}>
-                        최근 상담일: {lastChatDate}
-                    </Text>
-                    <Text type="secondary" style={{ marginLeft: '16px' }}>유저정보: {userId}</Text>
+                    {userId && (
+                        <Text type="secondary" style={{ marginLeft: '16px' }}>유저정보: {userId}</Text>
+                    )}
                 </div>
                 <div>
                     {loginInfo && (
@@ -179,33 +167,38 @@ function RightPanelHeader() {
             </div>
 
             <Space.Compact size="large">
-                <TeamChangeButton mgrList={mgrList} />
-                {/*Todo : chatStatus에 따라 버튼 disabled - 처리완료일때*/}
-                <Button icon={<StopTwoTone />} onClick={() => handleUpdateChatStatus('보류')}>보류</Button>
-                <Button icon={<RedoOutlined />} onClick={() => handleUpdateChatStatus('처리중')}>다시시작</Button>
-                <Button
-                    color="danger"
-                    icon={<PhoneTwoTone />}
-                    onClick={() => handleUpdateChatStatus('처리중')}
-                >
-                    전화걸기
-                </Button>
-                {/*처리완료일때 안보이게*/}
-                <Button
-                    color="danger"
-                    icon={<PhoneTwoTone twoToneColor='red' />}
-                    onClick={() => handleUpdateChatStatus('처리중')}
-                >
-                    전화끊기
-                </Button>
-                <Button
-                    color="danger"
-                    icon={<DownCircleTwoTone />}
-                    onClick={() => handleUpdateChatStatus('처리완료')}
-                >
-                    완료처리
-                </Button>
+                {currentStatus !== '처리완료' && (
+                    <>
+                        <TeamChangeButton mgrList={mgrList} />
+                        <Button icon={<StopTwoTone />} onClick={() => handleUpdateChatStatus('보류')}>
+                            보류
+                        </Button>
+                    </>
+                )}
+                {currentStatus !== '미처리' && currentStatus !== '처리중' && (
+                    <Button icon={<RedoOutlined />} onClick={() => handleUpdateChatStatus('처리중')}>
+                        다시시작
+                    </Button>
+                )}
+                {currentStatus !== '처리중' && (
+                    <Button icon={<PhoneTwoTone />} onClick={() => handleUpdateChatStatus('처리중')}>
+                        전화걸기
+                    </Button>
+                )}
+                {currentStatus === '처리중' && (
+                    <Button icon={<PhoneTwoTone twoToneColor='red' />} onClick={() => handleUpdateChatStatus('처리중')}>
+                        전화끊기
+                    </Button>
+                )}
+                {currentStatus !== '처리완료' && (
+                    <Button icon={<DownCircleTwoTone />} onClick={() => handleUpdateChatStatus('처리완료')}>
+                        완료처리
+                    </Button>
+                )}
+
             </Space.Compact>
+
+
 
 
             <Space.Compact style={{ position: 'absolute', right: 10 }} size="large">

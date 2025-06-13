@@ -14,12 +14,12 @@ interface ChatStore {
 }
 
 export const useChatStore = create<ChatStore>((set) => ({
-    chatSeq: -1,
+    chatSeq: '',
     setChatSeq: (seq) => {
         set({ chatSeq: seq })
     },
     clearChatSeq: () => {
-        set({ chatSeq: -1 })
+        set({ chatSeq: '' })
     },
     /*
     updateChatStatus: async (chatSeq, status) => {
