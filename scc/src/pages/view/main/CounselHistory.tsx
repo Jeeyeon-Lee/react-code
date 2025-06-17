@@ -1,35 +1,15 @@
-import { Card, Table, Tag } from 'antd';
+import { useState } from 'react';
+import { Table, Tag, Card } from 'antd';
 import { useUserStore } from '@stores/userStore';
 import { useChat } from '@hooks/useChat';
 import type { Chat } from '@/types';
 import type { ColumnsType } from 'antd/es/table';
 
 const CounselHistory = () => {
+    const [pageNation, setPageNation] = useState(10);
     const { userId } = useUserStore();
     const { useChatHistory } = useChat();
     const { data: chatList = [] } = useChatHistory(userId || '');
-
-    /*react-query useChat 쓰기 전
-    const [ chatList, setChatList] = useState<Chat[]>([]);
-
-    const fetchChatHistory = async () => {
-        if (!userId) return;
-        try {
-            const res = await getChatHistory(userId);
-            setChatList(res);
-        } catch (err) {
-            console.error('채팅 목록 불러오기 실패', err);
-        }
-    };
-
-    useEffect(() => {
-        setChatList([]);
-    }, [loginInfo?.mgrId]);
-
-    useEffect(() => {
-        fetchChatHistory();
-    }, [userId]);
-    */
     const colorMap = {
         '미처리': 'red',
         '처리중': 'blue',
@@ -54,29 +34,40 @@ const CounselHistory = () => {
                 <Tag color={colorMap[status]}>{status}</Tag>
             )
         },
-        { title: '유형', dataIndex: 'type', key: 'type', sorter: (a, b) => a.type.localeCompare(b.type), align: 'center' },
-        { title: '종료일시', dataIndex: 'ed', key: 'ed', sorter: (a, b) => a.ed.localeCompare(b.ed), align: 'center' },
+        {
+            title: '종료',
+            dataIndex: 'ed',
+            key: 'ed',
+            sorter: (a, b) => a.ed.localeCompare(b.ed),
+            align: 'center',
+            render: (ed: string) => ed?.slice(0, 10) || '-'
+        },
     ];
 
 
     return (
         <>
-            <div style={{display: 'flex', flexDirection: 'column', height: '100%', position: 'relative'}}>
-                <Card title="상담 내역"></Card>
-                <Table
-                    rowKey="chatSeq"
-                    columns={columns}
-                    dataSource={chatList}
-                    style={{ flex: 1 }}
-                    pagination={{
-                        pageSize: 5,
-                        position: ['bottomCenter'],
-                        showSizeChanger: true,
-                        pageSizeOptions: ['5', '10', '20', '50'],
-                        showTotal: (total, range) => `${range[0]}-${range[1]} of ${total}건`,
-                    }}
-                />
-
+            <div style={{padding: 16}}>
+                <Card title="상담 내역">
+                    <div style={{display: 'flex', gap: '8px'}}>
+                    </div>
+                    <Table
+                        rowKey="chatSeq"
+                        columns={columns}
+                        dataSource={chatList}
+                        pagination={{
+                            pageSize: pageNation,
+                            showSizeChanger: true,
+                            position: ['bottomCenter'],
+                            pageSizeOptions: ['5', '10', '20', '50'],
+                            showTotal: (total, range) => `${range[0]}-${range[1]} of ${total}건`,
+                            onChange: (_page, pageSize) => {
+                                setPageNation(pageSize);
+                            }
+                        }}
+                        scroll={{y: 350}}
+                    />
+                </Card>
             </div>
         </>
     );

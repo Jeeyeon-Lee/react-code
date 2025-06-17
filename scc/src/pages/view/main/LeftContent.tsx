@@ -68,6 +68,7 @@ const LeftContent = ({ templateContent, setTemplateContent }: LeftContentProps) 
             height: '100%',
             position: 'relative'
         }}>
+
             <div 
                 style={{
                     flex: 1,
@@ -79,6 +80,9 @@ const LeftContent = ({ templateContent, setTemplateContent }: LeftContentProps) 
                     maxHeight: 'calc(100% - 60px)'
                 }}
             >
+                {chatSeq && (
+
+
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                     {messages.map(message => (
                         <div
@@ -123,8 +127,10 @@ const LeftContent = ({ templateContent, setTemplateContent }: LeftContentProps) 
                         </div>
                     ))}
                 </div>
+                )}
                 <div ref={messagesEndRef} />
             </div>
+
 
             <div style={{
                 display: 'flex',

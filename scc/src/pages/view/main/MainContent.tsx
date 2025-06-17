@@ -15,6 +15,7 @@ function MainContent() {
     const [selectedView, setSelectedView] = useState<'history' | 'info' | 'template' | 'etc'>('history');
     const [isCounselFormCollapsed, setIsCounselFormCollapsed] = useState(false);
     const [templateContent, setTemplateContent] = useState('');
+
     const handleSelectView = (view: 'history' | 'info' | 'template' | 'etc') => {
         setSelectedView(view);
     };

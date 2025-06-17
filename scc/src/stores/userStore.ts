@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import type { User } from '@/types';
 
 interface UserStore {
-    userId: User['userId'] | null;
+    userId: User['userId'];
     setUserId: (userId: User['userId']) => void;
 }
 

@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { Input, Button, List, Space, Badge } from 'antd';
 import { PhoneTwoTone, MessageTwoTone, RedoOutlined } from '@ant-design/icons';
-import SelectBox from '@components/cmm/Sellect'
+import CmmCodeSellect from '@components/form/CmmCodeSellect';
 import type { Chat } from '@/types';
 import { useChatStore } from '@stores/chatStore';
 import { useUserStore } from '@stores/userStore';
-import CmmTag from '@components/cmm/CmmTag';
+import CmmTag from '@components/form/CmmTag';
 import { useLogin } from '@hooks/useLogin';
 import { useChat } from '@hooks/useChat';
 
@@ -23,6 +23,7 @@ function MyCounsel() {
     /*서버 영역 : react-query 관리*/
     const { loginInfo, isLoading } = useLogin();
     const { useChatList } = useChat();
+    // @ts-ignore
     const { data: chatList = [] } = useChatList(loginInfo?.mgrId ?? '', status, type);
     const { data: fullChatList = [] } = useChatList(loginInfo?.mgrId ?? '', 'all', 'all');
     const { Search } = Input;
@@ -82,7 +83,7 @@ function MyCounsel() {
                         <Button size="small" onClick={()=>setStatus('보류')}>보류</Button>
                     </Badge>
                     <Badge count={처리완료Count} size="small" showZero>
-                        <Button size="small" onClick={()=>setStatus('처리완료')}>처리완료</Button>
+                        <Button size="small" onClick={()=>setStatus('처리완료')}>완료</Button>
                     </Badge>
                     <Badge count={fullChatList.length} size="small" showZero>
                         <Button
@@ -102,8 +103,8 @@ function MyCounsel() {
                 />
 
                 <div style={{display: 'flex', gap: '8px', marginBottom: '8px'}}>
-                    <SelectBox group="상담상태" value={status} onChange={(value) => setStatus(value)} />
-                    <SelectBox group="상담유형" value={type} onChange={(value) => setType(value)} />
+                    <CmmCodeSellect group="상담상태" value={status} onChange={(value) => setStatus(value)} />
+                    <CmmCodeSellect group="상담유형" value={type} onChange={(value) => setType(value)} />
                 </div>
             </div>
 

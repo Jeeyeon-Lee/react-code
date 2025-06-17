@@ -1,10 +1,10 @@
-import Api from './api';
+import axios from './api';
 import type { Login, Mgr } from '@/types';
 import { getMgrDetail } from '@api/mgrApi';
 
 //로그인 유저 조회
 export const getLoginMgr = async () => {
-    const response = await Api.get<Login[]>('/loginMgr');
+    const response = await axios.get<Login[]>('/loginMgr');
     return response.data[0];
 };
 
@@ -19,7 +19,7 @@ export const saveLoginMgr = async (mgrId:Mgr['mgrId']) => {
             loginTime: new Date().toISOString(),
         };
 
-        const response = await Api.patch<Login>(`/loginMgr/1`,loginMgr );
+        const response = await axios.patch<Login>(`/loginMgr/1`,loginMgr );
 
         return response.data;
     } catch (error) {
@@ -33,7 +33,7 @@ export const updateLoginStatus = async (loginInfo:Login, status:Mgr['status']) =
 
     if(!loginInfo) return;
     try {
-        await Api.patch<Login>(`/mgr/${loginInfo?.mgrId}`, {status});
+        await axios.patch<Login>(`/mgr/${loginInfo?.mgrId}`, {status});
 
         const loginMgr: Login = {
             ...loginInfo,
@@ -41,7 +41,7 @@ export const updateLoginStatus = async (loginInfo:Login, status:Mgr['status']) =
             status
         };
 
-        const response = await Api.patch<Login>(`/loginMgr/1`, loginMgr);
+        const response = await axios.patch<Login>(`/loginMgr/1`, loginMgr);
         return response.data;
 
     } catch (error) {

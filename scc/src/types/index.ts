@@ -5,3 +5,4 @@ export type { Mgr } from './mgr';
 export type { ChatData } from './chatData';
 export type { Login } from './login';
 export type { MenuType } from './menu';
+export type { ChatFormData } from './chatFormData';

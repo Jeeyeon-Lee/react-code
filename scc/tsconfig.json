@@ -9,7 +9,8 @@
       "@hooks/*": ["src/hooks/*"],
       "@stores/*": ["src/stores/*"],
       "@components/*": ["src/components/*"],
-      "@src/*": ["src/*"]
+      "@src/*": ["src/*"],
+      "@utils/*": ["src/utils/*"]
     },
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true

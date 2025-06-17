@@ -16,7 +16,8 @@
       "@stores/*": ["./src/stores/*"],
       "@components/*": ["./src/components/*"],
       "@query/*": ["./src/query/*"],
-      "@hooks/*": ["./src/hooks/*"]
+      "@hooks/*": ["./src/hooks/*"],
+      "@utils/*": ["./src/utils/*"]
     },
 
     /* Bundler mode */

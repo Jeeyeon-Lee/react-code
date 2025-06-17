@@ -1,105 +1,94 @@
-import { message, Typography, Popover, Button, Space, Select } from 'antd';
+import { useRef } from 'react';
+import { Typography, Popover, Space, Select } from 'antd';
 import {
     StopTwoTone,
     FileTextOutlined,
     PhoneTwoTone,
     RedoOutlined,
     SmileOutlined,
-    DownCircleTwoTone
+    DownCircleTwoTone,
+    DeleteTwoTone
 } from '@ant-design/icons';
 import type { Mgr, Login, Chat } from '@/types';
-import { useEffect, useState } from 'react';
-import { getMgrList } from '@api/mgrApi';
 import { useChatStore } from '@stores/chatStore';
 import { useUserStore } from '@stores/userStore';
 import { useLogin, useSaveLoginMgrMutation, useUpdateLoginStatusMutation } from '@hooks/useLogin';
+import { useUser } from '@hooks/useUser';
 import { useChat } from '@hooks/useChat';
-import { showModal } from '../../../assets/utils/modalUtil';
+import { useMgr } from '@hooks/useMgr';
+import { salmon } from '@utils/salmon';
+import CmmButton from '@components/form/CmmButton';
+import CmmSelect from '@components/form/CmmSelect';
+import type { CmmSelectRef } from '@components/form/CmmSelect';
 
 const { Text } = Typography;
 const smileIcon = <SmileOutlined />;
 
 function RightPanelHeader() {
-    const [userNm, setUserNm] = useState('-');
-    const [mgrList, setMgrList] = useState<Mgr[]>([]);
     const { chatSeq} = useChatStore();
     const { userId } = useUserStore();
+
+    const { useUserDetail } = useUser();
+    const { data: userDetail } = useUserDetail(userId);
 
     const { loginInfo} = useLogin();
     const { mutate: saveLoginMgr } = useSaveLoginMgrMutation();
     const { mutate: updateLoginStatus } = useUpdateLoginStatusMutation();
-    const { useChatDetail, updateChatStatusMutation, updateChatMgrMutation } = useChat();
+
+    const { useChatDetail, updateChatStatusMutation, updateChatMgrMutation, deleteChatMutation } = useChat();
     const { data: chatData } = useChatDetail(chatSeq);
     const currentStatus = chatData?.[0].status || '';
 
-    const fetchMgrList = async () => {
-        try {
-            const res = await getMgrList();
-            setMgrList(res);
-        } catch (error) {
-            console.error('담당자 목록 가져오기 실패:', error);
-        }
-    };
-
-    useEffect(() => {
-        if (chatData) {
-            setUserNm(chatData[0].userNm);
-        } else {
-            setUserNm('-');
-        }
-    }, [chatData]);
-
-    useEffect(() => {
-        fetchMgrList();
-    }, []);
-
+    const { useMgrList } = useMgr();
+    const { data: mgrList } = useMgrList();
     const handleUpdateChatStatus = (status: Chat['status']) => {
+        if (!chatSeq) return;
         updateChatStatusMutation.mutate({ chatSeq, status });
     };
+    
+    const handleDeleteChat = () => {
+        if(!chatSeq) return;
+        deleteChatMutation.mutate({chatSeq});
+    }
 
-    //상담 팀원 변경(담당자 변경)
-    //현재 chatSeq는 update(이관Y, 종료)
-    //새로운 chat insert (이관Y, 미처리, mgrId)
+    const selectRef = useRef<CmmSelectRef>(null);
+
     const handleUpdateChatMgr = (mgrId: Mgr['mgrId']) => {
-        // 공통모달 사용(컨펌, 인포, 워닝, 에러 부분만) -> 데이터입력하는 모달창은 CmmModal사용예정
-        showModal({
+        salmon.modal({
             type: 'confirm',
             title: '이관 확인',
             content: `다른 상담원에게 이관하시겠습니까?`,
             onOk: async () => {
-                try {
-                    await updateChatMgrMutation.mutateAsync({ chatSeq, mgrId });
-                    message.success(`다른 상담원에게 이관 완료되었습니다.`);
-                } catch (e) {
-                    message.error('이관에 실패했습니다.');
-                }
-            }
+                await updateChatMgrMutation.mutateAsync({ chatSeq, mgrId });
+            },
+            onCancel: () => {
+                //forwardRef 사용 예제 : 하위 컴포넌트의 DOM에 접근가능
+                selectRef.current?.reset();
+            },
+            centered: true,
         });
     };
 
     const handleLoginStatusUpdate = (status:Login['status']) => {
-        if(loginInfo) {
-            updateLoginStatus({ loginInfo, status });
-            fetchMgrList();
-        }
+        if(!loginInfo) return;
+        updateLoginStatus({ loginInfo, status });
     }
 
-    const TeamChangeButton = ({ mgrList }: { mgrList: Mgr[] }) => {
-        if(chatSeq == "-1") return;
+    const TeamChangeButton = ({ mgrList = [] }: { mgrList?: Mgr[] }) => {
+        if(!chatSeq ) return;
         const handleSelectChange = (mgrId:Mgr['mgrId']) => {
-            if (mgrId) handleUpdateChatMgr(mgrId);
+            handleUpdateChatMgr(mgrId!);
         };
 
         const content = (
-            <Select
-                style={{ width: 200 }}
-                placeholder="담당자 선택"
-                onChange={handleSelectChange}
-                options={mgrList.map((mgr:Mgr) => ({
+            <CmmSelect
+                ref={selectRef}
+                options={mgrList.map(mgr => ({
                     label: `${mgr.mgrNm}(${mgr.status})`,
                     value: mgr.id,
-                    disabled: mgr.status === '휴가',
+                    disabled: mgr.status === '휴가'
                 }))}
+                onChange={handleSelectChange}
             />
         );
 
@@ -108,9 +97,13 @@ function RightPanelHeader() {
                 placement="topLeft"
                 content={content}
                 title="팀원변경"
-                trigger="click"
+                // trigger="click"
             >
-                <Button icon={<FileTextOutlined />}>팀원변경</Button>
+                <CmmButton
+                    icon={<FileTextOutlined />}
+                >
+                    팀원변경
+                </CmmButton>
             </Popover>
         );
     };
@@ -133,10 +126,16 @@ function RightPanelHeader() {
             >
 
                 <div>
-                    <Text strong>{userNm}</Text>
                     {userId && (
-                        <Text type="secondary" style={{ marginLeft: '16px' }}>유저정보: {userId}</Text>
+                        <>
+                            <Text strong>{userDetail?.userNm}</Text>
+                            <Text type="secondary" style={{ marginLeft: '16px' }}>유저 아이디: {userDetail?.userId}</Text>
+                            <Text type="secondary" style={{ marginLeft: '16px' }}>유저 연락처: {userDetail?.mobile}</Text>
+                            <Text type="secondary" style={{ marginLeft: '16px' }}>채팅번호: {chatData?.[0].chatSeq}</Text>
+                            <Text type="secondary" style={{ marginLeft: '16px' }}>채팅상태: {chatData?.[0].status}</Text>
+                        </>
                     )}
+                    <Text></Text>
                 </div>
                 <div>
                     {loginInfo && (
@@ -144,6 +143,8 @@ function RightPanelHeader() {
                             <Text strong>{loginInfo.mgrNm}(상태 : {loginInfo.status})</Text>
                             <Space style={{marginLeft: '16px'}}>
                                 <Select
+                                    value={loginInfo.mgrNm}
+                                    showSearch
                                     prefix="로그인변경 :  "
                                     suffixIcon={smileIcon}
                                     style={{width: 250, textAlign:'center'}}
@@ -153,7 +154,11 @@ function RightPanelHeader() {
                                         }
                                     }}
                                     placeholder="담당자 선택"
-                                    options={mgrList.map((mgr) => ({
+                                    optionFilterProp="label"
+                                    filterSort={(optionA, optionB) =>
+                                        (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
+                                    }
+                                    options={mgrList?.map((mgr) => ({
                                         label: `${mgr.mgrNm}`,
                                         value: mgr.id,
                                         disabled: mgr.status === '휴가',
@@ -170,43 +175,50 @@ function RightPanelHeader() {
                 {currentStatus !== '처리완료' && (
                     <>
                         <TeamChangeButton mgrList={mgrList} />
-                        <Button icon={<StopTwoTone />} onClick={() => handleUpdateChatStatus('보류')}>
+                        {currentStatus !== '보류' && (
+                            <CmmButton icon={<StopTwoTone />} onClick={() => handleUpdateChatStatus('보류')}>
                             보류
-                        </Button>
+                            </CmmButton>
+                        )}
                     </>
                 )}
                 {currentStatus !== '미처리' && currentStatus !== '처리중' && (
-                    <Button icon={<RedoOutlined />} onClick={() => handleUpdateChatStatus('처리중')}>
+                    <CmmButton icon={<RedoOutlined />} onClick={() => handleUpdateChatStatus('처리중')}>
                         다시시작
-                    </Button>
+                    </CmmButton>
                 )}
                 {currentStatus !== '처리중' && (
-                    <Button icon={<PhoneTwoTone />} onClick={() => handleUpdateChatStatus('처리중')}>
+                    <CmmButton icon={<PhoneTwoTone />} onClick={() => handleUpdateChatStatus('처리중')}>
                         전화걸기
-                    </Button>
+                    </CmmButton>
                 )}
                 {currentStatus === '처리중' && (
-                    <Button icon={<PhoneTwoTone twoToneColor='red' />} onClick={() => handleUpdateChatStatus('처리중')}>
+                    <CmmButton icon={<PhoneTwoTone twoToneColor='red' />} onClick={() => handleUpdateChatStatus('처리중')}>
                         전화끊기
-                    </Button>
+                    </CmmButton>
                 )}
                 {currentStatus !== '처리완료' && (
-                    <Button icon={<DownCircleTwoTone />} onClick={() => handleUpdateChatStatus('처리완료')}>
-                        완료처리
-                    </Button>
+                    <>
+                        <CmmButton icon={<DownCircleTwoTone />} onClick={() => handleUpdateChatStatus('처리완료')}>
+                            완료처리
+                        </CmmButton>
+                        <CmmButton icon={<DeleteTwoTone /> } onClick={() => handleDeleteChat()}>
+                            삭제
+                        </CmmButton>
+                    </>
                 )}
             </Space.Compact>
 
             <Space.Compact style={{ position: 'absolute', right: 10 }} size="large">
-                <Button onClick={() => handleLoginStatusUpdate('상담가능')}>
+                <CmmButton onClick={() => handleLoginStatusUpdate('상담가능')}>
                     상담가능
-                </Button>
-                <Button onClick={() => handleLoginStatusUpdate('식사')}>
+                </CmmButton>
+                <CmmButton onClick={() => handleLoginStatusUpdate('식사')}>
                     식사
-                </Button>
-                <Button onClick={() => handleLoginStatusUpdate('휴식')}>
+                </CmmButton>
+                <CmmButton onClick={() => handleLoginStatusUpdate('휴식')}>
                     휴식
-                </Button>
+                </CmmButton>
             </Space.Compact>
         </div>
     );
