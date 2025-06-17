@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { Layout, Menu, Button } from 'antd';
 import type { MenuProps } from 'antd';
 import {
@@ -6,44 +6,60 @@ import {
     MenuFoldOutlined,
     MenuUnfoldOutlined, SettingOutlined
 } from '@ant-design/icons';
+import {Link, useLocation} from "react-router-dom";
+import {useMenuStore} from "@stores/menuStore.ts";
+import type {MenuType} from "@/types";
+import {useMenu} from "@hooks/useMenu.ts";
 
 const { Sider } = Layout;
 
 function Sidebar() {
+    const { setMenuCd } = useMenuStore();
+    const menuCd = useMenuStore(state => state.menuCd);
+
     const [collapsed, setCollapsed] = useState(false);
+    const { useMenuList, useMenuDetail } = useMenu();
+
+    const {data: menuList = []} = useMenuList('', '');
+
+    // 최상위 Root 메뉴 찾기
+    function findRootMenu(menuList: MenuType[], currentMenuCd: string): MenuType | null {
+        let current = menuList.find(m => m.menuCd === currentMenuCd);
+        while (current && current.highMenuCd !== 'ROOT') {
+            current = menuList.find(m => m.menuCd === current?.highMenuCd);
+        }
+        return current || null;
+    }
+
+    // 사이드 메뉴 배열 값
+    function findChildren(menuList: MenuType[], parentCd: string): MenuType[] {
+        return menuList.filter(m => m.highMenuCd === parentCd);
+    }
+
+    const rootMenu = menuList.length && menuCd ? findRootMenu(menuList, menuCd) : null;
+    const sideMenus = rootMenu ? findChildren(menuList, rootMenu.menuCd) : [];
 
     const getSidebarItems = (): MenuProps['items'] => {
-        switch ('2') {
-            case '1':
-                return [];
-            case '2':
-                return [
-                    NotificationOutlined,
-                ].map((_icon, index) => ({
-                    key: `sub${index + 1}`,
-                    icon: <SettingOutlined />,
-                    label: `상담 관리 ${index + 1}`,
-                    children: Array.from({ length: 2 }).map((_, j) => ({
-                        key: `${index}-${j}`,
-                        label: `상담 관리 서브메뉴 ${j + 1}`,
-                    })),
-                }));
-            case '3':
-                return [
-                    NotificationOutlined,
-                ].map((_icon, index) => ({
-                    key: `sub${index + 1}`,
-                    icon: <SettingOutlined />,
-                    label: `시스템 관리 ${index + 1}`,
-                    children: Array.from({ length: 2 }).map((_, j) => ({
-                        key: `${index}-${j}`,
-                        label: `시스템 관리 서브메뉴 ${j + 1}`,
-                    })),
-                }));
-            default:
-                return [];
-        }
+        return [
+            NotificationOutlined,
+        ].map((_icon, index) => ({
+            key: rootMenu?.menuCd,
+            icon: <SettingOutlined />,
+            label: rootMenu?.label,
+            children: sideMenus.map(child => ({
+                key: child.menuCd,
+                label: <Link to={child.path}>{child.label}</Link>,
+            }))
+        }));
     };
+
+    // zustand id 값 세팅
+    const handleSidebarClick: MenuProps["onClick"] = (e) => {
+        setMenuCd(e.key);
+    };
+
+    // main 페이지면 return null
+    //if(menuCd === 'M_MAIN') return null;
 
     return (
         <Sider 
@@ -56,12 +72,12 @@ function Sidebar() {
         >
             <div className="demo-logo-vertical" />
             <Menu
+                onClick={handleSidebarClick}
                 mode="inline"
-                defaultSelectedKeys={['sub1']}
-                defaultOpenKeys={['sub1']}
+                selectedKeys={[menuCd]}
+                openKeys={[rootMenu?.menuCd]}
                 style={{ height: '100%', borderRight: 0 }}
                 items={getSidebarItems()}
-                onClick={({ key }) => onSidebarSelect(key)}
             />
             <Button
                 type="text"

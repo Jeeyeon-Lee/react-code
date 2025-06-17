@@ -12,6 +12,7 @@ import isLeapYear from 'dayjs/plugin/isLeapYear';
 import 'dayjs/locale/ko';
 import AppRouter from "@components/router/AppRouter.tsx";
 import {useLocation} from "react-router-dom";
+import {useMenuStore} from "@stores/menuStore.ts";
 
 dayjs.extend(isLeapYear);
 dayjs.locale('ko');
@@ -28,12 +29,9 @@ function App() {
 }
 
 function AppContent() {
-    console.log('App 실행!!!');
 
-    const location = useLocation();
-    // 사이드바를 보여줄 경로 목록
-    // 현재 경로가 사이드바 포함 대상인지 확인
-    const showSidebar = location.pathname.startsWith('/main');
+    // menuCd 값이 M_MAIN(메인)일 경우 sidebar 예외처리
+    const menuCd = useMenuStore(state => state.menuCd);
 
     return (
         <Layout style={{ height: '100vh' }}>
@@ -49,7 +47,7 @@ function AppContent() {
                 <Navbar/>
             </Header>
             <Layout>
-                {!showSidebar && <Sidebar/>}
+                {menuCd !== 'M_MAIN' && <Sidebar/>}
                 <Content/>
             </Layout>
             <Layout style={{ height: '5vh', textAlign: 'center' }}>

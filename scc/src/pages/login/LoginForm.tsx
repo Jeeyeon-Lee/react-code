@@ -3,9 +3,11 @@ import './index.css';
 import { Navigate, useNavigate } from "react-router-dom";
 import type { FormProps } from 'antd';
 import { Button, Checkbox, Form, Input } from 'antd';
+import {useMenuStore} from "@stores/menuStore.ts";
 
 const LoginForm: React.FC = () => {
   const navigate = useNavigate();
+  const { setMenuCd } = useMenuStore();
 
   type FieldType = {
     username?: string;
@@ -22,6 +24,7 @@ const LoginForm: React.FC = () => {
     localStorage.setItem("refreshToken", crypto.randomUUID() );
     localStorage.setItem("check", "Y");
 
+    setMenuCd('M_MAIN');
     navigate('main');
     console.log('Success:', values);
   };

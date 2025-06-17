@@ -983,22 +983,65 @@
   ],
   "menus": [
     {
-      "id": "1",
+      "id": 1,
+      "menuCd": "ROOT",
+      "highMenuCd": "ROOT"
+    },
+    {
+      "id": 2,
+      "menuCd": "M_MAIN",
+      "highMenuCd": "ROOT",
       "path": "/main",
       "icon": "HomeOutlined",
       "label": "메인"
     },
     {
-      "id": "2",
+      "id": 3,
+      "menuCd": "M_SCC",
+      "highMenuCd": "ROOT",
       "path": "/scc",
       "icon": "CustomerServiceOutlined",
       "label": "상담관리"
     },
     {
-      "id": "3",
-      "path": "/system",
+      "id": 4,
+      "menuCd": "M_SYS",
+      "highMenuCd": "ROOT",
+      "path": "",
       "icon": "SettingOutlined",
       "label": "시스템관리"
+    },
+    {
+      "id": 5,
+      "menuCd": "M_CODE",
+      "highMenuCd": "M_SYS",
+      "path": "/code",
+      "icon": "SettingOutlined",
+      "label": "코드관리"
+    },
+    {
+      "id": 6,
+      "menuCd": "M_MENU",
+      "highMenuCd": "M_SYS",
+      "path": "/menu",
+      "icon": "SettingOutlined",
+      "label": "메뉴관리"
+    },
+    {
+      "id": 7,
+      "menuCd": "M_HISTORY",
+      "highMenuCd": "M_SCC",
+      "path": "/history",
+      "icon": "SettingOutlined",
+      "label": "상담이력"
+    },
+    {
+      "id": 8,
+      "menuCd": "M_HISTORY2",
+      "highMenuCd": "M_SCC",
+      "path": "/history2",
+      "icon": "SettingOutlined",
+      "label": "상담이력2"
     }
   ]
 }
