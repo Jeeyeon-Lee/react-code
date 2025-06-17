@@ -1,18 +1,38 @@
 import React from 'react';
-import { Layout, Breadcrumb } from 'antd';
-import { theme } from 'antd';
+import {Breadcrumb, Layout, theme} from 'antd';
 import AppRouter from "@components/router/AppRouter.tsx";
+import type {MenuType} from "@/types";
+import {useMenuListStore, useMenuStore} from "@stores/menuStore.ts";
 
 const { Content: AntContent } = Layout;
 
 function Content() {
     const { token: { colorBgContainer, borderRadiusLG } } = theme.useToken();
+    const menuCd = useMenuStore(state => state.menuCd);
+    const menuList = useMenuListStore(state => state.menuList);
 
-    const getBreadcrumbItems = () => {
-        const items = [
-            { title: 'Home' },
-            { title: 'Main' }
-        ];
+    // 최상위 Root 메뉴 찾기
+    function findRootMenu(menuList: MenuType[], currentMenuCd: string): MenuType | null {
+
+        let current = menuList.find(m => m.menuCd === currentMenuCd);
+        while (current && current.highMenuCd !== 'ROOT') {
+            current = menuList.find(m => m.menuCd === current?.highMenuCd);
+        }
+        return current || null;
+    }
+
+    const rootMenu = findRootMenu(menuList, menuCd);
+
+    function getBreadcrumbItems (menuList: MenuType[], currentMenuCd: string): MenuType | null {
+        const items: String[{}] = [];
+
+        let current = menuList.find(m => m.menuCd === currentMenuCd);
+
+        while (current) {
+            items.unshift({title: current.label}); // 앞에 추가해서 루트부터 순서대로
+            if (current.highMenuCd === 'ROOT') break;
+            current = menuList.find(m => m.menuCd === current.highMenuCd);
+        }
 
         return items;
     };
@@ -20,7 +40,7 @@ function Content() {
     return (
         <Layout style={{ height: '90vh', padding: '0 24px 24px', flex: 1 }}>
             <Breadcrumb
-                items={getBreadcrumbItems()}
+                items={getBreadcrumbItems(menuList, menuCd)}
                 style={{ margin: '16px 0' }}
             />
             <AntContent

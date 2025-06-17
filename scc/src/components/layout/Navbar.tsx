@@ -1,22 +1,16 @@
-import React, {useEffect, useState} from 'react';
-import { Layout, Menu } from 'antd';
-import type { MenuProps } from 'antd';
-import { HomeOutlined, CustomerServiceOutlined, SettingOutlined } from '@ant-design/icons';
-import {Link, useLocation, useNavigate} from "react-router-dom";
-import type {MenuType} from '@/types';
-import {getMenuList} from "@api/menusApi.ts";
-import {useMenuStore} from "@stores/menuStore.ts";
-import {useMenu} from "@hooks/useMenu.ts";
+import React from 'react';
+import type {MenuProps} from 'antd';
+import {Layout, Menu} from 'antd';
+import {CustomerServiceOutlined, HomeOutlined, SettingOutlined} from '@ant-design/icons';
+import {useNavigate} from "react-router-dom";
+import {useMenuListStore, useMenuStore} from "@stores/menuStore.ts";
 
 const { Header } = Layout;
 
 function Navbar() {
     const navigate = useNavigate();
-
-    const { useMenuList } = useMenu();
+    const menuList = useMenuListStore(state => state.menuList);
     const { setMenuCd } = useMenuStore();
-
-    const {data: menuList = []} = useMenuList('', '');
 
     const iconMap: { [key: string] } = {
         HomeOutlined: <HomeOutlined />,

@@ -3,11 +3,15 @@ import './index.css';
 import { Navigate, useNavigate } from "react-router-dom";
 import type { FormProps } from 'antd';
 import { Button, Checkbox, Form, Input } from 'antd';
-import {useMenuStore} from "@stores/menuStore.ts";
+import {useMenuListStore, useMenuStore} from "@stores/menuStore.ts";
+import {useMenu} from "@hooks/useMenu.ts";
 
 const LoginForm: React.FC = () => {
   const navigate = useNavigate();
+  const { useMenuList } = useMenu();
   const { setMenuCd } = useMenuStore();
+  const { setMenuList } = useMenuListStore();
+  const {data: menuList = []} = useMenuList();
 
   type FieldType = {
     username?: string;
@@ -24,7 +28,10 @@ const LoginForm: React.FC = () => {
     localStorage.setItem("refreshToken", crypto.randomUUID() );
     localStorage.setItem("check", "Y");
 
+    // init menu & menuList set
     setMenuCd('M_MAIN');
+    setMenuList(menuList);
+
     navigate('main');
     console.log('Success:', values);
   };

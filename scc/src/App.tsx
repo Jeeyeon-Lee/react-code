@@ -1,37 +1,23 @@
 // 전역 테마 (ConfigProvider, ThemeProvider)
-import { useState } from 'react';
-import { Layout } from 'antd';
+import {Layout} from 'antd';
 import Navbar from '@components/layout/Navbar';
 import Sidebar from '@components/layout/Sidebar';
 import Content from '@pages/view/common/Content';
-import { QueryClientProvider } from '@tanstack/react-query';
-import queryClient from './query/queryClient';
 import 'tui-grid/dist/tui-grid.css';
 import dayjs from 'dayjs';
 import isLeapYear from 'dayjs/plugin/isLeapYear';
 import 'dayjs/locale/ko';
-import AppRouter from "@components/router/AppRouter.tsx";
-import {useLocation} from "react-router-dom";
-import {useMenuStore} from "@stores/menuStore.ts";
+import {useMenuListStore, useMenuStore} from "@stores/menuStore.ts";
 
 dayjs.extend(isLeapYear);
 dayjs.locale('ko');
 
 const { Header, Footer } = Layout;
 
-/* 클라이언트 : zustand 사용 / 서버 : react-query(tanstac query) */
 function App() {
-    return (
-        <QueryClientProvider client={queryClient}>{/*react query 서버 상태관리*/}
-            <AppContent />
-        </QueryClientProvider>
-    );
-}
-
-function AppContent() {
-
     // menuCd 값이 M_MAIN(메인)일 경우 sidebar 예외처리
     const menuCd = useMenuStore(state => state.menuCd);
+    const menuList = useMenuListStore(state => state.menuList);
 
     return (
         <Layout style={{ height: '100vh' }}>

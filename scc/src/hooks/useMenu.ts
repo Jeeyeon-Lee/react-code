@@ -7,11 +7,11 @@ import type { MenuType } from '@/types';
 export const useMenu = () => {
     const queryClient = useQueryClient();
 
-    const useMenuList = (menuCd: MenuType['menuCd'], highMenuCd: MenuType['highMenuCd']) => {
+    const useMenuList = () => {
 
         return useQuery({
             queryKey: ['menu'],
-            queryFn: () => getMenuList(menuCd, highMenuCd),
+            queryFn: () => getMenuList(),
             staleTime: 3000, // 데이터 신선도 유지 시간
             refetchInterval: 6000, // 실시간 주기적 업데이트 원함
             refetchIntervalInBackground: true, //페이지가 포커스 되면 새로고침

@@ -388,11 +388,11 @@
   "loginMgr": [
     {
       "id": "1",
-      "mgrId": 2,
-      "mgrNm": "이상담원",
+      "mgrId": 1,
+      "mgrNm": "김상담원",
       "dptNm": "상담1팀",
-      "status": "식사",
-      "loginTime": "2025-06-17T01:05:15.317Z"
+      "status": "상담가능",
+      "loginTime": "2025-06-17T04:19:30.864Z"
     }
   ],
   "code": [
@@ -983,12 +983,12 @@
   ],
   "menus": [
     {
-      "id": 1,
+      "id": "1",
       "menuCd": "ROOT",
       "highMenuCd": "ROOT"
     },
     {
-      "id": 2,
+      "id": "2",
       "menuCd": "M_MAIN",
       "highMenuCd": "ROOT",
       "path": "/main",
@@ -996,7 +996,7 @@
       "label": "메인"
     },
     {
-      "id": 3,
+      "id": "3",
       "menuCd": "M_SCC",
       "highMenuCd": "ROOT",
       "path": "/scc",
@@ -1004,7 +1004,7 @@
       "label": "상담관리"
     },
     {
-      "id": 4,
+      "id": "4",
       "menuCd": "M_SYS",
       "highMenuCd": "ROOT",
       "path": "",
@@ -1012,7 +1012,7 @@
       "label": "시스템관리"
     },
     {
-      "id": 5,
+      "id": "5",
       "menuCd": "M_CODE",
       "highMenuCd": "M_SYS",
       "path": "/code",
@@ -1020,7 +1020,7 @@
       "label": "코드관리"
     },
     {
-      "id": 6,
+      "id": "6",
       "menuCd": "M_MENU",
       "highMenuCd": "M_SYS",
       "path": "/menu",
@@ -1028,7 +1028,7 @@
       "label": "메뉴관리"
     },
     {
-      "id": 7,
+      "id": "7",
       "menuCd": "M_HISTORY",
       "highMenuCd": "M_SCC",
       "path": "/history",
@@ -1036,7 +1036,7 @@
       "label": "상담이력"
     },
     {
-      "id": 8,
+      "id": "8",
       "menuCd": "M_HISTORY2",
       "highMenuCd": "M_SCC",
       "path": "/history2",

@@ -1,12 +1,10 @@
-import type { MenuType } from '@/types';
+import type {MenuType} from '@/types';
 import axios from "@api/api.ts";
 
-export const getMenuList = async (menuCd: MenuType['menuCd'], highMenuCd: MenuType['highMenuCd']) => {
+export const getMenuList = async () => {
     const params = new URLSearchParams();
-    if ( menuCd ) params.append('menuCd', menuCd);
-    if ( highMenuCd ) params.append('highMenuCd', highMenuCd);
 
-    const response = await axios.get<MenuType[]>(`/menus?${params.toString()}`);
+    const response = await axios.get<MenuType[]>(`/menus`);
     return response.data;
 };
 
