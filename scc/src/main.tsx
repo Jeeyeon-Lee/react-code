@@ -2,8 +2,8 @@
 import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import LoginForm from "@pages/login/LoginForm.tsx";
-import AuthProvider from "@pages/login/AuthProvider.tsx";
+import LoginForm from "@pages/cmm/login/LoginForm.tsx";
+import AuthProvider from "@pages/cmm/login/AuthProvider.tsx";
 import queryClient from "@query/queryClient.ts";
 import {QueryClientProvider} from "@tanstack/react-query";
 

@@ -1,9 +1,8 @@
-import React from 'react';
 import type {MenuProps} from 'antd';
 import {Layout, Menu} from 'antd';
 import {CustomerServiceOutlined, HomeOutlined, SettingOutlined} from '@ant-design/icons';
 import {useNavigate} from "react-router-dom";
-import {useMenuListStore, useMenuStore} from "@stores/menuStore.ts";
+import {useMenuListStore, useMenuStore} from "@stores/bo/base/menu/menuStore.ts";
 
 const { Header } = Layout;
 

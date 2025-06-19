@@ -9,7 +9,7 @@ export const userKeys = createQueryKeys('user', {
 
 export const chatKeys = createQueryKeys('chat', {
     all: null, //null이지만 'chat'으로 들어가짐
-    list: (mgrId: Chat['mgrId'], status?: Chat['status'], type?: Chat['type']) =>
+    list: (mgrId?: Chat['mgrId'], status?: Chat['status'], type?: Chat['type']) =>
         ['list', mgrId, status, type], //['chat', 'list', mgrId, status, type]
     detail: (chatSeq: Chat['chatSeq']) => ['detail', chatSeq],
     history: (userId: Chat['userId']) => ['history', userId]

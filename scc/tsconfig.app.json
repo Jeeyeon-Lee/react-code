@@ -11,7 +11,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "@pages/*": ["./src/pages/*"],
-      "@api/*": ["./src/api/*"],
+      "@api/*": ["./src/axios/*"],
       "@contexts/*": ["./src/contexts/*"],
       "@stores/*": ["./src/stores/*"],
       "@components/*": ["./src/components/*"],

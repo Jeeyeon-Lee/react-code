@@ -2,7 +2,7 @@ import { useEffect, useState, forwardRef } from 'react';
 import { Select } from 'antd';
 import type { Code } from '@/types';
 import type { SelectProps } from 'antd';
-import {getCodeList} from '@api/codeApi';
+import {getCodeList} from '@api/bo/base/code/codeApi';
 
 const { Option } = Select;
 

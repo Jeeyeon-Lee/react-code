@@ -2,15 +2,9 @@
 import {Layout} from 'antd';
 import Navbar from '@components/layout/Navbar';
 import Sidebar from '@components/layout/Sidebar';
-import Content from '@pages/view/common/Content';
+import Content from '@pages/cmm/Content';
 import 'tui-grid/dist/tui-grid.css';
-import dayjs from 'dayjs';
-import isLeapYear from 'dayjs/plugin/isLeapYear';
-import 'dayjs/locale/ko';
-import {useMenuListStore, useMenuStore} from "@stores/menuStore.ts";
-
-dayjs.extend(isLeapYear);
-dayjs.locale('ko');
+import {useMenuListStore, useMenuStore} from "@stores/bo/base/menu/menuStore.ts";
 
 const { Header, Footer } = Layout;
 
@@ -36,9 +30,7 @@ function App() {
                 {menuCd !== 'M_MAIN' && <Sidebar/>}
                 <Content/>
             </Layout>
-            <Layout style={{ height: '5vh', textAlign: 'center' }}>
-                <Footer>@2025 SRPOST TEST</Footer>
-            </Layout>
+            <Footer style={{textAlign:'center'}}>@2025 SRPOST TEST</Footer>
         </Layout>
     );
 }
