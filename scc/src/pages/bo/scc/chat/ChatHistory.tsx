@@ -1,18 +1,23 @@
 import { useState } from 'react';
-import { Table, Tag, Card } from 'antd';
+import { Table, Tag, Card, Drawer, theme, Button, Space } from 'antd';
 import { useUserStore } from '@stores/bo/base/user/userStore.ts';
 import { useChatHistory } from '@hooks/bo/scc/chat/useChatHistory.ts';
 import type { Chat } from '@/types';
 import type { ColumnsType } from 'antd/es/table';
+import ChatDetailDrawer from "@pages/bo/scc/chat/ChatDetailDrawer.tsx";
 
 const ChatHistory = () => {
     const [pageNation, setPageNation] = useState(10);
     const { userId } = useUserStore();
     const { data: chatList = [] } = useChatHistory(userId);
+    const { token } = theme.useToken();
+    const [open, setOpen] = useState(false);
+    const [selectcallEndTmChatSeq, setSelectcallEndTmChatSeq] = useState<string | null>(null);
+
     const colorMap = {
-        '미처리': 'red',
-        '처리중': 'blue',
-        '처리완료': 'green',
+        '대기중': 'rcallEndTm',
+        '상담중': 'blue',
+        '완료': 'green',
         '보류': 'orange',
         '': 'gray',
     } as const;
@@ -35,40 +40,64 @@ const ChatHistory = () => {
         },
         {
             title: '종료',
-            dataIndex: 'ed',
-            key: 'ed',
-            sorter: (a, b) => a.ed.localeCompare(b.ed),
+            dataIndex: 'callEndTm',
+            key: 'callEndTm',
+            sorter: (a, b) => a.callEndTm.localeCompare(b.callEndTm),
             align: 'center',
-            render: (ed: string) => ed?.slice(0, 10) || '-'
+            render: (callEndTm: string) => callEndTm?.slice(0, 10) || '-'
         },
     ];
 
+    const onRowClick = (record: Chat) => ({
+        onClick: () => {
+            setSelectcallEndTmChatSeq(record.chatSeq);
+            setOpen(true);
+        }
+    });
+
+    const onClose = () => {
+        setOpen(false);
+        setSelectcallEndTmChatSeq(null);
+    };
+
+    const containerStyle: React.CSSProperties = {
+        position: 'relative',
+        overflow: 'hidden',
+        background: token.colorFillAlter,
+        border: `1px solid ${token.colorBorderSecondary}`,
+        borderRadius: token.borderRadiusLG,
+    };
 
     return (
-        <>
-            <div style={{padding: 16}}>
-                <Card title="상담 내역">
-                    <div style={{display: 'flex', gap: '8px'}}>
-                    </div>
+        <div style={{ padding: 16 }}>
+            <Card title="상담 내역">
+                <div style={containerStyle}>
                     <Table
                         rowKey="chatSeq"
                         columns={columns}
                         dataSource={chatList}
+                        onRow={onRowClick}
                         pagination={{
                             pageSize: pageNation,
                             showSizeChanger: true,
                             position: ['bottomCenter'],
                             pageSizeOptions: ['5', '10', '20', '50'],
                             showTotal: (total, range) => `${range[0]}-${range[1]} of ${total}건`,
-                            onChange: (_page, pageSize) => {
-                                setPageNation(pageSize);
-                            }
+                            onChange: (_page, pageSize) => setPageNation(pageSize),
                         }}
-                        scroll={{y: 350}}
+                        scroll={{ y: 400 }}
                     />
-                </Card>
-            </div>
-        </>
+                <ChatDetailDrawer
+                    chatSeq={selectcallEndTmChatSeq}
+                    open={open}
+                    onClose={() => {
+                        onClose();
+                        setSelectcallEndTmChatSeq(null);
+                    }}
+                />
+                </div>
+            </Card>
+        </div>
     );
 };
 

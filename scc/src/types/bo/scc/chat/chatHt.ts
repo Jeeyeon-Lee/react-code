@@ -1,5 +1,4 @@
-// ✅ 채팅/콜 정보
-export interface Chat {
+export interface chatHt {
     id: string;
     chatSeq: string;
     userId: string;

@@ -45,9 +45,9 @@ function ChatHeader() {
     const currentStatus = chatData?.[0].status || '';
     const isDisabled = !chatSeq;
 
-    const handleUpdateChatStatus = (status: Chat['status']) => {
+    const handleUpdateChatStatus = async (status: Chat['status']) => {
         if (!chatSeq) return;
-        updateChatStatus({ chatSeq, status });
+        await updateChatStatus({ chatSeq, status });
     };
     
     const handleDeleteChat = async () => {
@@ -137,7 +137,6 @@ function ChatHeader() {
                             <Text type="secondary" style={{ marginLeft: '16px' }}>채팅상태: {chatData?.[0].status}</Text>
                         </>
                     )}
-                    <Text></Text>
                 </div>
                 <div>
                     {loginInfo && (
@@ -171,7 +170,7 @@ function ChatHeader() {
             </div>
 
             <Space.Compact size="large">
-                {currentStatus !== '처리완료' && (
+                {currentStatus !== '완료' && (
                     <>
                         <TeamChangeButton />
                         {currentStatus !== '보류' && (
@@ -181,24 +180,24 @@ function ChatHeader() {
                         )}
                     </>
                 )}
-                {currentStatus !== '미처리' && currentStatus !== '처리중' && (
-                    <CmmButton icon={<RedoOutlined />} onClick={() => handleUpdateChatStatus('처리중')} disabled={isDisabled}>
+                {currentStatus !== '대기중' && currentStatus !== '상담중' && (
+                    <CmmButton icon={<RedoOutlined />} onClick={() => handleUpdateChatStatus('상담중')} disabled={isDisabled}>
                         다시시작
                     </CmmButton>
                 )}
-                {currentStatus !== '처리중' && (
-                    <CmmButton icon={<PhoneTwoTone />} onClick={() => handleUpdateChatStatus('처리중')} disabled={isDisabled}>
+                {currentStatus !== '상담중' && (
+                    <CmmButton icon={<PhoneTwoTone />} onClick={() => handleUpdateChatStatus('상담중')} disabled={isDisabled}>
                         전화걸기
                     </CmmButton>
                 )}
-                {currentStatus === '처리중' && (
-                    <CmmButton icon={<PhoneTwoTone twoToneColor='red' />} onClick={() => handleUpdateChatStatus('처리중')}>
+                {currentStatus === '상담중' && (
+                    <CmmButton icon={<PhoneTwoTone twoToneColor='red' />} onClick={() => handleUpdateChatStatus('후처리')}>
                         전화끊기
                     </CmmButton>
                 )}
-                {currentStatus !== '처리완료' && (
+                {currentStatus !== '완료' && (
                     <>
-                        <CmmButton icon={<DownCircleTwoTone />} onClick={() => handleUpdateChatStatus('처리완료')} disabled={isDisabled}>
+                        <CmmButton icon={<DownCircleTwoTone />} onClick={() => handleUpdateChatStatus('완료')} disabled={isDisabled}>
                             완료처리
                         </CmmButton>
                         <CmmButton icon={<DeleteTwoTone /> } onClick={() => handleDeleteChat()} disabled={isDisabled}>

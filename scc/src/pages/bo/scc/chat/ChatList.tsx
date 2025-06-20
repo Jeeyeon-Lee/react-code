@@ -25,7 +25,7 @@ const ChatList = ({ templateContent, setTemplateContent }: LeftContentProps) => 
     const { data: chatDetail } = useChatDetail(chatSeq || '');
     const { data: chatData = [] } = useChatDataList(chatSeq);
 
-    const isDisabled = !chatSeq || chatDetail?.[0].status === '처리완료';
+    const isDisabled = !chatSeq || chatDetail?.[0].status === '완료';
 
     useEffect(() => {
         if (chatData && chatData.length > 0) {

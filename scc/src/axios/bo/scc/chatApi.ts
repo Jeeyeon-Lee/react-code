@@ -50,7 +50,7 @@ export const deleteChat = async (chatSeq: Chat['chatSeq']) => {
 };
 //상담 팀원 변경(담당자 변경)
 //현재 chatSeq는 update(이관Y, 종료)
-//새로운 chat insert (이관Y, 미처리, mgrId)
+//새로운 chat insert (이관Y, 대기중, mgrId)
 export const updateChatMgr = async (chatSeq: Chat['chatSeq'], mgrId: Mgr['mgrId']) => {
     if (!chatSeq || !mgrId) return;
 
@@ -61,8 +61,8 @@ export const updateChatMgr = async (chatSeq: Chat['chatSeq'], mgrId: Mgr['mgrId'
         // 1. 기존 상담 종료 처리
         await axios.patch<Chat>(`/chat/${chatSeq}`, {
             transferYn: 'Y',
-            status: '처리완료',
-            ed: newDate,
+            status: '완료',
+            callEndTm: newDate,
         });
 
         // 2. 기존 데이터 조회
@@ -78,10 +78,10 @@ export const updateChatMgr = async (chatSeq: Chat['chatSeq'], mgrId: Mgr['mgrId'
             chatSeq: newChatSeq,
             mgrId: mgrId,
             mgrNm: mgrDetail.mgrNm,
-            status: '미처리',
+            status: '대기중',
             transferYn: 'Y',
-            sd: newDate,
-            ed: '',
+            callStartTm: newDate,
+            callEndTm: '',
         };
 
         await axios.post<Chat>('/chat', newChat);

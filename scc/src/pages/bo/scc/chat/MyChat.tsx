@@ -28,10 +28,10 @@ function MyChat() {
     const { Search } = Input;
 
     /*상담 내역 카운트 : 다른영역에서도 쓰이는거면 상단에 올려서 관리 but 여기서만 사용할듯?! */
-    const 미처리Count = fullChatList?.filter(c => c.status === '미처리').length ?? 0;
+    const 대기중Count = fullChatList?.filter(c => c.status === '대기중').length ?? 0;
     const 보류Count = fullChatList?.filter(c => c.status === '보류').length ?? 0;
-    const 처리중Count = fullChatList?.filter(c => c.status === '처리중').length ?? 0;
-    const 처리완료Count = fullChatList?.filter(c => c.status === '처리완료').length ?? 0;
+    const 상담중Count = fullChatList?.filter(c => c.status === '상담중').length ?? 0;
+    const 완료Count = fullChatList?.filter(c => c.status === '완료').length ?? 0;
 
     const handleSelectChat = (chatSeq: Chat['chatSeq'], userId: Chat['userId']) => {
         setChatSeq(chatSeq);
@@ -46,17 +46,9 @@ function MyChat() {
 
     const getStatusTagColor = (status: Chat['status']) => {
         switch (status) {
-            case '미처리': return 'red';
-            case '처리중': return 'blue';
-            case '처리완료': return 'green';
-            default: return 'default';
-        }
-    };
-
-    const getTypeTagColor = (type: Chat['type']) => {
-        switch (type) {
-            case '콜': return 'purple';
-            case '챗': return 'geekblue';
+            case '대기중': return 'rcallEndTm';
+            case '상담중': return 'blue';
+            case '완료': return 'green';
             default: return 'default';
         }
     };
@@ -72,22 +64,22 @@ function MyChat() {
 
                 </div>
                 <Space size="middle" style={{ marginBottom: 8 }}>
-                    <Badge count={미처리Count} size="small" showZero>
-                        <Button size="small" onClick={()=>setStatus('미처리')}>미처리</Button>
+                    <Badge count={대기중Count} size="small" showZero>
+                        <Button size="small" onClick={()=>setStatus('대기중')}>대기중</Button>
                     </Badge>
-                    <Badge count={처리중Count} size="small" showZero>
-                        <Button size="small" onClick={()=>setStatus('처리중')}>처리중</Button>
+                    <Badge count={상담중Count} size="small" showZero>
+                        <Button size="small" onClick={()=>setStatus('상담중')}>상담중</Button>
                     </Badge>
                     <Badge count={보류Count} size="small" showZero>
                         <Button size="small" onClick={()=>setStatus('보류')}>보류</Button>
                     </Badge>
-                    <Badge count={처리완료Count} size="small" showZero>
-                        <Button size="small" onClick={()=>setStatus('처리완료')}>완료</Button>
+                    <Badge count={완료Count} size="small" showZero>
+                        <Button size="small" onClick={()=>setStatus('완료')}>완료</Button>
                     </Badge>
                     <Badge count={fullChatList.length} size="small" showZero>
                         <Button
                             size="small"
-                            style={{color:"red"}}
+                            style={{color:"rcallEndTm"}}
                             title={"초기화"}
                             icon={<RedoOutlined onClick={()=> { setStatus('all'); setType('all');}}/>}
                         />
@@ -113,29 +105,27 @@ function MyChat() {
                     dataSource={filteredCounselList}
                     renderItem={item => (
                         <List.Item>
+                            <div style={{marginRight:'14px'}}>{item.type == '콜' ? <PhoneTwoTone/> : <MessageTwoTone/>}</div>
                             <List.Item.Meta
                                 title={
                                     <>
                                         <a onClick={() => handleSelectChat(item.chatSeq, item.userId)}>
                                             {item.userNm} ({item.mgrNm})
-                                            {item.status == '처리완료' && item.ed.split(' ')[0]}
-                                            <CmmTag color={getTypeTagColor(item.type)}>
-                                                {item.type}
-                                            </CmmTag>
+                                            {item.status == '완료' && item.callEndTm.split(' ')[0]}
                                             <CmmTag color={getStatusTagColor(item.status)}>
                                                 {item.status}
                                             </CmmTag>
                                             {(item.transferYn &&
                                                 <CmmTag color={'grey'}>
-                                                    {item.transferYn==='Y'&&'이관'}
+                                                    {item.transferYn === 'Y' && '이관'}
                                                 </CmmTag>
                                             )}
                                         </a>
                                     </>
                                 }
-                                description={item.title}
+                                description={item.title} //(item.callEndTm.split(' ')[0]}) 값 추가
                             />
-                            <div>{item.type == '콜' ? <PhoneTwoTone/> : <MessageTwoTone/>}</div>
+
                         </List.Item>
                     )}
                 />

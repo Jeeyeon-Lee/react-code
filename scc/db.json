@@ -8,12 +8,12 @@
       "userNm": "둘리",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "status": "처리완료",
+      "status": "완료",
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "sd": "2025/06/12 14:20:30",
-      "ed": "2025/06/19 09:47:33"
+      "callStartTm": "2025/06/12 14:20:30",
+      "callEndTm": "2025/06/19 15:05:05"
     },
     {
       "id": "3",
@@ -23,12 +23,12 @@
       "userNm": "또치",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "status": "처리완료",
+      "status": "완료",
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "sd": "",
-      "ed": "2025/06/16 10:36:15"
+      "callStartTm": "",
+      "callEndTm": "2025/06/16 10:36:15"
     },
     {
       "id": "4",
@@ -38,12 +38,12 @@
       "userId": 4,
       "mgrId": 3,
       "mgrNm": "최상담원",
-      "status": "처리완료",
+      "status": "완료",
       "type": "챗",
       "qusetion": "",
       "transferYn": "Y",
-      "sd": "2025/06/12 14:20:30",
-      "ed": "2025/06/16 20:25:07"
+      "callStartTm": "2025/06/12 14:20:30",
+      "callEndTm": "2025/06/16 20:25:07"
     },
     {
       "id": "5",
@@ -53,12 +53,12 @@
       "userId": 5,
       "mgrId": 3,
       "mgrNm": "최상담원",
-      "status": "처리중",
+      "status": "상담중",
       "type": "챗",
       "qusetion": "",
       "transferYn": "",
-      "sd": "",
-      "ed": ""
+      "callStartTm": "",
+      "callEndTm": ""
     },
     {
       "id": "6",
@@ -68,12 +68,12 @@
       "userNm": "희동이",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "status": "처리완료",
+      "status": "완료",
       "type": "챗",
       "qusetion": "",
       "transferYn": "Y",
-      "sd": "2025/06/12 14:20:30",
-      "ed": "2025/06/17 10:34:14"
+      "callStartTm": "2025/06/12 14:20:30",
+      "callEndTm": "2025/06/17 10:34:14"
     },
     {
       "id": "20250612_151029",
@@ -83,12 +83,12 @@
       "userNm": "또치",
       "mgrId": "1",
       "mgrNm": "김상담원",
-      "status": "처리중",
+      "status": "상담중",
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "sd": "2025/06/12 15:10:29",
-      "ed": ""
+      "callStartTm": "2025/06/12 15:10:29",
+      "callEndTm": ""
     },
     {
       "id": "20250613_080449",
@@ -102,8 +102,8 @@
       "type": "챗",
       "qusetion": "",
       "transferYn": "Y",
-      "sd": "2025/06/13 08:04:49",
-      "ed": "2025/06/15 22:20:50"
+      "callStartTm": "2025/06/13 08:04:49",
+      "callEndTm": "2025/06/15 22:20:50"
     },
     {
       "id": "20250613_080504",
@@ -117,8 +117,8 @@
       "type": "챗",
       "qusetion": "",
       "transferYn": "Y",
-      "sd": "2025/06/13 08:05:04",
-      "ed": "2025/06/13 11:12:37"
+      "callStartTm": "2025/06/13 08:05:04",
+      "callEndTm": "2025/06/13 11:12:37"
     },
     {
       "id": "20250613_111403",
@@ -128,12 +128,12 @@
       "userNm": "희동이",
       "mgrId": "3",
       "mgrNm": "최상담원",
-      "status": "처리중",
+      "status": "상담중",
       "type": "챗",
       "qusetion": "",
       "transferYn": "Y",
-      "sd": "2025/06/13 11:14:03",
-      "ed": "2025/06/13 11:15:09"
+      "callStartTm": "2025/06/13 11:14:03",
+      "callEndTm": "2025/06/13 11:15:09"
     },
     {
       "id": "20250616_103615",
@@ -143,12 +143,12 @@
       "userNm": "또치",
       "mgrId": "1",
       "mgrNm": "김상담원",
-      "status": "미처리",
+      "status": "대기중",
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "sd": "2025/06/16 10:36:15",
-      "ed": ""
+      "callStartTm": "2025/06/16 10:36:15",
+      "callEndTm": ""
     },
     {
       "id": "20250616_133753",
@@ -158,12 +158,12 @@
       "userNm": "희동이",
       "mgrId": "3",
       "mgrNm": "최상담원",
-      "status": "처리완료",
+      "status": "완료",
       "type": "챗",
       "qusetion": "",
       "transferYn": "Y",
-      "sd": "2025/06/16 13:37:53",
-      "ed": "2025/06/16 13:38:14"
+      "callStartTm": "2025/06/16 13:37:53",
+      "callEndTm": "2025/06/16 13:38:14"
     },
     {
       "id": "20250616_133814",
@@ -173,12 +173,12 @@
       "userNm": "희동이",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "status": "처리완료",
+      "status": "완료",
       "type": "챗",
       "qusetion": "",
       "transferYn": "Y",
-      "sd": "2025/06/16 13:38:14",
-      "ed": "2025/06/16 13:38:28"
+      "callStartTm": "2025/06/16 13:38:14",
+      "callEndTm": "2025/06/16 13:38:28"
     },
     {
       "id": "20250616_133828",
@@ -188,12 +188,12 @@
       "userNm": "희동이",
       "mgrId": "1",
       "mgrNm": "김상담원",
-      "status": "처리완료",
+      "status": "완료",
       "type": "챗",
       "qusetion": "",
       "transferYn": "Y",
-      "sd": "2025/06/16 13:38:28",
-      "ed": "2025/06/16 14:24:05"
+      "callStartTm": "2025/06/16 13:38:28",
+      "callEndTm": "2025/06/16 14:24:05"
     },
     {
       "id": "20250616_142405",
@@ -203,12 +203,12 @@
       "userNm": "희동이",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "status": "미처리",
+      "status": "대기중",
       "type": "챗",
       "qusetion": "",
       "transferYn": "Y",
-      "sd": "2025/06/16 14:24:05",
-      "ed": ""
+      "callStartTm": "2025/06/16 14:24:05",
+      "callEndTm": ""
     },
     {
       "id": "20250616_202507",
@@ -218,12 +218,12 @@
       "userId": 4,
       "mgrId": "1",
       "mgrNm": "김상담원",
-      "status": "미처리",
+      "status": "대기중",
       "type": "챗",
       "qusetion": "",
       "transferYn": "Y",
-      "sd": "2025/06/16 20:25:07",
-      "ed": ""
+      "callStartTm": "2025/06/16 20:25:07",
+      "callEndTm": ""
     },
     {
       "id": "20250617_100053",
@@ -233,12 +233,12 @@
       "userNm": "홍길동",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "status": "미처리",
+      "status": "대기중",
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "sd": "2025/06/17 10:00:53",
-      "ed": ""
+      "callStartTm": "2025/06/17 10:00:53",
+      "callEndTm": ""
     },
     {
       "id": "20250617_100530",
@@ -248,12 +248,12 @@
       "userNm": "둘리",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "status": "미처리",
+      "status": "대기중",
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "sd": "2025/06/17 10:05:30",
-      "ed": ""
+      "callStartTm": "2025/06/17 10:05:30",
+      "callEndTm": ""
     },
     {
       "id": "20250617_103414",
@@ -263,12 +263,12 @@
       "userNm": "희동이",
       "mgrId": "1",
       "mgrNm": "김상담원",
-      "status": "미처리",
+      "status": "대기중",
       "type": "챗",
       "qusetion": "",
       "transferYn": "Y",
-      "sd": "2025/06/17 10:34:14",
-      "ed": ""
+      "callStartTm": "2025/06/17 10:34:14",
+      "callEndTm": ""
     },
     {
       "id": "20250617_103612",
@@ -278,12 +278,12 @@
       "userNm": "둘리",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "status": "미처리",
+      "status": "대기중",
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "sd": "2025/06/17 10:36:12",
-      "ed": ""
+      "callStartTm": "2025/06/17 10:36:12",
+      "callEndTm": ""
     },
     {
       "id": "20250617_111730",
@@ -293,12 +293,12 @@
       "userNm": "둘리",
       "mgrId": "1",
       "mgrNm": "김상담원",
-      "status": "미처리",
+      "status": "대기중",
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "sd": "2025/06/17 11:17:30",
-      "ed": ""
+      "callStartTm": "2025/06/17 11:17:30",
+      "callEndTm": ""
     },
     {
       "id": "20250618_162609",
@@ -308,12 +308,12 @@
       "userNm": "홍길동",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "status": "미처리",
+      "status": "대기중",
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "sd": "2025/06/18 16:26:09",
-      "ed": ""
+      "callStartTm": "2025/06/18 16:26:09",
+      "callEndTm": ""
     },
     {
       "id": "20250618_162620",
@@ -323,12 +323,12 @@
       "userNm": "홍길동",
       "mgrId": "3",
       "mgrNm": "최상담원",
-      "status": "미처리",
+      "status": "대기중",
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "sd": "2025/06/18 16:26:20",
-      "ed": ""
+      "callStartTm": "2025/06/18 16:26:20",
+      "callEndTm": ""
     },
     {
       "id": "20250618_162642",
@@ -338,12 +338,12 @@
       "userNm": "홍길동",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "status": "미처리",
+      "status": "대기중",
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "sd": "2025/06/18 16:26:42",
-      "ed": ""
+      "callStartTm": "2025/06/18 16:26:42",
+      "callEndTm": ""
     },
     {
       "id": "20250619_093211",
@@ -353,12 +353,12 @@
       "userNm": "둘리",
       "mgrId": "3",
       "mgrNm": "최상담원",
-      "status": "미처리",
+      "status": "대기중",
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "sd": "2025/06/19 09:32:11",
-      "ed": ""
+      "callStartTm": "2025/06/19 09:32:11",
+      "callEndTm": ""
     },
     {
       "id": "20250619_094733",
@@ -368,14 +368,30 @@
       "userNm": "둘리",
       "mgrId": "3",
       "mgrNm": "최상담원",
-      "status": "미처리",
+      "status": "대기중",
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "sd": "2025/06/19 09:47:33",
-      "ed": ""
+      "callStartTm": "2025/06/19 09:47:33",
+      "callEndTm": ""
+    },
+    {
+      "id": "20250619_150505",
+      "chatSeq": "20250619_150505",
+      "title": "둘리님 긴급문의",
+      "userId": 2,
+      "userNm": "둘리",
+      "mgrId": "3",
+      "mgrNm": "최상담원",
+      "status": "대기중",
+      "type": "콜",
+      "qusetion": "",
+      "transferYn": "Y",
+      "callStartTm": "2025/06/19 15:05:05",
+      "callEndTm": ""
     }
   ],
+  "chatHt": [],
   "users": [
     {
       "id": "1",
@@ -455,21 +471,22 @@
       "loginTime": "2025-06-19T00:33:32.705Z"
     }
   ],
+  "mgrMove": [],
   "code": [
     {
       "id": "1",
       "group": "상담상태",
-      "detail": "미처리"
+      "detail": "대기중"
     },
     {
       "id": "2",
       "group": "상담상태",
-      "detail": "처리중"
+      "detail": "상담중"
     },
     {
       "id": "3",
       "group": "상담상태",
-      "detail": "처리완료"
+      "detail": "완료"
     },
     {
       "id": "4",
@@ -505,6 +522,16 @@
       "id": "10",
       "group": "직원상태",
       "detail": "휴가"
+    },
+    {
+      "id": "11",
+      "group": "상담상태",
+      "detail": "후처리"
+    },
+    {
+      "id": "12",
+      "group": "상담상태",
+      "detail": "이관"
     }
   ],
   "chatFormData": [
@@ -523,10 +550,10 @@
       "chatSeq": 2,
       "mgrId": 2,
       "mgrNm": "이상담원",
-      "text": "123333",
+      "text": "둘리 상담내역",
       "regDt": "2025/06/18 17:00:59",
-      "modiId": 2,
-      "modiDt": "2025/06/19 09:18:37"
+      "modiId": 5,
+      "modiDt": "2025/06/19 10:39:40"
     }
   ],
   "chatMemoData": [
@@ -545,10 +572,10 @@
       "chatSeq": 2,
       "mgrId": 2,
       "mgrNm": "이상담원",
-      "text": "1233333",
+      "text": "둘리 상담 관련 메모 입력",
       "regDt": "2025/06/18 17:01:01",
-      "modiId": 2,
-      "modiDt": "2025/06/19 09:18:29"
+      "modiId": 5,
+      "modiDt": "2025/06/19 10:39:48"
     }
   ],
   "chatData": [
@@ -1115,6 +1142,18 @@
       "mgrId": "3",
       "mgrNm": "최상담원",
       "sendTime": "2025/06/19 09:47:33"
+    },
+    {
+      "id": "20250619_150505",
+      "chatSeq": "20250619_150505",
+      "chatNo": 1,
+      "userId": 2,
+      "userNm": "둘리",
+      "text": "이관되었습니다.",
+      "sender": "user",
+      "mgrId": "3",
+      "mgrNm": "최상담원",
+      "sendTime": "2025/06/19 15:05:05"
     }
   ],
   "menus": [
@@ -1128,7 +1167,7 @@
       "menuCd": "M_MAIN",
       "highMenuCd": "ROOT",
       "path": "/main",
-      "icon": "HomeOutlined",
+      "icon": "HomeOutlincallEndTm",
       "label": "메인"
     },
     {
@@ -1136,7 +1175,7 @@
       "menuCd": "M_SCC",
       "highMenuCd": "ROOT",
       "path": "/scc",
-      "icon": "CustomerServiceOutlined",
+      "icon": "CustomerServiceOutlincallEndTm",
       "label": "상담관리"
     },
     {
@@ -1144,7 +1183,7 @@
       "menuCd": "M_SYS",
       "highMenuCd": "ROOT",
       "path": "",
-      "icon": "SettingOutlined",
+      "icon": "SettingOutlincallEndTm",
       "label": "시스템관리"
     },
     {
@@ -1152,7 +1191,7 @@
       "menuCd": "M_CODE",
       "highMenuCd": "M_SYS",
       "path": "/code",
-      "icon": "SettingOutlined",
+      "icon": "SettingOutlincallEndTm",
       "label": "코드관리"
     },
     {
@@ -1160,7 +1199,7 @@
       "menuCd": "M_MENU",
       "highMenuCd": "M_SYS",
       "path": "/menu",
-      "icon": "SettingOutlined",
+      "icon": "SettingOutlincallEndTm",
       "label": "메뉴관리"
     },
     {
@@ -1168,7 +1207,7 @@
       "menuCd": "M_HISTORY",
       "highMenuCd": "M_SCC",
       "path": "/history",
-      "icon": "SettingOutlined",
+      "icon": "SettingOutlincallEndTm",
       "label": "상담이력"
     },
     {
@@ -1176,7 +1215,7 @@
       "menuCd": "M_HISTORY2",
       "highMenuCd": "M_SCC",
       "path": "/history2",
-      "icon": "SettingOutlined",
+      "icon": "SettingOutlincallEndTm",
       "label": "상담이력2"
     }
   ]

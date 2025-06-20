@@ -1,6 +1,6 @@
 import { useQuery, useMutation } from '@tanstack/react-query';
-import {chatKeys} from '@query/queryKeys.ts';
 import queryClient from '@query/queryClient.ts';
+import {chatKeys} from '@query/queryKeys.ts';
 import axios from '@api/api';
 import { getMgrDetail } from '@api/bo/base/mgr/mgrApi';
 import type { Chat, Mgr, ChatData } from '@/types';
@@ -105,8 +105,8 @@ export const updateChatMgrMutation = () => {
                 // 1. 기존 상담 종료 처리
                 await axios.patch<Chat>(`/chat/${chatSeq}`, {
                     transferYn: 'Y',
-                    status: '처리완료',
-                    ed: newDate,
+                    status: '완료',
+                    callEndTm: newDate,
                 });
 
                 // 2. 기존 데이터 조회
@@ -121,10 +121,10 @@ export const updateChatMgrMutation = () => {
                     chatSeq: newChatSeq.toString(),
                     mgrId: mgrId,
                     mgrNm: mgrDetail.mgrNm,
-                    status: '미처리',
+                    status: '대기중',
                     transferYn: 'Y',
-                    sd: newDate,
-                    ed: '',
+                    callStartTm: newDate,
+                    callEndTm: '',
                 };
                 await axios.post<Chat>('/chat', newChat);
 
