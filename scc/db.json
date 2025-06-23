@@ -8,12 +8,12 @@
       "userNm": "둘리",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "status": "완료",
+      "status": "후처리",
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
       "callStartTm": "2025/06/12 14:20:30",
-      "callEndTm": "2025/06/19 15:05:05"
+      "callEndTm": "2025/06/20 15:26:39"
     },
     {
       "id": "3",
@@ -23,7 +23,7 @@
       "userNm": "또치",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "status": "완료",
+      "status": "후처리",
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
@@ -53,7 +53,7 @@
       "userId": 5,
       "mgrId": 3,
       "mgrNm": "최상담원",
-      "status": "상담중",
+      "status": "완료",
       "type": "챗",
       "qusetion": "",
       "transferYn": "",
@@ -83,7 +83,7 @@
       "userNm": "또치",
       "mgrId": "1",
       "mgrNm": "김상담원",
-      "status": "상담중",
+      "status": "완료",
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
@@ -128,7 +128,7 @@
       "userNm": "희동이",
       "mgrId": "3",
       "mgrNm": "최상담원",
-      "status": "상담중",
+      "status": "완료",
       "type": "챗",
       "qusetion": "",
       "transferYn": "Y",
@@ -143,7 +143,7 @@
       "userNm": "또치",
       "mgrId": "1",
       "mgrNm": "김상담원",
-      "status": "대기중",
+      "status": "후처리",
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
@@ -203,7 +203,7 @@
       "userNm": "희동이",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "status": "대기중",
+      "status": "완료",
       "type": "챗",
       "qusetion": "",
       "transferYn": "Y",
@@ -218,7 +218,7 @@
       "userId": 4,
       "mgrId": "1",
       "mgrNm": "김상담원",
-      "status": "대기중",
+      "status": "완료",
       "type": "챗",
       "qusetion": "",
       "transferYn": "Y",
@@ -233,7 +233,7 @@
       "userNm": "홍길동",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "status": "대기중",
+      "status": "완료",
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
@@ -248,7 +248,7 @@
       "userNm": "둘리",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "status": "대기중",
+      "status": "완료",
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
@@ -263,7 +263,7 @@
       "userNm": "희동이",
       "mgrId": "1",
       "mgrNm": "김상담원",
-      "status": "대기중",
+      "status": "완료",
       "type": "챗",
       "qusetion": "",
       "transferYn": "Y",
@@ -278,7 +278,7 @@
       "userNm": "둘리",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "status": "대기중",
+      "status": "완료",
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
@@ -293,7 +293,7 @@
       "userNm": "둘리",
       "mgrId": "1",
       "mgrNm": "김상담원",
-      "status": "대기중",
+      "status": "완료",
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
@@ -308,7 +308,7 @@
       "userNm": "홍길동",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "status": "대기중",
+      "status": "완료",
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
@@ -323,7 +323,7 @@
       "userNm": "홍길동",
       "mgrId": "3",
       "mgrNm": "최상담원",
-      "status": "대기중",
+      "status": "완료",
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
@@ -338,7 +338,7 @@
       "userNm": "홍길동",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "status": "대기중",
+      "status": "완료",
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
@@ -353,7 +353,7 @@
       "userNm": "둘리",
       "mgrId": "3",
       "mgrNm": "최상담원",
-      "status": "대기중",
+      "status": "완료",
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
@@ -368,7 +368,7 @@
       "userNm": "둘리",
       "mgrId": "3",
       "mgrNm": "최상담원",
-      "status": "대기중",
+      "status": "보류",
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
@@ -383,11 +383,56 @@
       "userNm": "둘리",
       "mgrId": "3",
       "mgrNm": "최상담원",
-      "status": "대기중",
+      "status": "상담중",
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
       "callStartTm": "2025/06/19 15:05:05",
+      "callEndTm": ""
+    },
+    {
+      "id": "20250620_152639",
+      "chatSeq": "20250620_152639",
+      "title": "둘리님 긴급문의",
+      "userId": 2,
+      "userNm": "둘리",
+      "mgrId": "2",
+      "mgrNm": "이상담원",
+      "status": "완료",
+      "type": "콜",
+      "qusetion": "",
+      "transferYn": "Y",
+      "callStartTm": "2025/06/20 15:26:39",
+      "callEndTm": "2025/06/23 14:09:04"
+    },
+    {
+      "id": "20250620_163647",
+      "chatSeq": "20250620_163647",
+      "title": "둘리님 긴급문의",
+      "userId": 2,
+      "userNm": "둘리",
+      "mgrId": "1",
+      "mgrNm": "김상담원",
+      "status": "상담중",
+      "type": "콜",
+      "qusetion": "",
+      "transferYn": "Y",
+      "callStartTm": "2025/06/20 16:36:47",
+      "callEndTm": ""
+    },
+    {
+      "id": "20250623_140904",
+      "chatSeq": "20250623_140904",
+      "title": "둘리님 긴급문의",
+      "userId": 2,
+      "userNm": "둘리",
+      "mgrId": "1",
+      "mgrNm": "김상담원",
+      "status": "대기중",
+      "type": "콜",
+      "qusetion": "",
+      "transferYn": "Y",
+      "callStartTm": "2025/06/23 14:09:04",
       "callEndTm": ""
     }
   ],
@@ -430,21 +475,21 @@
       "mgrId": 1,
       "mgrNm": "김상담원",
       "dptNm": "상담1팀",
-      "status": "상담가능"
+      "status": "상담준비"
     },
     {
       "id": "2",
       "mgrId": 2,
       "mgrNm": "이상담원",
       "dptNm": "상담1팀",
-      "status": "식사"
+      "status": "상담준비"
     },
     {
       "id": "3",
       "mgrId": 3,
       "mgrNm": "최상담원",
       "dptNm": "상담2팀",
-      "status": "식사"
+      "status": "상담가능"
     },
     {
       "id": "4",
@@ -458,20 +503,25 @@
       "mgrId": 5,
       "mgrNm": "관리자",
       "dptNm": "운영팀",
-      "status": "식사"
+      "status": "상담가능"
     }
   ],
   "loginMgr": [
     {
       "id": "1",
-      "mgrId": 5,
-      "mgrNm": "관리자",
-      "dptNm": "운영팀",
-      "status": "식사",
-      "loginTime": "2025-06-19T00:33:32.705Z"
+      "mgrId": 2,
+      "mgrNm": "이상담원",
+      "dptNm": "상담1팀",
+      "status": "상담준비",
+      "loginTime": "2025-06-23T06:23:37.055Z"
     }
   ],
-  "mgrMove": [],
+  "socket": [
+    {
+      "id": "1",
+      "status": "open"
+    }
+  ],
   "code": [
     {
       "id": "1",
@@ -506,12 +556,12 @@
     {
       "id": "7",
       "group": "직원상태",
-      "detail": "상담가능"
+      "detail": "상담준비"
     },
     {
       "id": "8",
       "group": "직원상태",
-      "detail": "식사"
+      "detail": "이석-식사"
     },
     {
       "id": "9",
@@ -532,52 +582,35 @@
       "id": "12",
       "group": "상담상태",
       "detail": "이관"
-    }
-  ],
-  "chatFormData": [
-    {
-      "id": "1",
-      "chatSeq": 1,
-      "mgrId": 1,
-      "mgrNm": "김상담원",
-      "text": "222222",
-      "regDt": "2025/06/18 11:29:43",
-      "modiId": 5,
-      "modiDt": "2025/06/19 09:41:12"
     },
     {
-      "id": "2",
-      "chatSeq": 2,
-      "mgrId": 2,
-      "mgrNm": "이상담원",
-      "text": "둘리 상담내역",
-      "regDt": "2025/06/18 17:00:59",
-      "modiId": 5,
-      "modiDt": "2025/06/19 10:39:40"
-    }
-  ],
-  "chatMemoData": [
-    {
-      "id": "1",
-      "chatSeq": 1,
-      "mgrId": 1,
-      "mgrNm": "김상담원",
-      "text": "ㅅㄷㄴㅅㄷㅅㄴㄷㅅㄴㄷㅅ",
-      "regDt": "2025/06/18 13:09:17",
-      "modiId": 1,
-      "modiDt": "2025/06/18 15:34:34"
+      "id": "13",
+      "group": "소켓상태",
+      "detail": "open"
     },
     {
-      "id": "2",
-      "chatSeq": 2,
-      "mgrId": 2,
-      "mgrNm": "이상담원",
-      "text": "둘리 상담 관련 메모 입력",
-      "regDt": "2025/06/18 17:01:01",
-      "modiId": 5,
-      "modiDt": "2025/06/19 10:39:48"
+      "id": "14",
+      "group": "소켓상태",
+      "detail": "close"
+    },
+    {
+      "id": "15",
+      "group": "소켓상태",
+      "detail": "error"
+    },
+    {
+      "id": "16",
+      "group": "상담상태",
+      "detail": "상담준비"
+    },
+    {
+      "id": "17",
+      "group": "직원상태",
+      "detail": "상담가능"
     }
   ],
+  "chatFormData": [],
+  "chatMemoData": [],
   "chatData": [
     {
       "id": "1",
@@ -1154,6 +1187,42 @@
       "mgrId": "3",
       "mgrNm": "최상담원",
       "sendTime": "2025/06/19 15:05:05"
+    },
+    {
+      "id": "20250620_152639",
+      "chatSeq": "20250620_152639",
+      "chatNo": 1,
+      "userId": 2,
+      "userNm": "둘리",
+      "text": "이관되었습니다.",
+      "sender": "user",
+      "mgrId": "2",
+      "mgrNm": "이상담원",
+      "sendTime": "2025/06/20 15:26:39"
+    },
+    {
+      "id": "20250620_163647",
+      "chatSeq": "20250620_163647",
+      "chatNo": 1,
+      "userId": 2,
+      "userNm": "둘리",
+      "text": "이관되었습니다.",
+      "sender": "user",
+      "mgrId": "1",
+      "mgrNm": "김상담원",
+      "sendTime": "2025/06/20 16:36:47"
+    },
+    {
+      "id": "20250623_140904",
+      "chatSeq": "20250623_140904",
+      "chatNo": 1,
+      "userId": 2,
+      "userNm": "둘리",
+      "text": "이관되었습니다.",
+      "sender": "user",
+      "mgrId": "1",
+      "mgrNm": "김상담원",
+      "sendTime": "2025/06/23 14:09:04"
     }
   ],
   "menus": [
@@ -1168,7 +1237,10 @@
       "highMenuCd": "ROOT",
       "path": "/main",
       "icon": "HomeOutlincallEndTm",
-      "label": "메인"
+      "label": "메인",
+      "orderNo": 1,
+      "modiId": 2,
+      "modiDt": "2025/06/23 15:14:07"
     },
     {
       "id": "3",
@@ -1176,7 +1248,10 @@
       "highMenuCd": "ROOT",
       "path": "/scc",
       "icon": "CustomerServiceOutlincallEndTm",
-      "label": "상담관리"
+      "label": "상담관리",
+      "orderNo": 2,
+      "modiId": 2,
+      "modiDt": "2025/06/23 15:14:07"
     },
     {
       "id": "4",
@@ -1184,7 +1259,11 @@
       "highMenuCd": "ROOT",
       "path": "",
       "icon": "SettingOutlincallEndTm",
-      "label": "시스템관리"
+      "label": "시스템관리",
+      "orderNo": 3,
+      "modiId": 2,
+      "modiDt": "2025/06/23 15:14:07",
+      "modiNm": "이상담원"
     },
     {
       "id": "5",
@@ -1192,7 +1271,11 @@
       "highMenuCd": "M_SYS",
       "path": "/code",
       "icon": "SettingOutlincallEndTm",
-      "label": "코드관리"
+      "label": "코드관리",
+      "orderNo": 1,
+      "modiId": 2,
+      "modiDt": "2025/06/23 15:17:38",
+      "modiNm": "이상담원"
     },
     {
       "id": "6",
@@ -1200,7 +1283,11 @@
       "highMenuCd": "M_SYS",
       "path": "/menu",
       "icon": "SettingOutlincallEndTm",
-      "label": "메뉴관리"
+      "label": "메뉴관리",
+      "orderNo": 2,
+      "modiId": 2,
+      "modiDt": "2025/06/23 15:17:47",
+      "modiNm": "이상담원"
     },
     {
       "id": "7",
@@ -1208,7 +1295,10 @@
       "highMenuCd": "M_SCC",
       "path": "/history",
       "icon": "SettingOutlincallEndTm",
-      "label": "상담이력"
+      "label": "상담이력",
+      "orderNo": 1,
+      "modiId": 2,
+      "modiDt": "2025/06/23 15:12:06"
     },
     {
       "id": "8",
@@ -1216,7 +1306,10 @@
       "highMenuCd": "M_SCC",
       "path": "/history2",
       "icon": "SettingOutlincallEndTm",
-      "label": "상담이력2"
+      "label": "상담이력2",
+      "orderNo": 2,
+      "modiId": 2,
+      "modiDt": "2025/06/23 15:12:06"
     }
   ]
 }

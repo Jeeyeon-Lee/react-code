@@ -2,15 +2,19 @@ import React from 'react';
 import './index.css';
 import {Navigate, useNavigate} from "react-router-dom";
 import type { FormProps } from 'antd';
-import { Button, Checkbox, Form, Input } from 'antd';
+import {Button, Checkbox, Form, Input, Select} from 'antd';
 import {useMenuListStore, useMenuStore} from "@stores/bo/base/menu/menuStore.ts";
 import {useMenuList} from "@hooks/bo/base/menu/useMenu.ts";
+import {useSaveLoginMgrMutation} from "@hooks/cmm/login/useLogin.ts";
+import {useMgrList} from "@hooks/bo/base/mgr/useMgr.ts";
 
 const LoginForm: React.FC = () => {
   const navigate = useNavigate();
   const { setMenuCd } = useMenuStore();
   const { setMenuList } = useMenuListStore();
   const {data: menuList = []} = useMenuList();
+  const { mutateAsync: saveLoginMgr } = useSaveLoginMgrMutation();
+  const { data: mgrList } = useMgrList();
 
   console.log(menuList);
 
@@ -30,6 +34,10 @@ const LoginForm: React.FC = () => {
   const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
 
     // 로그인 성공
+    if (values.username != null) {
+      saveLoginMgr(values.username);
+    }
+    localStorage.clear();
     localStorage.setItem("accessToken", crypto.randomUUID() );
     localStorage.setItem("refreshToken", crypto.randomUUID() );
     localStorage.setItem("check", "Y");
@@ -62,7 +70,18 @@ const LoginForm: React.FC = () => {
             name="username"
             rules={[{ required: true, message: 'Please input your username!' }]}
         >
-          <Input />
+          <Select
+              showSearch
+              style={{width: 250, textAlign:'center'}}
+              placeholder="담당자 선택"
+              optionFilterProp="label"
+              options={mgrList?.map((mgr) => ({
+                label: `${mgr.mgrNm}`,
+                value: mgr.id,
+                disabled: mgr.status === '휴가',
+              }))}
+          >
+          </Select>
         </Form.Item>
 
         <Form.Item<FieldType>

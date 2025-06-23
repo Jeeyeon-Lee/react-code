@@ -8,11 +8,12 @@ const { Option } = Select;
 
 interface CmmCodeSelectProps extends SelectProps<string> {
     group?: string;
+    all?:boolean;
     vale?: string;
 }
 
 const CmmCodeSelect = forwardRef<any, CmmCodeSelectProps>(
-    ({ group, value, onChange, placeholder = '선택하세요', ...rest }, ref) => {
+    ({ group, all=true, value, onChange, placeholder = '선택하세요', ...rest }, ref) => {
         const [options, setOptions] = useState<Code[]>([]);
 
         useEffect(() => {
@@ -41,7 +42,9 @@ const CmmCodeSelect = forwardRef<any, CmmCodeSelectProps>(
                 style={{ width: '100%' }}
                 {...rest}
             >
-                <Option value="all">전체</Option>
+                {all && (
+                    <Option value="all">전체</Option>
+                )}
                 {options.map(item => (
                     <Option key={item.id} value={item.detail}>
                         {item.detail}

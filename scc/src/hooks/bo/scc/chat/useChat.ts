@@ -60,7 +60,7 @@ export const updateChatStatusMutation = () => {
                 const response = await axios.patch<ChatData>(`/chat/${chatSeq}`, { status });
                 return response.data;
             } catch (error) {
-                console.error('채팅 업데이트 실패:', error);
+                message.error('채팅 업데이트 실패:', error);
                 throw error;
             }
         },

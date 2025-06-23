@@ -11,6 +11,9 @@ import {
     updateChatFormMemoMutation
 } from '@hooks/bo/scc/chat/useChatForm.ts';
 import {useChatStore} from '@stores/bo/scc/chat/chatStore.ts';
+import {useMgrDetail} from "@hooks/bo/base/mgr/useMgr.ts";
+import {useLogin} from "@hooks/cmm/login/useLogin.ts";
+import {useChatDetail} from "@hooks/bo/scc/chat/useChat.ts";
 
 const {TextArea} = Input;
 const {Text} = Typography;
@@ -21,15 +24,19 @@ const ChatForm = () => {
 
     const {chatSeq} = useChatStore();
 
-    const isDisabled = !chatSeq;
 
     const {data: chatTextData} = useChatTextData(chatSeq);
     const {data: chatMemoData} = useChatMemoData(chatSeq);
+    const { data: chatDetail } = useChatDetail(chatSeq || '');
     const {mutate: insertChatFormText} = insertChatFormTextMutation();
     const {mutate: updateChatFormText} = updateChatFormTextMutation();
     const {mutate: insertChatFormMemo} = insertChatFormMemoMutation();
     const {mutate: updateChatFormMemo} = updateChatFormMemoMutation();
-
+    const { loginInfo } = useLogin();
+    const { data: mgrDetail } = useMgrDetail(loginInfo?.mgrId);
+    const isDisabled = !!chatSeq && !(
+        ['후처리', '완료', '보류', '상담중'].includes(chatDetail?.[0]?.status ?? '')
+    );
     useEffect(() => {
         form1.resetFields();
         form2.resetFields();

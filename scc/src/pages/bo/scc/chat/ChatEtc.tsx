@@ -4,7 +4,7 @@ import CmmRadioGroup from '@components/form/CmmRadioGroup.tsx';
 import CmmRadio from '@components/form/CmmRadio.tsx';
 import CmmTag from '@components/form/CmmTag.tsx';
 import CmmButton from '@components/form/CmmButton.tsx';
-import CmmCodeSelect from '@components/form/CmmCodeSellect.tsx';
+import CmmCodeSelect from '@components/form/CmmCodeSelect.tsx';
 import CmmCheckbox from '@components/form/CmmCheckbox.tsx';
 
 const ChatEtc = () => {
