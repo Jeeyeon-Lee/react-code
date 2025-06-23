@@ -2,30 +2,19 @@ import {Breadcrumb, Layout, theme} from 'antd';
 import AppRouter from "../../routes/AppRouter.tsx";
 import type {MenuType} from "@/types";
 import {useMenuListStore, useMenuStore} from "@stores/bo/base/menu/menuStore.ts";
+import {useLocation} from "react-router-dom";
 
 const { Content: AntContent } = Layout;
 
 function Content() {
     const { token: { colorBgContainer, borderRadiusLG } } = theme.useToken();
-    const menuCd = useMenuStore(state => state.menuCd);
+    const location = useLocation();
     const menuList = useMenuListStore(state => state.menuList);
 
-    // 최상위 Root 메뉴 찾기
-    function findRootMenu(menuList: MenuType[], currentMenuCd: string): MenuType | null {
-
-        let current = menuList.find(m => m.menuCd === currentMenuCd);
-        while (current && current.highMenuCd !== 'ROOT') {
-            current = menuList.find(m => m.menuCd === current?.highMenuCd);
-        }
-        return current || null;
-    }
-
-    const rootMenu = findRootMenu(menuList, menuCd);
-
-    function getBreadcrumbItems (menuList: MenuType[], currentMenuCd: string): MenuType | null {
+    function getBreadcrumbItems (menuList: MenuType[], locationPath: string) {
         const items: String[{}] = [];
 
-        let current = menuList.find(m => m.menuCd === currentMenuCd);
+        let current = menuList.find(m => m.path === locationPath);
 
         while (current) {
             items.unshift({title: current.label}); // 앞에 추가해서 루트부터 순서대로
@@ -38,10 +27,12 @@ function Content() {
 
     return (
         <Layout style={{ height: '90vh', padding: '0 24px 24px', flex: 1 }}>
-            <Breadcrumb
-                items={getBreadcrumbItems(menuList, menuCd)}
-                style={{ margin: '16px 0' }}
-            />
+            {location.pathname !== '/main' &&
+                <Breadcrumb
+                    items={getBreadcrumbItems(menuList, location.pathname)}
+                    style={{ margin: '16px 0' }}
+                />
+            }
             <AntContent
                 style={{
                     display: 'flex',
@@ -59,4 +50,4 @@ function Content() {
     );
 };
 
-export default Content; 
+export default Content;

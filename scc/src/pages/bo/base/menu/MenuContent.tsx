@@ -1,51 +1,67 @@
-import React, { useState } from 'react';
-import { Tree } from 'antd';
-import type { TreeDataNode, TreeProps } from 'antd';
+import React, {useEffect, useMemo, useState} from 'react';
+import type {TreeDataNode, TreeProps} from 'antd';
+import {Card, Col, Row, Tree} from 'antd';
+import type {MenuType} from "@/types";
+import {useMenuListStore} from "@stores/bo/base/menu/menuStore.ts";
+import MenuForm from "@pages/bo/base/menu/MenuForm.tsx";
+import {MoveMenuMutation} from "@hooks/bo/base/menu/useMenu.ts";
+import MenuInsertForm from "@pages/bo/base/menu/MenuInsertForm.tsx";
 
-const x = 3;
-const y = 2;
-const z = 1;
-const defaultData: TreeDataNode[] = [];
+function menuTreeData(menuList: MenuType[], parentCd: string): TreeDataNode[] {
+    return menuList
+        .filter(m => m.highMenuCd === parentCd && m.menuCd !== parentCd) // 무한 루프 방지
+        .map(m => {
+            const children = menuTreeData(menuList, m.menuCd);
+            return {
+                menuCd: m.menuCd,
+                highMenuCd: m.highMenuCd,
+                key: m.menuCd,
+                title: m.label,
+                children: children.length > 0 ? children : undefined,
+            } as TreeDataNode;
+        });
+}
 
-const generateData = (_level: number, _preKey?: React.Key, _tns?: TreeDataNode[]) => {
-    const preKey = _preKey || '0';
-    const tns = _tns || defaultData;
+const MenuContent = () => {
+    // init menuList setting
+    const menuList = useMenuListStore(state => state.menuList);
 
-    const children: React.Key[] = [];
-    for (let i = 0; i < x; i++) {
-        const key = `${preKey}-${i}`;
-        tns.push({ title: key, key });
-        if (i < y) {
-            children.push(key);
+    const treeData = useMemo(() => menuTreeData(menuList, 'ROOT'), [menuList]);
+    const [gData, setGData] = useState(treeData);
+    const [selectedMenuCd, setSelectedMenuCd] = useState(null);
+    const {mutate: moveMenu} = MoveMenuMutation();
+
+    useEffect(() => {
+        // defaultData가 변경될 때마다 gData를 업데이트
+        setGData(treeData);
+    }, [treeData, gData]); // defaultData가 변경될 때마다 이 useEffect가 실행됩니다.
+
+    const onSelect = (selectedKeys) => {
+        const key = selectedKeys[0];
+        if (key) {
+            setSelectedMenuCd(key);
         }
-    }
-    if (_level < 0) {
-        return tns;
-    }
-    const level = _level - 1;
-    children.forEach((key, index) => {
-        tns[index].children = [];
-        return generateData(level, key, tns[index].children);
-    });
-};
-generateData(z);
-
-const App: React.FC = () => {
-    const [gData, setGData] = useState(defaultData);
-    const [expandedKeys] = useState(['0-0', '0-0-0', '0-0-0-0']);
+    };
 
     const onDragEnter: TreeProps['onDragEnter'] = (info) => {
-        console.log(info);
         // expandedKeys, set it when controlled is needed
         // setExpandedKeys(info.expandedKeys)
     };
 
     const onDrop: TreeProps['onDrop'] = (info) => {
-        console.log(info);
+
+        //drop 된 위치 데이터
         const dropKey = info.node.key;
+        const dropHighMenuCd = info.node.highMenuCd;
+
+        //drag 해서 옮기는 데이터
         const dragKey = info.dragNode.key;
+
         const dropPos = info.node.pos.split('-');
-        const dropPosition = info.dropPosition - Number(dropPos[dropPos.length - 1]); // the drop position relative to the drop node, inside 0, top -1, bottom 1
+        const dropPosition = info.dropPosition - Number(dropPos[dropPos.length - 1]);
+
+        const data = [...gData];
+        let dragObj: TreeDataNode;
 
         const loop = (
             data: TreeDataNode[],
@@ -61,51 +77,99 @@ const App: React.FC = () => {
                 }
             }
         };
-        const data = [...gData];
 
-        // Find dragObject
-        let dragObj: TreeDataNode;
+        // remove dragged item
         loop(data, dragKey, (item, index, arr) => {
             arr.splice(index, 1);
             dragObj = item;
         });
 
+        // drag 데이터 highMenuCd, orderNo 세팅
+        let newParentKey: string;
+        let newOrderNo: number;
+
         if (!info.dropToGap) {
-            // Drop on the content
+            // 내부에 드롭
             loop(data, dropKey, (item) => {
                 item.children = item.children || [];
-                // where to insert. New item was inserted to the start of the array in this example, but can be anywhere
-                item.children.unshift(dragObj);
+                item.children.unshift(dragObj!);
+
+                newParentKey = dropKey;
+                newOrderNo = 0; // 가장 위로 간 것
             });
         } else {
-            let ar: TreeDataNode[] = [];
+            // 위/아래에 드롭
+            let siblings: TreeDataNode[] = [];
             let i: number;
             loop(data, dropKey, (_item, index, arr) => {
-                ar = arr;
+                siblings = arr;
                 i = index;
             });
+
             if (dropPosition === -1) {
-                // Drop on the top of the drop node
-                ar.splice(i!, 0, dragObj!);
+                siblings.splice(i!, 0, dragObj!);
+                newParentKey = dropHighMenuCd; // dropNode의 부모
+                newOrderNo = i!;
             } else {
-                // Drop on the bottom of the drop node
-                ar.splice(i! + 1, 0, dragObj!);
+                siblings.splice(i! + 1, 0, dragObj!);
+                newParentKey = dropHighMenuCd;
+                newOrderNo = i! + 1;
             }
         }
+
+        // order no 업데이트
+        const moveMenuValues = {
+            menuCd: dragKey,
+            values: {
+                highMenuCd: newParentKey,
+                orderNo: newOrderNo + 1
+            }
+        };
+
+        // moveMenu -> db update // setGdata -> tree update
+        moveMenu(moveMenuValues);
         setGData(data);
     };
 
+
     return (
-        <Tree
-            className="draggable-tree"
-            defaultExpandedKeys={expandedKeys}
-            draggable
-            blockNode
-            onDragEnter={onDragEnter}
-            onDrop={onDrop}
-            treeData={gData}
-        />
+        <Row gutter={16}>
+            <Col span={8}>
+                <Card title="메뉴">
+                    <Tree
+                        className="draggable-tree"
+                        draggable
+                        blockNode
+                        onDragEnter={onDragEnter}
+                        onDrop={onDrop}
+                        treeData={gData}
+                        onSelect={onSelect}
+
+                    />
+                </Card>
+            </Col>
+            <Col span={16}>
+                <Card title="메뉴 상세 정보">
+                    {selectedMenuCd ? (
+                        <MenuForm
+                            selectedMenuCd={selectedMenuCd}
+                            setSelectedMenuCd={setSelectedMenuCd}
+                            />
+                        ) : (
+                        <p>좌측 트리에서 메뉴를 선택해주세요.</p>
+                    )}
+                </Card>
+                    {selectedMenuCd ? (
+                    <Card title="메뉴 추가">
+                    <MenuInsertForm
+                        selectedMenuCd={selectedMenuCd}
+                        />
+                    </Card>
+                    ) : ('')}
+            </Col>
+        </Row>
+
     );
 };
 
-export default App;
+export default MenuContent;

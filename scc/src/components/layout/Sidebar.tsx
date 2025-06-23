@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import type {MenuProps} from 'antd';
 import {Button, Layout, Menu} from 'antd';
-import {MenuFoldOutlined, MenuUnfoldOutlined, NotificationOutlined, SettingOutlined} from '@ant-design/icons';
+import {MenuFoldOutlined, MenuUnfoldOutlined, SettingOutlined} from '@ant-design/icons';
 import {Link} from "react-router-dom";
 import {useMenuListStore, useMenuStore} from "@stores/bo/base/menu/menuStore.ts";
 import type {MenuType} from "@/types";
@@ -12,9 +12,7 @@ function Sidebar() {
     const { setMenuCd } = useMenuStore();
     const menuCd = useMenuStore(state => state.menuCd);
     const menuList = useMenuListStore(state => state.menuList);
-
     const [collapsed, setCollapsed] = useState(false);
-
 
     // 최상위 Root 메뉴 찾기
     function findRootMenu(menuList: MenuType[], currentMenuCd: string): MenuType | null {
@@ -25,26 +23,30 @@ function Sidebar() {
         return current || null;
     }
 
-    // 사이드 메뉴 배열 값
-    function findChildren(menuList: MenuType[], parentCd: string): MenuType[] {
-        return menuList.filter(m => m.highMenuCd === parentCd);
+    // 사이드 메뉴 트리 구성
+    function buildSidebarTree(menuList: MenuType[], parentCd: string): MenuProps['items'] {
+        return menuList
+            .filter(m => m.highMenuCd === parentCd && m.menuCd !== parentCd) // 무한 루프 방지
+            .map(m => {
+                const children = buildSidebarTree(menuList, m.menuCd);
+                return {
+                    key: m.menuCd,
+                    label: children.length > 0 ? m.label : <Link to={m.path}>{m.label}</Link>,
+                    children: children.length > 0 ? children : undefined,
+                };
+            });
     }
 
     const rootMenu = menuList.length && menuCd ? findRootMenu(menuList, menuCd) : null;
-    const sideMenus = rootMenu ? findChildren(menuList, rootMenu.menuCd) : [];
 
     const getSidebarItems = (): MenuProps['items'] => {
-        return [
-            NotificationOutlined,
-        ].map((_icon, index) => ({
-            key: rootMenu?.menuCd,
+        if (!rootMenu) return [];
+        return [{
+            key: rootMenu.menuCd,
             icon: <SettingOutlined />,
-            label: rootMenu?.label,
-            children: sideMenus.map(child => ({
-                key: child.menuCd,
-                label: <Link to={child.path}>{child.label}</Link>,
-            }))
-        }));
+            label: rootMenu.label,
+            children: buildSidebarTree(menuList, rootMenu.menuCd),
+        }];
     };
 
     // zustand id 값 세팅
@@ -52,12 +54,9 @@ function Sidebar() {
         setMenuCd(e.key);
     };
 
-    // main 페이지면 return null
-    //if(menuCd === 'M_MAIN') return null;
-
     return (
-        <Sider 
-            width={200} 
+        <Sider
+            width={200}
             style={{ background: '#fff' }}
             collapsible
             collapsed={collapsed}
@@ -69,7 +68,7 @@ function Sidebar() {
                 onClick={handleSidebarClick}
                 mode="inline"
                 selectedKeys={[menuCd]}
-                openKeys={[rootMenu?.menuCd]}
+                defaultOpenKeys={[rootMenu?.menuCd]}
                 style={{ height: '100%', borderRight: 0 }}
                 items={getSidebarItems()}
             />

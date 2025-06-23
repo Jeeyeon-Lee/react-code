@@ -1,12 +1,12 @@
-import { create } from 'zustand';
-import type { MenuType } from '@/types';
-import { persist } from 'zustand/middleware';
+import {create} from 'zustand';
+import type {MenuType} from '@/types';
+import {persist} from 'zustand/middleware';
 
 /*zustand를 사용한 전역관리*/
 interface MenuStore {
     menuCd: MenuType['menuCd'];
     setMenuCd: (menuCd: MenuType['menuCd']) => void;
-    menuList: () => MenuType[];
+    menuList: MenuType[];
     setMenuList: (menuList: MenuType[]) => void;
 }
 

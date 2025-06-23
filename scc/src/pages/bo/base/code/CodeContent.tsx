@@ -1,9 +1,9 @@
 import React from 'react';
-import { Card, Form, Input, Button, Select, Switch, Space } from 'antd';
+import {Button, Card, Form, Input, Select, Space, Switch} from 'antd';
 
 const { Option } = Select;
 
-const SystemContent: React.FC = () => {
+function codeContent() {
     const [form] = Form.useForm();
 
     const onFinish = (values: any) => {
@@ -72,4 +72,4 @@ const SystemContent: React.FC = () => {
     );
 };
 
-export default SystemContent; 
+export default codeContent;

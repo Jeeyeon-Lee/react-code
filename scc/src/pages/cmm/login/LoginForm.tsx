@@ -1,17 +1,25 @@
 import React from 'react';
 import './index.css';
-import { useNavigate } from "react-router-dom";
+import {Navigate, useNavigate} from "react-router-dom";
 import type { FormProps } from 'antd';
 import { Button, Checkbox, Form, Input } from 'antd';
 import {useMenuListStore, useMenuStore} from "@stores/bo/base/menu/menuStore.ts";
-import {useMenu} from "@hooks/bo/base/menu/useMenu.ts";
+import {useMenuList} from "@hooks/bo/base/menu/useMenu.ts";
 
 const LoginForm: React.FC = () => {
   const navigate = useNavigate();
-  const { useMenuList } = useMenu();
   const { setMenuCd } = useMenuStore();
   const { setMenuList } = useMenuListStore();
   const {data: menuList = []} = useMenuList();
+
+  console.log(menuList);
+
+  const check = localStorage.getItem("check");
+  const user = check ? JSON.stringify(check) : null;
+
+  if (user) {
+    return <Navigate to="/main" />;
+  }
 
   type FieldType = {
     username?: string;
@@ -22,8 +30,6 @@ const LoginForm: React.FC = () => {
   const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
 
     // 로그인 성공
-
-    localStorage.clear();
     localStorage.setItem("accessToken", crypto.randomUUID() );
     localStorage.setItem("refreshToken", crypto.randomUUID() );
     localStorage.setItem("check", "Y");
