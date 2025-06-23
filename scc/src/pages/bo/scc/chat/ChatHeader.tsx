@@ -100,7 +100,7 @@ function ChatHeader() {
                                 <CmmCodeSelect
                                     group='소켓상태'
                                     all={false}
-                                    value={socketDetail[0].status}
+                                    value={socketDetail?.[0].status}
                                     prefix="소켓:  "
                                     style={{width: 150, textAlign:'center'}}
                                     onChange={(status) => {
