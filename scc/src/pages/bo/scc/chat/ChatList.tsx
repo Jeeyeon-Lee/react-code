@@ -1,23 +1,17 @@
 import React, { useState, useRef, useEffect } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
-import {Col, Input, Avatar, Typography, Divider} from 'antd';
+import {Col, Input, Avatar} from 'antd';
 import {
     SendOutlined,
     UserOutlined,
     CustomerServiceOutlined,
 } from '@ant-design/icons';
-import { useChatDetail, updateChatStatusMutation, useChatDataList} from '@hooks/bo/scc/chat/useChat.ts';
-import { useLogin } from '@hooks/cmm/login/useLogin.ts';
+import { useChatDataList} from '@hooks/bo/scc/chat/useChat.ts';
 import type { ChatData } from '@/types';
 import { useChatStore } from '@stores/bo/scc/chat/chatStore.ts';
 import CmmButton from '@components/form/CmmButton.tsx';
-import ChatStatusChangeButton from "@pages/bo/scc/chat/ChatStatusChangeButton.tsx";
-import {useMgrDetail} from "@hooks/bo/base/mgr/useMgr.ts";
-import CounselReady from "@pages/bo/scc/chat/CounselReady.tsx";
-import {useUserStore} from "@stores/bo/base/user/userStore.ts";
-import {useUser} from "@hooks/bo/base/user/useUser.ts";
-
-const { Text } = Typography;
+import CounselStatus from "@pages/bo/scc/chat/CounselStatus.tsx";
+import ChatUserDetail from "@pages/bo/scc/chat/ChatUserDetail.tsx";
 
 interface LeftContentProps {
     templateContent: string;
@@ -29,23 +23,14 @@ const ChatList = ({ templateContent, setTemplateContent }: LeftContentProps) => 
     const [ inputText, setInputText ] = useState('');
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const { chatSeq } = useChatStore();
-    const { userId, setUserId } = useUserStore();
-    const { loginInfo } = useLogin();
-    const { useUserDetail } = useUser();
-    const { data: userDetail } = useUserDetail(userId);
-    const { data: chatDetail } = useChatDetail(chatSeq);
     const { data: chatData} = useChatDataList(chatSeq);
-    const { data: mgrDetail } = useMgrDetail(loginInfo?.mgrId);
-    const isDisabled = !!chatSeq && !(
-        ['후처리', '완료', '보류', '상담중'].includes(chatDetail?.[0]?.status ?? '')
-    );
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     };
 
     useEffect(() => {
         if (chatData && chatData.length > 0) {
-            const formattedMessages: ChatData[] = chatData.map((msg: any) => ({
+            const formattedMessages: ChatData[] = chatData?.map((msg: any) => ({
                 ...msg,
                 timestamp: msg.timestamp
             }));
@@ -81,7 +66,6 @@ const ChatList = ({ templateContent, setTemplateContent }: LeftContentProps) => 
             height: '100%',
             position: 'relative'
         }}>
-
             <div
                 style={{
                     flex: 1,
@@ -93,27 +77,9 @@ const ChatList = ({ templateContent, setTemplateContent }: LeftContentProps) => 
                     maxHeight: 'calc(100% - 60px)'
                 }}
             >
-                <div>
-                    {userId && (
-                        <>
-                            <Text strong>{userDetail?.userNm}</Text>
-                            <Text type="secondary" style={{marginLeft: '16px'}}>유저 아이디: {userDetail?.userId}</Text>
-                            <Text type="secondary" style={{marginLeft: '16px'}}>유저 연락처: {userDetail?.mobile}</Text>
-                            <Text type="secondary" style={{marginLeft: '16px'}}>채팅번호: {chatDetail?.[0].chatSeq}</Text>
-                            <Text type="secondary" style={{marginLeft: '16px'}}>채팅상태: {chatDetail?.[0].status}</Text>
-                        </>
-                    )}
-                </div>
-                <Divider />
-                {mgrDetail?.status === '상담준비' && (
-                    <>
-                        <CounselReady/>
-                        <Divider />
-                    </>
-                )}
-
+                <ChatUserDetail />
                 <div style={{display: 'flex', flexDirection: 'column'}}>
-                    {messages.map(message => (
+                    {messages?.map(message => (
                         <div
                             key={`${message.chatSeq}-${message.chatNo}`}
                             style={{
@@ -156,8 +122,8 @@ const ChatList = ({ templateContent, setTemplateContent }: LeftContentProps) => 
                         </div>
                     ))}
                 </div>
-
                 <div ref={messagesEndRef}/>
+                <CounselStatus/>
             </div>
 
             <div style={{
@@ -176,12 +142,11 @@ const ChatList = ({ templateContent, setTemplateContent }: LeftContentProps) => 
                     type="primary"
                     icon={<SendOutlined/>}
                     onClick={handleSend}
-                    disabled={isDisabled}
+                    buttonType='전송'
                 >
                     전송
                 </CmmButton>
             </div>
-            <ChatStatusChangeButton isDisabled={isDisabled}/>
         </Col>
     );
 };

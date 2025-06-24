@@ -31,9 +31,9 @@ function Content() {
     };
 
     return (
-        <div style={{ flex: 1, padding: '16px', display: 'flex', flexDirection: 'column', height: '100vh' }}>
+        <div style={{ flex: 1, padding: '10px', display: 'flex', flexDirection: 'column', height: '100vh' }}>
             <Row gutter={[16, 16]} style={{ flex: 1 }}>
-                <Col span={4} style={{ display: 'flex', flexDirection: 'column', borderRadius: '8px', boxShadow: '0 1px 4px rgba(0.2,0.2,0.2,0.2)' }}>
+                <Col span={4} style={{ display: 'flex', flexDirection: 'column', boxShadow: '0 1px 4px rgba(0.2,0.2,0.2,0.2)' }}>
                     <MyChat />
                 </Col>
                 <Col span={20} style={{ display: 'flex', flexDirection: 'column', gap: '16px', position: 'relative', flex: 1 }}>

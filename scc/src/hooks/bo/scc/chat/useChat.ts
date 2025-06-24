@@ -34,9 +34,9 @@ export const useChatList = (params: ChatSearchParams) => {
 export const useChatDetail = (chatSeq:Chat['chatSeq']) => {
     return useQuery({
         queryKey: chatKeys.detail(chatSeq).queryKey,
-        queryFn: async () => {
+        queryFn: async() => {
             const response = await axios.get<Chat[]>(`/chat?chatSeq=${chatSeq}`);
-            return response.data;
+            return response.data[0];
         },
         enabled: !!chatSeq
     });

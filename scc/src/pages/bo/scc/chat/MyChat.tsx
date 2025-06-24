@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Input, Button, List, Space, Badge, Statistic } from 'antd';
 import type { StatisticTimerProps } from 'antd';
 import { PhoneTwoTone, MessageTwoTone } from '@ant-design/icons';
@@ -9,7 +9,6 @@ import { useUserStore } from '@stores/bo/base/user/userStore.ts';
 import CmmTag from '@components/form/CmmTag.tsx';
 import { useLogin } from '@hooks/cmm/login/useLogin.ts';
 import {updateChatStatusMutation, useChatList} from '@hooks/bo/scc/chat/useChat.ts';
-import {getLoginMgr} from "@api/cmm/loginApi.ts";
 
 const { Timer } = Statistic;
 
@@ -79,9 +78,9 @@ function MyChat() {
     };
 
     return (
-        <div style={{ height: '70vh', display: 'flex', flexDirection: 'column', background: '#fff', borderRadius: '8px', padding: '16px' }}>
+        <div style={{ height: '70vh', display: 'flex', flexDirection: 'column', background: '#fff', borderRadius: '8px', padding: '10px' }}>
             {/*나의 상담 : 상단고정*/}
-            <div style={{ marginBottom: '16px' }}>
+            <div style={{ marginBottom: '10px' }}>
                 <div style={{position:'relative', display:'flex'}}>
                     <h4>나의 상담 ({loginInfo?.mgrNm} - {loginInfo?.status} )</h4>
 
@@ -114,13 +113,13 @@ function MyChat() {
                     onChange={e => setSearchTerm(e.target.value)}
                 />
 
-                <div style={{display: 'flex', gap: '8px', marginBottom: '8px'}}>
+                <div style={{display: 'flex', gap: '8px'}}>
                     <CmmCodeSellect group="상담상태" value={status} onChange={(value) => setStatus(value)} />
                     <CmmCodeSellect group="상담유형" value={type} onChange={(value) => setType(value)} />
                 </div>
             </div>
 
-            <div style={{ flex: 1, overflowY: 'auto' }}>
+            <div style={{ overflowY: 'auto' }}>
                 <List
                     itemLayout="horizontal"
                     dataSource={filteredCounselList}
@@ -135,7 +134,6 @@ function MyChat() {
                                             }
                                         >
                                             {item.userNm} ({item.mgrNm})
-
                                             {(item.transferYn &&
                                                 <CmmTag color={'grey'}>
                                                     {item.transferYn === 'Y' && '이관'}

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Table, Tag, Card, Drawer, theme, Button, Space } from 'antd';
+import { Table, Tag, Card, theme } from 'antd';
 import { useUserStore } from '@stores/bo/base/user/userStore.ts';
 import { useChatHistory } from '@hooks/bo/scc/chat/useChatHistory.ts';
 import type { Chat } from '@/types';
@@ -85,7 +85,7 @@ const ChatHistory = () => {
                             showTotal: (total, range) => `${range[0]}-${range[1]} of ${total}건`,
                             onChange: (_page, pageSize) => setPageNation(pageSize),
                         }}
-                        scroll={{ y: 400 }}
+                        scroll={{ y: 450 }}
                     />
                 <ChatDetailDrawer
                     chatSeq={selectcallEndTmChatSeq}

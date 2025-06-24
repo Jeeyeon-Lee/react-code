@@ -9,7 +9,7 @@ export const useSocketDetail = () => {
         queryKey: ['socket'],
         queryFn: async () => {
             const response = await axios.get(`/socket`);
-            return response.data;
+            return response.data[0];
         },
     });
 };

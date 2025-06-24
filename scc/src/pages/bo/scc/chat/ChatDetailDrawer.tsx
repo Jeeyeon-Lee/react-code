@@ -36,22 +36,28 @@ const ChatDetailDrawer = ({ chatSeq, open, onClose }: ChatDetailDrawerProps) => 
                         pending="Recording..."
                         items={[
                             {
-                                children: 'Create a services site 2015-09-01',
+                                children: '대기중',
                             },
                             {
-                                children: 'Solve initial network problems 2015-09-01',
+                                children: '상담중',
                             },
                             {
-                                children: 'Technical testing 2015-09-01',
+                                children: '보류',
+                            },
+                            {
+                                children: '보류해제',
+                            },
+                            {
+                                children: '후처리',
                             },
                         ]}
                     />
                     <Divider />
                     <Text strong>기본 상담 정보</Text>
-                    <p><strong>이용자:</strong> {chatDetail[0].userNm}</p>
-                    <p><strong>상담사:</strong> {chatDetail[0].mgrNm}</p>
-                    <p><strong>상태:</strong>ㅇㅊ {chatDetail[0].status}</p>
-                    <p><strong>제목:</strong> {chatDetail[0].title}</p>
+                    <p><strong>이용자:</strong> {chatDetail?.userNm}</p>
+                    <p><strong>상담사:</strong> {chatDetail?.mgrNm}</p>
+                    <p><strong>상태:</strong> {chatDetail?.status}</p>
+                    <p><strong>제목:</strong> {chatDetail?.title}</p>
                     <Divider />
                 </>
             ) : (

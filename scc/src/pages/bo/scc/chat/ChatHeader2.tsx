@@ -132,8 +132,8 @@ function ChatHeader() {
                             <Text strong>{userDetail?.userNm}</Text>
                             <Text type="secondary" style={{ marginLeft: '16px' }}>유저 아이디: {userDetail?.userId}</Text>
                             <Text type="secondary" style={{ marginLeft: '16px' }}>유저 연락처: {userDetail?.mobile}</Text>
-                            <Text type="secondary" style={{ marginLeft: '16px' }}>채팅번호: {chatData?.[0].chatSeq}</Text>
-                            <Text type="secondary" style={{ marginLeft: '16px' }}>채팅상태: {chatData?.[0].status}</Text>
+                            <Text type="secondary" style={{ marginLeft: '16px' }}>채팅번호: {chatData?.chatSeq}</Text>
+                            <Text type="secondary" style={{ marginLeft: '16px' }}>채팅상태: {chatData?.status}</Text>
                         </>
                     )}
                 </div>

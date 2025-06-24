@@ -11,9 +11,7 @@ import {
     updateChatFormMemoMutation
 } from '@hooks/bo/scc/chat/useChatForm.ts';
 import {useChatStore} from '@stores/bo/scc/chat/chatStore.ts';
-import {useMgrDetail} from "@hooks/bo/base/mgr/useMgr.ts";
-import {useLogin} from "@hooks/cmm/login/useLogin.ts";
-import {useChatDetail} from "@hooks/bo/scc/chat/useChat.ts";
+import {updateChatStatusMutation} from "@hooks/bo/scc/chat/useChat.ts";
 
 const {TextArea} = Input;
 const {Text} = Typography;
@@ -21,40 +19,32 @@ const {Text} = Typography;
 const ChatForm = () => {
     const [form1] = Form.useForm();
     const [form2] = Form.useForm();
-
     const {chatSeq} = useChatStore();
-
-
     const {data: chatTextData} = useChatTextData(chatSeq);
     const {data: chatMemoData} = useChatMemoData(chatSeq);
-    const { data: chatDetail } = useChatDetail(chatSeq || '');
     const {mutate: insertChatFormText} = insertChatFormTextMutation();
     const {mutate: updateChatFormText} = updateChatFormTextMutation();
     const {mutate: insertChatFormMemo} = insertChatFormMemoMutation();
     const {mutate: updateChatFormMemo} = updateChatFormMemoMutation();
-    const { loginInfo } = useLogin();
-    const { data: mgrDetail } = useMgrDetail(loginInfo?.mgrId);
-    const isDisabled = !!chatSeq && !(
-        ['후처리', '완료', '보류', '상담중'].includes(chatDetail?.[0]?.status ?? '')
-    );
+    const { mutate: updateChatStatus } = updateChatStatusMutation();
     useEffect(() => {
         form1.resetFields();
         form2.resetFields();
-
         if (chatTextData) form1.setFieldsValue({content: chatTextData.text});
         if (chatMemoData) form2.setFieldsValue({memo: chatMemoData.text});
     }, [chatSeq, chatTextData, chatMemoData]);
 
-    const handleSubmitContent = (values: any) => {
+    const handleSubmitContent = async (values: any) => {
         if (!chatSeq) {
             message.warning('상담이 선택되지 않았습니다.');
             return;
         }
         !textIsEdit
-            ? insertChatFormText({chatSeq, text: values.content})
-            : updateChatFormText({chatSeq, text: values.content});
-    };
+            ? await insertChatFormText({chatSeq, text: values.content})
+            : await updateChatFormText({chatSeq, text: values.content});
 
+        if (!textIsEdit) updateChatStatus({chatSeq: chatSeq, status: '완료'});
+    };
     const handleSubmitMemo = (values: any) => {
         if (!chatSeq) {
             message.warning('상담이 선택되지 않았습니다.');
@@ -107,7 +97,7 @@ const ChatForm = () => {
                             icon={textIsEdit ? <EditFilled/> : <SaveFilled/>}
                             htmlType="submit"
                             type="primary"
-                            disabled={isDisabled}
+                            buttonType={textIsEdit ? '상담저장' : '상담수정'}
                         >
                             {textIsEdit ? '수정' : '저장'}
                         </CmmButton>
@@ -115,7 +105,7 @@ const ChatForm = () => {
                             icon={<RedoOutlined/>}
                             htmlType="reset"
                             type="dashed"
-                            disabled={isDisabled}
+                            buttonType={textIsEdit ? '상담저장' : '상담수정'}
                         />
                     </Space>
                 </Form>
@@ -157,7 +147,7 @@ const ChatForm = () => {
                             icon={memoIsEdit ? <EditFilled/> : <SaveFilled/>}
                             htmlType="submit"
                             type="primary"
-                            disabled={isDisabled}
+                            buttonType='상담가능'
                         >
                             {memoIsEdit ? '수정' : '저장'}
                         </CmmButton>
@@ -165,8 +155,8 @@ const ChatForm = () => {
                             icon={<RedoOutlined/>}
                             htmlType="reset"
                             type="dashed"
-                            disabled={isDisabled}
-                         />
+                            buttonType='상담가능'
+                        />
                     </Space>
                 </Form>
             </div>

@@ -45,7 +45,7 @@ const CmmCodeSelect = forwardRef<any, CmmCodeSelectProps>(
                 {all && (
                     <Option value="all">전체</Option>
                 )}
-                {options.map(item => (
+                {options?.map(item => (
                     <Option key={item.id} value={item.detail}>
                         {item.detail}
                     </Option>

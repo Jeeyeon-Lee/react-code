@@ -9,7 +9,7 @@ import {salmon} from "@utils/salmon.ts";
 import { updateChatMgrMutation } from '@hooks/bo/scc/chat/useChat.ts';
 import {useMgrList} from "@hooks/bo/base/mgr/useMgr.ts";
 
-function ChatMgrChangeButton({chatSeq, disabled}) {
+function ChatMgrChangeButton({chatSeq}) {
     const { data: mgrList } = useMgrList();
     const { mutate: updateChatMgr } = updateChatMgrMutation();
     const selectRef = useRef<CmmSelectRef>(null);
@@ -50,8 +50,8 @@ function ChatMgrChangeButton({chatSeq, disabled}) {
             trigger="click"
         >
             <CmmButton
+                buttonType='상담이관'
                 icon={<FileTextOutlined />}
-                disabled={disabled}
             >
                 상담이관
             </CmmButton>
