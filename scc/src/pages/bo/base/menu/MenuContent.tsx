@@ -159,13 +159,13 @@ const MenuContent = () => {
                         <p>좌측 트리에서 메뉴를 선택해주세요.</p>
                     )}
                 </Card>
-                    {selectedMenuCd ? (
+                {selectedMenuCd ? (
                     <Card title="메뉴 추가">
                     <MenuInsertForm
                         selectedMenuCd={selectedMenuCd}
                         />
                     </Card>
-                    ) : ('')}
+                ) : ('')}
             </Col>
         </Row>
 

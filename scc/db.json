@@ -73,7 +73,7 @@
       "qusetion": "",
       "transferYn": "Y",
       "callStartTm": "2025/06/12 14:20:30",
-      "callEndTm": "2025/06/17 10:34:14"
+      "callEndTm": "2025/06/24 14:30:38"
     },
     {
       "id": "20250612_151029",
@@ -434,6 +434,21 @@
       "transferYn": "Y",
       "callStartTm": "2025/06/23 14:09:04",
       "callEndTm": ""
+    },
+    {
+      "id": "20250624_143038",
+      "chatSeq": "20250624_143038",
+      "title": "희동이님 긴급문의",
+      "userId": 5,
+      "userNm": "희동이",
+      "mgrId": "2",
+      "mgrNm": "이상담원",
+      "status": "상담중",
+      "type": "챗",
+      "qusetion": "",
+      "transferYn": "Y",
+      "callStartTm": "2025/06/24 14:30:38",
+      "callEndTm": ""
     }
   ],
   "chatHt": [],
@@ -482,7 +497,7 @@
       "mgrId": 2,
       "mgrNm": "이상담원",
       "dptNm": "상담1팀",
-      "status": "상담준비"
+      "status": "이석-식사"
     },
     {
       "id": "3",
@@ -512,14 +527,14 @@
       "mgrId": 2,
       "mgrNm": "이상담원",
       "dptNm": "상담1팀",
-      "status": "상담준비",
-      "loginTime": "2025-06-23T06:42:24.559Z"
+      "status": "이석-식사",
+      "loginTime": "2025-06-24T05:31:35.039Z"
     }
   ],
   "socket": [
     {
       "id": "1",
-      "status": "open"
+      "status": "error"
     }
   ],
   "code": [
@@ -1223,95 +1238,155 @@
       "mgrId": "1",
       "mgrNm": "김상담원",
       "sendTime": "2025/06/23 14:09:04"
+    },
+    {
+      "id": "20250624_143038",
+      "chatSeq": "20250624_143038",
+      "chatNo": 1,
+      "userId": 5,
+      "userNm": "희동이",
+      "text": "이관되었습니다.",
+      "sender": "user",
+      "mgrId": "2",
+      "mgrNm": "이상담원",
+      "sendTime": "2025/06/24 14:30:38"
     }
   ],
   "menus": [
     {
       "id": "1",
       "menuCd": "ROOT",
-      "highMenuCd": "ROOT"
+      "highMenuCd": "ROOT",
+      "path": "",
+      "icon": "",
+      "orderNo": 1,
+      "useYn": "Y",
+      "menuNo": "1",
+      "regId": "2",
+      "regNm": "이상담원",
+      "regDt": "2025/06/17 10:00:53",
+      "modiId": 5,
+      "modiNm": "최상담원",
+      "modiDt": "2025/06/23 13:06:47"
     },
     {
       "id": "2",
       "menuCd": "M_MAIN",
       "highMenuCd": "ROOT",
       "path": "/main",
-      "icon": "HomeOutlincallEndTm",
-      "label": "메인",
+      "icon": "HomeOutlined",
+      "label": "😭",
       "orderNo": 1,
+      "useYn": "Y",
+      "menuNo": "1",
+      "regId": "2",
+      "regNm": "이상담원",
+      "regDt": "2025/06/17 10:00:53",
       "modiId": 2,
-      "modiDt": "2025/06/23 15:14:07"
+      "modiNm": "최상담원",
+      "modiDt": "2025/06/24 14:33:00"
     },
     {
       "id": "3",
       "menuCd": "M_SCC",
       "highMenuCd": "ROOT",
       "path": "/scc",
-      "icon": "CustomerServiceOutlincallEndTm",
+      "icon": "CustomerServiceOutlined",
       "label": "상담관리",
       "orderNo": 2,
+      "useYn": "Y",
+      "menuNo": "1",
+      "regId": "2",
+      "regNm": "이상담원",
+      "regDt": "2025/06/17 10:00:53",
       "modiId": 2,
-      "modiDt": "2025/06/23 15:14:07"
+      "modiNm": "최상담원",
+      "modiDt": "2025/06/24 14:33:00"
     },
     {
       "id": "4",
       "menuCd": "M_SYS",
       "highMenuCd": "ROOT",
       "path": "",
-      "icon": "SettingOutlincallEndTm",
+      "icon": "SettingOutlined",
       "label": "시스템관리",
       "orderNo": 3,
+      "useYn": "Y",
+      "menuNo": "1",
+      "regId": "2",
+      "regNm": "이상담원",
+      "regDt": "2025/06/17 10:00:53",
       "modiId": 2,
-      "modiDt": "2025/06/23 15:14:07",
-      "modiNm": "이상담원"
+      "modiNm": "최상담원",
+      "modiDt": "2025/06/24 14:33:00"
     },
     {
       "id": "5",
       "menuCd": "M_CODE",
       "highMenuCd": "M_SYS",
       "path": "/code",
-      "icon": "SettingOutlincallEndTm",
+      "icon": "SettingOutlined",
       "label": "코드관리",
-      "orderNo": 1,
+      "orderNo": 2,
+      "useYn": "Y",
+      "menuNo": "1",
+      "regId": "2",
+      "regNm": "이상담원",
+      "regDt": "2025/06/17 10:00:53",
       "modiId": 2,
-      "modiDt": "2025/06/23 15:17:38",
-      "modiNm": "이상담원"
+      "modiNm": "이상담원",
+      "modiDt": "2025/06/24 14:32:35"
     },
     {
       "id": "6",
       "menuCd": "M_MENU",
       "highMenuCd": "M_SYS",
       "path": "/menu",
-      "icon": "SettingOutlincallEndTm",
+      "icon": "SettingOutlined",
       "label": "메뉴관리",
-      "orderNo": 2,
+      "orderNo": 3,
+      "useYn": "Y",
+      "menuNo": "1",
+      "regId": "2",
+      "regNm": "이상담원",
+      "regDt": "2025/06/17 10:00:53",
       "modiId": 2,
-      "modiDt": "2025/06/23 15:17:47",
-      "modiNm": "이상담원"
+      "modiNm": "최상담원",
+      "modiDt": "2025/06/24 14:32:35"
     },
     {
       "id": "7",
       "menuCd": "M_HISTORY",
       "highMenuCd": "M_SCC",
       "path": "/history",
-      "icon": "SettingOutlincallEndTm",
-      "label": "상담이력",
-      "orderNo": 1,
-      "modiId": 2,
-      "modiDt": "2025/06/23 15:35:14",
-      "modiNm": "이상담원"
+      "icon": "SettingOutlined",
+      "label": "👳‍♂️",
+      "orderNo": 2,
+      "useYn": "N",
+      "menuNo": "1",
+      "regId": "2",
+      "regNm": "이상담원",
+      "regDt": "2025/06/17 10:00:53",
+      "modiId": 5,
+      "modiNm": "최상담원",
+      "modiDt": "2025/06/23 13:11:56"
     },
     {
       "id": "8",
       "menuCd": "M_HISTORY2",
       "highMenuCd": "M_SCC",
       "path": "/history2",
-      "icon": "SettingOutlincallEndTm",
+      "icon": "SettingOutlined",
       "label": "상담이력2",
-      "orderNo": 2,
-      "modiId": 2,
-      "modiDt": "2025/06/23 15:35:09",
-      "modiNm": "이상담원"
+      "orderNo": 3,
+      "useYn": "Y",
+      "menuNo": "1",
+      "regId": "2",
+      "regNm": "이상담원",
+      "regDt": "2025/06/17 10:00:53",
+      "modiId": 5,
+      "modiNm": "최상담원",
+      "modiDt": "2025/06/23 13:11:56"
     }
   ]
 }

@@ -1,13 +1,14 @@
 // 전역 테마 (ConfigProvider, ThemeProvider)
-import {Layout} from 'antd';
+import {ConfigProvider, Layout} from 'antd';
 import Navbar from '@components/layout/Navbar';
 import Sidebar from '@components/layout/Sidebar';
 import Content from '@pages/cmm/Content';
 import 'tui-grid/dist/tui-grid.css';
-import {useMenuListStore, useMenuStore} from "@stores/bo/base/menu/menuStore.ts";
+import {useMenuListStore} from "@stores/bo/base/menu/menuStore.ts";
 import {useLocation} from "react-router-dom";
 import {useEffect} from "react";
 import {useMenuList} from "@hooks/bo/base/menu/useMenu.ts";
+import koKR from 'antd/locale/ko_KR'; // antd v5+
 
 const { Header, Footer } = Layout;
 
@@ -40,7 +41,9 @@ function App() {
             </Header>
             <Layout>
                 {location.pathname !== '/main' && <Sidebar/>}
-                <Content/>
+                <ConfigProvider locale={koKR} >
+                    <Content/>
+                </ConfigProvider>
             </Layout>
             <Footer style={{textAlign:'center'}}>@2025 SRPOST TEST</Footer>
         </Layout>

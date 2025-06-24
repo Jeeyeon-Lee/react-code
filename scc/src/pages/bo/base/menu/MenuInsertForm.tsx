@@ -1,14 +1,11 @@
-import React, {useEffect} from 'react';
-import {Col, Form, Input, InputNumber, message, Row, Space, Typography} from 'antd';
-import {DeleteTwoTone, EditFilled} from '@ant-design/icons';
+import React from 'react';
+import {Form, Input, InputNumber, message, Space, Typography} from 'antd';
+import {EditFilled} from '@ant-design/icons';
 import CmmButton from '@components/form/CmmButton.tsx';
-import {
-    deleteMenuMutation,
-    insertMenuMutation,
-    updateMenuMutation,
-    useMenuDetail
-} from "@hooks/bo/base/menu/useMenu.ts";
+import {insertMenuMutation, useMenuDetail} from "@hooks/bo/base/menu/useMenu.ts";
 import CmmRadioGroup from "@components/form/CmmRadioGroup.tsx";
+import CmmForm from "@components/form/CmmForm.tsx";
+import {smMax, smMin, smPattern, smRegex, smRequired, smValidateBuilder} from "@utils/form/smValidateBuilder.ts";
 
 const {Text} = Typography;
 
@@ -52,7 +49,7 @@ const MenuInsertForm = ({selectedMenuCd, setSelectedMenuCd}) => {
     return (
         <div style={{display: 'flex', flexDirection: 'column', height: '100%', padding:'15px'}}>
             <div style={{flex: 1, overflow: 'auto'}}>
-                <Form
+                <CmmForm
                     form={form}
                     layout="horizontal"
                     onFinish={handleSubmitContent}
@@ -62,14 +59,23 @@ const MenuInsertForm = ({selectedMenuCd, setSelectedMenuCd}) => {
                     <Form.Item
                         label="메뉴 코드"
                         name="menuCd"
-                        rules={[{ required: true, message: '필수입력사항' }]}
+                        rules={smValidateBuilder(
+                            smRequired(),
+                            smMin(2),
+                            smMax(20),
+                            smPattern(smRegex.code.pattern, smRegex.code.message)
+                        )}
                     >
                         <Input />
                     </Form.Item>
                     <Form.Item
                         label="메뉴명"
                         name="label"
-                        rules={[{ required: true, message: '필수입력사항' }]}
+                        rules={smValidateBuilder(
+                            smRequired(),
+                            smMin(2),
+                            smMax(20),
+                        )}
                     >
                         <Input />
                     </Form.Item>
@@ -99,7 +105,7 @@ const MenuInsertForm = ({selectedMenuCd, setSelectedMenuCd}) => {
                             저장
                         </CmmButton>
                     </Space>
-                </Form>
+                </CmmForm>
             </div>
         </div>
     );
