@@ -1,6 +1,7 @@
-import type { Rule } from 'rc-field-form/lib/interface';
+import type {Rule, RuleType} from 'rc-field-form/lib/interface';
 // utils/formRules.ts
 
+// 정규식 패턴
 export const smRegex = {
     alphabetic: {
         pattern: /^[a-zA-Z]+$/,
@@ -57,22 +58,25 @@ export const smRequired = (isRequired = true, message?: string): Rule | undefine
     isRequired ? { required: true, message: message } : undefined;
 
 // 최소 길이
-export const smMin = (min: number, message?: string): Rule => ({
-    min,
-    message: message,
-});
+export const smMin = (min: number, message?: string, type: RuleType = 'string'): Rule => {
+    const rule: Rule = { min, type };
+    if (message) rule.message = message;
+    return rule;
+};
 
 // 최대 길이
-export const smMax = (max: number, message?: string): Rule => ({
-    max,
-    message: message,
-});
+export const smMax = (max: number, message?: string, type: RuleType = 'string'): Rule => {
+    const rule: Rule = { max, type };
+    if (message) rule.message = message;
+    return rule;
+};
 
 // 지정 길이
-export const smLen = (len: number, message?: string): Rule => ({
-    len,
-    message: message,
-});
+export const smLen = (len: number, message?: string, type: RuleType = 'string'): Rule => {
+    const rule: Rule = { len, type };
+    if (message) rule.message = message;
+    return rule;
+};
 
 // 정규식
 export const smPattern = (regex: RegExp, message: string): Rule => ({
