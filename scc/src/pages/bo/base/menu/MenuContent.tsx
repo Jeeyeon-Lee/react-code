@@ -7,6 +7,7 @@ import MenuForm from "@pages/bo/base/menu/MenuForm.tsx";
 import {MoveMenuMutation} from "@hooks/bo/base/menu/useMenu.ts";
 import MenuInsertForm from "@pages/bo/base/menu/MenuInsertForm.tsx";
 
+// menuList 데이터 treeData 컨버팅
 function menuTreeData(menuList: MenuType[], parentCd: string): TreeDataNode[] {
     return menuList
         .filter(m => m.highMenuCd === parentCd && m.menuCd !== parentCd) // 무한 루프 방지
@@ -22,30 +23,65 @@ function menuTreeData(menuList: MenuType[], parentCd: string): TreeDataNode[] {
         });
 }
 
+// 메뉴 경로 탐색
+function findPath(treeData, targetKey) {
+    const path: string[] = [];
+
+    function dfs(nodes, currentPath) {
+        for (const node of nodes) {
+            const newPath = [...currentPath, node.title];
+
+            if (node.key === targetKey) {
+                path.push(...newPath);
+                return true;
+            }
+
+            if (node.children && dfs(node.children, newPath)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    dfs(treeData, []);
+
+    // ROOT 요소 제외 후 리턴
+    return path.splice(1);
+}
+
 const MenuContent = () => {
     // init menuList setting
     const menuList = useMenuListStore(state => state.menuList);
 
-    const treeData = useMemo(() => menuTreeData(menuList, 'ROOT'), [menuList]);
+    const treeData = useMemo(() => [
+        {
+            key: 'ROOT',
+            title: '메뉴 목록',
+            selectable: false,
+            children: menuTreeData(menuList, 'ROOT'),
+        }
+    ], [menuList]);
     const [gData, setGData] = useState(treeData);
-    const [selectedMenuCd, setSelectedMenuCd] = useState(null);
+    const [selectedMenuCd, setSelectedMenuCd] = useState<string>(null);
+    const [selectedMenuPath, setSelectedMenuPath] = useState<string>('');
     const {mutate: moveMenu} = MoveMenuMutation();
 
     useEffect(() => {
         // defaultData가 변경될 때마다 gData를 업데이트
         setGData(treeData);
+
+        if(selectedMenuCd) {
+            setSelectedMenuPath(findPath(treeData, selectedMenuCd).join(' / '));
+        }
+
     }, [treeData, gData]); // defaultData가 변경될 때마다 이 useEffect가 실행됩니다.
 
-    const onSelect = (selectedKeys) => {
+    const onSelect = (selectedKeys, info) => {
         const key = selectedKeys[0];
         if (key) {
             setSelectedMenuCd(key);
+            setSelectedMenuPath(findPath(treeData, key).join(' / '));
         }
-    };
-
-    const onDragEnter: TreeProps['onDragEnter'] = (info) => {
-        // expandedKeys, set it when controlled is needed
-        // setExpandedKeys(info.expandedKeys)
     };
 
     const onDrop: TreeProps['onDrop'] = (info) => {
@@ -77,6 +113,13 @@ const MenuContent = () => {
                 }
             }
         };
+
+        loop(data, dragKey, (item, index, arr) => {
+            if (arr[index]?.key === dragKey) {
+                dragObj = { ...arr[index] }; // 복사 후
+                arr.splice(index, 1);
+            }
+        });
 
         // remove dragged item
         loop(data, dragKey, (item, index, arr) => {
@@ -131,7 +174,6 @@ const MenuContent = () => {
         setGData(data);
     };
 
-
     return (
         <Row gutter={16}>
             <Col span={8}>
@@ -140,7 +182,7 @@ const MenuContent = () => {
                         className="draggable-tree"
                         draggable
                         blockNode
-                        onDragEnter={onDragEnter}
+                        defaultExpandedKeys={['ROOT']}
                         onDrop={onDrop}
                         treeData={gData}
                         onSelect={onSelect}
@@ -150,9 +192,10 @@ const MenuContent = () => {
             </Col>
             <Col span={16}>
                 <Card title="메뉴 상세 정보">
-                    {selectedMenuCd ? (
+                    {selectedMenuCd && selectedMenuCd !== 'ROOT' ? (
                         <MenuForm
                             selectedMenuCd={selectedMenuCd}
+                            selectedMenuPath={selectedMenuPath}
                             setSelectedMenuCd={setSelectedMenuCd}
                             />
                         ) : (

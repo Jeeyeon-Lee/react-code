@@ -3,7 +3,7 @@ const typeTemplate = '${label} 유효하지 않은 ${type}';
 
 const smValidateMessages = {
     default: '필드 유효성 검사 오류 ${label}',
-    required: '${label}은 필수 입력 항목입니다.',
+    required: '${label}은(는) 필수 입력 항목입니다.',
     enum: '${label} [${enum}] 중에 하나여야 합니다',
     whitespace: '${label} 비워둘 수 없습니다',
     date: {

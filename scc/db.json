@@ -578,7 +578,7 @@
       "mgrId": 5,
       "mgrNm": "관리자",
       "dptNm": "운영팀",
-      "status": "상담중"
+      "status": "상담준비"
     }
   ],
   "loginMgr": [
@@ -587,8 +587,8 @@
       "mgrId": 5,
       "mgrNm": "관리자",
       "dptNm": "운영팀",
-      "status": "상담중",
-      "loginTime": "2025-06-24T07:12:02.283Z"
+      "status": "상담준비",
+      "loginTime": "2025-06-26T00:25:42.650Z"
     }
   ],
   "socket": [
@@ -1437,9 +1437,9 @@
       "regId": "2",
       "regNm": "이상담원",
       "regDt": "2025/06/17 10:00:53",
-      "modiId": 2,
+      "modiId": 5,
       "modiNm": "최상담원",
-      "modiDt": "2025/06/24 14:33:00"
+      "modiDt": "2025/06/25 10:57:51"
     },
     {
       "id": "3",
@@ -1448,15 +1448,15 @@
       "path": "/scc",
       "icon": "CustomerServiceOutlined",
       "label": "상담관리",
-      "orderNo": 2,
+      "orderNo": 3,
       "useYn": "Y",
       "menuNo": "1",
       "regId": "2",
       "regNm": "이상담원",
       "regDt": "2025/06/17 10:00:53",
-      "modiId": 2,
+      "modiId": 5,
       "modiNm": "최상담원",
-      "modiDt": "2025/06/24 14:33:00"
+      "modiDt": "2025/06/25 10:57:51"
     },
     {
       "id": "4",
@@ -1465,15 +1465,15 @@
       "path": "",
       "icon": "SettingOutlined",
       "label": "시스템관리",
-      "orderNo": 3,
+      "orderNo": 4,
       "useYn": "Y",
       "menuNo": "1",
       "regId": "2",
       "regNm": "이상담원",
       "regDt": "2025/06/17 10:00:53",
-      "modiId": 2,
-      "modiNm": "최상담원",
-      "modiDt": "2025/06/24 14:33:00"
+      "modiId": 5,
+      "modiNm": "관리자",
+      "modiDt": "2025/06/26 10:45:52"
     },
     {
       "id": "5",
@@ -1488,9 +1488,9 @@
       "regId": "2",
       "regNm": "이상담원",
       "regDt": "2025/06/17 10:00:53",
-      "modiId": 2,
+      "modiId": 5,
       "modiNm": "이상담원",
-      "modiDt": "2025/06/24 14:32:35"
+      "modiDt": "2025/06/26 09:24:32"
     },
     {
       "id": "6",
@@ -1499,15 +1499,15 @@
       "path": "/menu",
       "icon": "SettingOutlined",
       "label": "메뉴관리",
-      "orderNo": 3,
+      "orderNo": 1,
       "useYn": "Y",
       "menuNo": "1",
       "regId": "2",
       "regNm": "이상담원",
       "regDt": "2025/06/17 10:00:53",
-      "modiId": 2,
+      "modiId": 5,
       "modiNm": "최상담원",
-      "modiDt": "2025/06/24 14:32:35"
+      "modiDt": "2025/06/26 09:24:32"
     },
     {
       "id": "7",
@@ -1516,7 +1516,7 @@
       "path": "/history",
       "icon": "SettingOutlined",
       "label": "👳‍♂️",
-      "orderNo": 2,
+      "orderNo": 1,
       "useYn": "N",
       "menuNo": "1",
       "regId": "2",
@@ -1524,7 +1524,7 @@
       "regDt": "2025/06/17 10:00:53",
       "modiId": 5,
       "modiNm": "최상담원",
-      "modiDt": "2025/06/23 13:11:56"
+      "modiDt": "2025/06/26 09:22:44"
     },
     {
       "id": "8",
@@ -1533,7 +1533,7 @@
       "path": "/history2",
       "icon": "SettingOutlined",
       "label": "상담이력2",
-      "orderNo": 3,
+      "orderNo": 2,
       "useYn": "Y",
       "menuNo": "1",
       "regId": "2",
@@ -1541,7 +1541,263 @@
       "regDt": "2025/06/17 10:00:53",
       "modiId": 5,
       "modiNm": "최상담원",
-      "modiDt": "2025/06/23 13:11:56"
+      "modiDt": "2025/06/26 09:22:44"
+    }
+  ],
+  "codeGroup": [
+    {
+      "id": 1,
+      "groupCd": "CHANNEL",
+      "groupNm": "채널",
+      "regId": "1",
+      "modiId": "",
+      "regDt": "",
+      "modiDt": ""
+    },
+    {
+      "id": 2,
+      "groupCd": "USE_YN",
+      "groupNm": "사용여부 코드",
+      "regId": "1",
+      "modiId": "",
+      "regDt": "",
+      "modiDt": ""
+    },
+    {
+      "id": 3,
+      "groupCd": "DELETE_YN",
+      "groupNm": "삭제여부 코드",
+      "regId": "1",
+      "modiId": "",
+      "regDt": "",
+      "modiDt": ""
+    },
+    {
+      "id": 4,
+      "groupCd": "AGENT_STATUS",
+      "groupNm": "팀원 상태",
+      "regId": "1",
+      "modiId": "",
+      "regDt": "",
+      "modiDt": ""
+    }
+  ],
+  "codeDetail": [
+    {
+      "id": 1,
+      "groupCd": "CHANNEL",
+      "detailCd": "VOICE",
+      "detailNm": "콜",
+      "orderNo": 1,
+      "useYn": "Y",
+      "regId": "1",
+      "modiId": "",
+      "regDt": "",
+      "modiDt": ""
+    },
+    {
+      "id": 2,
+      "groupCd": "CHANNEL",
+      "detailCd": "CHAT",
+      "detailNm": "채팅",
+      "orderNo": 2,
+      "useYn": "Y",
+      "regId": "1",
+      "modiId": "",
+      "regDt": "",
+      "modiDt": ""
+    },
+    {
+      "id": 3,
+      "groupCd": "USE_YN",
+      "detailCd": "Y",
+      "detailNm": "사용",
+      "orderNo": 1,
+      "useYn": "Y",
+      "regId": "1",
+      "modiId": "",
+      "regDt": "",
+      "modiDt": ""
+    },
+    {
+      "id": 4,
+      "groupCd": "USE_YN",
+      "detailCd": "N",
+      "detailNm": "미사용",
+      "orderNo": 2,
+      "useYn": "Y",
+      "regId": "1",
+      "modiId": "",
+      "regDt": "",
+      "modiDt": ""
+    },
+    {
+      "id": 5,
+      "groupCd": "DELETE_YN",
+      "detailCd": "Y",
+      "detailNm": "삭제",
+      "orderNo": 1,
+      "useYn": "Y",
+      "regId": "1",
+      "modiId": "",
+      "regDt": "",
+      "modiDt": ""
+    },
+    {
+      "id": 6,
+      "groupCd": "DELETE_YN",
+      "detailCd": "N",
+      "detailNm": "미삭제",
+      "orderNo": 2,
+      "useYn": "Y",
+      "regId": "1",
+      "modiId": "",
+      "regDt": "",
+      "modiDt": ""
+    },
+    {
+      "id": 7,
+      "groupCd": "AGENT_STATUS",
+      "detailCd": "0",
+      "detailNm": "대기",
+      "orderNo": 1,
+      "useYn": "Y",
+      "regId": "1",
+      "modiId": "",
+      "regDt": "",
+      "modiDt": ""
+    },
+    {
+      "id": 8,
+      "groupCd": "AGENT_STATUS",
+      "detailCd": "1",
+      "detailNm": "식사",
+      "orderNo": 2,
+      "useYn": "Y",
+      "regId": "1",
+      "modiId": "",
+      "regDt": "",
+      "modiDt": ""
+    },
+    {
+      "id": 9,
+      "groupCd": "AGENT_STATUS",
+      "detailCd": "2",
+      "detailNm": "교육",
+      "orderNo": 3,
+      "useYn": "Y",
+      "regId": "1",
+      "modiId": "",
+      "regDt": "",
+      "modiDt": ""
+    },
+    {
+      "id": 10,
+      "groupCd": "AGENT_STATUS",
+      "detailCd": "3",
+      "detailNm": "후처리",
+      "orderNo": 4,
+      "useYn": "Y",
+      "regId": "1",
+      "modiId": "",
+      "regDt": "",
+      "modiDt": ""
+    },
+    {
+      "id": 11,
+      "groupCd": "AGENT_STATUS",
+      "detailCd": "4",
+      "detailNm": "미팅",
+      "orderNo": 5,
+      "useYn": "Y",
+      "regId": "1",
+      "modiId": "",
+      "regDt": "",
+      "modiDt": ""
+    },
+    {
+      "id": 12,
+      "groupCd": "AGENT_STATUS",
+      "detailCd": "5",
+      "detailNm": "휴식",
+      "orderNo": 6,
+      "useYn": "Y",
+      "regId": "1",
+      "modiId": "",
+      "regDt": "",
+      "modiDt": ""
+    },
+    {
+      "id": 13,
+      "groupCd": "AGENT_STATUS",
+      "detailCd": "6",
+      "detailNm": "상담불가",
+      "orderNo": 7,
+      "useYn": "Y",
+      "regId": "1",
+      "modiId": "",
+      "regDt": "",
+      "modiDt": ""
+    },
+    {
+      "id": 14,
+      "groupCd": "AGENT_STATUS",
+      "detailCd": "7",
+      "detailNm": "작업",
+      "orderNo": 8,
+      "useYn": "Y",
+      "regId": "1",
+      "modiId": "",
+      "regDt": "",
+      "modiDt": ""
+    },
+    {
+      "id": 15,
+      "groupCd": "AGENT_STATUS",
+      "detailCd": "9",
+      "detailNm": "티타임",
+      "orderNo": 9,
+      "useYn": "Y",
+      "regId": "1",
+      "modiId": "",
+      "regDt": "",
+      "modiDt": ""
+    },
+    {
+      "id": 16,
+      "groupCd": "AGENT_STATUS",
+      "detailCd": "10",
+      "detailNm": "모니터링",
+      "orderNo": 10,
+      "useYn": "Y",
+      "regId": "1",
+      "modiId": "",
+      "regDt": "",
+      "modiDt": ""
+    },
+    {
+      "id": 17,
+      "groupCd": "AGENT_STATUS",
+      "detailCd": "20",
+      "detailNm": "OB작업",
+      "orderNo": 11,
+      "useYn": "Y",
+      "regId": "1",
+      "modiId": "",
+      "regDt": "",
+      "modiDt": ""
+    },
+    {
+      "id": 18,
+      "groupCd": "AGENT_STATUS",
+      "detailCd": "99",
+      "detailNm": "기타",
+      "orderNo": 12,
+      "useYn": "Y",
+      "regId": "1",
+      "modiId": "",
+      "regDt": "",
+      "modiDt": ""
     }
   ]
 }

@@ -1,5 +1,5 @@
-import {useMutation, useQuery, useQueryClient} from '@tanstack/react-query';
-import type {Chat, ChatFormData, MenuType} from '@/types';
+import {useMutation, useQuery} from '@tanstack/react-query';
+import type {MenuType} from '@/types';
 import axios from "@api/api.ts";
 import {salmon} from "@utils/salmon.ts";
 import {getLoginMgr} from "@api/cmm/loginApi.ts";
@@ -81,7 +81,6 @@ export const updateMenuMutation = () => {
             }
         },
         onSuccess: async (data) => {
-            console.log(data);
             await queryClient.invalidateQueries({ queryKey: ['menuDetail'] });
             await queryClient.invalidateQueries({ queryKey: ['menuList'] });
 

@@ -6,10 +6,11 @@ import {deleteMenuMutation, updateMenuMutation, useMenuDetail} from "@hooks/bo/b
 import CmmRadioGroup from "@components/form/CmmRadioGroup.tsx";
 import CmmForm from "@components/form/CmmForm.tsx";
 import {smMax, smMin, smRequired, smValidateBuilder} from "@utils/form/smValidateBuilder.ts";
+import type {MenuType} from "@/types";
 
 const {Text} = Typography;
 
-const MenuForm = ({selectedMenuCd, setSelectedMenuCd}) => {
+const MenuForm = ({selectedMenuCd, setSelectedMenuCd, selectedMenuPath}) => {
     const [form] = Form.useForm();
     const isDisabled = !selectedMenuCd;
     const { data: menuDetailData, isLoading} = useMenuDetail(selectedMenuCd);
@@ -46,6 +47,20 @@ const MenuForm = ({selectedMenuCd, setSelectedMenuCd}) => {
         setSelectedMenuCd('');
     }
 
+    function getBreadcrumbItems (menuList: MenuType[], menuCd: string) {
+        const items: String[{}] = [];
+
+        let current = menuList.find(m => m.path === locationPath);
+
+        while (current) {
+            items.unshift({title: current.label}); // 앞에 추가해서 루트부터 순서대로
+            if (current.highMenuCd === 'ROOT') break;
+            current = menuList.find(m => m.menuCd === current.highMenuCd);
+        }
+
+        return items;
+    };
+
     if (isLoading) {
         return <div>메뉴 상세 정보를 불러오는 중...</div>;
     }
@@ -60,7 +75,7 @@ const MenuForm = ({selectedMenuCd, setSelectedMenuCd}) => {
                 requiredMark
             >
                 <Form.Item label="메뉴 경로" >
-                    <Text>{menuDetailData?.path||'-'}</Text>
+                    <Text>{selectedMenuPath||'-'}</Text>
                 </Form.Item>
 
                 <Row gutter={16}>
@@ -142,6 +157,8 @@ const MenuForm = ({selectedMenuCd, setSelectedMenuCd}) => {
                     <CmmButton
                         icon={<DeleteTwoTone /> }
                         onClick={() => handleDeleteMenu()}
+                        type="primary"
+                        danger
                         disabled={isDisabled}>
                         삭제
                     </CmmButton>
