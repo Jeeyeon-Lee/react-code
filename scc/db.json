@@ -588,7 +588,7 @@
       "mgrNm": "관리자",
       "dptNm": "운영팀",
       "status": "상담준비",
-      "loginTime": "2025-06-26T00:25:42.650Z"
+      "loginTime": "2025-06-29T23:36:44.250Z"
     }
   ],
   "socket": [
@@ -1542,11 +1542,26 @@
       "modiId": 5,
       "modiNm": "최상담원",
       "modiDt": "2025/06/26 09:22:44"
+    },
+    {
+      "id": "20250630_151526",
+      "menuCd": "M_NOTICE",
+      "label": "공지사항",
+      "option": "isChild",
+      "highMenuCd": "M_SYS",
+      "useYn": "Y",
+      "regDt": "2025/06/30 15:15:26",
+      "regId": 5,
+      "regNm": "관리자",
+      "path": "/notice",
+      "modiDt": "2025/06/30 15:15:43",
+      "modiId": 5,
+      "modiNm": "관리자"
     }
   ],
   "codeGroup": [
     {
-      "id": 1,
+      "id": "1",
       "groupCd": "CHANNEL",
       "groupNm": "채널",
       "regId": "1",
@@ -1555,7 +1570,7 @@
       "modiDt": ""
     },
     {
-      "id": 2,
+      "id": "2",
       "groupCd": "USE_YN",
       "groupNm": "사용여부 코드",
       "regId": "1",
@@ -1564,7 +1579,7 @@
       "modiDt": ""
     },
     {
-      "id": 3,
+      "id": "3",
       "groupCd": "DELETE_YN",
       "groupNm": "삭제여부 코드",
       "regId": "1",
@@ -1573,18 +1588,26 @@
       "modiDt": ""
     },
     {
-      "id": 4,
+      "id": "4",
       "groupCd": "AGENT_STATUS",
       "groupNm": "팀원 상태",
       "regId": "1",
       "modiId": "",
       "regDt": "",
       "modiDt": ""
+    },
+    {
+      "id": "20250630_134024",
+      "groupCd": "TT",
+      "groupNm": "!!",
+      "useYn": "Y",
+      "regDt": "2025/06/30 13:40:24",
+      "regId": 5
     }
   ],
   "codeDetail": [
     {
-      "id": 1,
+      "id": "1",
       "groupCd": "CHANNEL",
       "detailCd": "VOICE",
       "detailNm": "콜",
@@ -1596,7 +1619,7 @@
       "modiDt": ""
     },
     {
-      "id": 2,
+      "id": "2",
       "groupCd": "CHANNEL",
       "detailCd": "CHAT",
       "detailNm": "채팅",
@@ -1608,7 +1631,7 @@
       "modiDt": ""
     },
     {
-      "id": 3,
+      "id": "3",
       "groupCd": "USE_YN",
       "detailCd": "Y",
       "detailNm": "사용",
@@ -1620,7 +1643,7 @@
       "modiDt": ""
     },
     {
-      "id": 4,
+      "id": "4",
       "groupCd": "USE_YN",
       "detailCd": "N",
       "detailNm": "미사용",
@@ -1632,7 +1655,7 @@
       "modiDt": ""
     },
     {
-      "id": 5,
+      "id": "5",
       "groupCd": "DELETE_YN",
       "detailCd": "Y",
       "detailNm": "삭제",
@@ -1644,7 +1667,7 @@
       "modiDt": ""
     },
     {
-      "id": 6,
+      "id": "6",
       "groupCd": "DELETE_YN",
       "detailCd": "N",
       "detailNm": "미삭제",
@@ -1656,7 +1679,7 @@
       "modiDt": ""
     },
     {
-      "id": 7,
+      "id": "7",
       "groupCd": "AGENT_STATUS",
       "detailCd": "0",
       "detailNm": "대기",
@@ -1668,7 +1691,7 @@
       "modiDt": ""
     },
     {
-      "id": 8,
+      "id": "8",
       "groupCd": "AGENT_STATUS",
       "detailCd": "1",
       "detailNm": "식사",
@@ -1680,7 +1703,7 @@
       "modiDt": ""
     },
     {
-      "id": 9,
+      "id": "9",
       "groupCd": "AGENT_STATUS",
       "detailCd": "2",
       "detailNm": "교육",
@@ -1692,7 +1715,7 @@
       "modiDt": ""
     },
     {
-      "id": 10,
+      "id": "10",
       "groupCd": "AGENT_STATUS",
       "detailCd": "3",
       "detailNm": "후처리",
@@ -1704,7 +1727,7 @@
       "modiDt": ""
     },
     {
-      "id": 11,
+      "id": "11",
       "groupCd": "AGENT_STATUS",
       "detailCd": "4",
       "detailNm": "미팅",
@@ -1716,7 +1739,7 @@
       "modiDt": ""
     },
     {
-      "id": 12,
+      "id": "12",
       "groupCd": "AGENT_STATUS",
       "detailCd": "5",
       "detailNm": "휴식",
@@ -1728,7 +1751,7 @@
       "modiDt": ""
     },
     {
-      "id": 13,
+      "id": "13",
       "groupCd": "AGENT_STATUS",
       "detailCd": "6",
       "detailNm": "상담불가",
@@ -1740,7 +1763,7 @@
       "modiDt": ""
     },
     {
-      "id": 14,
+      "id": "14",
       "groupCd": "AGENT_STATUS",
       "detailCd": "7",
       "detailNm": "작업",
@@ -1752,7 +1775,7 @@
       "modiDt": ""
     },
     {
-      "id": 15,
+      "id": "15",
       "groupCd": "AGENT_STATUS",
       "detailCd": "9",
       "detailNm": "티타임",
@@ -1764,7 +1787,7 @@
       "modiDt": ""
     },
     {
-      "id": 16,
+      "id": "16",
       "groupCd": "AGENT_STATUS",
       "detailCd": "10",
       "detailNm": "모니터링",
@@ -1776,7 +1799,7 @@
       "modiDt": ""
     },
     {
-      "id": 17,
+      "id": "17",
       "groupCd": "AGENT_STATUS",
       "detailCd": "20",
       "detailNm": "OB작업",
@@ -1788,7 +1811,7 @@
       "modiDt": ""
     },
     {
-      "id": 18,
+      "id": "18",
       "groupCd": "AGENT_STATUS",
       "detailCd": "99",
       "detailNm": "기타",
@@ -1798,6 +1821,20 @@
       "modiId": "",
       "regDt": "",
       "modiDt": ""
+    },
+    {
+      "id": "1751264039559",
+      "key": "1751264039559",
+      "detailCd": "DDD",
+      "detailNm": "WWW",
+      "orderNo": "1",
+      "useYn": "N",
+      "groupCd": "TT",
+      "isNew": "",
+      "regId": 5,
+      "regDt": "2025/06/30 15:14:03",
+      "modiId": 5,
+      "modiDt": "2025/06/30 15:14:20"
     }
   ]
 }

@@ -122,3 +122,68 @@ export const deleteGroupCodeMutation = () => {
         },
     });
 };
+
+export const crudDetailCode = async ({
+                                         insertList,
+                                         updateList,
+                                         deleteList,
+                                     }: {
+    insertList: Code[];
+    updateList: Code[];
+    deleteList: Code[];
+}) => {
+    const now = salmon.date.newDate().format("YYYY/MM/DD HH:mm:ss");
+    const loginInfo = await getLoginMgr();
+
+    const regInfo = {
+        regId: loginInfo?.mgrId,
+        regDt: now,
+    };
+    const modiInfo = {
+        modiId: loginInfo?.mgrId,
+        modiDt: now,
+    };
+    const requests: Promise<any>[] = []; // 모든 axios 요청을 담을 배열
+
+    try {
+        // 1. insert
+        if (insertList.length > 0) {
+            insertList.forEach((value) => {
+                value.isNew = ''; // 'isNew' 속성 초기화
+                requests.push(axios.post("/codeDetail", { ...value, ...regInfo }));
+            });
+        }
+
+        // 2. update
+        if (updateList.length > 0) {
+            updateList.forEach((value) => {
+                requests.push(axios.patch(`/codeDetail/${value.id}`, { ...value, ...modiInfo }));
+            });
+        }
+
+        // 3. delete
+        if (deleteList.length > 0) {
+            deleteList.forEach((value) => {
+                requests.push(axios.delete(`/codeDetail/${value.id}`));
+            });
+        }
+
+        // 모든 요청이 완료될 때까지 기다림
+        await Promise.all(requests);
+        console.log('모든 변경사항 저장 완료');
+
+    } catch (error) {
+        console.error('변경사항 저장 실패:', error);
+        throw error;
+    }
+};
+
+export const useCrudDetailCode = () =>
+    useMutation({
+        mutationFn: crudDetailCode,
+
+        onError: async () => {
+            message.error('변경사항 저장에 실패했습니다.');
+        },
+    });
+

@@ -4,9 +4,9 @@ import type {ColumnsType} from "antd/es/table";
 import type {Code} from "@/types";
 import {useGroupCodeList} from "@hooks/bo/base/code/useCode.ts";
 import {EditFilled} from "@ant-design/icons";
-import CodeDetailList from "@pages/bo/base/code/CodeDetailList.tsx";
 import CmmButton from "@components/form/CmmButton.tsx";
 import CodeForm from "@pages/bo/base/code/CodeForm.tsx";
+import CodeDetailList from "@pages/bo/base/code/CodeDetailList.tsx";
 
 const { Option } = Select;
 
