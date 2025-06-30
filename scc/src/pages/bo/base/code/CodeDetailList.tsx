@@ -31,6 +31,7 @@ interface EditableCellProps {
     dataIndex: keyof Code;
     record: Code;
     handleSave: (record: Code) => void;
+    dataSource: Code[];
 }
 
 const EditableCell: React.FC<React.PropsWithChildren<EditableCellProps>> = ({
@@ -40,6 +41,7 @@ const EditableCell: React.FC<React.PropsWithChildren<EditableCellProps>> = ({
                                                                                 dataIndex,
                                                                                 record,
                                                                                 handleSave,
+                                                                                dataSource,
                                                                                 ...restProps
                                                                             }) => {
     const [editing, setEditing] = useState(false);
@@ -60,10 +62,16 @@ const EditableCell: React.FC<React.PropsWithChildren<EditableCellProps>> = ({
     const save = async () => {
         try {
             const values = await form.validateFields();
+
             toggleEdit();
             handleSave({ ...record, ...values });
         } catch (errInfo) {
             console.log("Save failed:", errInfo);
+
+            if(errInfo.errorFields[0].errors[0] === "코드값은 중복될 수 없습니다.") {
+                form.resetFields();
+            }
+
         }
     };
 
@@ -96,6 +104,23 @@ const EditableCell: React.FC<React.PropsWithChildren<EditableCellProps>> = ({
             smMax(20),
             smPattern(smRegex.code.pattern, smRegex.code.message)
         );
+
+        rules.push({
+
+            validator:(_rule, value) => {
+                if (!value || !value.trim()) return Promise.resolve();
+
+                const duplicates = dataSource.filter(
+                    (item) => item.detailCd === value && item.id !== record.id
+                );
+
+                if (duplicates.length > 0) {
+                    return Promise.reject("코드값은 중복될 수 없습니다.");
+                }
+                return Promise.resolve();
+            }
+        })
+
     } else if (dataIndex === 'detailNm') {
         rules = smValidateBuilder(
             smRequired(),
@@ -210,6 +235,15 @@ const CodeDetailList = ({ selectedGroupCd }) => {
         };
         setDataSource([...dataSource, newData]);
     };
+    
+    const hasDuplicate = (rows: Code[]) => {
+        const seen = new Set(dataSource);
+        for (const row of rows) {
+            if (seen.has(row.detailCd)) return true;
+            seen.add(row.detailCd);
+        }
+        return false;
+    };
 
     const handleBulkSave = async () => {
 
@@ -222,6 +256,12 @@ const CodeDetailList = ({ selectedGroupCd }) => {
             const insertList = modifiedRows.filter((r) => r.isNew);
             const updateList = modifiedRows.filter((r) => !r.isNew);
             const deleteList = deletedRows;
+
+            if (hasDuplicate([...insertList, ...updateList])) {
+                alert("중복된 개별코드가 있습니다.");
+                return;
+            }
+
 
             // 필수값 누락 체크
             const hasInvalid = [...insertList, ...updateList].some(
@@ -328,6 +368,7 @@ const CodeDetailList = ({ selectedGroupCd }) => {
                         dataIndex: col.dataIndex,
                         title: col.title,
                         handleSave,
+                        dataSource
                     };
                 },
             };

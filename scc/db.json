@@ -1603,6 +1603,14 @@
       "useYn": "Y",
       "regDt": "2025/06/30 13:40:24",
       "regId": 5
+    },
+    {
+      "id": "20250630_151651",
+      "groupCd": "TTTTTTT",
+      "groupNm": "그룹코드명",
+      "useYn": "Y",
+      "regDt": "2025/06/30 15:16:51",
+      "regId": 5
     }
   ],
   "codeDetail": [
@@ -1835,6 +1843,68 @@
       "regDt": "2025/06/30 15:14:03",
       "modiId": 5,
       "modiDt": "2025/06/30 15:14:20"
+    },
+    {
+      "id": "1751264214224",
+      "key": "1751264214224",
+      "detailCd": "ABC",
+      "detailNm": "aa",
+      "orderNo": 1,
+      "useYn": "Y",
+      "groupCd": "TTTTTTT",
+      "isNew": "",
+      "regId": 5,
+      "regDt": "2025/06/30 15:18:00"
+    },
+    {
+      "id": "1751266340077",
+      "key": "1751266340077",
+      "detailCd": "ABCD",
+      "detailNm": "DD",
+      "orderNo": 2,
+      "useYn": "Y",
+      "groupCd": "TTTTTTT",
+      "isNew": "",
+      "regId": 5,
+      "regDt": "2025/06/30 15:52:36",
+      "modiId": 5,
+      "modiDt": "2025/06/30 15:53:06"
+    },
+    {
+      "id": "1751267344603",
+      "key": "1751267344603",
+      "detailCd": "ABCDEF",
+      "detailNm": "ZZZ",
+      "orderNo": 5,
+      "useYn": "Y",
+      "groupCd": "TTTTTTT",
+      "isNew": "",
+      "regId": 5,
+      "regDt": "2025/06/30 16:10:37"
+    },
+    {
+      "id": "1751267788069",
+      "key": "1751267788069",
+      "detailCd": "FF",
+      "detailNm": "ZZZ",
+      "orderNo": 7,
+      "useYn": "Y",
+      "groupCd": "TTTTTTT",
+      "isNew": "",
+      "regId": 5,
+      "regDt": "2025/06/30 16:17:12"
+    },
+    {
+      "id": "1751267848425",
+      "key": "1751267848425",
+      "detailCd": "FE",
+      "detailNm": "ZZ",
+      "orderNo": 8,
+      "useYn": "Y",
+      "groupCd": "TTTTTTT",
+      "isNew": "",
+      "regId": 5,
+      "regDt": "2025/06/30 16:17:41"
     }
   ]
 }
