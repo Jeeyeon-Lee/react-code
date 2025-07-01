@@ -34,7 +34,7 @@ function ChatQuickButtons({ onSelectView }: QuickButtonsProps) {
                     onClick={() => handleButtonClick('history')}
                 />
             </Tooltip>
-            <Tooltip title="상담정보" placement="left">
+            <Tooltip title="고객정보" placement="left">
                 <Button 
                     type={activeView === 'info' ? 'primary' : 'default'} 
                     shape="circle" 

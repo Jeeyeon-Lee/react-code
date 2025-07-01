@@ -38,6 +38,32 @@ export const callStart = async (mgrId: string, chatSeq: string) => {
     setChatStatus(chatSeq, '상담중');
 };
 
+export const obCallStart = async (mgrId: string) => {
+    const ok = await checkSocketConnected();
+    if (!ok) return;
+
+    await ctiEvent({
+        type: 'OB_CALL_START',
+        mgrId,
+    });
+
+    /*const { setMgrStatus, setChatStatus } = useCtiStore.getState?.();
+    setMgrStatus('상담중');*/
+};
+
+export const callbackStart = async (mgrId: string) => {
+    const ok = await checkSocketConnected();
+    if (!ok) return;
+
+    await ctiEvent({
+        type: 'CALLBACK_START',
+        mgrId,
+    });
+
+    /*const { setMgrStatus, setChatStatus } = useCtiStore.getState?.();
+    setMgrStatus('상담중');*/
+};
+
 export const callEnd = async (mgrId: string, chatSeq: string) => {
     const ok = await checkSocketConnected();
     if (!ok) return;

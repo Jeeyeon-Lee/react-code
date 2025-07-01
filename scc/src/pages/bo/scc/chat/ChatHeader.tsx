@@ -6,12 +6,14 @@ import CmmCodeSelect from "@components/form/CmmCodeSelect.tsx";
 import { useSocketDetail, updateSocketStatusMutation, useUpdateMgrStatusMutation } from "@hooks/bo/scc/cti/useCti.ts";
 import ChatStatusChangeButton from "@pages/bo/scc/chat/ChatStatusChangeButton.tsx";
 import { useChatStore } from '@stores/bo/scc/chat/chatStore.ts';
+import { useCtiStore } from '@stores/bo/scc/cti/ctiStore.ts';
 import CallStatusChangeButton from "@pages/bo/scc/chat/CallStatusChangeButton.tsx";
 
 const { Text } = Typography;
 
 function ChatHeader() {
     const { chatType } = useChatStore();
+    const { setMgrStatus } = useCtiStore();
     const { loginInfo} = useLogin();
     const {mutate: saveLoginMgr} = useSaveLoginMgrMutation();
     const {mutate: updateLoginStatus} = useUpdateMgrStatusMutation();
@@ -20,7 +22,8 @@ function ChatHeader() {
     const {data: socketDetail} = useSocketDetail();
 
     const handleLoginStatusUpdate = async (status: Login['status']) => {
-        await updateLoginStatus({loginInfo, status});
+        await updateLoginStatus({loginInfo, status});// DB 상태
+        setMgrStatus(status); //ctiStoreT상태
     }
 
     const handleSocketStatusUpdate = (status: string) => {

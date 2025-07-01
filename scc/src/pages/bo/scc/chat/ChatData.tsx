@@ -1,14 +1,23 @@
-import { Card } from 'antd';
-import { useEffect } from 'react';
+import {Card, Descriptions} from 'antd';
+import { useUserDetail } from "@hooks/bo/base/user/useUser.ts";
 
-const ChatData = () => {
 
-    useEffect(() => {
-
-    }, );
+const ChatData = ({userId}) => {
+    const {data: userDetail} = useUserDetail(userId ?? '');
 
     return (
-        <Card title="상담 정보" style={{ height: '100%', overflow: 'auto' }}></Card>
+        <Card title="고객 정보" style={{ height: '100%', overflow: 'auto' }}>
+            <Descriptions
+                bordered
+                column={2}
+                items={[
+                    { key: 'title', label: '이용자 아이디', span: 2, children: userDetail?.userId || '-' },
+                    { key: 'user', label: '이름', span: 2, children: userDetail?.userNm || '-' },
+                    { key: 'mgr', label: '연락처', span: 2, children: userDetail?.mobile || '-' },
+                ]}
+            />
+
+        </Card>
     );
 };
 

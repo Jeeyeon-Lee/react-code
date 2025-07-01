@@ -7,8 +7,7 @@ import type { Chat } from '@/types';
 import type { ColumnsType } from 'antd/es/table';
 import ChatDetailDrawer from "@pages/bo/scc/chat/ChatDetailDrawer.tsx";
 import {useChatDetail} from "@hooks/bo/scc/chat/useChat.ts";
-import {SmileOutlined, UserOutlined, SolutionOutlined, LoadingOutlined} from "@ant-design/icons";
-import {useChatStore} from "@stores/bo/scc/chat/chatStore.ts";
+import {SmileOutlined, UserOutlined, SolutionOutlined} from "@ant-design/icons";
 
 const { Text } = Typography;
 

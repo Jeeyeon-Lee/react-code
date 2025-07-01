@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { Input, Button, List, Space, Badge, Statistic } from 'antd';
-import type { StatisticTimerProps } from 'antd';
-import { PhoneTwoTone, MessageTwoTone } from '@ant-design/icons';
+import {Input, Button, List, Space, Badge, Statistic, Modal, message} from 'antd';
+import {PhoneTwoTone, MessageTwoTone, PhoneOutlined} from '@ant-design/icons';
 import CmmCodeSellect from '@components/form/CmmCodeSelect.tsx';
 import type { Chat } from '@/types';
 import { useChatStore } from '@stores/bo/scc/chat/chatStore.ts';
@@ -10,7 +9,8 @@ import { useCtiStore } from '@stores/bo/scc/cti/ctiStore';
 import CmmTag from '@components/form/CmmTag.tsx';
 import { useLogin } from '@hooks/cmm/login/useLogin.ts';
 import {updateChatStatusMutation, useChatList} from '@hooks/bo/scc/chat/useChat.ts';
-import { changeChatStatus } from '@hooks/bo/scc/cti/useCti.ts';
+import {obCallStart, callbackStart, changeChatStatus} from '@hooks/bo/scc/cti/useCti.ts';
+import CmmButton from "@components/form/CmmButton.tsx";
 
 const { Timer } = Statistic;
 
@@ -21,6 +21,8 @@ function MyChat() {
     const [searchTerm, setSearchTerm] = useState('');
     const [status, setStatus] = useState('all');
     const [type, setType] = useState('all');
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalType, setModalType] = useState<'콜백' | '전화'>('전화');
 
     /*클라이언트 영역 : zustand 관리*/
     const { setChatSeq, setChatType } = useChatStore();
@@ -71,42 +73,58 @@ function MyChat() {
 
     if (isLoading) return <div>로딩중...</div>;
 
-    const onFinish: StatisticTimerProps['onFinish'] = () => {
-        console.log('finished!');
-    };
-
-    const onChange: StatisticTimerProps['onChange'] = (val) => {
-        if (typeof val === 'number' && 4.95 * 1000 < val && val < 5 * 1000) {
-            console.log('changed!');
-        }
-    };
-
     return (
         <div style={{ height: '70vh', display: 'flex', flexDirection: 'column', background: '#fff', borderRadius: '8px', padding: '10px' }}>
             {/*나의 상담 : 상단고정*/}
-            <div style={{ marginBottom: '10px' }}>
-                <div style={{position:'relative', display:'flex'}}>
-                    <h4>나의 상담 ({loginInfo?.mgrNm} - {loginInfo?.status} )</h4>
-
+            <div style={{marginBottom: '10px'}}>
+                <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8}}>
+                    <h4 style={{margin: 0}}>나의 상담 ({loginInfo?.mgrNm} - {loginInfo?.status} )</h4>
+                    <Space size="small">
+                        <CmmButton
+                            size="small"
+                            onClick={() => {
+                                callbackStart(loginInfo?.mgrId);
+                                setModalType('콜백');
+                                setIsModalOpen(true);
+                            }}
+                            buttonType="전화걸기"
+                        >
+                            콜백
+                        </CmmButton>
+                        <CmmButton
+                            size="small"
+                            onClick={() => {
+                                obCallStart(loginInfo?.mgrId);
+                                setModalType('전화');
+                                setIsModalOpen(true);
+                            }}
+                            buttonType="전화걸기"
+                        >
+                            전화걸기
+                        </CmmButton>
+                    </Space>
                 </div>
-                <Space size="middle" style={{ marginBottom: 8 }}>
+                <Space size="middle" style={{marginBottom: 8}}>
                     <Badge count={fullChatList.length} color="red" size="small" showZero>
-                        <Button size="small" onClick={()=> { setStatus('all'); setType('all')}}>전체</Button>
+                        <Button size="small" onClick={() => {
+                            setStatus('all');
+                            setType('all')
+                        }}>전체</Button>
                     </Badge>
                     <Badge count={대기중Count} color="pink" size="small" showZero>
-                        <Button size="small" onClick={()=>setStatus('대기중')}>대기</Button>
+                        <Button size="small" onClick={() => setStatus('대기중')}>대기</Button>
                     </Badge>
                     <Badge count={상담중Count} color="blue" size="small" showZero>
-                        <Button size="small" onClick={()=>setStatus('상담중')}>상담</Button>
+                        <Button size="small" onClick={() => setStatus('상담중')}>상담</Button>
                     </Badge>
                     <Badge count={후처리Count} color="blue" size="small" showZero>
-                        <Button size="small" onClick={()=>setStatus('후처리')}>후처리</Button>
+                        <Button size="small" onClick={() => setStatus('후처리')}>후처리</Button>
                     </Badge>
                     <Badge count={완료Count} color="blue" size="small" showZero>
-                        <Button size="small" onClick={()=>setStatus('완료')}>완료</Button>
+                        <Button size="small" onClick={() => setStatus('완료')}>완료</Button>
                     </Badge>
                     <Badge count={보류Count} color="blue" size="small" showZero>
-                        <Button size="small" onClick={()=>setStatus('보류')}>보류</Button>
+                        <Button size="small" onClick={() => setStatus('보류')}>보류</Button>
                     </Badge>
                 </Space>
                 <Search
@@ -118,12 +136,12 @@ function MyChat() {
                 />
 
                 <div style={{display: 'flex', gap: '8px'}}>
-                    <CmmCodeSellect group="상담상태" value={status} onChange={(value) => setStatus(value)} />
-                    <CmmCodeSellect group="상담유형" value={type} onChange={(value) => setType(value)} />
+                    <CmmCodeSellect group="상담상태" value={status} onChange={(value) => setStatus(value)}/>
+                    <CmmCodeSellect group="상담유형" value={type} onChange={(value) => setType(value)}/>
                 </div>
             </div>
 
-            <div style={{ overflowY: 'auto' }}>
+            <div style={{overflowY: 'auto'}}>
                 <List
                     itemLayout="horizontal"
                     dataSource={filteredCounselList}
@@ -187,6 +205,25 @@ function MyChat() {
                     )}
                 />
             </div>
+            <Modal
+                title={modalType === '콜백' ? '콜백 걸기' : '전화걸기'}
+                open={isModalOpen}
+                onCancel={() => setIsModalOpen(false)}
+                footer={[
+                    <Button key="cancel" onClick={() => setIsModalOpen(false)}>닫기</Button>,
+                    <Button key="call" type="primary" onClick={() => {
+                        // 실제 전화 연결 또는 dummy 처리
+                        message.success(`${modalType} 실행됨`);
+                        setIsModalOpen(false);
+                    }}>전화걸기</Button>
+                ]}
+            >
+                <div style={{ marginBottom: 16 }}>
+                    최근 통화 이력 또는 전화번호 입력 등 넣을 영역
+                </div>
+                <Input placeholder="전화번호 입력" />
+            </Modal>
+
         </div>
     );
 };

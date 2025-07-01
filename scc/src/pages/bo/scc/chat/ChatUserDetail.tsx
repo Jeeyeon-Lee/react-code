@@ -1,7 +1,7 @@
 import React from 'react';
 import {Divider, Typography} from "antd";
 import {useUserStore} from "@stores/bo/base/user/userStore.ts";
-import {useUser} from "@hooks/bo/base/user/useUser.ts";
+import {useUserDetail} from "@hooks/bo/base/user/useUser.ts";
 import {useChatDetail} from "@hooks/bo/scc/chat/useChat.ts";
 import {useChatStore} from "@stores/bo/scc/chat/chatStore.ts";
 
@@ -10,7 +10,6 @@ const { Text } = Typography;
 function ChatUserDetail(props) {
     const { userId} = useUserStore();
     const { chatSeq} = useChatStore();
-    const { useUserDetail } = useUser();
     const { data: userDetail } = useUserDetail(userId);
     const { data: chatDetail } = useChatDetail(chatSeq);
     return (

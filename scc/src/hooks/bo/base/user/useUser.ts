@@ -4,24 +4,18 @@ import type { User } from '@/types';
 import {userKeys} from '@query/queryKeys.ts';
 
 
-export const useUser = () => {
 
-    const useUserList = () => {
-        return useQuery({
-            queryKey: userKeys.list().queryKey,
-            queryFn: () => getUsers(),
-        });
-    };
+export const useUserList = () => {
+    return useQuery({
+        queryKey: userKeys.list().queryKey,
+        queryFn: () => getUsers(),
+    });
+};
 
-    const useUserDetail = (userId:User['userId']) => {
-        return useQuery({
-            queryKey: userKeys.detail(userId).queryKey,
-            queryFn: () => getUserDetail(userId),
-            enabled: !!userId,
-        });
-    };
-    return {
-        useUserList,
-        useUserDetail
-    };
+export const useUserDetail = (userId:User['userId']) => {
+    return useQuery({
+        queryKey: userKeys.detail(userId).queryKey,
+        queryFn: () => getUserDetail(userId),
+        enabled: !!userId,
+    });
 };

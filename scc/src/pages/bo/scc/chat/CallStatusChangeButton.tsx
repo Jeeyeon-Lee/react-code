@@ -3,14 +3,14 @@ import CmmButton from "@components/form/CmmButton.tsx";
 import {
     DeleteOutlined,
     PhoneOutlined,
-    EditOutlined,
+    StopOutlined,
     RedoOutlined,
     DownCircleOutlined
 } from "@ant-design/icons";
 import { Space } from "antd";
-import {deleteChatMutation, updateChatStatusMutation, useChatDetail} from "@hooks/bo/scc/chat/useChat.ts";
+import {deleteChatMutation, updateChatStatusMutation} from "@hooks/bo/scc/chat/useChat.ts";
 import { useChatStore } from "@stores/bo/scc/chat/chatStore.ts";
-import { callStart, callEnd, holdCall, resumeCall, changeChatStatus, deleteChatSession } from '@hooks/bo/scc/cti/useCti.ts';
+import { callEnd, holdCall, resumeCall, changeChatStatus, deleteChatSession } from '@hooks/bo/scc/cti/useCti.ts';
 import { useUserStore } from "@stores/bo/base/user/userStore.ts";
 import {useLogin} from "@hooks/cmm/login/useLogin.ts";
 import {useCtiStore} from "@stores/bo/scc/cti/ctiStore.ts";
@@ -54,21 +54,11 @@ function CallStatusChangeButton() {
 
                 {chatStatus !== '보류' && (
                     <CmmButton
-                        icon={<EditOutlined />}
+                        icon={<StopOutlined />}
                         onClick={() => holdCall(chatSeq)}
                         buttonType='보류'
                     >
                         상담보류
-                    </CmmButton>
-                )}
-
-                {chatStatus !== '상담중' && (
-                    <CmmButton
-                        icon={<PhoneOutlined />}
-                        onClick={() => callStart(mgrId, chatSeq)}
-                        buttonType='전화걸기'
-                    >
-                        전화걸기
                     </CmmButton>
                 )}
 

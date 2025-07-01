@@ -10,10 +10,12 @@ import ChatContent from "@pages/bo/scc/chat/ChatContent.tsx";
 import { useChatStore } from '@stores/bo/scc/chat/chatStore.ts';
 import CallContent from "@pages/bo/scc/chat/CallContent.tsx";
 import ChatHeader from "@pages/bo/scc/chat/ChatHeader.tsx";
+import {useUserStore} from "@stores/bo/base/user/userStore.ts";
 
 function Content() {
     const [selectedView, setSelectedView] = useState<'history' | 'info' | 'template' | 'etc'>('history');
     const { chatType, chatSeq } = useChatStore();
+    const {userId} = useUserStore();
     const handleSelectView = (view: 'history' | 'info' | 'template' | 'etc') => {
         setSelectedView(view);
     };
@@ -23,7 +25,7 @@ function Content() {
             case 'history':
                 return <ChatHistory chatSeq={chatSeq}/>;
             case 'info':
-                return <ChatData chatSeq={chatSeq} />;
+                return <ChatData userId={userId} />;
             case 'template':
                 return <ChatTemplate chatSeq={chatSeq} />;
             case 'etc':

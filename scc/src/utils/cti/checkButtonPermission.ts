@@ -30,8 +30,8 @@ const buttonPermissionMap: Record<ButtonType, StatusRule> = {
     '보류해제': { mgrStatus: ['상담가능', '상담중'], chatStatus: ['보류'] },
     '상담종료': { mgrStatus: ['상담가능', '상담중'], chatStatus: ['상담중','보류'] },
     '통화':    { mgrStatus: ['상담가능'], chatStatus: ['수신중'] },
-    '전화걸기': { mgrStatus: ['상담가능'], chatStatus: ['상담중'] },
-    '전화끊기': { mgrStatus: ['상담가능', '상담중'], chatStatus: ['상담중','보류'] },
+    '전화걸기': { mgrStatus: ['상담가능'], chatStatus: 'all' },
+    '전화끊기': { mgrStatus: ['상담중'], chatStatus: ['상담중','보류'] },
     '메시지':  { mgrStatus: 'all', chatStatus: 'all' },
     '3자 통화': { mgrStatus: ['상담가능', '상담중'], chatStatus: ['상담중'] },
     '전송':    { mgrStatus: ['상담가능', '상담중'], chatStatus: ['상담중'] },
@@ -39,7 +39,7 @@ const buttonPermissionMap: Record<ButtonType, StatusRule> = {
     '상담수정': { mgrStatus: ['상담가능', '후처리'], chatStatus: ['후처리', '완료'] },
     '완료처리': { mgrStatus: ['상담가능', '상담중', '후처리'], chatStatus: ['상담중','보류','완료','후처리','이관'] },
     '삭제': { mgrStatus: 'all', chatStatus: ['완료', '후처리'], chatStatusNot: ['보류'] },
-    '상담가능': { mgrStatus: ['상담가능', '후처리'], chatStatus: ['대기중','상담중','보류','완료','후처리','이관'] },
+    '상담가능': { mgrStatus: ['상담가능'], chatStatus: 'all' },
 } as const;
 
 export function checkButtonPermission(button: ButtonType): boolean {

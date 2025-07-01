@@ -141,7 +141,7 @@
       "userNm": "희동이",
       "mgrId": "3",
       "mgrNm": "최상담원",
-      "status": "보류",
+      "status": "완료",
       "type": "챗",
       "qusetion": "",
       "transferYn": "Y",
@@ -895,7 +895,7 @@
       "mgrNm": "관리자",
       "dptNm": "운영팀",
       "status": "상담가능",
-      "loginTime": "2025-07-01T01:30:08.625Z"
+      "loginTime": "2025-07-01T04:58:38.970Z"
     }
   ],
   "socket": [
@@ -1858,7 +1858,7 @@
       "id": "3",
       "menuCd": "M_SCC",
       "highMenuCd": "ROOT",
-      "path": "/scc",
+      "path": "",
       "icon": "CustomerServiceOutlined",
       "label": "상담관리",
       "orderNo": 3,
@@ -1923,29 +1923,11 @@
       "modiDt": "2025/06/26 09:24:32"
     },
     {
-      "id": "7",
-      "menuCd": "M_HISTORY",
-      "highMenuCd": "M_SCC",
-      "path": "/history",
-      "icon": "SettingOutlined",
-      "label": "👳‍♂️",
-      "orderNo": 1,
-      "useYn": "N",
-      "menuNo": "1",
-      "regId": "2",
-      "regNm": "이상담원",
-      "regDt": "2025/06/17 10:00:53",
-      "modiId": 5,
-      "modiNm": "최상담원",
-      "modiDt": "2025/06/26 09:22:44"
-    },
-    {
       "id": "8",
       "menuCd": "M_HISTORY2",
       "highMenuCd": "M_SCC",
       "path": "/history2",
-      "icon": "SettingOutlined",
-      "label": "상담이력2",
+      "label": "실시간 모니터링",
       "orderNo": 2,
       "useYn": "Y",
       "menuNo": "1",
@@ -1953,8 +1935,8 @@
       "regNm": "이상담원",
       "regDt": "2025/06/17 10:00:53",
       "modiId": 5,
-      "modiNm": "최상담원",
-      "modiDt": "2025/06/26 09:22:44"
+      "modiNm": "관리자",
+      "modiDt": "2025/07/01 14:27:51"
     },
     {
       "id": "20250630_151526",
@@ -1969,6 +1951,39 @@
       "path": "/notice",
       "modiDt": "2025/06/30 15:15:43",
       "modiId": 5,
+      "modiNm": "관리자"
+    },
+    {
+      "id": "20250701_142213",
+      "menuCd": "M_HISTORY3",
+      "label": "이력 관리",
+      "option": "isSame",
+      "highMenuCd": "M_SCC",
+      "useYn": "Y",
+      "regDt": "2025/07/01 14:22:13",
+      "regId": 5,
+      "regNm": "관리자",
+      "orderNo": 3,
+      "menuNo": "1",
+      "path": "/history3",
+      "modiDt": "2025/07/01 14:27:51",
+      "modiId": 5,
+      "modiNm": "관리자"
+    },
+    {
+      "id": "20250701_142747",
+      "menuCd": "M_HISTORY",
+      "label": "진행 중인 상담",
+      "option": "isChild",
+      "highMenuCd": "M_SCC",
+      "useYn": "Y",
+      "regDt": "2025/07/01 14:27:47",
+      "regId": 5,
+      "regNm": "관리자",
+      "orderNo": 1,
+      "modiId": 5,
+      "modiDt": "2025/07/01 14:37:14",
+      "path": "/history1",
       "modiNm": "관리자"
     }
   ],
