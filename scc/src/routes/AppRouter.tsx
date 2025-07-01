@@ -8,9 +8,9 @@ function AppRouter() {
     return (
         <Routes>
             <Route path="/main" exact={true} element={<MainContent/>  }></Route>
-            <Route path="/scc" exact={true} element={<ConsultContent/>}></Route>
             <Route path="/code" exact={true} element={<CodeContent/>}></Route>
             <Route path="/menu" exact={true} element={<MenuContent/>}></Route>
+            <Route path="/notProcess" exact={true} element={<ConsultContent/>}></Route>
         </Routes>
     );
 };
