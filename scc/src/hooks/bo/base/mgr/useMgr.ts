@@ -2,10 +2,6 @@ import {useMutation, useQuery} from '@tanstack/react-query';
 import { getMgrList, getMgrDetail } from '@api/bo/base/mgr/mgrApi';
 import type {Login, Mgr} from '@/types';
 import {mgrKeys} from '@query/queryKeys.ts';
-import {updateLoginStatus} from "@api/cmm/loginApi.ts";
-import queryClient from "@query/queryClient.ts";
-import {message} from "antd";
-
 
 export const useMgrList = () => {
     return useQuery({
@@ -25,13 +21,3 @@ export const useMgrDetail = (mgrId:Mgr['mgrId']) => {
     });
 };
 
-export const useUpdateMgrStatusMutation = () => {
-    return useMutation({
-        mutationFn: ({ loginInfo, status }: { loginInfo: Login; status: Login['status'] }) =>
-            updateLoginStatus(loginInfo, status),
-        onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ['login'] });
-            message.success(`계정 상태를 변경하였습니다.`);
-        },
-    });
-};

@@ -1,5 +1,5 @@
 import type {MenuProps} from 'antd';
-import {Layout, Menu} from 'antd';
+import {Badge, Layout, Menu, Popover} from 'antd';
 import {CustomerServiceOutlined, HomeOutlined, SettingOutlined} from '@ant-design/icons';
 import {useNavigate} from "react-router-dom";
 import {useMenuListStore, useMenuStore} from "@stores/bo/base/menu/menuStore.ts";
@@ -53,6 +53,25 @@ function Navbar() {
             navigate(clicked.path); // 이게 더 일반적인 처리 방식
         }
     };
+    const content = (
+        <div style={{display: 'flex', flexWrap: 'wrap', rowGap: 12}}>
+            {[
+                {label: '총 통화', value: '00:00:00'},
+                {label: '평균통화', value: '00:00:00'},
+                {label: '상담대기', value: '00:00:00'},
+                {label: '후처리', value: '00:00:00'},
+                {label: '자리비움', value: '00:00:00'},
+                {label: '전체콜', value: '0/0'},
+                {label: '평균콜', value: '0/0'},
+                {label: '본인콜', value: '0/0'},
+            ].map((item, idx) => (
+                <div key={idx} style={{width: 100, textAlign: 'center', marginRight: 5}}>
+                    <div style={{fontSize: 14, fontWeight: 500, color: '#333'}}>{item.label}</div>
+                    <div style={{fontSize: 16, fontWeight: 700}}>{item.value}</div>
+                </div>
+            ))}
+        </div>
+    );
 
     // logout action
     function logoutAction() {
@@ -62,16 +81,24 @@ function Navbar() {
     }
 
     return (
-        <Header style={{ display: 'flex', alignItems: 'center' }}>
-            <div className="demo-logo" />
+        <Header style={{display: 'flex', alignItems: 'center'}}>
+            <div className="demo-logo"/>
 
             <Menu
                 onClick={handleNavbarClick}
                 theme={"dark"}
                 mode="horizontal"
                 items={items}
-                style={{ flex: 1, minWidth: 0 }}
+                style={{flex: 1, minWidth: 0}}
             />
+
+            <Popover
+                placement="bottomLeft"
+                // title="현황"
+                content={content}
+                trigger="hover">
+                <CmmButton style={{marginRight:'5px'}}>상담현황</CmmButton>
+            </Popover>
 
             <CmmButton onClick={() => logoutAction()}>
                 로그아웃

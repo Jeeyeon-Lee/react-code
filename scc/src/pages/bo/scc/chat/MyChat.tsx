@@ -6,9 +6,11 @@ import CmmCodeSellect from '@components/form/CmmCodeSelect.tsx';
 import type { Chat } from '@/types';
 import { useChatStore } from '@stores/bo/scc/chat/chatStore.ts';
 import { useUserStore } from '@stores/bo/base/user/userStore.ts';
+import { useCtiStore } from '@stores/bo/scc/cti/ctiStore';
 import CmmTag from '@components/form/CmmTag.tsx';
 import { useLogin } from '@hooks/cmm/login/useLogin.ts';
-import {updateChatStatusMutation, useChatList} from '@hooks/bo/scc/chat/useChat.ts';
+import { useChatList } from '@hooks/bo/scc/chat/useChat.ts';
+import { changeChatStatus } from '@hooks/bo/scc/cti/useCti.ts';
 
 const { Timer } = Statistic;
 
@@ -21,14 +23,13 @@ function MyChat() {
     const [type, setType] = useState('all');
 
     /*클라이언트 영역 : zustand 관리*/
-    const { setChatSeq } = useChatStore();
+    const { setChatSeq, setChatType } = useChatStore();
     const { setUserId } = useUserStore();
 
     /*서버 영역 : react-query 관리*/
     const { loginInfo, isLoading } = useLogin();
     const { data: chatList = [] } = useChatList({mgrId:loginInfo?.mgrId ?? '', status:status, type:type});
     const { data: fullChatList = []} = useChatList({mgrId:loginInfo?.mgrId ?? '', status:'all', type:'all'});
-    const { mutate: updateChatStatus } = updateChatStatusMutation();
 
     const { Search } = Input;
 
@@ -39,15 +40,17 @@ function MyChat() {
     const 후처리Count = fullChatList?.filter(c => c.status === '후처리').length ?? 0;
     const 완료Count = fullChatList?.filter(c => c.status === '완료').length ?? 0;
 
-    const handleSelectChat = (chatSeq: Chat['chatSeq'], userId: Chat['userId']) => {
+    const handleSelectChat = (chatSeq: Chat['chatSeq'], userId: Chat['userId'], chatType: Chat['type'], chatStatus: Chat['status']) => {
         setChatSeq(chatSeq);
         setUserId(userId);
+        setChatType(chatType);
+        useCtiStore.getState?.().setChatStatus(chatSeq, chatStatus);
     };
 
-    const filteredCounselList = (chatList ?? []).filter(item => {
-        const matchesSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                                String(item.userId).includes(searchTerm);
-        return matchesSearch;
+    const filteredCounselList = chatList.filter(item => {
+        const title = item?.title ?? '';
+        const userId = String(item?.userId ?? '');
+        return title.toLowerCase().includes(searchTerm.toLowerCase()) || userId.includes(searchTerm);
     });
 
     const getStatusTagColor = (status: Chat['status']) => {
@@ -62,9 +65,9 @@ function MyChat() {
 
     if (isLoading) return <div>로딩중...</div>;
 
-    const handleUpdateChatStatus = async (chatSeq:Chat['chatSeq'], status: Chat['status']) => {
+    const handleUpdateChatStatus = (chatSeq:Chat['chatSeq'], status: Chat['status']) => {
         if (!(chatSeq || status)) return;
-        await updateChatStatus({ chatSeq, status });
+        changeChatStatus(chatSeq, status);
     };
 
     const onFinish: StatisticTimerProps['onFinish'] = () => {
@@ -129,8 +132,8 @@ function MyChat() {
                             <List.Item.Meta
                                 title={
                                     <>
-                                        <a onClick={async () =>  {
-                                            handleSelectChat(item.chatSeq, item.userId)}
+                                        <a onClick={() =>  {
+                                            handleSelectChat(item.chatSeq, item.userId, item.type, item.status)}
                                             }
                                         >
                                             {item.userNm} ({item.mgrNm})
@@ -152,7 +155,7 @@ function MyChat() {
                                                 style={{ marginTop: 4 }}
                                                 onClick={async () => {
                                                     await handleUpdateChatStatus(item.chatSeq, '상담중');
-                                                    handleSelectChat(item.chatSeq, item.userId);
+                                                    handleSelectChat(item.chatSeq, item.userId, item.type, item.status);
                                                     setStartTimes(prev => ({
                                                         ...prev,
                                                         [item.chatSeq]: Date.now()
@@ -162,21 +165,20 @@ function MyChat() {
                                                 상담 시작
                                             </Button>
                                         )}
-
-
                                     </>
                                 }
                             />
                             <div style={{display:'flex'}}>
-                            <CmmTag color={getStatusTagColor(item.status)}>{item.status}</CmmTag>
-                            {item.status === '상담중' && startTimes[item.chatSeq] && (
-                                <Timer
-                                    type="countup"
-                                    value={startTimes[item.chatSeq]}
-                                    format="HH:mm:ss"
-                                    style={{ marginTop: 4 }}
-                                />
-                            )}
+                                <CmmTag color={getStatusTagColor(item.status)}>{item.status}</CmmTag>
+                                {item.status === '상담중' && startTimes[item.chatSeq] && (
+                                    <Timer
+                                        type="countup"
+                                        value={startTimes[item.chatSeq]}
+                                        format="HH:mm:ss"
+                                        style={{ marginTop: 4 }}
+                                        aria-setsize={1}
+                                    />
+                                )}
                             </div>
                         </List.Item>
                     )}

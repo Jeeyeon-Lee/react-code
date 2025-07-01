@@ -11,7 +11,7 @@ import {
     updateChatFormMemoMutation
 } from '@hooks/bo/scc/chat/useChatForm.ts';
 import {useChatStore} from '@stores/bo/scc/chat/chatStore.ts';
-import {updateChatStatusMutation} from "@hooks/bo/scc/chat/useChat.ts";
+import { changeChatStatus } from '@hooks/bo/scc/cti/useCti.ts';
 
 const {TextArea} = Input;
 const {Text} = Typography;
@@ -26,7 +26,7 @@ const ChatForm = () => {
     const {mutate: updateChatFormText} = updateChatFormTextMutation();
     const {mutate: insertChatFormMemo} = insertChatFormMemoMutation();
     const {mutate: updateChatFormMemo} = updateChatFormMemoMutation();
-    const { mutate: updateChatStatus } = updateChatStatusMutation();
+
     useEffect(() => {
         form1.resetFields();
         form2.resetFields();
@@ -43,7 +43,8 @@ const ChatForm = () => {
             ? await insertChatFormText({chatSeq, text: values.content})
             : await updateChatFormText({chatSeq, text: values.content});
 
-        if (!textIsEdit) updateChatStatus({chatSeq: chatSeq, status: '완료'});
+        if (!textIsEdit) await changeChatStatus(chatSeq, '완료');
+
     };
     const handleSubmitMemo = (values: any) => {
         if (!chatSeq) {

@@ -64,14 +64,14 @@ const ChatList = ({ templateContent, setTemplateContent }: LeftContentProps) => 
             display: 'flex',
             flexDirection: 'column',
             height: '100%',
-            position: 'relative'
+            position: 'relative',
+            boxShadow: '1px 0px 0px rgba(0.2,0.2,0.2,0.2)'
         }}>
             <div
                 style={{
                     flex: 1,
                     overflowY: 'auto',
                     padding: '16px',
-                    borderRadius: '8px',
                     display: 'flex',
                     flexDirection: 'column',
                     maxHeight: 'calc(100% - 60px)'

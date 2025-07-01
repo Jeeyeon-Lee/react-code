@@ -24,7 +24,7 @@ interface ShowModalProps extends ModalFuncProps {
     duration?: number;
 }
 
-const modal = (props: ShowModalProps) => {
+export const modal = (props: ShowModalProps) => {
     const {
         type,
         title,
@@ -62,7 +62,7 @@ const modal = (props: ShowModalProps) => {
     }
 };
 
-const date = {
+export const date = {
     newDate: (value?: string | Date) => value ? dayjs(value) : dayjs(),
 
     //salmon.date.format('20240617', 'YYYYMMDD_HHmmss');

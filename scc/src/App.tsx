@@ -8,7 +8,9 @@ import {useMenuListStore} from "@stores/bo/base/menu/menuStore.ts";
 import {useLocation} from "react-router-dom";
 import {useEffect} from "react";
 import {useMenuList} from "@hooks/bo/base/menu/useMenu.ts";
-import koKR from 'antd/locale/ko_KR'; // antd v5+
+import koKR from 'antd/locale/ko_KR';
+import {useLogin} from "@hooks/cmm/login/useLogin.ts";
+import {useCtiStore} from "@stores/bo/scc/cti/ctiStore.ts"; // antd v5+
 
 const { Header, Footer } = Layout;
 
@@ -19,6 +21,11 @@ function App() {
 
     // 메뉴 최신화
     const { data: fetchedMenuList} = useMenuList();
+
+    // 로그인계정 정보 Set
+    const { status} = useLogin();
+    const { setMgrStatus } = useCtiStore();
+
     useEffect(() => {
 
         if (fetchedMenuList) {
@@ -26,6 +33,11 @@ function App() {
         }
     }, [fetchedMenuList, setMenuListInStore]); // 의존성 배열은 유지
 
+    useEffect(() => {
+        if ( status ) {
+            setMgrStatus(status);
+        }
+    }, [status]);
     return (
         <Layout style={{ height: '100vh' }}>
             <Header

@@ -7,6 +7,7 @@ import CmmButton from "@components/form/CmmButton.tsx";
 import {FileTextOutlined} from "@ant-design/icons";
 import {salmon} from "@utils/salmon.ts";
 import { updateChatMgrMutation } from '@hooks/bo/scc/chat/useChat.ts';
+import {changeChatStatus, transferCall} from '@hooks/bo/scc/cti/useCti.ts';
 import {useMgrList} from "@hooks/bo/base/mgr/useMgr.ts";
 
 function ChatMgrChangeButton({chatSeq}) {
@@ -23,7 +24,10 @@ function ChatMgrChangeButton({chatSeq}) {
             type: 'confirm',
             title: '이관 확인',
             content: `다른 상담원에게 이관하시겠습니까?`,
-            onOk: () => { updateChatMgr({chatSeq, mgrId}); },
+            onOk: async () => {
+                await transferCall(mgrId, chatSeq);
+                await updateChatMgr({chatSeq, mgrId});
+            },
             onCancel: () => {
                 selectRef.current?.reset();
             },

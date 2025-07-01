@@ -3,21 +3,19 @@ import queryClient from '@query/queryClient';
 import { getLoginMgr, saveLoginMgr } from '@api/cmm/loginApi';
 import type { Login, Mgr } from '@/types';
 import { message } from 'antd';
+import {useCtiStore} from "@stores/bo/scc/cti/ctiStore.ts";
 
 export const useLogin = () => {
     const loginInfoQuery = useQuery<Login>({
         queryKey: ['login'],
         queryFn: getLoginMgr,
-        /* 바로 비동기 호출을 넣을수도 있는 자리임.
-        queryFn: async () => {
-            const response = await Api.get<Login[]>('/loginMgr');
-            return response.data[0];
-        },
-        */
     });
+    const loginInfo = loginInfoQuery.data;
 
     return {
         loginInfo: loginInfoQuery.data,
+        status: loginInfo?.status,
+        mgrId: loginInfo?.mgrId,
         isLoading: loginInfoQuery.isLoading,
         error: loginInfoQuery.error,
     };
@@ -25,11 +23,10 @@ export const useLogin = () => {
 
 export const useSaveLoginMgrMutation = () => {
 
-
     return useMutation({
         mutationFn: (mgrId: Mgr['mgrId']) => saveLoginMgr(mgrId),
-        onSuccess: async () => {
-            await queryClient.invalidateQueries({ queryKey: ['login'] });
+        onSuccess: (_, mgrId) => {
+            queryClient.invalidateQueries({ queryKey: ['login'] });
             message.success(`다른 상담원 계정으로 로그인하였습니다.`);
         },
     });

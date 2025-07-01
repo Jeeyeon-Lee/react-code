@@ -6,9 +6,10 @@ import {Button, Checkbox, Form, Input, Select} from 'antd';
 import {useMenuListStore, useMenuStore} from "@stores/bo/base/menu/menuStore.ts";
 import {useMenuList} from "@hooks/bo/base/menu/useMenu.ts";
 import {useLogin, useSaveLoginMgrMutation} from "@hooks/cmm/login/useLogin.ts";
-import {useMgrList, useUpdateMgrStatusMutation} from "@hooks/bo/base/mgr/useMgr.ts";
+import {useMgrList} from "@hooks/bo/base/mgr/useMgr.ts";
 import {useChatStore} from "@stores/bo/scc/chat/chatStore.ts";
 import {useUserStore} from "@stores/bo/base/user/userStore.ts";
+import {useUpdateMgrStatusMutation} from "@hooks/bo/scc/cti/useCti.ts";
 
 const LoginForm: React.FC = () => {
   const navigate = useNavigate();
@@ -20,7 +21,6 @@ const LoginForm: React.FC = () => {
   const { clearChatSeq } = useChatStore();
   const { setUserId } = useUserStore();
   const { mutate: updateMgrStatus } = useUpdateMgrStatusMutation();
-  const { loginInfo } = useLogin();
 
   console.log(menuList);
 
@@ -44,7 +44,6 @@ const LoginForm: React.FC = () => {
       saveLoginMgr(values.username);
       clearChatSeq();
       setUserId('');
-      updateMgrStatus({loginInfo, status: '상담준비'});
     }
     localStorage.clear();
     localStorage.setItem("accessToken", crypto.randomUUID() );

@@ -9,32 +9,12 @@ import ChatData from "@pages/bo/scc/chat/ChatData.tsx";
 import ChatTemplate from "@pages/bo/scc/chat/ChatTemplate.tsx";
 import ChatEtc from "@pages/bo/scc/chat/ChatEtc.tsx";
 
-function ChatContent(props) {
-    const [selectedView, setSelectedView] = useState<'history' | 'info' | 'template' | 'etc'>('history');
+function ChatContent({ renderCounselSelectContent }) {
     const [isCounselFormCollapsed, setIsCounselFormCollapsed] = useState(false);
     const [templateContent, setTemplateContent] = useState('');
 
-    const handleSelectView = (view: 'history' | 'info' | 'template' | 'etc') => {
-        setSelectedView(view);
-    };
-
     const toggleCounselFormCollapse = () => {
         setIsCounselFormCollapsed(!isCounselFormCollapsed);
-    };
-
-    const renderCounselSelectContent = () => {
-        switch (selectedView) {
-            case 'history':
-                return <ChatHistory />;
-            case 'info':
-                return <ChatData />;
-            case 'template':
-                return <ChatTemplate />;
-            case 'etc':
-                return <ChatEtc />;
-            default:
-                return <ChatHistory />;
-        }
     };
 
     const leftContentSpan = isCounselFormCollapsed ? 16 : 8;
@@ -45,26 +25,34 @@ function ChatContent(props) {
 
     return (
         <div>
-            <ChatHeader />
             <Row gutter={[16, 16]} style={{ flex: 1 }}>
-                {/* LeftContent (채팅창 영역) */}
-                <Col span={leftContentSpan} style={{ height: '70vh', display: 'flex', flexDirection: 'column', borderRadius: '8px', boxShadow: '0 1px 4px rgba(0.2,0.2,0.2,0.2)'}}>
+                {/* ChatList (채팅창 영역) */}
+                <Col span={leftContentSpan} style={{ height: '70vh', display: 'flex', flexDirection: 'column'}}>
                     <ChatList templateContent={templateContent} setTemplateContent={setTemplateContent} />
                 </Col>
 
                 <Col span={24 - leftContentSpan} style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
                     <Row gutter={[16, 16]} style={{ flex: 1 }}>
-                        {/* CounselForm (접히는 영역) */}
-                        <Col span={isCounselFormCollapsed ? 0 : 12} style={{
-                            boxShadow: isCounselFormCollapsed ? 'none' : '0 1px 4px rgba(0.2,0.2,0.2,0.2)',
-                            display: isCounselFormCollapsed ? 'none' : 'flex',
-                            flexDirection: 'column',
-                            flex: isCounselFormCollapsed ? '0' : '1'
-                        }}>
+                        {/* ChatForm (접히는 영역) */}
+                        <Col
+                            span={isCounselFormCollapsed ? 0 : 12}
+                            style={{
+                                display: isCounselFormCollapsed ? 'none' : 'flex',
+                                flexDirection: 'column',
+                                flex: isCounselFormCollapsed ? '0' : '1',
+                            }}
+                        >
                             <ChatForm />
                         </Col>
-                        {/* 유지되는 영역 */}
-                        <Col span={isCounselFormCollapsed ? 24 : 12} style={{ display: 'flex', flexDirection: 'column', boxShadow: '0 1px 4px rgba(0.2,0.2,0.2,0.2)', flex: 1 }}>
+                        {/* renderCounselSelectContent */}
+                        <Col
+                            span={isCounselFormCollapsed ? 24 : 12}
+                            style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                flex: 1,
+                            }}
+                        >
                             {renderCounselSelectContent()}
                         </Col>
                     </Row>
