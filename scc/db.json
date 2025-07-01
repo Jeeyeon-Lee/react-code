@@ -730,7 +730,7 @@
       "userNm": "희동이",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "status": "대기중",
+      "status": "완료",
       "type": "챗",
       "qusetion": "",
       "transferYn": "Y",
@@ -739,7 +739,7 @@
       "tatalCallTm": "",
       "callWaitTm": "",
       "callStartTm": "08:17:49",
-      "callEndTm": ""
+      "callEndTm": "11:19:37"
     },
     {
       "id": "20250701_081838",
@@ -768,7 +768,7 @@
       "userNm": "둘리",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "status": "대기중",
+      "status": "완료",
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
@@ -787,7 +787,7 @@
       "userNm": "희동이",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "status": "대기중",
+      "status": "상담중",
       "type": "챗",
       "qusetion": "",
       "transferYn": "Y",
@@ -796,6 +796,25 @@
       "tatalCallTm": "",
       "callWaitTm": "",
       "callStartTm": "10:10:12",
+      "callEndTm": ""
+    },
+    {
+      "id": "20250701_111937",
+      "chatSeq": "20250701_111937",
+      "title": "희동이님 긴급문의",
+      "userId": 5,
+      "userNm": "희동이",
+      "mgrId": "2",
+      "mgrNm": "이상담원",
+      "status": "상담중",
+      "type": "챗",
+      "qusetion": "",
+      "transferYn": "Y",
+      "regDt": "2025/07/01 11:19:37",
+      "totalOperTm": "",
+      "tatalCallTm": "",
+      "callWaitTm": "",
+      "callStartTm": "11:19:37",
       "callEndTm": ""
     }
   ],
@@ -866,7 +885,7 @@
       "mgrId": 5,
       "mgrNm": "관리자",
       "dptNm": "운영팀",
-      "status": "상담준비"
+      "status": "상담가능"
     }
   ],
   "loginMgr": [
@@ -875,8 +894,8 @@
       "mgrId": 5,
       "mgrNm": "관리자",
       "dptNm": "운영팀",
-      "status": "상담준비",
-      "loginTime": "2025-07-01T01:10:23.208Z"
+      "status": "상담가능",
+      "loginTime": "2025-07-01T01:30:08.625Z"
     }
   ],
   "socket": [
@@ -1787,6 +1806,18 @@
       "mgrId": "2",
       "mgrNm": "이상담원",
       "sendTime": "2025/07/01 10:10:12"
+    },
+    {
+      "id": "20250701_111937",
+      "chatSeq": "20250701_111937",
+      "chatNo": 1,
+      "userId": 5,
+      "userNm": "희동이",
+      "text": "이관되었습니다.",
+      "sender": "user",
+      "mgrId": "2",
+      "mgrNm": "이상담원",
+      "sendTime": "2025/07/01 11:19:37"
     }
   ],
   "menus": [

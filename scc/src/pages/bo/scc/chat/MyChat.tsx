@@ -9,7 +9,7 @@ import { useUserStore } from '@stores/bo/base/user/userStore.ts';
 import { useCtiStore } from '@stores/bo/scc/cti/ctiStore';
 import CmmTag from '@components/form/CmmTag.tsx';
 import { useLogin } from '@hooks/cmm/login/useLogin.ts';
-import { useChatList } from '@hooks/bo/scc/chat/useChat.ts';
+import {updateChatStatusMutation, useChatList} from '@hooks/bo/scc/chat/useChat.ts';
 import { changeChatStatus } from '@hooks/bo/scc/cti/useCti.ts';
 
 const { Timer } = Statistic;
@@ -25,6 +25,7 @@ function MyChat() {
     /*클라이언트 영역 : zustand 관리*/
     const { setChatSeq, setChatType } = useChatStore();
     const { setUserId } = useUserStore();
+    const { mutate: updateChatStatus } = updateChatStatusMutation();
 
     /*서버 영역 : react-query 관리*/
     const { loginInfo, isLoading } = useLogin();
@@ -47,6 +48,11 @@ function MyChat() {
         useCtiStore.getState?.().setChatStatus(chatSeq, chatStatus);
     };
 
+    const syncChatStatus = async (chatSeq: string, status: string) => {
+        await changeChatStatus(chatSeq, status); // CTI 상태
+        updateChatStatus({ chatSeq, status });   // DB 상태
+    };
+
     const filteredCounselList = chatList.filter(item => {
         const title = item?.title ?? '';
         const userId = String(item?.userId ?? '');
@@ -64,11 +70,6 @@ function MyChat() {
     };
 
     if (isLoading) return <div>로딩중...</div>;
-
-    const handleUpdateChatStatus = (chatSeq:Chat['chatSeq'], status: Chat['status']) => {
-        if (!(chatSeq || status)) return;
-        changeChatStatus(chatSeq, status);
-    };
 
     const onFinish: StatisticTimerProps['onFinish'] = () => {
         console.log('finished!');
@@ -128,13 +129,15 @@ function MyChat() {
                     dataSource={filteredCounselList}
                     renderItem={item => (
                         <List.Item>
-                            <div style={{marginRight:'14px'}}>{item.type == '콜' ? <PhoneTwoTone/> : <MessageTwoTone/>}</div>
+                            <div style={{marginRight: '14px'}}>{item.type == '콜' ? <PhoneTwoTone/> :
+                                <MessageTwoTone/>}</div>
                             <List.Item.Meta
                                 title={
                                     <>
-                                        <a onClick={() =>  {
-                                            handleSelectChat(item.chatSeq, item.userId, item.type, item.status)}
-                                            }
+                                        <a onClick={() => {
+                                            handleSelectChat(item.chatSeq, item.userId, item.type, item.status)
+                                        }
+                                        }
                                         >
                                             {item.userNm} ({item.mgrNm})
                                             {(item.transferYn &&
@@ -152,9 +155,9 @@ function MyChat() {
                                             <Button
                                                 type="primary"
                                                 size="small"
-                                                style={{ marginTop: 4 }}
+                                                style={{marginTop: 4}}
                                                 onClick={async () => {
-                                                    await handleUpdateChatStatus(item.chatSeq, '상담중');
+                                                    await syncChatStatus(item.chatSeq, '상담중');
                                                     handleSelectChat(item.chatSeq, item.userId, item.type, item.status);
                                                     setStartTimes(prev => ({
                                                         ...prev,
@@ -168,7 +171,7 @@ function MyChat() {
                                     </>
                                 }
                             />
-                            <div style={{display:'flex'}}>
+                            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2}}>
                                 <CmmTag color={getStatusTagColor(item.status)}>{item.status}</CmmTag>
                                 {item.status === '상담중' && startTimes[item.chatSeq] && (
                                     <Timer

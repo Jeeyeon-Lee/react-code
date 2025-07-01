@@ -8,7 +8,7 @@ import {
     DownCircleOutlined
 } from "@ant-design/icons";
 import { Space } from "antd";
-import { deleteChatMutation, useChatDetail } from "@hooks/bo/scc/chat/useChat.ts";
+import {deleteChatMutation, updateChatStatusMutation, useChatDetail} from "@hooks/bo/scc/chat/useChat.ts";
 import { useChatStore } from "@stores/bo/scc/chat/chatStore.ts";
 import { callStart, callEnd, holdCall, resumeCall, changeChatStatus, deleteChatSession } from '@hooks/bo/scc/cti/useCti.ts';
 import { useUserStore } from "@stores/bo/base/user/userStore.ts";
@@ -19,7 +19,7 @@ function CallStatusChangeButton() {
     const { chatSeq, clearChatSeq } = useChatStore();
     const { mgrId } = useLogin();
     const chatStatus = useCtiStore((state) => state.chatStatusMap[chatSeq]);
-
+    const { mutate: updateChatStatus } = updateChatStatusMutation();
     const { mutate: deleteChat } = deleteChatMutation();
     const { setUserId } = useUserStore();
 
@@ -30,6 +30,11 @@ function CallStatusChangeButton() {
             clearChatSeq();
             setUserId('');
         });
+    };
+
+    const syncChatStatus = async (chatSeq: string, status: string) => {
+        await changeChatStatus(chatSeq, status); // CTI 상태
+        updateChatStatus({ chatSeq, status });   // DB 상태
     };
 
     return (
@@ -43,7 +48,7 @@ function CallStatusChangeButton() {
                         onClick={() => resumeCall(chatSeq)}
                         buttonType='보류해제'
                     >
-                        다시시작
+                        보류해제
                     </CmmButton>
                 )}
 
@@ -80,7 +85,7 @@ function CallStatusChangeButton() {
                 <CmmButton
                     color='red'
                     icon={<DeleteOutlined />}
-                    onClick={() => changeChatStatus(chatSeq, '후처리')}
+                    onClick={() => syncChatStatus(chatSeq, '후처리')}
                     buttonType='상담종료'
                 >
                     상담종료
@@ -90,7 +95,7 @@ function CallStatusChangeButton() {
                     <>
                         <CmmButton
                             icon={<DownCircleOutlined />}
-                            onClick={() => changeChatStatus(chatSeq, '완료')}
+                            onClick={() => syncChatStatus(chatSeq, '완료')}
                             buttonType='완료처리'
                         >
                             완료처리

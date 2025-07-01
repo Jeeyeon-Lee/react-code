@@ -54,6 +54,27 @@ export const useChatDataList = (chatSeq: Chat['chatSeq']) => {
     });
 };
 
+export const updateChatStatusMutation = () => {
+    return useMutation({
+        mutationFn: async ({ chatSeq, status }: { chatSeq: Chat['chatSeq']; status: Chat['status'] }) => {
+            try {
+                const response = await axios.patch<ChatData>(`/chat/${chatSeq}`, { status });
+                return response.data;
+            } catch (error) {
+                message.error('채팅 업데이트 실패:', error);
+                throw error;
+            }
+        },
+        onSuccess: async () => {
+            await queryClient.invalidateQueries({ queryKey: ['chat'] });
+            message.success('상담 상태가 변경되었습니다.');
+        },
+        onError: async () => {
+            message.error('상담 상태 변경에 실패했습니다.');
+        }
+    });
+};
+
 export const deleteChatMutation = () => {
     return useMutation({
         mutationFn: async (chatSeq: Chat['chatSeq']) => {
