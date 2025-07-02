@@ -891,11 +891,11 @@
   "loginMgr": [
     {
       "id": "1",
-      "mgrId": 5,
-      "mgrNm": "관리자",
-      "dptNm": "운영팀",
-      "status": "상담가능",
-      "loginTime": "2025-07-01T04:58:38.970Z"
+      "mgrId": 2,
+      "mgrNm": "이상담원",
+      "dptNm": "상담1팀",
+      "status": "상담준비",
+      "loginTime": "2025-07-02T22:54:25.695Z"
     }
   ],
   "socket": [

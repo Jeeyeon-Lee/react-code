@@ -11,9 +11,8 @@ import {Divider} from "antd";
 
 function CounselStatus() {
     const { loginInfo } = useLogin();
-    const { data: mgrDetail } = useMgrDetail(loginInfo?.mgrId);
 
-    const status = mgrDetail?.status;
+    const status = loginInfo?.status;
 
     const statusMap = {
         '상담준비': {
