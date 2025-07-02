@@ -25,8 +25,6 @@ const CodeForm = ({selectedEditGroupCd, setSelectedEditGroupCd}) => {
         form.resetFields();
         if (!isExist) return;
 
-        console.log('11', isExist);
-
         form.setFieldsValue({
             groupCd: groupCodeDetailData?.groupCd,
             groupNm: groupCodeDetailData?.groupNm,

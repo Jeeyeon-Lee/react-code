@@ -236,14 +236,6 @@ const CodeDetailList = ({ selectedGroupCd }) => {
         setDataSource([...dataSource, newData]);
     };
     
-    const hasDuplicate = (rows: Code[]) => {
-        const seen = new Set(dataSource);
-        for (const row of rows) {
-            if (seen.has(row.detailCd)) return true;
-            seen.add(row.detailCd);
-        }
-        return false;
-    };
 
     const handleBulkSave = async () => {
 
@@ -256,12 +248,6 @@ const CodeDetailList = ({ selectedGroupCd }) => {
             const insertList = modifiedRows.filter((r) => r.isNew);
             const updateList = modifiedRows.filter((r) => !r.isNew);
             const deleteList = deletedRows;
-
-            if (hasDuplicate([...insertList, ...updateList])) {
-                alert("중복된 개별코드가 있습니다.");
-                return;
-            }
-
 
             // 필수값 누락 체크
             const hasInvalid = [...insertList, ...updateList].some(
