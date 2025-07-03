@@ -6,7 +6,7 @@ import {useCrudDetailCode, useDetailCodeList} from "@pages/bo/base/code/useCode.
 import CmmForm from "@components/form/CmmForm.tsx";
 import {smMax, smMin, smPattern, smRegex, smRequired, smValidateBuilder} from "@utils/form/smValidateBuilder.ts";
 import type {Rule} from "rc-field-form/lib/interface";
-import queryClient from "@query/queryClient.ts";
+import {useQueryClient} from "@tanstack/react-query";
 
 type FormInstance<T> = GetRef<typeof Form<T>>;
 const EditableContext = React.createContext<FormInstance<any> | null>(null);

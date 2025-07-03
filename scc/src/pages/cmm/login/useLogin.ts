@@ -1,9 +1,8 @@
-import { useQuery, useMutation } from '@tanstack/react-query';
-import queryClient from '@query/queryClient.ts';
+import {useQuery, useMutation, useQueryClient} from '@tanstack/react-query';
 import { getLoginMgr, saveLoginMgr } from '@api/cmm/loginApi.ts';
 import type { Login, Mgr } from '@pages/cmm';
 import { message } from 'antd';
-import {useCtiStore} from "@pages/cmm/cti/ctiStore.ts";
+
 
 export const useLogin = () => {
     const loginInfoQuery = useQuery<Login>({
@@ -22,6 +21,7 @@ export const useLogin = () => {
 };
 
 export const useSaveLoginMgrMutation = () => {
+    const queryClient = useQueryClient();
 
     return useMutation({
         mutationFn: (mgrId: Mgr['mgrId']) => saveLoginMgr(mgrId),

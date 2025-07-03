@@ -1,13 +1,20 @@
-import { useQuery, useMutation } from '@tanstack/react-query';
-import queryClient from '@query/queryClient.ts';
-import {chatKeys} from '@query/queryKeys.ts';
+import {useQuery, useMutation, useQueryClient} from '@tanstack/react-query';
 import axios from '@api/api.ts';
 import { getMgrDetail } from '@api/bo/base/mgr/mgrApi.ts';
 import type { Chat, Mgr, ChatData } from '@pages/cmm';
 import { salmon } from '@utils/salmon.ts';
 import { message } from 'antd';
 import type {AxiosResponse} from "axios";
+import {createQueryKeys} from "@lukemorales/query-key-factory";
 
+const chatKeys = createQueryKeys('chat', {
+    all: null,
+    list: (mgrId?: Chat['mgrId'], status?: Chat['status'], type?: Chat['type']) =>
+        ['list', mgrId, status, type],
+    //['chat', 'list', mgrId, status, type]
+    detail: (chatSeq: Chat['chatSeq']) => ['detail', chatSeq],
+    history: (userId: Chat['userId']) => ['history', userId]
+});
 
 type ChatSearchParams = {
     mgrId?: Chat['mgrId'];
@@ -55,6 +62,7 @@ export const useChatDataList = (chatSeq: Chat['chatSeq']) => {
 };
 
 export const updateChatStatusMutation = () => {
+    const queryClient = useQueryClient();
     return useMutation({
         mutationFn: async ({ chatSeq, status }: { chatSeq: Chat['chatSeq']; status: Chat['status'] }) => {
             try {
@@ -76,6 +84,7 @@ export const updateChatStatusMutation = () => {
 };
 
 export const deleteChatMutation = () => {
+    const queryClient = useQueryClient();
     return useMutation({
         mutationFn: async (chatSeq: Chat['chatSeq']) => {
             try {
@@ -96,6 +105,7 @@ export const deleteChatMutation = () => {
 };
 
 export const updateChatMgrMutation = () => {
+    const queryClient = useQueryClient();
     return useMutation({
         mutationFn: async ({ chatSeq, mgrId }: { chatSeq: Chat['chatSeq']; mgrId: Mgr['mgrId'] }) => {
             try {

@@ -1,9 +1,8 @@
-import {useMutation, useQuery} from '@tanstack/react-query';
+import {useMutation, useQuery, useQueryClient} from '@tanstack/react-query';
 import type {Code} from '@pages/cmm';
 import axios from "@api/api.ts";
 import {salmon} from "@utils/salmon.ts";
 import {getLoginMgr} from "@api/cmm/loginApi.ts";
-import queryClient from "@query/queryClient.ts";
 import {message} from "antd";
 
 export const useGroupCodeList = () => {
@@ -42,6 +41,7 @@ export const useDetailCodeList = (groupCd:Code['groupCd']) => {
 };
 
 export const insertGroupCodeMutation = () => {
+    const queryClient = useQueryClient();
     return useMutation({
         mutationFn: async (values:Code) => {
             if (!values.groupCd) return;
@@ -74,6 +74,7 @@ export const insertGroupCodeMutation = () => {
 };
 
 export const updateGroupCodeMutation = () => {
+    const queryClient = useQueryClient();
 
     return useMutation({
         mutationFn: async ({ groupId, values } : { id: Code['id'], values:Code}) => {
@@ -103,6 +104,7 @@ export const updateGroupCodeMutation = () => {
 };
 
 export const deleteGroupCodeMutation = () => {
+    const queryClient = useQueryClient();
     return useMutation({
         mutationFn: async (groupId: Code['id']) => {
             try {

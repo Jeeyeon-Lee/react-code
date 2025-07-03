@@ -1,5 +1,4 @@
-import { useQuery, useMutation } from '@tanstack/react-query';
-import queryClient from '@query/queryClient.ts';
+import {useQuery, useMutation, useQueryClient} from '@tanstack/react-query';
 import axios from '@api/api.ts';
 import { getLoginMgr } from '@api/cmm/loginApi.ts';
 import type { ChatFormData } from '@pages/cmm';
@@ -31,6 +30,7 @@ export const useChatMemoData = (chatSeq:ChatFormData['chatSeq']) => {
 }
 
 export const insertChatFormTextMutation = () => {
+    const queryClient = useQueryClient();
     return useMutation({
         mutationFn: async ({ chatSeq, text } : { chatSeq: ChatFormData['chatSeq'], text:ChatFormData['text']}) => {
             const newDate = salmon.date.newDate().format('YYYY/MM/DD HH:mm:ss');
@@ -63,6 +63,7 @@ export const insertChatFormTextMutation = () => {
 };
 
 export const insertChatFormMemoMutation = () => {
+    const queryClient = useQueryClient();
     return useMutation({
         mutationFn: async ({ chatSeq, text } : { chatSeq: ChatFormData['chatSeq'], text:ChatFormData['text']}) => {
             if (!chatSeq || !text) return;
@@ -95,6 +96,7 @@ export const insertChatFormMemoMutation = () => {
     });
 };
 export const updateChatFormTextMutation = () => {
+    const queryClient = useQueryClient();
     return useMutation({
         mutationFn: async ({ chatSeq, text } : { chatSeq: ChatFormData['chatSeq'], text:ChatFormData['text']}) => {
             if (!chatSeq || !text) return;
@@ -122,6 +124,7 @@ export const updateChatFormTextMutation = () => {
 };
 
 export const updateChatFormMemoMutation = () => {
+    const queryClient = useQueryClient();
     return useMutation({
         mutationFn: async ({ chatSeq, text } : { chatSeq: ChatFormData['chatSeq'], text:ChatFormData['text']}) => {
             if (!chatSeq || !text) return;

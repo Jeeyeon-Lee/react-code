@@ -1,7 +1,13 @@
-import {useMutation, useQuery} from '@tanstack/react-query';
+import {useQuery} from '@tanstack/react-query';
 import { getMgrList, getMgrDetail } from '@api/bo/base/mgr/mgrApi.ts';
 import type {Login, Mgr} from '@pages/cmm';
-import {mgrKeys} from '@query/queryKeys.ts';
+import {createQueryKeys} from "@lukemorales/query-key-factory";
+
+const mgrKeys = createQueryKeys('mgr', {
+    all: null,
+    list: () => ['list'],
+    detail: (mgrId:Mgr['mgrId']) => ['datail', mgrId],
+});
 
 export const useMgrList = () => {
     return useQuery({

@@ -1,10 +1,9 @@
-import {useMutation, useQuery} from '@tanstack/react-query';
+import {useMutation, useQuery, useQueryClient} from '@tanstack/react-query';
 import axios from "@api/api.ts";
 import type {Bbs} from "@pages/bo/base/bbs/bbs.ts";
 import type {Bbs, Bbs} from "@pages/cmm";
 import {salmon} from "@utils/salmon.ts";
 import {getLoginMgr} from "@api/cmm/loginApi.ts";
-import queryClient from "@query/queryClient.ts";
 import {message} from "antd";
 
 export const useBbsList = (values:Bbs) => {
@@ -33,6 +32,7 @@ export const useBbsDetail = (bbsSeq:Bbs['bbsSeq']) => {
 };
 
 export const insertBbsMutation = () => {
+    const queryClient = useQueryClient();
     return useMutation({
         mutationFn: async (values:Bbs) => {
             if (!values.bbsCd) return;
@@ -65,6 +65,7 @@ export const insertBbsMutation = () => {
 };
 
 export const updateBbsMutation = () => {
+    const queryClient = useQueryClient();
     return useMutation({
         mutationFn: async (values:Bbs) => {
             if (!values.id) return;
@@ -93,6 +94,7 @@ export const updateBbsMutation = () => {
 };
 
 export const deleteBbsMutation = () => {
+    const queryClient = useQueryClient();
     return useMutation({
         mutationFn: async (id: Bbs['id']) => {
             try {

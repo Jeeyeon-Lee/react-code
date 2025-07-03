@@ -1,9 +1,8 @@
-import {useMutation, useQuery} from '@tanstack/react-query';
+import {useMutation, useQuery, useQueryClient} from '@tanstack/react-query';
 import type {MenuType} from '@pages/cmm';
 import axios from "@api/api.ts";
 import {salmon} from "@utils/salmon.ts";
 import {getLoginMgr} from "@api/cmm/loginApi.ts";
-import queryClient from "@query/queryClient.ts";
 import {message} from "antd";
 
 export const useMenuList = () => {
@@ -30,6 +29,8 @@ export const useMenuDetail = (menuCd:MenuType['menuCd']) => {
 };
 
 export const insertMenuMutation = () => {
+    const queryClient = useQueryClient();
+
     return useMutation({
             mutationFn: async (values:MenuType) => {
             if (!values.menuCd) return;
@@ -63,6 +64,7 @@ export const insertMenuMutation = () => {
 
 
 export const updateMenuMutation = () => {
+    const queryClient = useQueryClient();
 
     return useMutation({
         mutationFn: async ({ menuId, values } : { menuCd: MenuType['id'], values:MenuType}) => {
@@ -93,6 +95,7 @@ export const updateMenuMutation = () => {
 };
 
 export const deleteMenuMutation = () => {
+    const queryClient = useQueryClient();
     return useMutation({
         mutationFn: async (menuId: MenuType['id']) => {
             try {
@@ -115,6 +118,7 @@ export const deleteMenuMutation = () => {
 
 
 export const MoveMenuMutation = () => {
+    const queryClient = useQueryClient();
 
     return useMutation({
         mutationFn: async ({ menuCd, values } : { menuCd: MenuType['id'], values: {}}) => {

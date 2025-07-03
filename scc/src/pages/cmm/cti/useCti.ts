@@ -1,7 +1,5 @@
-import { useQuery, useMutation } from '@tanstack/react-query';
-import queryClient from '@query/queryClient.ts';
+import {useQuery, useMutation, useQueryClient} from '@tanstack/react-query';
 import axios from '@api/api.ts';
-import { modal } from '@utils/salmon.ts';
 import { useCtiStore } from '@pages/cmm/cti/ctiStore.ts';
 import { updateLoginStatus } from '@api/cmm/loginApi.ts';
 import { message } from 'antd';
@@ -10,6 +8,7 @@ import type { Login } from "@pages/cmm";
 // 사용자 상태변경
 export const useUpdateMgrStatusMutation = () => {
     const { setMgrStatus } = useCtiStore();
+    const queryClient = useQueryClient();
 
     return useMutation({
         mutationFn: ({ loginInfo, status }: { loginInfo: Login; status: Login['status'] }) =>
@@ -154,6 +153,7 @@ export const useSocketDetail = () => {
 };
 
 export const updateSocketStatusMutation = () => {
+    const queryClient = useQueryClient();
     return useMutation({
         mutationFn: async (status: string) => {
             try {
