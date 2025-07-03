@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {Col, Form, Input, InputNumber, message, Row, Space, Typography} from 'antd';
-import {DeleteTwoTone, EditFilled} from '@ant-design/icons';
+import {DeleteOutlined, EditFilled} from '@ant-design/icons';
 import CmmButton from '@components/form/CmmButton.tsx';
 import {deleteMenuMutation, updateMenuMutation, useMenuDetail} from "@hooks/bo/base/menu/useMenu.ts";
 import CmmRadioGroup from "@components/form/CmmRadioGroup.tsx";
@@ -155,7 +155,7 @@ const MenuForm = ({selectedMenuCd, setSelectedMenuCd, selectedMenuPath}) => {
                 <Space style={{alignSelf: 'flex-end'}}>
 
                     <CmmButton
-                        icon={<DeleteTwoTone /> }
+                        icon={<DeleteOutlined />}
                         onClick={() => handleDeleteMenu()}
                         type="primary"
                         danger

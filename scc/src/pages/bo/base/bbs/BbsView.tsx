@@ -1,5 +1,5 @@
-import {Button, Descriptions, Form, Input, Space, Typography} from 'antd';
-import {useBbsDetail} from "@hooks/bo/base/bbs/useBbs.ts";
+import {Button, Descriptions, Form, Input, message, Space, Typography} from 'antd';
+import {deleteBbsMutation, updateBbsMutation, useBbsDetail} from "@hooks/bo/base/bbs/useBbs.ts";
 import type {Bbs} from "@/types";
 import React from "react";
 import CmmButton from "@components/form/CmmButton.tsx";
@@ -10,14 +10,19 @@ const {Text} = Typography;
 const BbsView = ({bbsSeq, setFormMode}) => {
     const [form] = Form.useForm();
     const {data: dataBean} = useBbsDetail<Bbs>(bbsSeq||null);
+    const {mutate: deleteBbs} = deleteBbsMutation();
 
     const handleUpdateBbs = async () => {
         setFormMode('update');
     }
 
     const handleDeleteBbs = async () => {
+        if(!dataBean.id) {
+            message.warning('오류 발생');
+            return;
+        }
 
-        alert('삭제');
+        await deleteBbs(dataBean.id);
     }
 
     return (
@@ -29,14 +34,12 @@ const BbsView = ({bbsSeq, setFormMode}) => {
                 <Space style={{alignSelf: 'flex-end'}}>
 
                     <CmmButton
-                        icon={<DeleteTwoTone /> }
                         type="primary"
                         onClick={() => handleDeleteBbs()}
                         danger>
                         삭제
                     </CmmButton>
                     <CmmButton
-                        icon=<EditFilled/>
                         htmlType="submit"
                         onClick={() => handleUpdateBbs()}
                         type="primary"

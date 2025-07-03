@@ -1,6 +1,11 @@
-import {useQuery} from '@tanstack/react-query';
+import {useMutation, useQuery} from '@tanstack/react-query';
 import axios from "@api/api.ts";
 import type {Bbs} from "@/types/bo/base/bbs/bbs.ts";
+import type {Bbs, Bbs} from "@/types";
+import {salmon} from "@utils/salmon.ts";
+import {getLoginMgr} from "@api/cmm/loginApi.ts";
+import queryClient from "@query/queryClient.ts";
+import {message} from "antd";
 
 export const useBbsList = (values:Bbs) => {
     return useQuery({
@@ -8,6 +13,7 @@ export const useBbsList = (values:Bbs) => {
         queryFn: async () => {
 
             const params = buildQueryParams(values);
+
             const res = await axios.get<Bbs[]>('/bbs', { params });
             return res.data;
         },
@@ -26,7 +32,87 @@ export const useBbsDetail = (bbsSeq:Bbs['bbsSeq']) => {
     });
 };
 
-// TODO: 나중에 검색 util로 빼digka
+export const insertBbsMutation = () => {
+    return useMutation({
+        mutationFn: async (values:Bbs) => {
+            if (!values.bbsCd) return;
+
+            const newDate = salmon.date.newDate().format('YYYY/MM/DD HH:mm:ss');
+            const loginInfo = await getLoginMgr();
+            try {
+                const newMenuId = salmon.date.newDate().format('YYYYMMDD_HHmmss');
+                values.id = newMenuId.toString();
+                values.bbsSeq = newMenuId.toString();
+                values.regDt = newDate;
+                values.regId = loginInfo?.mgrId;
+
+                await axios.post<Bbs>(`/bbs`, values);
+
+                //TODO orderNo 라스트 체크
+            } catch (error) {
+                console.error('등록 실패:', error);
+                throw error;
+            }
+        },
+        onSuccess: async () => {
+            await queryClient.invalidateQueries({ queryKey: ['bbsList'] });
+            message.success(`등록되었습니다.`);
+        },
+        onError: async () => {
+            message.error('실패했습니다.');
+        },
+    });
+};
+
+export const updateBbsMutation = () => {
+    return useMutation({
+        mutationFn: async (values:Bbs) => {
+            if (!values.id) return;
+
+            const newDate = salmon.date.newDate().format('YYYY/MM/DD HH:mm:ss');
+            const loginInfo = await getLoginMgr();
+            try {
+                values.modiDt = newDate;
+                values.modiId = loginInfo?.mgrId;
+
+                await axios.patch<Bbs>(`/bbs/${values.id}`, values);
+
+            } catch (error) {
+                console.error('수정 실패:', error);
+                throw error;
+            }
+        },
+        onSuccess: async () => {
+            await queryClient.invalidateQueries({ queryKey: ['bbsList'] });
+            message.success(`수정되었습니다.`);
+        },
+        onError: async () => {
+            message.error('실패했습니다.');
+        },
+    });
+};
+
+export const deleteBbsMutation = () => {
+    return useMutation({
+        mutationFn: async (id: Bbs['id']) => {
+            try {
+                await axios.delete<Bbs>(`/bbs/${id}` );
+            } catch (error) {
+                console.error('삭제 실패:', error);
+                throw error;
+            }
+        },
+        onSuccess: async () => {
+            await queryClient.invalidateQueries({ queryKey: ['bbsList'] });
+            message.success(`삭제되었습니다.`);
+        },
+        onError: async () => {
+            message.error('삭제에 실패했습니다.');
+        },
+    });
+};
+
+// TODO: 나중에 검색 util로 변환 예정
 const buildQueryParams = (values: any) => {
     const params: Record<string, any> = {};
 

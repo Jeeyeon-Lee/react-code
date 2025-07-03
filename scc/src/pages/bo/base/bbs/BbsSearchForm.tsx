@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Col, DatePicker, Form, Input, Row, Select, Space, theme} from 'antd';
+import {Button, Checkbox, Col, DatePicker, Form, Input, Row, Select, Space, theme} from 'antd';
 import CmmForm from "@components/form/CmmForm.tsx";
 
 const { Option } = Select;
@@ -61,6 +61,13 @@ const BbsSearchForm = ({bbsCd, onSearch}) => {
                 <Input/>
             </Form.Item>
             <Form.Item
+                name="sk03"
+                hidden={true}
+                initialValue="ntcYn"
+            >
+                <Input/>
+            </Form.Item>
+            <Form.Item
                 name="bbsCd"
                 hidden={true}
                 initialValue={bbsCd}
@@ -72,7 +79,7 @@ const BbsSearchForm = ({bbsCd, onSearch}) => {
                 <Col span={12} >
                     <Form.Item
                         name="range-picker"
-                        label="기간설정" >
+                        label="기간 설정" >
                         <RangePicker />
                     </Form.Item>
                 </Col>
@@ -86,6 +93,17 @@ const BbsSearchForm = ({bbsCd, onSearch}) => {
                             <Option value="ctg1">분류1</Option>
                             <Option value="ctg2">분류2</Option>
                         </Select>
+                    </Form.Item>
+                </Col>
+                <Col span={12} >
+                    <Form.Item
+                        name="sv03"
+                        label="공지 여부"
+                        valuePropName="checked"
+                        getValueFromEvent={(e) => (e.target.checked ? 'Y' : 'N')}
+                        getValueProps={(val) => ({ checked: val === 'Y' })}
+                    >
+                        <Checkbox></Checkbox>
                     </Form.Item>
                 </Col>
                 <Col span={4} >
