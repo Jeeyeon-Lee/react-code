@@ -1,8 +1,8 @@
 import React, {useContext, useEffect, useRef, useState} from "react";
 import type {GetRef, InputRef, TableProps} from "antd";
 import {Button, Checkbox, Form, Input, message, Popconfirm, Table} from "antd";
-import type {Code} from "@/types";
-import {useCrudDetailCode, useDetailCodeList} from "@hooks/bo/base/code/useCode.ts";
+import type {Code} from "@pages/cmm";
+import {useCrudDetailCode, useDetailCodeList} from "@pages/bo/base/code/useCode.ts";
 import CmmForm from "@components/form/CmmForm.tsx";
 import {smMax, smMin, smPattern, smRegex, smRequired, smValidateBuilder} from "@utils/form/smValidateBuilder.ts";
 import type {Rule} from "rc-field-form/lib/interface";

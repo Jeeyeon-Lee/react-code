@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {Table} from "antd";
-import type {Bbs} from "@/types";
+import type {Bbs} from "@pages/cmm";
 import type {ColumnsType} from "antd/es/table";
-import {useBbsList} from "@hooks/bo/base/bbs/useBbs.ts";
+import {useBbsList} from "@pages/bo/base/bbs/useBbs.ts";
 
 const rowSelection= {
     onChange: (selectedRowKeys: React.Key[], selectedRows: Bbs[]) => {

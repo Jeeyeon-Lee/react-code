@@ -2,7 +2,7 @@ import type {MenuProps} from 'antd';
 import {Badge, Layout, Menu, Popover} from 'antd';
 import {CustomerServiceOutlined, HomeOutlined, SettingOutlined} from '@ant-design/icons';
 import {useNavigate} from "react-router-dom";
-import {useMenuListStore, useMenuStore} from "@stores/bo/base/menu/menuStore.ts";
+import {useMenuListStore, useMenuStore} from "@pages/bo/base/menu/menuStore.ts";
 import CmmButton from "@components/form/CmmButton.tsx";
 
 const { Header } = Layout;

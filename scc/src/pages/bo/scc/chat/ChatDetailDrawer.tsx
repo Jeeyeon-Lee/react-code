@@ -1,9 +1,9 @@
-import React from 'react';
-import {Drawer, Button, Divider, Typography, Timeline, Steps, Descriptions} from 'antd';
-import { useChatDetail } from '@hooks/bo/scc/chat/useChat.ts';
-import {SmileOutlined, SolutionOutlined, UserOutlined} from "@ant-design/icons";
+import {Drawer, Button, Typography, Descriptions} from 'antd';
+import { useChatDetail } from '@pages/bo/scc/chat/useChat.ts';
+import { useNavigate } from 'react-router-dom';
+import { useMenuListStore, useMenuStore } from '@pages/bo/base/menu/menuStore.ts';
+import ChatDetail from "@pages/bo/scc/chat/ChatDetail.tsx";
 
-// ChatDetailDrawer.tsx
 interface ChatDetailDrawerProps {
     chatSeq: string | null;
     open: boolean;
@@ -12,7 +12,22 @@ interface ChatDetailDrawerProps {
 const { Text } = Typography;
 
 const ChatDetailDrawer = ({ chatSeq, open, onClose }: ChatDetailDrawerProps) => {
+    const navigate = useNavigate();
+    const { setMenuCd } = useMenuStore();
+    const menuList = useMenuListStore.getState().menuList;
     const { data: chatDetail } = useChatDetail(chatSeq ?? '');
+
+    const handleGoDetail = () => {
+        // 1. history 메뉴 찾기
+        const menu = menuList.find(m => m.path === '/history');
+        if (menu) {
+            setMenuCd(menu.menuCd);
+        }
+
+        // 2. chatSeq 넘기며 이동
+        navigate(`/history?chatSeq=${chatSeq}`);
+        // navigate(`/history`);
+    };
 
     return (
         <Drawer
@@ -22,32 +37,12 @@ const ChatDetailDrawer = ({ chatSeq, open, onClose }: ChatDetailDrawerProps) => 
             getContainer={false}
             extra={
                 <>
-                    <Button>자세히</Button>
+                    <Button onClick={handleGoDetail}>자세히</Button>
                     <Button onClick={onClose}>닫기</Button>
                 </>
             }
         >
-            {chatDetail ? (
-                <>
-                    <Text strong>기본 상담 정보</Text>
-                    <Descriptions
-                        bordered
-                        column={2}
-                        items={[
-                            { key: 'title', label: '제목', span: 2, children: chatDetail?.title || '-' },
-                            { key: 'chatSeq', label: 'chatSeq', span: 2, children: chatDetail?.chatSeq || '-' },
-                            { key: 'user', label: '이용자', span: 2, children: chatDetail?.userNm || '-' },
-                            { key: 'mgr', label: '상담사', span: 2, children: chatDetail?.mgrNm || '-' },
-                            { key: 'status', label: '상태', span: 2, children: chatDetail?.status || '-' },
-                            { key: 'type', label: '타입', span: 2, children: chatDetail?.type || '-' },
-                            { key: 'regDt', label: '접수일시', span: 2, children: chatDetail?.regDt || '-' },
-                            { key: 'callEndTm', label: '종료일시', span: 2, children: chatDetail?.callEndTm || '-' },
-                        ]}
-                    />
-                </>
-            ) : (
-                <p>상세 정보를 불러오는 중...</p>
-            )}
+            <ChatDetail chatDetail={chatDetail} />
         </Drawer>
     );
 };

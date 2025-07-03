@@ -2,11 +2,11 @@ import React, {useEffect} from 'react';
 import {Col, Form, Input, InputNumber, message, Row, Space, Typography} from 'antd';
 import {DeleteOutlined, EditFilled} from '@ant-design/icons';
 import CmmButton from '@components/form/CmmButton.tsx';
-import {deleteMenuMutation, updateMenuMutation, useMenuDetail} from "@hooks/bo/base/menu/useMenu.ts";
+import {deleteMenuMutation, updateMenuMutation, useMenuDetail} from "@pages/bo/base/menu/useMenu.ts";
 import CmmRadioGroup from "@components/form/CmmRadioGroup.tsx";
 import CmmForm from "@components/form/CmmForm.tsx";
 import {smMax, smMin, smRequired, smValidateBuilder} from "@utils/form/smValidateBuilder.ts";
-import type {MenuType} from "@/types";
+import type {MenuType} from "@pages/cmm";
 
 const {Text} = Typography;
 

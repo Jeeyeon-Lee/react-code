@@ -1,4 +1,4 @@
-import type {MenuType} from '@/types';
+import type {MenuType} from '@pages/cmm';
 import axios from "@api/api.ts";
 
 export const getMenuList = async () => {

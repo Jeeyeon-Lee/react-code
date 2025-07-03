@@ -9,9 +9,9 @@ import {
     updateChatFormTextMutation,
     insertChatFormMemoMutation,
     updateChatFormMemoMutation
-} from '@hooks/bo/scc/chat/useChatForm.ts';
-import {useChatStore} from '@stores/bo/scc/chat/chatStore.ts';
-import { changeChatStatus } from '@hooks/bo/scc/cti/useCti.ts';
+} from '@pages/bo/scc/chat/useChatForm.ts';
+import {useChatStore} from '@pages/bo/scc/chat/chatStore.ts';
+import { changeChatStatus } from '@pages/cmm/cti/useCti.ts';
 
 const {TextArea} = Input;
 const {Text} = Typography;

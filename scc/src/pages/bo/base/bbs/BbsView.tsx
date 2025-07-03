@@ -1,9 +1,8 @@
-import {Button, Descriptions, Form, Input, message, Space, Typography} from 'antd';
-import {deleteBbsMutation, updateBbsMutation, useBbsDetail} from "@hooks/bo/base/bbs/useBbs.ts";
-import type {Bbs} from "@/types";
+import {Descriptions, Form, message, Space, Typography} from 'antd';
+import {deleteBbsMutation, useBbsDetail} from "@pages/bo/base/bbs/useBbs.ts";
+import type {Bbs} from "@pages/cmm";
 import React from "react";
 import CmmButton from "@components/form/CmmButton.tsx";
-import {DeleteTwoTone, EditFilled} from "@ant-design/icons";
 
 const {Text} = Typography;
 

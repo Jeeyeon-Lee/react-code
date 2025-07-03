@@ -1,0 +1,9 @@
+export type { Chat } from '@pages/bo/scc/chat/chat.ts';
+export type { User } from '@pages/bo/base/user/user.ts';
+export type { Code } from '@pages/bo/base/code/code.ts';
+export type { Mgr } from '@pages/bo/base/mgr/mgr.ts';
+export type { ChatData } from '@pages/bo/scc/chat/chatData.ts';
+export type { Login } from '@pages/cmm/login/login.ts';
+export type { MenuType } from '@pages/bo/base/menu/menu.ts';
+export type { ChatFormData } from '@pages/bo/scc/chat/chatFormData.ts';
+export type { Bbs } from '@pages/bo/base/bbs/bbs.ts';

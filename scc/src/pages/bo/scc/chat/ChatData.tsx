@@ -1,5 +1,5 @@
 import {Card, Descriptions} from 'antd';
-import { useUserDetail } from "@hooks/bo/base/user/useUser.ts";
+import { useUserDetail } from "@pages/bo/base/user/useUser.ts";
 
 
 const ChatData = ({userId}) => {

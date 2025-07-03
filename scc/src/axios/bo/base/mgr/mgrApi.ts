@@ -1,5 +1,5 @@
 import axios from '@api/api';
-import type { Mgr } from '@/types';
+import type { Mgr } from '@pages/cmm';
 
 //직원 목록 조회
 export const getMgrList = async (): Promise<Mgr[]> => {

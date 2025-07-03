@@ -1,5 +1,5 @@
 import { createQueryKeys } from '@lukemorales/query-key-factory';
-import type { Chat, User, Mgr } from '@/types';
+import type { Chat, User, Mgr } from '@pages/cmm';
 
 export const userKeys = createQueryKeys('user', {
     all: null,

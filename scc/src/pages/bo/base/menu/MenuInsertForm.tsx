@@ -2,7 +2,7 @@ import React from 'react';
 import {Form, Input, InputNumber, message, Space, Typography} from 'antd';
 import {EditFilled} from '@ant-design/icons';
 import CmmButton from '@components/form/CmmButton.tsx';
-import {insertMenuMutation, useMenuDetail} from "@hooks/bo/base/menu/useMenu.ts";
+import {insertMenuMutation, useMenuDetail} from "@pages/bo/base/menu/useMenu.ts";
 import CmmRadioGroup from "@components/form/CmmRadioGroup.tsx";
 import CmmForm from "@components/form/CmmForm.tsx";
 import {smMax, smMin, smPattern, smRegex, smRequired, smValidateBuilder} from "@utils/form/smValidateBuilder.ts";

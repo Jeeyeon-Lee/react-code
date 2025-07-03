@@ -6,9 +6,9 @@ import {
     UserOutlined,
     CustomerServiceOutlined,
 } from '@ant-design/icons';
-import { useChatDataList} from '@hooks/bo/scc/chat/useChat.ts';
-import type { ChatData } from '@/types';
-import { useChatStore } from '@stores/bo/scc/chat/chatStore.ts';
+import { useChatDataList} from '@pages/bo/scc/chat/useChat.ts';
+import type { ChatData } from '@pages/cmm';
+import { useChatStore } from '@pages/bo/scc/chat/chatStore.ts';
 import CmmButton from '@components/form/CmmButton.tsx';
 import CounselStatus from "@pages/bo/scc/chat/CounselStatus.tsx";
 import ChatUserDetail from "@pages/bo/scc/chat/ChatUserDetail.tsx";

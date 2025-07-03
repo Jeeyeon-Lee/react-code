@@ -9,7 +9,7 @@ import {
     insertGroupCodeMutation,
     updateGroupCodeMutation,
     useGroupCodeDetail
-} from "@hooks/bo/base/code/useCode.ts";
+} from "@pages/bo/base/code/useCode.ts";
 
 const {Text} = Typography;
 

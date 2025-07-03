@@ -1,9 +1,9 @@
 import React from 'react';
 import {Divider, Typography} from "antd";
-import {useUserStore} from "@stores/bo/base/user/userStore.ts";
-import {useUserDetail} from "@hooks/bo/base/user/useUser.ts";
-import {useChatDetail} from "@hooks/bo/scc/chat/useChat.ts";
-import {useChatStore} from "@stores/bo/scc/chat/chatStore.ts";
+import {useUserStore} from "@pages/bo/base/user/userStore.ts";
+import {useUserDetail} from "@pages/bo/base/user/useUser.ts";
+import {useChatDetail} from "@pages/bo/scc/chat/useChat.ts";
+import {useChatStore} from "@pages/bo/scc/chat/chatStore.ts";
 
 const { Text } = Typography;
 

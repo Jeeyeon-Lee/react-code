@@ -1,14 +1,14 @@
 import React, {useRef} from 'react';
-import type {Mgr} from "@/types";
+import type {Mgr} from "@pages/cmm";
 import CmmSelect from '@components/form/CmmSelect.tsx';
 import type { CmmSelectRef } from '@components/form/CmmSelect.tsx';
 import {Popover} from "antd";
 import CmmButton from "@components/form/CmmButton.tsx";
 import {FileTextOutlined} from "@ant-design/icons";
 import {salmon} from "@utils/salmon.ts";
-import { updateChatMgrMutation } from '@hooks/bo/scc/chat/useChat.ts';
-import {changeChatStatus, transferCall} from '@hooks/bo/scc/cti/useCti.ts';
-import {useMgrList} from "@hooks/bo/base/mgr/useMgr.ts";
+import { updateChatMgrMutation } from '@pages/bo/scc/chat/useChat.ts';
+import {changeChatStatus, transferCall} from '@pages/cmm/cti/useCti.ts';
+import {useMgrList} from "@pages/bo/base/mgr/useMgr.ts";
 
 function ChatMgrChangeButton({chatSeq}) {
     const { data: mgrList } = useMgrList();

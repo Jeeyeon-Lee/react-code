@@ -1,5 +1,5 @@
-import { useChatStore } from '@stores/bo/scc/chat/chatStore.ts';
-import { useCtiStore } from '@stores/bo/scc/cti/ctiStore.ts';
+import { useChatStore } from '@pages/bo/scc/chat/chatStore.ts';
+import { useCtiStore } from '@pages/cmm/cti/ctiStore.ts';
 
 type StatusRule = {
     mgrStatus?: 'all' | string[];
@@ -25,7 +25,7 @@ export type ButtonType =
     | '상담가능';
 
 const buttonPermissionMap: Record<ButtonType, StatusRule> = {
-    '상담이관': { mgrStatus: ['상담가능', '상담중'], chatStatus: ['대기중','상담중','보류','후처리','이관'] },
+    '상담이관': { mgrStatus: ['상담가능', '상담중'], chatStatus: ['대기중','상담중','보류','후처리','이관', '완료'] },
     '보류':    { mgrStatus: ['상담가능', '상담중'], chatStatus: ['상담중', '후처리'] },
     '보류해제': { mgrStatus: ['상담가능', '상담중'], chatStatus: ['보류'] },
     '상담종료': { mgrStatus: ['상담가능', '상담중'], chatStatus: ['상담중','보류'] },

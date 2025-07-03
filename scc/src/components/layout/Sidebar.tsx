@@ -3,8 +3,8 @@ import type {MenuProps} from 'antd';
 import {Button, Layout, Menu} from 'antd';
 import {MenuFoldOutlined, MenuUnfoldOutlined, SettingOutlined} from '@ant-design/icons';
 import {Link} from "react-router-dom";
-import {useMenuListStore, useMenuStore} from "@stores/bo/base/menu/menuStore.ts";
-import type {MenuType} from "@/types";
+import {useMenuListStore, useMenuStore} from "@pages/bo/base/menu/menuStore.ts";
+import type {MenuType} from "@pages/cmm";
 
 const { Sider } = Layout;
 

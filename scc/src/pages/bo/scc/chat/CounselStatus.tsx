@@ -5,8 +5,8 @@ import {
     ClockCircleOutlined,
     CloseCircleOutlined
 } from '@ant-design/icons';
-import { useLogin } from '@hooks/cmm/login/useLogin.ts';
-import { useMgrDetail } from '@hooks/bo/base/mgr/useMgr.ts';
+import { useLogin } from '@pages/cmm/login/useLogin.ts';
+import { useMgrDetail } from '@pages/bo/base/mgr/useMgr.ts';
 import {Divider} from "antd";
 
 function CounselStatus() {

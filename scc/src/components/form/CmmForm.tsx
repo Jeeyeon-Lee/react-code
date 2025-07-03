@@ -4,12 +4,12 @@ import type { FormProps } from 'antd';
 import smValidateMessages from "@utils/form/smValidateMessages.ts";
 
 
-/**
- * antd Form 태그 내 validate customize 추가
- */
-
-const CmmForm = <T extends object>(props: FormProps<T>) => {
-  return <Form {...props} validateMessages={smValidateMessages} />;
+const CmmForm = <T extends object>({ children, ...rest }: FormProps<T>) => {
+  return (
+      <Form {...rest} validateMessages={smValidateMessages}>
+        {children}
+      </Form>
+  );
 };
 
 export default CmmForm;

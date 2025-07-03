@@ -1,5 +1,5 @@
 import axios from '@api/api';
-import type {User} from '@/types';
+import type {User} from '@pages/cmm';
 
 //고객 관련 api(WIP)
 export const getUsers = async() =>  {

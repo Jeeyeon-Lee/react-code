@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import {Input, Button, List, Space, Badge, Statistic, Modal, message} from 'antd';
-import {PhoneTwoTone, MessageTwoTone, PhoneOutlined} from '@ant-design/icons';
+import {PhoneTwoTone, MessageTwoTone} from '@ant-design/icons';
 import CmmCodeSellect from '@components/form/CmmCodeSelect.tsx';
-import type { Chat } from '@/types';
-import { useChatStore } from '@stores/bo/scc/chat/chatStore.ts';
-import { useUserStore } from '@stores/bo/base/user/userStore.ts';
-import { useCtiStore } from '@stores/bo/scc/cti/ctiStore';
+import type { Chat } from '@pages/cmm';
+import { useChatStore } from '@pages/bo/scc/chat/chatStore.ts';
+import { useUserStore } from '@pages/bo/base/user/userStore.ts';
+import { useCtiStore } from '@pages/cmm/cti/ctiStore.ts';
 import CmmTag from '@components/form/CmmTag.tsx';
-import { useLogin } from '@hooks/cmm/login/useLogin.ts';
-import {updateChatStatusMutation, useChatList} from '@hooks/bo/scc/chat/useChat.ts';
-import {obCallStart, callbackStart, changeChatStatus} from '@hooks/bo/scc/cti/useCti.ts';
+import { useLogin } from '@pages/cmm/login/useLogin.ts';
+import {updateChatStatusMutation, useChatList} from '@pages/bo/scc/chat/useChat.ts';
+import {obCallStart, callbackStart, changeChatStatus} from '@pages/cmm/cti/useCti.ts';
 import CmmButton from "@components/form/CmmButton.tsx";
 
 const { Timer } = Statistic;
@@ -177,10 +177,10 @@ function MyChat() {
                                                 onClick={async () => {
                                                     await syncChatStatus(item.chatSeq, '상담중');
                                                     handleSelectChat(item.chatSeq, item.userId, item.type, item.status);
-                                                    setStartTimes(prev => ({
+                                                    /*setStartTimes(prev => ({
                                                         ...prev,
                                                         [item.chatSeq]: Date.now()
-                                                    }));
+                                                    }));*/
                                                 }}
                                             >
                                                 상담 시작

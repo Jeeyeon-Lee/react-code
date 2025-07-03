@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Card, Col, Divider, Row, Select} from 'antd';
 import BbsSearchForm from "@pages/bo/base/bbs/BbsSearchForm.tsx";
 import BbsSearchList from "@pages/bo/base/bbs/BbsSearchList.tsx";
-import type {Bbs} from "@/types";
+import type {Bbs} from "@pages/cmm";
 import {useParams} from "react-router-dom";
 import BbsView from "@pages/bo/base/bbs/BbsView.tsx";
 import CmmButton from "@components/form/CmmButton.tsx";

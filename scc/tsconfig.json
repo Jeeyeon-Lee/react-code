@@ -6,8 +6,6 @@
       "@api/*": ["src/axios/*"],
       "@contexts/*": ["src/contexts/*"],
       "@query/*": ["src/query/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@stores/*": ["src/stores/*"],
       "@components/*": ["src/components/*"],
       "@src/*": ["src/*"],
       "@utils/*": ["src/utils/*"]

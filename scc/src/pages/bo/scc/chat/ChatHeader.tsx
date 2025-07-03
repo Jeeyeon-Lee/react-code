@@ -1,12 +1,12 @@
 import { Typography, Space, Select, message } from 'antd';
-import type { Mgr, Login } from '@/types';
-import { useLogin, useSaveLoginMgrMutation } from '@hooks/cmm/login/useLogin.ts';
-import { useMgrList } from '@hooks/bo/base/mgr/useMgr.ts';
+import type { Mgr, Login } from '@pages/cmm';
+import { useLogin, useSaveLoginMgrMutation } from '@pages/cmm/login/useLogin.ts';
+import { useMgrList } from '@pages/bo/base/mgr/useMgr.ts';
 import CmmCodeSelect from "@components/form/CmmCodeSelect.tsx";
-import { useSocketDetail, updateSocketStatusMutation, useUpdateMgrStatusMutation } from "@hooks/bo/scc/cti/useCti.ts";
+import { useSocketDetail, updateSocketStatusMutation, useUpdateMgrStatusMutation } from "@pages/cmm/cti/useCti.ts";
 import ChatStatusChangeButton from "@pages/bo/scc/chat/ChatStatusChangeButton.tsx";
-import { useChatStore } from '@stores/bo/scc/chat/chatStore.ts';
-import { useCtiStore } from '@stores/bo/scc/cti/ctiStore.ts';
+import { useChatStore } from '@pages/bo/scc/chat/chatStore.ts';
+import { useCtiStore } from '@pages/cmm/cti/ctiStore.ts';
 import CallStatusChangeButton from "@pages/bo/scc/chat/CallStatusChangeButton.tsx";
 
 const { Text } = Typography;

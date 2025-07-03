@@ -36,18 +36,6 @@ export default defineConfig({
         replacement: path.resolve(__dirname,"src/query")
       },
       {
-        find:"@hooks",
-        replacement: path.resolve(__dirname,"src/hooks")
-      },
-      {
-        find:"@stores",
-        replacement: path.resolve(__dirname,"src/stores")
-      },
-      {
-        find:"@types",
-        replacement: path.resolve(__dirname,"src/types")
-      },
-      {
         find:"@utils",
         replacement: path.resolve(__dirname,"src/utils")
       }

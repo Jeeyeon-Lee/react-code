@@ -7,10 +7,10 @@ import ChatData from './ChatData.tsx';
 import ChatEtc from './ChatEtc.tsx';
 import ChatTemplate from './ChatTemplate.tsx';
 import ChatContent from "@pages/bo/scc/chat/ChatContent.tsx";
-import { useChatStore } from '@stores/bo/scc/chat/chatStore.ts';
+import { useChatStore } from '@pages/bo/scc/chat/chatStore.ts';
 import CallContent from "@pages/bo/scc/chat/CallContent.tsx";
 import ChatHeader from "@pages/bo/scc/chat/ChatHeader.tsx";
-import {useUserStore} from "@stores/bo/base/user/userStore.ts";
+import {useUserStore} from "@pages/bo/base/user/userStore.ts";
 
 function Content() {
     const [selectedView, setSelectedView] = useState<'history' | 'info' | 'template' | 'etc'>('history');

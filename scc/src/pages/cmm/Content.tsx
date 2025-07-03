@@ -1,8 +1,13 @@
 import {Breadcrumb, Layout, theme} from 'antd';
-import AppRouter from "../../routes/AppRouter.tsx";
-import type {MenuType} from "@/types";
-import {useMenuListStore, useMenuStore} from "@stores/bo/base/menu/menuStore.ts";
-import {useLocation} from "react-router-dom";
+import type {MenuType} from "@pages/cmm/index.ts";
+import {useMenuListStore, useMenuStore} from "@pages/bo/base/menu/menuStore.ts";
+import {Route, Routes, useLocation} from "react-router-dom";
+import MainContent from "@pages/bo/scc/chat/MainContent.tsx";
+import CodeContent from "@pages/bo/base/code/CodeContent.tsx";
+import MenuContent from "@pages/bo/base/menu/MenuContent.tsx";
+import ConsultContent from "@pages/bo/scc/mon/ConsultContent.tsx";
+import HistoryContent from "@pages/bo/scc/history/HistoryContent.tsx";
+import BbsContent from "@pages/bo/base/bbs/BbsContent.tsx";
 
 const { Content: AntContent } = Layout;
 
@@ -43,7 +48,14 @@ function Content() {
                     padding: '5px',
                 }}
             >
-                <AppRouter></AppRouter>
+                <Routes>
+                    <Route path="/main" exact={true} element={<MainContent/>  }></Route>
+                    <Route path="/code" exact={true} element={<CodeContent/>}></Route>
+                    <Route path="/menu" exact={true} element={<MenuContent/>}></Route>
+                    <Route path="/notProcess" exact={true} element={<ConsultContent/>}></Route>
+                    <Route path="/history" element={<HistoryContent />}></Route>
+                    <Route path="/bbs/:bbsCd" exact={true} element={<BbsContent/>}></Route>
+                </Routes>
                 {/* 사용자 정의 라우터  components/router안에 있음*/}
             </AntContent>
         </Layout>

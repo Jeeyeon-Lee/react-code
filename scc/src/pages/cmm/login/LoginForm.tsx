@@ -3,13 +3,13 @@ import './index.css';
 import {Navigate, useNavigate} from "react-router-dom";
 import type { FormProps } from 'antd';
 import {Button, Checkbox, Form, Input, Select} from 'antd';
-import {useMenuListStore, useMenuStore} from "@stores/bo/base/menu/menuStore.ts";
-import {useMenuList} from "@hooks/bo/base/menu/useMenu.ts";
-import {useLogin, useSaveLoginMgrMutation} from "@hooks/cmm/login/useLogin.ts";
-import {useMgrList} from "@hooks/bo/base/mgr/useMgr.ts";
-import {useChatStore} from "@stores/bo/scc/chat/chatStore.ts";
-import {useUserStore} from "@stores/bo/base/user/userStore.ts";
-import {useUpdateMgrStatusMutation} from "@hooks/bo/scc/cti/useCti.ts";
+import {useMenuListStore, useMenuStore} from "@pages/bo/base/menu/menuStore.ts";
+import {useMenuList} from "@pages/bo/base/menu/useMenu.ts";
+import {useLogin, useSaveLoginMgrMutation} from "@pages/cmm/login/useLogin.ts";
+import {useMgrList} from "@pages/bo/base/mgr/useMgr.ts";
+import {useChatStore} from "@pages/bo/scc/chat/chatStore.ts";
+import {useUserStore} from "@pages/bo/base/user/userStore.ts";
+import {useUpdateMgrStatusMutation} from "@pages/cmm/cti/useCti.ts";
 
 const LoginForm: React.FC = () => {
   const navigate = useNavigate();

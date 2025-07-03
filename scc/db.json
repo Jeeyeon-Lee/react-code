@@ -17,7 +17,7 @@
       "tatalCallTm": "",
       "callWaitTm": "",
       "callStartTm": "14:20:30",
-      "callEndTm": "20:52:34"
+      "callEndTm": "12:44:51"
     },
     {
       "id": "3",
@@ -93,7 +93,7 @@
       "tatalCallTm": "",
       "callWaitTm": "",
       "callStartTm": "2025/06/12 14:20:30",
-      "callEndTm": "2025/06/24 14:30:38"
+      "callEndTm": "12:41:11"
     },
     {
       "id": "20250612_151029",
@@ -787,7 +787,7 @@
       "userNm": "희동이",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "status": "상담중",
+      "status": "후처리",
       "type": "챗",
       "qusetion": "",
       "transferYn": "Y",
@@ -799,22 +799,41 @@
       "callEndTm": ""
     },
     {
-      "id": "20250701_111937",
-      "chatSeq": "20250701_111937",
+      "id": "20250703_124111",
+      "chatSeq": "20250703_124111",
       "title": "희동이님 긴급문의",
       "userId": 5,
       "userNm": "희동이",
-      "mgrId": "2",
-      "mgrNm": "이상담원",
+      "mgrId": "3",
+      "mgrNm": "최상담원",
       "status": "상담중",
       "type": "챗",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/07/01 11:19:37",
+      "regDt": "2025/07/03 12:41:11",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
-      "callStartTm": "11:19:37",
+      "callStartTm": "12:41:11",
+      "callEndTm": ""
+    },
+    {
+      "id": "20250703_124451",
+      "chatSeq": "20250703_124451",
+      "title": "둘리님 긴급문의",
+      "userId": 2,
+      "userNm": "둘리",
+      "mgrId": "2",
+      "mgrNm": "이상담원",
+      "status": "상담중",
+      "type": "콜",
+      "qusetion": "",
+      "transferYn": "Y",
+      "regDt": "2025/07/03 12:44:51",
+      "totalOperTm": "",
+      "tatalCallTm": "",
+      "callWaitTm": "",
+      "callStartTm": "12:44:51",
       "callEndTm": ""
     }
   ],
@@ -864,7 +883,7 @@
       "mgrId": 2,
       "mgrNm": "이상담원",
       "dptNm": "상담1팀",
-      "status": "이석-식사"
+      "status": "상담가능"
     },
     {
       "id": "3",
@@ -891,11 +910,11 @@
   "loginMgr": [
     {
       "id": "1",
-      "mgrId": 2,
-      "mgrNm": "이상담원",
-      "dptNm": "상담1팀",
-      "status": "상담준비",
-      "loginTime": "2025-07-02T22:54:25.695Z"
+      "mgrId": 5,
+      "mgrNm": "관리자",
+      "dptNm": "운영팀",
+      "status": "상담가능",
+      "loginTime": "2025-07-03T04:39:01.720Z"
     }
   ],
   "socket": [
@@ -1818,6 +1837,30 @@
       "mgrId": "2",
       "mgrNm": "이상담원",
       "sendTime": "2025/07/01 11:19:37"
+    },
+    {
+      "id": "20250703_124111",
+      "chatSeq": "20250703_124111",
+      "chatNo": 1,
+      "userId": 5,
+      "userNm": "희동이",
+      "text": "이관되었습니다.",
+      "sender": "user",
+      "mgrId": "3",
+      "mgrNm": "최상담원",
+      "sendTime": "2025/07/03 12:41:11"
+    },
+    {
+      "id": "20250703_124451",
+      "chatSeq": "20250703_124451",
+      "chatNo": 1,
+      "userId": 2,
+      "userNm": "둘리",
+      "text": "이관되었습니다.",
+      "sender": "user",
+      "mgrId": "2",
+      "mgrNm": "이상담원",
+      "sendTime": "2025/07/03 12:44:51"
     }
   ],
   "menus": [
@@ -1903,7 +1946,7 @@
       "regDt": "2025/06/17 10:00:53",
       "modiId": 5,
       "modiNm": "이상담원",
-      "modiDt": "2025/06/26 09:24:32"
+      "modiDt": "2025/07/03 13:37:30"
     },
     {
       "id": "6",
@@ -1920,7 +1963,7 @@
       "regDt": "2025/06/17 10:00:53",
       "modiId": 5,
       "modiNm": "최상담원",
-      "modiDt": "2025/06/26 09:24:32"
+      "modiDt": "2025/07/03 13:37:30"
     },
     {
       "id": "8",
@@ -1949,9 +1992,10 @@
       "regId": 5,
       "regNm": "관리자",
       "path": "/bbs/1000",
-      "modiDt": "2025/07/02 10:17:40",
+      "modiDt": "2025/07/03 13:37:30",
       "modiId": 5,
-      "modiNm": "관리자"
+      "modiNm": "관리자",
+      "orderNo": 3
     },
     {
       "id": "20250701_142213",
@@ -2057,9 +2101,9 @@
       "regId": 5,
       "regNm": "관리자",
       "path": "/tsm",
-      "modiDt": "2025/07/01 16:57:08",
-      "modiId": 5,
-      "modiNm": "관리자"
+      "modiDt": "2025/07/03 10:56:36",
+      "modiId": 2,
+      "modiNm": "이상담원"
     },
     {
       "id": "20250701_165449",
@@ -2087,9 +2131,10 @@
       "regId": 5,
       "regNm": "관리자",
       "path": "/bbs/2000",
-      "modiDt": "2025/07/02 10:19:47",
+      "modiDt": "2025/07/03 13:37:30",
       "modiId": 5,
-      "modiNm": "관리자"
+      "modiNm": "관리자",
+      "orderNo": 4
     }
   ],
   "codeGroup": [

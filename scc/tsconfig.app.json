@@ -13,10 +13,8 @@
       "@pages/*": ["./src/pages/*"],
       "@api/*": ["./src/axios/*"],
       "@contexts/*": ["./src/contexts/*"],
-      "@stores/*": ["./src/stores/*"],
       "@components/*": ["./src/components/*"],
       "@query/*": ["./src/query/*"],
-      "@hooks/*": ["./src/hooks/*"],
       "@utils/*": ["./src/utils/*"]
     },
 

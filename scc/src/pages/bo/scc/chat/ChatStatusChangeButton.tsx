@@ -3,12 +3,12 @@ import ChatMgrChangeButton from "@pages/bo/scc/chat/ChatMgrChangeButton.tsx";
 import CmmButton from "@components/form/CmmButton.tsx";
 import {DeleteOutlined, DownCircleOutlined, RedoOutlined, StopOutlined} from "@ant-design/icons";
 import {Space} from "antd";
-import {deleteChatMutation, updateChatStatusMutation} from "@hooks/bo/scc/chat/useChat.ts";
-import {useChatStore} from "@stores/bo/scc/chat/chatStore.ts";
-import {deleteChatSession} from "@hooks/bo/scc/cti/useCti.ts";
-import { changeChatStatus } from "@hooks/bo/scc/cti/useCti";
-import {useUserStore} from "@stores/bo/base/user/userStore.ts";
-import {useCtiStore} from "@stores/bo/scc/cti/ctiStore.ts";
+import {deleteChatMutation, updateChatStatusMutation} from "@pages/bo/scc/chat/useChat.ts";
+import {useChatStore} from "@pages/bo/scc/chat/chatStore.ts";
+import {deleteChatSession} from "@pages/cmm/cti/useCti.ts";
+import { changeChatStatus } from "@pages/cmm/cti/useCti.ts";
+import {useUserStore} from "@pages/bo/base/user/userStore.ts";
+import {useCtiStore} from "@pages/cmm/cti/ctiStore.ts";
 
 function ChatStatusChangeButton() {
     const { chatSeq, clearChatSeq } = useChatStore();

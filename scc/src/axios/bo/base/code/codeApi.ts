@@ -1,5 +1,5 @@
 import axios from '@api/api.ts';
-import type { Code } from '@/types/bo/base/code/code.ts';
+import type { Code } from '@pages/bo/base/code/code.ts';
 
 // Code 목록 조회
 export const getCodeList = async (group:Code['group']) => {

@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {Card, Col, Row, Select, Space, Table} from 'antd';
 import type {ColumnsType} from "antd/es/table";
-import type {Code} from "@/types";
-import {useGroupCodeList} from "@hooks/bo/base/code/useCode.ts";
+import type {Code} from "@pages/cmm";
+import {useGroupCodeList} from "@pages/bo/base/code/useCode.ts";
 import {EditFilled} from "@ant-design/icons";
 import CmmButton from "@components/form/CmmButton.tsx";
 import CodeForm from "@pages/bo/base/code/CodeForm.tsx";

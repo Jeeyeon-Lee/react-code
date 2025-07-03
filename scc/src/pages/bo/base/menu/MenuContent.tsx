@@ -1,10 +1,10 @@
 import React, {useEffect, useMemo, useState} from 'react';
 import type {TreeDataNode, TreeProps} from 'antd';
 import {Card, Col, Row, Tree} from 'antd';
-import type {MenuType} from "@/types";
-import {useMenuListStore} from "@stores/bo/base/menu/menuStore.ts";
+import type {MenuType} from "@pages/cmm";
+import {useMenuListStore} from "@pages/bo/base/menu/menuStore.ts";
 import MenuForm from "@pages/bo/base/menu/MenuForm.tsx";
-import {MoveMenuMutation} from "@hooks/bo/base/menu/useMenu.ts";
+import {MoveMenuMutation} from "@pages/bo/base/menu/useMenu.ts";
 import MenuInsertForm from "@pages/bo/base/menu/MenuInsertForm.tsx";
 
 // menuList 데이터 treeData 컨버팅

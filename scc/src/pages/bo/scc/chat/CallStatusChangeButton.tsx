@@ -8,12 +8,12 @@ import {
     DownCircleOutlined
 } from "@ant-design/icons";
 import { Space } from "antd";
-import {deleteChatMutation, updateChatStatusMutation} from "@hooks/bo/scc/chat/useChat.ts";
-import { useChatStore } from "@stores/bo/scc/chat/chatStore.ts";
-import { callEnd, holdCall, resumeCall, changeChatStatus, deleteChatSession } from '@hooks/bo/scc/cti/useCti.ts';
-import { useUserStore } from "@stores/bo/base/user/userStore.ts";
-import {useLogin} from "@hooks/cmm/login/useLogin.ts";
-import {useCtiStore} from "@stores/bo/scc/cti/ctiStore.ts";
+import {deleteChatMutation, updateChatStatusMutation} from "@pages/bo/scc/chat/useChat.ts";
+import { useChatStore } from "@pages/bo/scc/chat/chatStore.ts";
+import { callEnd, holdCall, resumeCall, changeChatStatus, deleteChatSession } from '@pages/cmm/cti/useCti.ts';
+import { useUserStore } from "@pages/bo/base/user/userStore.ts";
+import {useLogin} from "@pages/cmm/login/useLogin.ts";
+import {useCtiStore} from "@pages/cmm/cti/ctiStore.ts";
 
 function CallStatusChangeButton() {
     const { chatSeq, clearChatSeq } = useChatStore();

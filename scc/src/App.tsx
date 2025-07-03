@@ -4,13 +4,13 @@ import Navbar from '@components/layout/Navbar';
 import Sidebar from '@components/layout/Sidebar';
 import Content from '@pages/cmm/Content';
 import 'tui-grid/dist/tui-grid.css';
-import {useMenuListStore} from "@stores/bo/base/menu/menuStore.ts";
+import {useMenuListStore} from "@pages/bo/base/menu/menuStore.ts";
 import {useLocation} from "react-router-dom";
 import {useEffect} from "react";
-import {useMenuList} from "@hooks/bo/base/menu/useMenu.ts";
+import {useMenuList} from "@pages/bo/base/menu/useMenu.ts";
 import koKR from 'antd/locale/ko_KR';
-import {useLogin} from "@hooks/cmm/login/useLogin.ts";
-import {useCtiStore} from "@stores/bo/scc/cti/ctiStore.ts"; // antd v5+
+import {useLogin} from "@pages/cmm/login/useLogin.ts";
+import {useCtiStore} from "@pages/cmm/cti/ctiStore.ts"; // antd v5+
 
 const { Header, Footer } = Layout;
 

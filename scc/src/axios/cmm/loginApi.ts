@@ -1,5 +1,5 @@
 import axios from '@api/api.ts';
-import type { Login, Mgr } from '@/types';
+import type { Login, Mgr } from '@pages/cmm';
 import { getMgrDetail } from '@api/bo/base/mgr/mgrApi';
 import { message } from 'antd';
 
