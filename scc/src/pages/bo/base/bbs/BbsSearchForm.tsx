@@ -1,13 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {Button, Checkbox, Col, DatePicker, Form, Input, Row, Select, Space, theme} from 'antd';
 import CmmForm from "@components/form/CmmForm.tsx";
 
 const { Option } = Select;
 const { RangePicker } = DatePicker;
 
-const BbsSearchForm = ({bbsCd, onSearch}) => {
+const BbsSearchForm = ({form, bbsCd, onSearch}) => {
     const { token } = theme.useToken();
-    const [form] = Form.useForm();
 
     // bbsCd 변경 --> 게시판 메뉴 변경 상황
     useEffect(() => {
@@ -126,18 +125,20 @@ const BbsSearchForm = ({bbsCd, onSearch}) => {
                         <Input></Input>
                     </Form.Item>
                 </Col>
-                <Col span={4} >
-                    <Space size="small">
-                        <Button type="primary" htmlType="submit">
-                            검색
-                        </Button>
-                        <Button
-                            onClick={handleResetSearch}
-                        >
-                            초기화
-                        </Button>
-                    </Space>
-                </Col>
+                { bbsCd !== '1000' ? (
+                    <Col span={4} >
+                        <Space size="small">
+                            <Button type="primary" htmlType="submit">
+                                검색
+                            </Button>
+                            <Button
+                                onClick={handleResetSearch}
+                            >
+                                초기화
+                            </Button>
+                        </Space>
+                    </Col>
+                    ): null}
             </Row>
         </CmmForm>
     );

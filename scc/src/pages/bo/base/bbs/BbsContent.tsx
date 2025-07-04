@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Card, Col, Divider, Row, Select} from 'antd';
+import {Card, Col, Divider, Form, Row} from 'antd';
 import BbsSearchForm from "@pages/bo/base/bbs/BbsSearchForm.tsx";
 import BbsSearchList from "@pages/bo/base/bbs/BbsSearchList.tsx";
 import type {Bbs} from "@pages/cmm";
@@ -7,42 +7,78 @@ import {useParams} from "react-router-dom";
 import BbsView from "@pages/bo/base/bbs/BbsView.tsx";
 import CmmButton from "@components/form/CmmButton.tsx";
 import BbsForm from "@pages/bo/base/bbs/BbsForm.tsx";
+import CmmSearchForm from "@components/form/CmmSearchForm.tsx";
 
-const { Option } = Select;
 
 const BbsContent = () => {
     const [searchParams, setSearchParams] = useState<Bbs | null>(null);
     const [ bbsSeq, setBbsSeq ] = useState<Bbs['bbsSeq']>(null);
     const { bbsCd } = useParams();
     const [formMode, setFormMode] = useState<'none' | 'insert' | 'update'>('none'); // 등록/수정 모드
+    const [form] = Form.useForm();
 
     // 메뉴 변경 동작 시 bbsSeq 값 초기화
     useEffect(() => {
         setBbsSeq(null);
     }, [bbsCd]);
 
-    const handleOpenInsertForm = async () => {
+    const handleOpenInsertForm = () => {
         setFormMode('insert');
         setBbsSeq(null); // 상세보기는 초기화
     }
 
     return (
         <>
-            <Card
-                extra={
-                    <CmmButton
-                        htmlType="submit"
-                        type="primary"
-                        onClick={() => handleOpenInsertForm()}
-                    >
-                        등록
-                    </CmmButton>
-                }
-                title={'검색'}>
-                <BbsSearchForm onSearch={setSearchParams} bbsCd={bbsCd}/>
-            </Card>
-            <Divider />
-
+        { bbsCd !== '1000' ? (
+                <>
+                <Card
+                    extra={
+                        <CmmButton
+                            htmlType="submit"
+                            type="primary"
+                            onClick={() => handleOpenInsertForm()}
+                        >
+                            등록
+                        </CmmButton>
+                    }
+                    title={'검색'}>
+                    <BbsSearchForm form={form} onSearch={setSearchParams} bbsCd={bbsCd}/>
+                </Card>
+                <Divider />
+                </>
+            ):(
+                <CmmSearchForm
+                    form={form}
+                    extraButtons={
+                        <>
+                            <CmmButton
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    console.log("엑셀 다운로드")
+                                }
+                            }>엑셀다운로드</CmmButton>
+                            <CmmButton
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    console.log("카테고리 관리")
+                                }
+                            }>카테고리</CmmButton>
+                            <CmmButton
+                                htmlType="submit"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleOpenInsertForm()
+                                }
+                            }
+                            >
+                                등록
+                            </CmmButton>
+                        </>
+                    }
+                >
+                    <BbsSearchForm form={form} onSearch={setSearchParams} bbsCd={bbsCd}/>
+                </CmmSearchForm>
+            )}
 
             {/* TODO: 아래 좌우/상하 버전별로 작업해놨음*/}
             {

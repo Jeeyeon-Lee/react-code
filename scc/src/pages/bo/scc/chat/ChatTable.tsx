@@ -11,7 +11,7 @@ interface ChatTableProps {
 
 
 const ChatTable = ({ chatList, onRowClick, scrollY = 200 }: ChatTableProps) => {
-    const [pageNation, setPageNation] = useState(10);
+    const [pageNation, setPageNation] = useState(5);
 
     const colorMap = {
         '대기중': 'rcallEndTm',

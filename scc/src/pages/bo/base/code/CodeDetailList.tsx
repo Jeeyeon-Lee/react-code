@@ -1,4 +1,5 @@
 import React, {useContext, useEffect, useRef, useState} from "react";
+import {useQueryClient} from '@tanstack/react-query';
 import type {GetRef, InputRef, TableProps} from "antd";
 import {Button, Checkbox, Form, Input, message, Popconfirm, Table} from "antd";
 import type {Code} from "@pages/cmm";
@@ -6,7 +7,6 @@ import {useCrudDetailCode, useDetailCodeList} from "@pages/bo/base/code/useCode.
 import CmmForm from "@components/form/CmmForm.tsx";
 import {smMax, smMin, smPattern, smRegex, smRequired, smValidateBuilder} from "@utils/form/smValidateBuilder.ts";
 import type {Rule} from "rc-field-form/lib/interface";
-import {useQueryClient} from "@tanstack/react-query";
 
 type FormInstance<T> = GetRef<typeof Form<T>>;
 const EditableContext = React.createContext<FormInstance<any> | null>(null);
@@ -235,8 +235,8 @@ const CodeDetailList = ({ selectedGroupCd }) => {
         };
         setDataSource([...dataSource, newData]);
     };
-    
 
+    const queryClient = useQueryClient();
     const handleBulkSave = async () => {
 
         if (modifiedRows.length === 0 && deletedRows.length === 0) {
@@ -266,6 +266,7 @@ const CodeDetailList = ({ selectedGroupCd }) => {
 
             crudDetailCode(dataToSave, { // mutate 함수 호출 시 onSuccess 콜백 정의
                 onSuccess: async () => {
+
                     // 여기서는 `selectedGroupCd`에 클로저로 접근할 수 있습니다.
                     await queryClient.invalidateQueries({
                         queryKey: ['detailCodeList', selectedGroupCd], // groupCd를 쿼리 키에 포함
