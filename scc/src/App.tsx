@@ -3,7 +3,6 @@ import {ConfigProvider, Layout} from 'antd';
 import Navbar from '@components/layout/Navbar';
 import Sidebar from '@components/layout/Sidebar';
 import Content from '@pages/cmm/Content';
-import 'tui-grid/dist/tui-grid.css';
 import {useMenuListStore} from "@pages/bo/base/menu/menuStore.ts";
 import {useLocation} from "react-router-dom";
 import {useEffect} from "react";

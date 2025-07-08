@@ -10,8 +10,8 @@ import { useChatDataList} from '@pages/bo/scc/chat/useChat.ts';
 import type { ChatData } from '@pages/cmm';
 import { useChatStore } from '@pages/bo/scc/chat/chatStore.ts';
 import CmmButton from '@components/form/CmmButton.tsx';
-import CounselStatus from "@pages/bo/scc/chat/CounselStatus.tsx";
 import ChatUserDetail from "@pages/bo/scc/chat/ChatUserDetail.tsx";
+import CounselStatus from "@pages/bo/scc/chat/CounselStatus.tsx";
 
 interface LeftContentProps {
     templateContent: string;
@@ -57,7 +57,6 @@ const ChatList = ({ templateContent, setTemplateContent }: LeftContentProps) => 
     const handleSend = async () => {
 
     };
-
     return (
         <Col style={{
             padding: '16px',
@@ -123,7 +122,7 @@ const ChatList = ({ templateContent, setTemplateContent }: LeftContentProps) => 
                     ))}
                 </div>
                 <div ref={messagesEndRef}/>
-                <CounselStatus/>
+                <CounselStatus none="작업, 후처리"/>
             </div>
 
             <div style={{

@@ -32,6 +32,4 @@ const CmmButton = forwardRef<HTMLButtonElement, CmmButtonProps>(
     }
 );
 
-
-CmmButton.displayName = 'CmmButton';
 export default CmmButton;

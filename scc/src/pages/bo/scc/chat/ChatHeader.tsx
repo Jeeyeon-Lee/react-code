@@ -46,7 +46,7 @@ function ChatHeader() {
                     alignItems: 'flex-start',
                 }}
             >
-                { chatType === '챗'
+                { chatType === '채팅'
                     ? <ChatStatusChangeButton/>
                     : <CallStatusChangeButton/>
                 }
@@ -60,7 +60,7 @@ function ChatHeader() {
                                 style={{width: 140}}
                                 onChange={async (mgrId: Mgr['mgrId']) => {
                                     await saveLoginMgr(mgrId);
-                                    await updateLoginStatus(loginInfo, '상담준비');
+                                    await updateLoginStatus(loginInfo, '대기');
                                 }}
                                 options={mgrList?.map((mgr) => ({
                                     label: mgr.mgrNm,
@@ -69,7 +69,7 @@ function ChatHeader() {
                                 }))}
                             />
                             <CmmCodeSelect
-                                group="직원상태"
+                                group="AGENT_STATUS"
                                 all={false}
                                 value={loginInfo.status}
                                 style={{width: 120}}
@@ -78,7 +78,7 @@ function ChatHeader() {
                                 }}
                             />
                             <CmmCodeSelect
-                                group="소켓상태"
+                                group="SOCKET_STATUS"
                                 all={false}
                                 value={socketDetail?.status}
                                 style={{width: 100}}

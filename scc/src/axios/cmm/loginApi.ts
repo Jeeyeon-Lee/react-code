@@ -16,7 +16,7 @@ export const saveLoginMgr = async (mgrId:Mgr['mgrId']) => {
         if (!mgrDetail) message.error('상담원 정보를 찾을 수 없습니다.');
         const loginMgr: { mgrId: string; loginTime: string; mgrNm: string; id: string; deptNm: string; status: string } = {
             ...mgrDetail,
-            status:'상담준비',
+            status:'대기',
             loginTime: new Date().toISOString(),
         };
         const response = await axios.patch<Login>(`/loginMgr/1`,loginMgr );
@@ -27,7 +27,7 @@ export const saveLoginMgr = async (mgrId:Mgr['mgrId']) => {
     }
 };
 
-//로그인 상태 변경(이석-식사, 휴식, 상담준비 등)
+//로그인 상태 변경(이석-식사, 휴식, 대기 등)
 export const updateLoginStatus = async (loginInfo:Login, status:Mgr['status']) => {
     if(!loginInfo) return;
 

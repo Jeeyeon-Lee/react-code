@@ -37,9 +37,9 @@ function MyChat() {
     const { Search } = Input;
 
     /*상담 내역 카운트 : 다른영역에서도 쓰이는거면 상단에 올려서 관리 but 여기서만 사용할듯?! */
-    const 대기중Count = fullChatList?.filter(c => c.status === '대기중').length ?? 0;
+    const 신규접수Count = fullChatList?.filter(c => c.status === '신규접수').length ?? 0;
     const 보류Count = fullChatList?.filter(c => c.status === '보류').length ?? 0;
-    const 상담중Count = fullChatList?.filter(c => c.status === '상담중').length ?? 0;
+    const 진행중Count = fullChatList?.filter(c => c.status === '진행중').length ?? 0;
     const 후처리Count = fullChatList?.filter(c => c.status === '후처리').length ?? 0;
     const 완료Count = fullChatList?.filter(c => c.status === '완료').length ?? 0;
 
@@ -63,8 +63,8 @@ function MyChat() {
 
     const getStatusTagColor = (status: Chat['status']) => {
         switch (status) {
-            case '대기중': return 'yellow';
-            case '상담중': return 'blue';
+            case '신규접수': return 'yellow';
+            case '진행중': return 'blue';
             case '후처리': return 'red';
             case '완료': return 'green';
             default: return 'default';
@@ -111,11 +111,11 @@ function MyChat() {
                             setType('all')
                         }}>전체</Button>
                     </Badge>
-                    <Badge count={대기중Count} color="pink" size="small" showZero>
-                        <Button size="small" onClick={() => setStatus('대기중')}>대기</Button>
+                    <Badge count={신규접수Count} color="pink" size="small" showZero>
+                        <Button size="small" onClick={() => setStatus('신규접수')}>신규</Button>
                     </Badge>
-                    <Badge count={상담중Count} color="blue" size="small" showZero>
-                        <Button size="small" onClick={() => setStatus('상담중')}>상담</Button>
+                    <Badge count={진행중Count} color="blue" size="small" showZero>
+                        <Button size="small" onClick={() => setStatus('진행중')}>진행</Button>
                     </Badge>
                     <Badge count={후처리Count} color="blue" size="small" showZero>
                         <Button size="small" onClick={() => setStatus('후처리')}>후처리</Button>
@@ -136,8 +136,8 @@ function MyChat() {
                 />
 
                 <div style={{display: 'flex', gap: '8px'}}>
-                    <CmmCodeSellect group="상담상태" value={status} onChange={(value) => setStatus(value)}/>
-                    <CmmCodeSellect group="상담유형" value={type} onChange={(value) => setType(value)}/>
+                    <CmmCodeSellect group="CHAT_STATUS" value={status} onChange={(value) => setStatus(value)}/>
+                    <CmmCodeSellect group="CHANNEL" value={type} onChange={(value) => setType(value)}/>
                 </div>
             </div>
 
@@ -169,13 +169,13 @@ function MyChat() {
                                 description={
                                     <>
                                         {item.title}
-                                        {item.status === '대기중' && (
+                                        {item.status === '신규접수' && (
                                             <Button
                                                 type="primary"
                                                 size="small"
                                                 style={{marginTop: 4}}
                                                 onClick={async () => {
-                                                    await syncChatStatus(item.chatSeq, '상담중');
+                                                    await syncChatStatus(item.chatSeq, '진행중');
                                                     handleSelectChat(item.chatSeq, item.userId, item.type, item.status);
                                                     /*setStartTimes(prev => ({
                                                         ...prev,
@@ -191,7 +191,7 @@ function MyChat() {
                             />
                             <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2}}>
                                 <CmmTag color={getStatusTagColor(item.status)}>{item.status}</CmmTag>
-                                {item.status === '상담중' && startTimes[item.chatSeq] && (
+                                {item.status === '진행중' && startTimes[item.chatSeq] && (
                                     <Timer
                                         type="countup"
                                         value={startTimes[item.chatSeq]}

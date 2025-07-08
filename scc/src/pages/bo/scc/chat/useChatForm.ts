@@ -33,7 +33,7 @@ export const insertChatFormTextMutation = () => {
     const queryClient = useQueryClient();
     return useMutation({
         mutationFn: async ({ chatSeq, text } : { chatSeq: ChatFormData['chatSeq'], text:ChatFormData['text']}) => {
-            const newDate = salmon.date.newDate().format('YYYY/MM/DD HH:mm:ss');
+            const newDate = salmon.date.newDate().format(('YYYY-MM-DD HH:mm:ss'));
             const loginInfo = await getLoginMgr();
             try {
                 const newChatFormText: ChatFormData = {
@@ -67,7 +67,7 @@ export const insertChatFormMemoMutation = () => {
     return useMutation({
         mutationFn: async ({ chatSeq, text } : { chatSeq: ChatFormData['chatSeq'], text:ChatFormData['text']}) => {
             if (!chatSeq || !text) return;
-            const newDate = salmon.date.newDate().format('YYYY/MM/DD HH:mm:ss');
+            const newDate = salmon.date.newDate().format(('YYYY-MM-DD HH:mm:ss'));
             const loginInfo = await getLoginMgr();
             try {
                 const newChatFormText: ChatFormData = {
@@ -100,7 +100,7 @@ export const updateChatFormTextMutation = () => {
     return useMutation({
         mutationFn: async ({ chatSeq, text } : { chatSeq: ChatFormData['chatSeq'], text:ChatFormData['text']}) => {
             if (!chatSeq || !text) return;
-            const newDate = salmon.date.newDate().format('YYYY/MM/DD HH:mm:ss');
+            const newDate = salmon.date.newDate().format(('YYYY-MM-DD HH:mm:ss'));
             const loginInfo = await getLoginMgr();
             try {
                 await axios.patch<ChatFormData>(`/chatFormData/${chatSeq}`, {
@@ -128,7 +128,7 @@ export const updateChatFormMemoMutation = () => {
     return useMutation({
         mutationFn: async ({ chatSeq, text } : { chatSeq: ChatFormData['chatSeq'], text:ChatFormData['text']}) => {
             if (!chatSeq || !text) return;
-            const newDate = salmon.date.newDate().format('YYYY/MM/DD HH:mm:ss');
+            const newDate = salmon.date.newDate().format(('YYYY-MM-DD HH:mm:ss'));
             const loginInfo = await getLoginMgr();
             try {
                 await axios.patch<ChatFormData>(`/chatMemoData/${chatSeq}`, {

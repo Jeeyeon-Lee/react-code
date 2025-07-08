@@ -39,7 +39,7 @@ function ChatStatusChangeButton() {
                     {chatStatus === '보류' && (
                         <CmmButton
                             icon={<RedoOutlined />}
-                            onClick={() => syncChatStatus(chatSeq, '상담중')}
+                            onClick={() => syncChatStatus(chatSeq, '진행중')}
                             buttonType='보류해제'
                         >
                             보류해제

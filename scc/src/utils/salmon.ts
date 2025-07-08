@@ -1,6 +1,8 @@
 import { Modal, message } from 'antd';
 import dayjs, { Dayjs } from 'dayjs';
 import type { ModalFuncProps } from 'antd';
+import ExcelJS from 'exceljs';
+import saveAs from 'file-saver';
 
 const gridSearch = (gridInstance: any, params: any) => {
     gridInstance?.search?.(params);
@@ -62,6 +64,33 @@ export const modal = (props: ShowModalProps) => {
     }
 };
 
+interface BaseSearchForm {
+    sd?: string;
+    ed?: string;
+    sk?: string;
+    sv?: string;
+    'range-picker'?: [Dayjs, Dayjs];
+    [key: string]: any;
+}
+
+export const formSearch = <T extends BaseSearchForm>(fieldsValue: Partial<T>): T => {
+    const rangeValue = fieldsValue['range-picker'];
+
+    const values = {
+        ...fieldsValue,
+        sd: rangeValue?.[0]?.format('YYYY-MM-DD'),
+        ed: rangeValue?.[1]?.format('YYYY-MM-DD'),
+    };
+
+    if (values.sk && values.sv) {
+        const key = values.sk as keyof T;
+        values[key] = values.sv;
+    }
+
+    return values as T;
+};
+
+
 export const date = {
     newDate: (value?: string | Date) => value ? dayjs(value) : dayjs(),
 
@@ -80,10 +109,76 @@ export const date = {
     isBefore: (a: string | Date | Dayjs, b: string | Date | Dayjs) =>
         dayjs(a).isBefore(dayjs(b))
 }
+
+interface ExcelDownloadOptions<T> {
+    data: T[];
+    columns: {
+        key: keyof T;
+        header: string;
+    }[];
+    sheetName?: string;
+}
+
+export const downloadExcel = async <T>({
+                                        data,
+                                        columns,
+                                        sheetName = 'Sheet1',
+                                        }: ExcelDownloadOptions<T>) => {
+    if (!data || data.length === 0) {
+        modal({
+            type:"warning",
+            title: '다운로드 불가',
+            content: '다운로드할 데이터가 없습니다.',
+        });
+        return;
+    }
+
+    if (!columns || columns.length === 0) {
+        modal({
+            type:"warning",
+            title: '다운로드 불가',
+            content: '다운로드할 컬럼 정보가 없습니다.',
+        });
+        return;
+    }
+
+    if (!sheetName) {
+        modal({
+            type:"warning",
+            title: '다운로드 불가',
+            content: '다운로드할 시트 파일명 정보가 없습니다.',
+        });
+        return;
+    }
+
+    const workbook = new ExcelJS.Workbook();
+    const worksheet = workbook.addWorksheet(sheetName);
+
+    worksheet.columns = columns.map(col => ({
+        header: col.header,
+        key: col.key as string,
+        width: 20,
+    }));
+
+    data.forEach(row => {
+        worksheet.addRow(row);
+    });
+
+    worksheet.columns.forEach(column => {
+        column.alignment = { vertical: 'middle', horizontal: 'center' };
+    });
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    saveAs(blob, sheetName);
+};
+
 export const salmon = {
     gridSearch,
     modalClose,
     i18n,
     modal,
-    date
+    date,
+    formSearch,
+    downloadExcel
 };

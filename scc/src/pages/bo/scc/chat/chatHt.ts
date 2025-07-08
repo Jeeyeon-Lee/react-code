@@ -7,7 +7,7 @@ export interface chatHt {
     mgrNm: string;
     title: string;
     status: string;
-    type: '챗' | '콜' | 'all' | '';
+    type: '채팅' | '콜' | 'all' | '';
     transferYn: 'Y' | 'N' | '';
     hold_cnt: number;
     callStartTm: string;

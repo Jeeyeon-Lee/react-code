@@ -12,12 +12,12 @@
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/12 14:20:30",
+      "regDt": "2025-06-12 15:10:29",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
       "callStartTm": "14:20:30",
-      "callEndTm": "12:44:51"
+      "callEndTm": "13:54:54"
     },
     {
       "id": "3",
@@ -31,12 +31,12 @@
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/12 14:20:30",
+      "regDt": "2025-06-12 14:20:30",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
       "callStartTm": "14:20:30",
-      "callEndTm": "20:53:40"
+      "callEndTm": "13:48:32"
     },
     {
       "id": "4",
@@ -47,10 +47,10 @@
       "mgrId": 3,
       "mgrNm": "최상담원",
       "status": "완료",
-      "type": "챗",
+      "type": "채팅",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/12 14:20:30",
+      "regDt": "2025-06-12 14:20:30",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
@@ -66,15 +66,15 @@
       "mgrId": 3,
       "mgrNm": "최상담원",
       "status": "완료",
-      "type": "챗",
+      "type": "채팅",
       "qusetion": "",
       "transferYn": "",
-      "regDt": "2025/06/12 14:20:30",
+      "regDt": "2025-06-12 14:20:30",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
-      "callStartTm": "2025/06/12 14:20:30",
-      "callEndTm": "2025/06/24 14:30:38"
+      "callStartTm": "14:20:30",
+      "callEndTm": "14:30:38"
     },
     {
       "id": "6",
@@ -85,14 +85,14 @@
       "mgrId": "2",
       "mgrNm": "이상담원",
       "status": "완료",
-      "type": "챗",
+      "type": "채팅",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/12 14:20:30",
+      "regDt": "2025-06-12 14:20:30",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
-      "callStartTm": "2025/06/12 14:20:30",
+      "callStartTm": "2025-06-12 14:20:30",
       "callEndTm": "12:41:11"
     },
     {
@@ -107,11 +107,11 @@
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/12 15:10:29",
+      "regDt": "2025-06-12 15:10:29",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
-      "callStartTm": "2025/06/12 15:10:29",
+      "callStartTm": "2025-06-12 15:10:29",
       "callEndTm": ""
     },
     {
@@ -123,15 +123,15 @@
       "mgrId": "1",
       "mgrNm": "김상담원",
       "status": "완료",
-      "type": "챗",
+      "type": "채팅",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/13 08:04:49",
+      "regDt": "2025-06-13 08:04:49",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
-      "callStartTm": "2025/06/13 08:04:49",
-      "callEndTm": "2025/06/24 16:12:12"
+      "callStartTm": "2025-06-13 08:04:49",
+      "callEndTm": "2025-06-24 16:12:12"
     },
     {
       "id": "20250613_080504",
@@ -142,15 +142,15 @@
       "mgrId": "3",
       "mgrNm": "최상담원",
       "status": "완료",
-      "type": "챗",
+      "type": "채팅",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/13 08:05:04",
+      "regDt": "2025-06-13 08:05:04",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
-      "callStartTm": "2025/06/13 08:05:04",
-      "callEndTm": "2025/06/13 11:12:37"
+      "callStartTm": "2025-06-13 08:05:04",
+      "callEndTm": "2025-06-13 11:12:37"
     },
     {
       "id": "20250613_111403",
@@ -161,15 +161,15 @@
       "mgrId": "3",
       "mgrNm": "최상담원",
       "status": "완료",
-      "type": "챗",
+      "type": "채팅",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/13 11:14:03",
+      "regDt": "2025-06-13 11:14:03",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
-      "callStartTm": "2025/06/13 11:14:03",
-      "callEndTm": "2025/06/13 11:15:09"
+      "callStartTm": "2025-06-13 11:14:03",
+      "callEndTm": "2025-06-13 11:15:09"
     },
     {
       "id": "20250616_103615",
@@ -183,11 +183,11 @@
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/16 10:36:15",
+      "regDt": "2025-06-16 10:36:15",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
-      "callStartTm": "2025/06/16 10:36:15",
+      "callStartTm": "2025-06-16 10:36:15",
       "callEndTm": ""
     },
     {
@@ -199,15 +199,15 @@
       "mgrId": "3",
       "mgrNm": "최상담원",
       "status": "완료",
-      "type": "챗",
+      "type": "채팅",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/16 13:37:53",
+      "regDt": "2025-06-16 13:37:53",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
-      "callStartTm": "2025/06/16 13:37:53",
-      "callEndTm": "2025/06/16 13:38:14"
+      "callStartTm": "2025-06-16 13:37:53",
+      "callEndTm": "2025-06-16 13:38:14"
     },
     {
       "id": "20250616_133814",
@@ -218,15 +218,15 @@
       "mgrId": "2",
       "mgrNm": "이상담원",
       "status": "완료",
-      "type": "챗",
+      "type": "채팅",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/16 13:38:14",
+      "regDt": "2025-06-16 13:38:14",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
-      "callStartTm": "2025/06/16 13:38:14",
-      "callEndTm": "2025/06/16 13:38:28"
+      "callStartTm": "2025-06-16 13:38:14",
+      "callEndTm": "2025-06-16 13:38:28"
     },
     {
       "id": "20250616_133828",
@@ -237,15 +237,15 @@
       "mgrId": "1",
       "mgrNm": "김상담원",
       "status": "완료",
-      "type": "챗",
+      "type": "채팅",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/16 13:38:28",
+      "regDt": "2025-06-16 13:38:28",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
-      "callStartTm": "2025/06/16 13:38:28",
-      "callEndTm": "2025/06/16 14:24:05"
+      "callStartTm": "2025-06-16 13:38:28",
+      "callEndTm": "2025-06-16 14:24:05"
     },
     {
       "id": "20250616_142405",
@@ -256,14 +256,14 @@
       "mgrId": "2",
       "mgrNm": "이상담원",
       "status": "완료",
-      "type": "챗",
+      "type": "채팅",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/16 14:24:05",
+      "regDt": "2025-06-16 14:24:05",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
-      "callStartTm": "2025/06/16 14:24:05",
+      "callStartTm": "2025-06-16 14:24:05",
       "callEndTm": ""
     },
     {
@@ -275,14 +275,14 @@
       "mgrId": "1",
       "mgrNm": "김상담원",
       "status": "완료",
-      "type": "챗",
+      "type": "채팅",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/16 20:25:07",
+      "regDt": "2025-06-16 20:25:07",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
-      "callStartTm": "2025/06/16 20:25:07",
+      "callStartTm": "2025-06-16 20:25:07",
       "callEndTm": ""
     },
     {
@@ -297,11 +297,11 @@
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/17 10:00:53",
+      "regDt": "2025-06-17 10:00:53",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
-      "callStartTm": "2025/06/17 10:00:53",
+      "callStartTm": "2025-06-17 10:00:53",
       "callEndTm": ""
     },
     {
@@ -316,11 +316,11 @@
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/17 10:05:30",
+      "regDt": "2025-06-17 10:05:30",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
-      "callStartTm": "2025/06/17 10:05:30",
+      "callStartTm": "2025-06-17 10:05:30",
       "callEndTm": ""
     },
     {
@@ -332,14 +332,14 @@
       "mgrId": "1",
       "mgrNm": "김상담원",
       "status": "완료",
-      "type": "챗",
+      "type": "채팅",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/17 10:34:14",
+      "regDt": "2025-06-17 10:34:14",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
-      "callStartTm": "2025/06/17 10:34:14",
+      "callStartTm": "2025-06-17 10:34:14",
       "callEndTm": ""
     },
     {
@@ -354,11 +354,11 @@
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/17 10:36:12",
+      "regDt": "2025-06-17 10:36:12",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
-      "callStartTm": "2025/06/17 10:36:12",
+      "callStartTm": "2025-06-17 10:36:12",
       "callEndTm": ""
     },
     {
@@ -373,11 +373,11 @@
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/17 11:17:30",
+      "regDt": "2025-06-17 11:17:30",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
-      "callStartTm": "2025/06/17 11:17:30",
+      "callStartTm": "2025-06-17 11:17:30",
       "callEndTm": ""
     },
     {
@@ -392,11 +392,11 @@
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/18 16:26:09",
+      "regDt": "2025-06-18 16:26:09",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
-      "callStartTm": "2025/06/18 16:26:09",
+      "callStartTm": "2025-06-18 16:26:09",
       "callEndTm": ""
     },
     {
@@ -415,7 +415,7 @@
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
-      "callStartTm": "2025/06/18 16:26:20",
+      "callStartTm": "2025-06-18 16:26:20",
       "callEndTm": ""
     },
     {
@@ -430,11 +430,11 @@
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/18 16:26:42",
+      "regDt": "2025-06-18 16:26:42",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
-      "callStartTm": "2025/06/18 16:26:42",
+      "callStartTm": "2025-06-18 16:26:42",
       "callEndTm": ""
     },
     {
@@ -449,11 +449,11 @@
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/19 09:32:11",
+      "regDt": "2025-06-19 09:32:11",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
-      "callStartTm": "2025/06/19 09:32:11",
+      "callStartTm": "2025-06-19 09:32:11",
       "callEndTm": ""
     },
     {
@@ -468,11 +468,11 @@
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/19 09:47:33",
+      "regDt": "2025-06-19 09:47:33",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
-      "callStartTm": "2025/06/19 09:47:33",
+      "callStartTm": "2025-06-19 09:47:33",
       "callEndTm": "20:59:17"
     },
     {
@@ -487,12 +487,12 @@
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/19 15:05:05",
+      "regDt": "2025-06-19 15:05:05",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
-      "callStartTm": "2025/06/19 15:05:05",
-      "callEndTm": "2025/06/24 16:04:32"
+      "callStartTm": "2025-06-19 15:05:05",
+      "callEndTm": "2025-06-24 16:04:32"
     },
     {
       "id": "20250620_152639",
@@ -506,12 +506,12 @@
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/20 15:26:39",
+      "regDt": "2025-06-20 15:26:39",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
-      "callStartTm": "2025/06/20 15:26:39",
-      "callEndTm": "2025/06/24 08:43:42"
+      "callStartTm": "2025-06-20 15:26:39",
+      "callEndTm": "2025-06-24 08:43:42"
     },
     {
       "id": "20250620_163647",
@@ -525,11 +525,11 @@
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/20 16:36:47",
+      "regDt": "2025-06-20 16:36:47",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
-      "callStartTm": "2025/06/20 16:36:47",
+      "callStartTm": "2025-06-20 16:36:47",
       "callEndTm": ""
     },
     {
@@ -544,11 +544,11 @@
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/23 14:09:04",
+      "regDt": "2025-06-23 14:09:04",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
-      "callStartTm": "2025/06/23 14:09:04",
+      "callStartTm": "2025-06-23 14:09:04",
       "callEndTm": ""
     },
     {
@@ -563,12 +563,12 @@
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/24 08:43:42",
+      "regDt": "2025-06-24 08:43:42",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
-      "callStartTm": "2025/06/24 08:43:42",
-      "callEndTm": "2025/06/24 16:04:43"
+      "callStartTm": "2025-06-24 08:43:42",
+      "callEndTm": "2025-06-24 16:04:43"
     },
     {
       "id": "20250624_160432",
@@ -582,11 +582,11 @@
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/24 16:04:32",
+      "regDt": "2025-06-24 16:04:32",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
-      "callStartTm": "2025/06/24 16:04:32",
+      "callStartTm": "2025-06-24 16:04:32",
       "callEndTm": ""
     },
     {
@@ -601,11 +601,11 @@
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/24 16:04:43",
+      "regDt": "2025-06-24 16:04:43",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
-      "callStartTm": "2025/06/24 16:04:43",
+      "callStartTm": "2025-06-24 16:04:43",
       "callEndTm": "09:38:09"
     },
     {
@@ -617,15 +617,15 @@
       "mgrId": "3",
       "mgrNm": "최상담원",
       "status": "완료",
-      "type": "챗",
+      "type": "채팅",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/24 16:12:12",
+      "regDt": "2025-06-24 16:12:12",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
-      "callStartTm": "2025/06/24 16:12:12",
-      "callEndTm": "2025/06/24 16:41:38"
+      "callStartTm": "2025-06-24 16:12:12",
+      "callEndTm": "2025-06-24 16:41:38"
     },
     {
       "id": "20250624_164138",
@@ -636,15 +636,15 @@
       "mgrId": "1",
       "mgrNm": "김상담원",
       "status": "완료",
-      "type": "챗",
+      "type": "채팅",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/24 16:41:38",
+      "regDt": "2025-06-24 16:41:38",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
-      "callStartTm": "2025/06/24 16:41:38",
-      "callEndTm": "2025/06/24 16:51:45"
+      "callStartTm": "2025-06-24 16:41:38",
+      "callEndTm": "2025-06-24 16:51:45"
     },
     {
       "id": "20250624_165145",
@@ -655,14 +655,14 @@
       "mgrId": "1",
       "mgrNm": "김상담원",
       "status": "완료",
-      "type": "챗",
+      "type": "채팅",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/24 16:51:45",
+      "regDt": "2025-06-24 16:51:45",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
-      "callStartTm": "2025/06/24 16:51:45",
+      "callStartTm": "2025-06-24 16:51:45",
       "callEndTm": "08:18:38"
     },
     {
@@ -677,7 +677,7 @@
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/30 20:59:17",
+      "regDt": "2025-06-30 20:59:17",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
@@ -696,7 +696,7 @@
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/30 21:16:52",
+      "regDt": "2025-06-30 21:16:52",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
@@ -715,7 +715,7 @@
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/30 21:26:05",
+      "regDt": "2025-06-30 21:26:05",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
@@ -731,10 +731,10 @@
       "mgrId": "2",
       "mgrNm": "이상담원",
       "status": "완료",
-      "type": "챗",
+      "type": "채팅",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/07/01 08:17:49",
+      "regDt": "2025-07-01 08:17:49",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
@@ -750,10 +750,10 @@
       "mgrId": "1",
       "mgrNm": "김상담원",
       "status": "완료",
-      "type": "챗",
+      "type": "채팅",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/07/01 08:18:38",
+      "regDt": "2025-07-01 08:18:38",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
@@ -772,7 +772,7 @@
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/07/01 09:38:09",
+      "regDt": "2025-07-01 09:38:09",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
@@ -788,33 +788,14 @@
       "mgrId": "2",
       "mgrNm": "이상담원",
       "status": "후처리",
-      "type": "챗",
+      "type": "채팅",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/07/01 10:10:12",
+      "regDt": "2025-07-01 10:10:12",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
       "callStartTm": "10:10:12",
-      "callEndTm": ""
-    },
-    {
-      "id": "20250703_124111",
-      "chatSeq": "20250703_124111",
-      "title": "희동이님 긴급문의",
-      "userId": 5,
-      "userNm": "희동이",
-      "mgrId": "3",
-      "mgrNm": "최상담원",
-      "status": "상담중",
-      "type": "챗",
-      "qusetion": "",
-      "transferYn": "Y",
-      "regDt": "2025/07/03 12:41:11",
-      "totalOperTm": "",
-      "tatalCallTm": "",
-      "callWaitTm": "",
-      "callStartTm": "12:41:11",
       "callEndTm": ""
     },
     {
@@ -825,15 +806,129 @@
       "userNm": "둘리",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "status": "상담중",
+      "status": "진행중",
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/07/03 12:44:51",
+      "regDt": "2025-07-03 12:44:51",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
       "callStartTm": "12:44:51",
+      "callEndTm": ""
+    },
+    {
+      "id": "20250708_134816",
+      "chatSeq": "20250708_134816",
+      "title": "둘리님 긴급문의",
+      "userId": 2,
+      "userNm": "둘리",
+      "mgrId": "1",
+      "mgrNm": "김상담원",
+      "status": "신규접수",
+      "type": "콜",
+      "qusetion": "",
+      "transferYn": "Y",
+      "regDt": "2025-07-08 13:48:16",
+      "totalOperTm": "",
+      "tatalCallTm": "",
+      "callWaitTm": "",
+      "callStartTm": "13:48:16",
+      "callEndTm": ""
+    },
+    {
+      "id": "20250708_134832",
+      "chatSeq": "20250708_134832",
+      "title": "또치님 긴급문의",
+      "userId": 3,
+      "userNm": "또치",
+      "mgrId": "1",
+      "mgrNm": "김상담원",
+      "status": "신규접수",
+      "type": "콜",
+      "qusetion": "",
+      "transferYn": "Y",
+      "regDt": "2025-07-08 13:48:32",
+      "totalOperTm": "",
+      "tatalCallTm": "",
+      "callWaitTm": "",
+      "callStartTm": "13:48:32",
+      "callEndTm": ""
+    },
+    {
+      "id": "20250708_134947",
+      "chatSeq": "20250708_134947",
+      "title": "둘리님 긴급문의",
+      "userId": 2,
+      "userNm": "둘리",
+      "mgrId": "2",
+      "mgrNm": "이상담원",
+      "status": "신규접수",
+      "type": "콜",
+      "qusetion": "",
+      "transferYn": "Y",
+      "regDt": "2025-07-08 13:49:47",
+      "totalOperTm": "",
+      "tatalCallTm": "",
+      "callWaitTm": "",
+      "callStartTm": "13:49:47",
+      "callEndTm": ""
+    },
+    {
+      "id": "20250708_135104",
+      "chatSeq": "20250708_135104",
+      "title": "둘리님 긴급문의",
+      "userId": 2,
+      "userNm": "둘리",
+      "mgrId": "2",
+      "mgrNm": "이상담원",
+      "status": "신규접수",
+      "type": "콜",
+      "qusetion": "",
+      "transferYn": "Y",
+      "regDt": "2025-07-08 13:51:04",
+      "totalOperTm": "",
+      "tatalCallTm": "",
+      "callWaitTm": "",
+      "callStartTm": "13:51:04",
+      "callEndTm": ""
+    },
+    {
+      "id": "20250708_135353",
+      "chatSeq": "20250708_135353",
+      "title": "둘리님 긴급문의",
+      "userId": 2,
+      "userNm": "둘리",
+      "mgrId": "3",
+      "mgrNm": "최상담원",
+      "status": "신규접수",
+      "type": "콜",
+      "qusetion": "",
+      "transferYn": "Y",
+      "regDt": "2025-07-08 13:53:53",
+      "totalOperTm": "",
+      "tatalCallTm": "",
+      "callWaitTm": "",
+      "callStartTm": "13:53:53",
+      "callEndTm": ""
+    },
+    {
+      "id": "20250708_135454",
+      "chatSeq": "20250708_135454",
+      "title": "둘리님 긴급문의",
+      "userId": 2,
+      "userNm": "둘리",
+      "mgrId": "1",
+      "mgrNm": "김상담원",
+      "status": "신규접수",
+      "type": "콜",
+      "qusetion": "",
+      "transferYn": "Y",
+      "regDt": "2025-07-08 13:54:54",
+      "totalOperTm": "",
+      "tatalCallTm": "",
+      "callWaitTm": "",
+      "callStartTm": "13:54:54",
       "callEndTm": ""
     }
   ],
@@ -876,21 +971,21 @@
       "mgrId": 1,
       "mgrNm": "김상담원",
       "dptNm": "상담1팀",
-      "status": "상담가능"
+      "status": "대기"
     },
     {
       "id": "2",
       "mgrId": 2,
       "mgrNm": "이상담원",
       "dptNm": "상담1팀",
-      "status": "상담가능"
+      "status": "작업"
     },
     {
       "id": "3",
       "mgrId": 3,
       "mgrNm": "최상담원",
       "dptNm": "상담2팀",
-      "status": "상담가능"
+      "status": "대기"
     },
     {
       "id": "4",
@@ -904,7 +999,7 @@
       "mgrId": 5,
       "mgrNm": "관리자",
       "dptNm": "운영팀",
-      "status": "상담가능"
+      "status": "대기"
     }
   ],
   "loginMgr": [
@@ -913,8 +1008,8 @@
       "mgrId": 5,
       "mgrNm": "관리자",
       "dptNm": "운영팀",
-      "status": "상담가능",
-      "loginTime": "2025-07-03T04:39:01.720Z"
+      "status": "대기",
+      "loginTime": "2025-07-08T04:49:16.250Z"
     }
   ],
   "socket": [
@@ -927,12 +1022,12 @@
     {
       "id": "1",
       "group": "상담상태",
-      "detail": "대기중"
+      "detail": "신규접수"
     },
     {
       "id": "2",
       "group": "상담상태",
-      "detail": "상담중"
+      "detail": "작업"
     },
     {
       "id": "3",
@@ -952,12 +1047,12 @@
     {
       "id": "6",
       "group": "상담유형",
-      "detail": "챗"
+      "detail": "채팅"
     },
     {
       "id": "7",
       "group": "직원상태",
-      "detail": "상담준비"
+      "detail": "대기"
     },
     {
       "id": "8",
@@ -1002,7 +1097,7 @@
     {
       "id": "17",
       "group": "직원상태",
-      "detail": "상담가능"
+      "detail": "대기"
     },
     {
       "id": "18",
@@ -1012,7 +1107,7 @@
     {
       "id": "19",
       "group": "직원상태",
-      "detail": "상담중"
+      "detail": "작업"
     }
   ],
   "chatFormData": [
@@ -1022,9 +1117,9 @@
       "mgrId": 5,
       "mgrNm": "관리자",
       "text": "이길동님 상담내용 입력내용입니다.",
-      "regDt": "2025/06/24 15:21:13",
+      "regDt": "2025-06-24 15:21:13",
       "modiId": 1,
-      "modiDt": "2025/06/24 15:50:18"
+      "modiDt": "2025-06-24 15:50:18"
     },
     {
       "id": "20250616_103615",
@@ -1032,7 +1127,7 @@
       "mgrId": 1,
       "mgrNm": "김상담원",
       "text": "후처리 내용 입력하기",
-      "regDt": "2025/06/24 15:50:52",
+      "regDt": "2025-06-24 15:50:52",
       "modiId": "",
       "modiDt": ""
     },
@@ -1042,7 +1137,7 @@
       "mgrId": 1,
       "mgrNm": "김상담원",
       "text": "후처리 완료",
-      "regDt": "2025/06/24 15:55:31",
+      "regDt": "2025-06-24 15:55:31",
       "modiId": "",
       "modiDt": ""
     }
@@ -1054,9 +1149,9 @@
       "mgrId": 5,
       "mgrNm": "관리자",
       "text": "상담 관련 메모 입력입니다.\n",
-      "regDt": "2025/06/24 15:21:20",
+      "regDt": "2025-06-24 15:21:20",
       "modiId": 1,
-      "modiDt": "2025/06/24 15:29:23"
+      "modiDt": "2025-06-24 15:29:23"
     }
   ],
   "chatData": [
@@ -1070,7 +1165,7 @@
       "mgrNm": "김상담원",
       "text": "안녕하세요, 상담사님. 문의드립니다.",
       "sender": "user",
-      "sendTime": "2025/06/12 14:25:30"
+      "sendTime": "2025-06-12 14:25:30"
     },
     {
       "id": "2",
@@ -1082,7 +1177,7 @@
       "mgrNm": "김상담원",
       "text": "네, 어떤 도움이 필요하신가요?",
       "sender": "mgr",
-      "sendTime": "2025/05/29 10:01:00"
+      "sendTime": "2025-05-29 10:01:00"
     },
     {
       "id": "3",
@@ -1094,7 +1189,7 @@
       "mgrNm": "김상담원",
       "text": "네, 어떤 도움이 필요하신가요?",
       "sender": "mgr",
-      "sendTime": "2025/05/29 10:01:00"
+      "sendTime": "2025-05-29 10:01:00"
     },
     {
       "id": "4",
@@ -1106,7 +1201,7 @@
       "mgrNm": "김상담원",
       "text": "네, 어떤 도움이 필요하신가요?",
       "sender": "mgr",
-      "sendTime": "2025/05/29 10:01:00"
+      "sendTime": "2025-05-29 10:01:00"
     },
     {
       "id": "5",
@@ -1118,7 +1213,7 @@
       "mgrNm": "김상담원",
       "text": "네, 어떤 도움이 필요하신가요?",
       "sender": "mgr",
-      "sendTime": "2025/05/29 10:01:00"
+      "sendTime": "2025-05-29 10:01:00"
     },
     {
       "id": "6",
@@ -1130,7 +1225,7 @@
       "mgrNm": "김상담원",
       "text": "네, 어떤 도움이 필요하신가요?",
       "sender": "mgr",
-      "sendTime": "2025/05/29 10:01:00"
+      "sendTime": "2025-05-29 10:01:00"
     },
     {
       "id": "7",
@@ -1142,7 +1237,7 @@
       "mgrNm": "김상담원",
       "text": "네, 어떤 도움이 필요하신가요?",
       "sender": "mgr",
-      "sendTime": "2025/05/29 10:01:00"
+      "sendTime": "2025-05-29 10:01:00"
     },
     {
       "id": "8",
@@ -1154,7 +1249,7 @@
       "mgrNm": "김상담원",
       "text": "네, 어떤 도움이 필요하신가요?",
       "sender": "mgr",
-      "sendTime": "2025/05/29 10:01:00"
+      "sendTime": "2025-05-29 10:01:00"
     },
     {
       "id": "9",
@@ -1166,7 +1261,7 @@
       "mgrNm": "김상담원",
       "text": "네, 어떤 도움이 필요하신가요?",
       "sender": "mgr",
-      "sendTime": "2025/05/29 10:01:00"
+      "sendTime": "2025-05-29 10:01:00"
     },
     {
       "id": "10",
@@ -1178,7 +1273,7 @@
       "mgrNm": "김상담원",
       "text": "네, 어떤 도움이 필요하신가요?",
       "sender": "mgr",
-      "sendTime": "2025/05/29 10:01:00"
+      "sendTime": "2025-05-29 10:01:00"
     },
     {
       "id": "11",
@@ -1190,7 +1285,7 @@
       "mgrNm": "김상담원",
       "text": "네, 어떤 도움이 필요하신가요?",
       "sender": "mgr",
-      "sendTime": "2025/05/29 10:01:00"
+      "sendTime": "2025-05-29 10:01:00"
     },
     {
       "id": "12",
@@ -1202,7 +1297,7 @@
       "mgrNm": "김상담원",
       "text": "네, 어떤 도움이 필요하신가요?",
       "sender": "mgr",
-      "sendTime": "2025/05/29 10:01:00"
+      "sendTime": "2025-05-29 10:01:00"
     },
     {
       "id": "13",
@@ -1214,7 +1309,7 @@
       "mgrNm": "김상담원",
       "text": "상품 배송이 아직 도착하지 않았어요.",
       "sender": "user",
-      "sendTime": "2025/05/29 11:00:00"
+      "sendTime": "2025-05-29 11:00:00"
     },
     {
       "id": "14",
@@ -1226,7 +1321,7 @@
       "mgrNm": "김상담원",
       "text": "확인 후 연락드리겠습니다.",
       "sender": "mgr",
-      "sendTime": "2025/05/29 11:01:00"
+      "sendTime": "2025-05-29 11:01:00"
     },
     {
       "id": "15",
@@ -1238,7 +1333,7 @@
       "mgrNm": "김상담원",
       "text": "IB 콜백 요청드립니다.",
       "sender": "user",
-      "sendTime": "2025/05/29 12:00:00"
+      "sendTime": "2025-05-29 12:00:00"
     },
     {
       "id": "16",
@@ -1250,7 +1345,7 @@
       "mgrNm": "이상담원",
       "text": "오늘 상담 가능한가요?",
       "sender": "user",
-      "sendTime": "2025/05/29 13:00:00"
+      "sendTime": "2025-05-29 13:00:00"
     },
     {
       "id": "17",
@@ -1262,7 +1357,7 @@
       "mgrNm": "이상담원",
       "text": "오후 3시 이후 가능합니다.",
       "sender": "mgr",
-      "sendTime": "2025/05/29 13:01:00"
+      "sendTime": "2025-05-29 13:01:00"
     },
     {
       "id": "18",
@@ -1274,7 +1369,7 @@
       "mgrNm": "최상담원",
       "text": "전화가 계속 끊겨요.",
       "sender": "user",
-      "sendTime": "2025/05/29 14:00:00"
+      "sendTime": "2025-05-29 14:00:00"
     },
     {
       "id": "19",
@@ -1286,7 +1381,7 @@
       "mgrNm": "최상담원",
       "text": "불편을 드려 죄송합니다. 다시 시도해보겠습니다.",
       "sender": "mgr",
-      "sendTime": "2025/05/29 14:01:00"
+      "sendTime": "2025-05-29 14:01:00"
     },
     {
       "id": "20",
@@ -1298,7 +1393,7 @@
       "mgrNm": "김상담원",
       "text": "계좌 변경하려면 어떻게 하나요?",
       "sender": "user",
-      "sendTime": "2025/05/29 15:00:00"
+      "sendTime": "2025-05-29 15:00:00"
     },
     {
       "id": "21",
@@ -1310,7 +1405,7 @@
       "mgrNm": "김상담원",
       "text": "계좌 변경은 상담원에게 문의해주세요.",
       "sender": "mgr",
-      "sendTime": "2025/05/29 15:01:00"
+      "sendTime": "2025-05-29 15:01:00"
     },
     {
       "id": "22",
@@ -1322,7 +1417,7 @@
       "mgrNm": "최상담원",
       "text": "빨리 답변주세요.",
       "sender": "mgr",
-      "sendTime": "2025/05/29 15:01:00"
+      "sendTime": "2025-05-29 15:01:00"
     },
     {
       "id": "20250612_151029",
@@ -1334,7 +1429,7 @@
       "sender": "user",
       "mgrId": "1",
       "mgrNm": "김상담원",
-      "sendTime": "2025/06/12 15:10:29"
+      "sendTime": "2025-06-12 15:10:29"
     },
     {
       "id": "20250613_080226",
@@ -1346,7 +1441,7 @@
       "sender": "user",
       "mgrId": 2,
       "mgrNm": "이상담원",
-      "sendTime": "2025/06/13 08:02:26"
+      "sendTime": "2025-06-13 08:02:26"
     },
     {
       "id": "20250613_080449",
@@ -1358,7 +1453,7 @@
       "sender": "user",
       "mgrId": "1",
       "mgrNm": "김상담원",
-      "sendTime": "2025/06/13 08:04:49"
+      "sendTime": "2025-06-13 08:04:49"
     },
     {
       "id": "20250613_080504",
@@ -1370,7 +1465,7 @@
       "sender": "user",
       "mgrId": "3",
       "mgrNm": "최상담원",
-      "sendTime": "2025/06/13 08:05:04"
+      "sendTime": "2025-06-13 08:05:04"
     },
     {
       "id": "20250613_111237",
@@ -1382,7 +1477,7 @@
       "sender": "user",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "sendTime": "2025/06/13 11:12:37"
+      "sendTime": "2025-06-13 11:12:37"
     },
     {
       "id": "20250613_111403",
@@ -1394,7 +1489,7 @@
       "sender": "user",
       "mgrId": "3",
       "mgrNm": "최상담원",
-      "sendTime": "2025/06/13 11:14:03"
+      "sendTime": "2025-06-13 11:14:03"
     },
     {
       "id": "20250613_111509",
@@ -1406,7 +1501,7 @@
       "sender": "user",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "sendTime": "2025/06/13 11:15:09"
+      "sendTime": "2025-06-13 11:15:09"
     },
     {
       "id": "20250613_142457",
@@ -1418,7 +1513,7 @@
       "sender": "user",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "sendTime": "2025/06/13 14:24:57"
+      "sendTime": "2025-06-13 14:24:57"
     },
     {
       "id": "20250615_222050",
@@ -1430,7 +1525,7 @@
       "sender": "user",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "sendTime": "2025/06/15 22:20:50"
+      "sendTime": "2025-06-15 22:20:50"
     },
     {
       "id": "20250616_103615",
@@ -1442,7 +1537,7 @@
       "sender": "user",
       "mgrId": "1",
       "mgrNm": "김상담원",
-      "sendTime": "2025/06/16 10:36:15"
+      "sendTime": "2025-06-16 10:36:15"
     },
     {
       "id": "20250616_133753",
@@ -1454,7 +1549,7 @@
       "sender": "user",
       "mgrId": "3",
       "mgrNm": "최상담원",
-      "sendTime": "2025/06/16 13:37:53"
+      "sendTime": "2025-06-16 13:37:53"
     },
     {
       "id": "20250616_133814",
@@ -1466,7 +1561,7 @@
       "sender": "user",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "sendTime": "2025/06/16 13:38:14"
+      "sendTime": "2025-06-16 13:38:14"
     },
     {
       "id": "20250616_133828",
@@ -1478,7 +1573,7 @@
       "sender": "user",
       "mgrId": "1",
       "mgrNm": "김상담원",
-      "sendTime": "2025/06/16 13:38:28"
+      "sendTime": "2025-06-16 13:38:28"
     },
     {
       "id": "20250616_142405",
@@ -1490,7 +1585,7 @@
       "sender": "user",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "sendTime": "2025/06/16 14:24:05"
+      "sendTime": "2025-06-16 14:24:05"
     },
     {
       "id": "20250616_202507",
@@ -1502,7 +1597,7 @@
       "sender": "user",
       "mgrId": "1",
       "mgrNm": "김상담원",
-      "sendTime": "2025/06/16 20:25:07"
+      "sendTime": "2025-06-16 20:25:07"
     },
     {
       "id": "20250617_100053",
@@ -1514,7 +1609,7 @@
       "sender": "user",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "sendTime": "2025/06/17 10:00:53"
+      "sendTime": "2025-06-17 10:00:53"
     },
     {
       "id": "20250617_100530",
@@ -1526,7 +1621,7 @@
       "sender": "user",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "sendTime": "2025/06/17 10:05:30"
+      "sendTime": "2025-06-17 10:05:30"
     },
     {
       "id": "20250617_103414",
@@ -1538,7 +1633,7 @@
       "sender": "user",
       "mgrId": "1",
       "mgrNm": "김상담원",
-      "sendTime": "2025/06/17 10:34:14"
+      "sendTime": "2025-06-17 10:34:14"
     },
     {
       "id": "20250617_103612",
@@ -1550,7 +1645,7 @@
       "sender": "user",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "sendTime": "2025/06/17 10:36:12"
+      "sendTime": "2025-06-17 10:36:12"
     },
     {
       "id": "20250617_111730",
@@ -1562,7 +1657,7 @@
       "sender": "user",
       "mgrId": "1",
       "mgrNm": "김상담원",
-      "sendTime": "2025/06/17 11:17:30"
+      "sendTime": "2025-06-17 11:17:30"
     },
     {
       "id": "20250618_162609",
@@ -1574,7 +1669,7 @@
       "sender": "user",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "sendTime": "2025/06/18 16:26:09"
+      "sendTime": "2025-06-18 16:26:09"
     },
     {
       "id": "20250618_162620",
@@ -1586,7 +1681,7 @@
       "sender": "user",
       "mgrId": "3",
       "mgrNm": "최상담원",
-      "sendTime": "2025/06/18 16:26:20"
+      "sendTime": "2025-06-18 16:26:20"
     },
     {
       "id": "20250618_162642",
@@ -1598,7 +1693,7 @@
       "sender": "user",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "sendTime": "2025/06/18 16:26:42"
+      "sendTime": "2025-06-18 16:26:42"
     },
     {
       "id": "20250619_093211",
@@ -1610,7 +1705,7 @@
       "sender": "user",
       "mgrId": "3",
       "mgrNm": "최상담원",
-      "sendTime": "2025/06/19 09:32:11"
+      "sendTime": "2025-06-19 09:32:11"
     },
     {
       "id": "20250619_094733",
@@ -1622,7 +1717,7 @@
       "sender": "user",
       "mgrId": "3",
       "mgrNm": "최상담원",
-      "sendTime": "2025/06/19 09:47:33"
+      "sendTime": "2025-06-19 09:47:33"
     },
     {
       "id": "20250619_150505",
@@ -1634,7 +1729,7 @@
       "sender": "user",
       "mgrId": "3",
       "mgrNm": "최상담원",
-      "sendTime": "2025/06/19 15:05:05"
+      "sendTime": "2025-06-19 15:05:05"
     },
     {
       "id": "20250620_152639",
@@ -1646,7 +1741,7 @@
       "sender": "user",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "sendTime": "2025/06/20 15:26:39"
+      "sendTime": "2025-06-20 15:26:39"
     },
     {
       "id": "20250620_163647",
@@ -1658,7 +1753,7 @@
       "sender": "user",
       "mgrId": "1",
       "mgrNm": "김상담원",
-      "sendTime": "2025/06/20 16:36:47"
+      "sendTime": "2025-06-20 16:36:47"
     },
     {
       "id": "20250623_140904",
@@ -1670,7 +1765,7 @@
       "sender": "user",
       "mgrId": "1",
       "mgrNm": "김상담원",
-      "sendTime": "2025/06/23 14:09:04"
+      "sendTime": "2025-06-23 14:09:04"
     },
     {
       "id": "20250624_084342",
@@ -1682,7 +1777,7 @@
       "sender": "user",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "sendTime": "2025/06/24 08:43:42"
+      "sendTime": "2025-06-24 08:43:42"
     },
     {
       "id": "20250624_160432",
@@ -1694,7 +1789,7 @@
       "sender": "user",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "sendTime": "2025/06/24 16:04:32"
+      "sendTime": "2025-06-24 16:04:32"
     },
     {
       "id": "20250624_160443",
@@ -1706,7 +1801,7 @@
       "sender": "user",
       "mgrId": "1",
       "mgrNm": "김상담원",
-      "sendTime": "2025/06/24 16:04:43"
+      "sendTime": "2025-06-24 16:04:43"
     },
     {
       "id": "20250624_161212",
@@ -1718,7 +1813,7 @@
       "sender": "user",
       "mgrId": "3",
       "mgrNm": "최상담원",
-      "sendTime": "2025/06/24 16:12:12"
+      "sendTime": "2025-06-24 16:12:12"
     },
     {
       "id": "20250624_164138",
@@ -1730,7 +1825,7 @@
       "sender": "user",
       "mgrId": "1",
       "mgrNm": "김상담원",
-      "sendTime": "2025/06/24 16:41:38"
+      "sendTime": "2025-06-24 16:41:38"
     },
     {
       "id": "20250630_205545",
@@ -1740,7 +1835,7 @@
       "sender": "user",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "sendTime": "2025/06/30 20:55:45"
+      "sendTime": "2025-06-30 20:55:45"
     },
     {
       "id": "20250630_205917",
@@ -1752,7 +1847,7 @@
       "sender": "user",
       "mgrId": "1",
       "mgrNm": "김상담원",
-      "sendTime": "2025/06/30 20:59:17"
+      "sendTime": "2025-06-30 20:59:17"
     },
     {
       "id": "20250630_211655",
@@ -1764,7 +1859,7 @@
       "sender": "user",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "sendTime": "2025/06/30 21:16:52"
+      "sendTime": "2025-06-30 21:16:52"
     },
     {
       "id": "20250630_212605",
@@ -1776,7 +1871,7 @@
       "sender": "user",
       "mgrId": "1",
       "mgrNm": "김상담원",
-      "sendTime": "2025/06/30 21:26:05"
+      "sendTime": "2025-06-30 21:26:05"
     },
     {
       "id": "20250701_081749",
@@ -1788,7 +1883,7 @@
       "sender": "user",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "sendTime": "2025/07/01 08:17:49"
+      "sendTime": "2025-07-01 08:17:49"
     },
     {
       "id": "20250701_081838",
@@ -1800,7 +1895,7 @@
       "sender": "user",
       "mgrId": "1",
       "mgrNm": "김상담원",
-      "sendTime": "2025/07/01 08:18:38"
+      "sendTime": "2025-07-01 08:18:38"
     },
     {
       "id": "20250701_093809",
@@ -1812,7 +1907,7 @@
       "sender": "user",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "sendTime": "2025/07/01 09:38:09"
+      "sendTime": "2025-07-01 09:38:09"
     },
     {
       "id": "20250701_101012",
@@ -1824,7 +1919,7 @@
       "sender": "user",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "sendTime": "2025/07/01 10:10:12"
+      "sendTime": "2025-07-01 10:10:12"
     },
     {
       "id": "20250701_111937",
@@ -1836,7 +1931,7 @@
       "sender": "user",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "sendTime": "2025/07/01 11:19:37"
+      "sendTime": "2025-07-01 11:19:37"
     },
     {
       "id": "20250703_124111",
@@ -1848,7 +1943,7 @@
       "sender": "user",
       "mgrId": "3",
       "mgrNm": "최상담원",
-      "sendTime": "2025/07/03 12:41:11"
+      "sendTime": "2025-07-03 12:41:11"
     },
     {
       "id": "20250703_124451",
@@ -1860,7 +1955,79 @@
       "sender": "user",
       "mgrId": "2",
       "mgrNm": "이상담원",
-      "sendTime": "2025/07/03 12:44:51"
+      "sendTime": "2025-07-03 12:44:51"
+    },
+    {
+      "id": "20250708_134816",
+      "chatSeq": "20250708_134816",
+      "chatNo": 1,
+      "userId": 2,
+      "userNm": "둘리",
+      "text": "이관되었습니다.",
+      "sender": "user",
+      "mgrId": "1",
+      "mgrNm": "김상담원",
+      "sendTime": "2025-07-08 13:48:16"
+    },
+    {
+      "id": "20250708_134832",
+      "chatSeq": "20250708_134832",
+      "chatNo": 1,
+      "userId": 3,
+      "userNm": "또치",
+      "text": "이관되었습니다.",
+      "sender": "user",
+      "mgrId": "1",
+      "mgrNm": "김상담원",
+      "sendTime": "2025-07-08 13:48:32"
+    },
+    {
+      "id": "20250708_134947",
+      "chatSeq": "20250708_134947",
+      "chatNo": 1,
+      "userId": 2,
+      "userNm": "둘리",
+      "text": "이관되었습니다.",
+      "sender": "user",
+      "mgrId": "2",
+      "mgrNm": "이상담원",
+      "sendTime": "2025-07-08 13:49:47"
+    },
+    {
+      "id": "20250708_135104",
+      "chatSeq": "20250708_135104",
+      "chatNo": 1,
+      "userId": 2,
+      "userNm": "둘리",
+      "text": "이관되었습니다.",
+      "sender": "user",
+      "mgrId": "2",
+      "mgrNm": "이상담원",
+      "sendTime": "2025-07-08 13:51:04"
+    },
+    {
+      "id": "20250708_135353",
+      "chatSeq": "20250708_135353",
+      "chatNo": 1,
+      "userId": 2,
+      "userNm": "둘리",
+      "text": "이관되었습니다.",
+      "sender": "user",
+      "mgrId": "3",
+      "mgrNm": "최상담원",
+      "sendTime": "2025-07-08 13:53:53"
+    },
+    {
+      "id": "20250708_135454",
+      "chatSeq": "20250708_135454",
+      "chatNo": 1,
+      "userId": 2,
+      "userNm": "둘리",
+      "text": "이관되었습니다.",
+      "sender": "user",
+      "mgrId": "1",
+      "mgrNm": "김상담원",
+      "sendTime": "2025-07-08 13:54:54"
     }
   ],
   "menus": [
@@ -1875,10 +2042,10 @@
       "menuNo": "1",
       "regId": "2",
       "regNm": "이상담원",
-      "regDt": "2025/06/17 10:00:53",
+      "regDt": "2025-06-17 10:00:53",
       "modiId": 5,
       "modiNm": "최상담원",
-      "modiDt": "2025/06/23 13:06:47"
+      "modiDt": "2025-06-23 13:06:47"
     },
     {
       "id": "2",
@@ -1892,10 +2059,10 @@
       "menuNo": "1",
       "regId": "2",
       "regNm": "이상담원",
-      "regDt": "2025/06/17 10:00:53",
+      "regDt": "2025-06-17 10:00:53",
       "modiId": 5,
       "modiNm": "최상담원",
-      "modiDt": "2025/06/25 10:57:51"
+      "modiDt": "2025-06-25 10:57:51"
     },
     {
       "id": "3",
@@ -1909,10 +2076,10 @@
       "menuNo": "1",
       "regId": "2",
       "regNm": "이상담원",
-      "regDt": "2025/06/17 10:00:53",
+      "regDt": "2025-06-17 10:00:53",
       "modiId": 5,
       "modiNm": "최상담원",
-      "modiDt": "2025/06/25 10:57:51"
+      "modiDt": "2025-06-25 10:57:51"
     },
     {
       "id": "4",
@@ -1926,10 +2093,10 @@
       "menuNo": "1",
       "regId": "2",
       "regNm": "이상담원",
-      "regDt": "2025/06/17 10:00:53",
+      "regDt": "2025-06-17 10:00:53",
       "modiId": 5,
       "modiNm": "관리자",
-      "modiDt": "2025/06/26 10:45:52"
+      "modiDt": "2025-06-26 10:45:52"
     },
     {
       "id": "5",
@@ -1943,10 +2110,10 @@
       "menuNo": "1",
       "regId": "2",
       "regNm": "이상담원",
-      "regDt": "2025/06/17 10:00:53",
+      "regDt": "2025-06-17 10:00:53",
       "modiId": 5,
       "modiNm": "이상담원",
-      "modiDt": "2025/07/03 13:37:30"
+      "modiDt": "2025-07-03 13:37:30"
     },
     {
       "id": "6",
@@ -1960,10 +2127,10 @@
       "menuNo": "1",
       "regId": "2",
       "regNm": "이상담원",
-      "regDt": "2025/06/17 10:00:53",
+      "regDt": "2025-06-17 10:00:53",
       "modiId": 5,
       "modiNm": "최상담원",
-      "modiDt": "2025/07/03 13:37:30"
+      "modiDt": "2025-07-03 13:37:30"
     },
     {
       "id": "8",
@@ -1976,10 +2143,10 @@
       "menuNo": "1",
       "regId": "2",
       "regNm": "이상담원",
-      "regDt": "2025/06/17 10:00:53",
+      "regDt": "2025-06-17 10:00:53",
       "modiId": 5,
       "modiNm": "관리자",
-      "modiDt": "2025/07/01 16:57:26"
+      "modiDt": "2025-07-01 16:57:26"
     },
     {
       "id": "20250630_151526",
@@ -2041,9 +2208,10 @@
       "regId": 5,
       "regNm": "관리자",
       "path": "/notProcess",
-      "modiDt": "2025/07/01 16:56:39",
-      "modiId": 5,
-      "modiNm": "관리자"
+      "modiDt": "2025-07-08 11:01:37",
+      "modiId": 2,
+      "modiNm": "관리자",
+      "orderNo": 1
     },
     {
       "id": "20250701_165305",
@@ -2056,9 +2224,10 @@
       "regId": 5,
       "regNm": "관리자",
       "path": "/process",
-      "modiDt": "2025/07/01 16:56:45",
-      "modiId": 5,
-      "modiNm": "관리자"
+      "modiDt": "2025-07-08 11:01:37",
+      "modiId": 2,
+      "modiNm": "관리자",
+      "orderNo": 2
     },
     {
       "id": "20250701_165319",
@@ -2071,29 +2240,15 @@
       "regId": 5,
       "regNm": "관리자",
       "path": "/acwProcess",
-      "modiDt": "2025/07/01 16:56:53",
-      "modiId": 5,
-      "modiNm": "관리자"
-    },
-    {
-      "id": "20250701_165330",
-      "menuCd": "M_CALLBACK",
-      "label": "콜백 접수건",
-      "option": "isChild",
-      "highMenuCd": "M_SCC_PROCESS",
-      "useYn": "Y",
-      "regDt": "2025/07/01 16:53:30",
-      "regId": 5,
-      "regNm": "관리자",
-      "path": "/callback",
-      "modiDt": "2025/07/01 16:57:03",
-      "modiId": 5,
-      "modiNm": "관리자"
+      "modiDt": "2025-07-08 11:01:37",
+      "modiId": 2,
+      "modiNm": "관리자",
+      "orderNo": 3
     },
     {
       "id": "20250701_165435",
       "menuCd": "M_TSM",
-      "label": "팀원 상태값 모니터링",
+      "label": "팀원 모니터링",
       "option": "isChild",
       "highMenuCd": "M_DS",
       "useYn": "Y",
@@ -2101,9 +2256,9 @@
       "regId": 5,
       "regNm": "관리자",
       "path": "/tsm",
-      "modiDt": "2025/07/03 10:56:36",
-      "modiId": 2,
-      "modiNm": "이상담원"
+      "modiDt": "2025-07-08 14:53:12",
+      "modiId": 5,
+      "modiNm": "관리자"
     },
     {
       "id": "20250701_165449",
@@ -2135,6 +2290,21 @@
       "modiId": 5,
       "modiNm": "관리자",
       "orderNo": 4
+    },
+    {
+      "id": "20250708_110158",
+      "menuCd": "M_COMPLETE",
+      "label": "완료 상담",
+      "option": "isSame",
+      "highMenuCd": "M_SCC_PROCESS",
+      "useYn": "Y",
+      "regDt": "2025-07-08 11:01:58",
+      "regId": 2,
+      "regNm": "이상담원",
+      "path": "/complete",
+      "modiDt": "2025-07-08 11:02:08",
+      "modiId": 2,
+      "modiNm": "이상담원"
     }
   ],
   "codeGroup": [
@@ -2175,20 +2345,28 @@
       "modiDt": ""
     },
     {
-      "id": "20250630_134024",
-      "groupCd": "TT",
-      "groupNm": "!!",
+      "id": "5",
+      "groupCd": "CHAT_STATUS",
+      "groupNm": "상담상태",
       "useYn": "Y",
-      "regDt": "2025/06/30 13:40:24",
+      "regDt": "2025-07-04 10:18:33",
       "regId": 5
     },
     {
-      "id": "20250630_151651",
-      "groupCd": "TTTTTTT",
-      "groupNm": "그룹코드명",
+      "id": "20250704_133657",
+      "groupCd": "YES_YN",
+      "groupNm": "예-아니오 여부",
       "useYn": "Y",
-      "regDt": "2025/06/30 15:16:51",
+      "regDt": "2025-07-04 13:36:57",
       "regId": 5
+    },
+    {
+      "id": "20250707_075538",
+      "groupCd": "SOCKET_STATUS",
+      "groupNm": "소켓상태 코드",
+      "useYn": "Y",
+      "regDt": "2025-07-07 07:55:38",
+      "regId": 2
     }
   ],
   "codeDetail": [
@@ -2363,9 +2541,9 @@
     {
       "id": "15",
       "groupCd": "AGENT_STATUS",
-      "detailCd": "9",
+      "detailCd": "8",
       "detailNm": "티타임",
-      "orderNo": 9,
+      "orderNo": 8,
       "useYn": "Y",
       "regId": "1",
       "modiId": "",
@@ -2375,9 +2553,9 @@
     {
       "id": "16",
       "groupCd": "AGENT_STATUS",
-      "detailCd": "10",
+      "detailCd": "9",
       "detailNm": "모니터링",
-      "orderNo": 10,
+      "orderNo": 8,
       "useYn": "Y",
       "regId": "1",
       "modiId": "",
@@ -2389,7 +2567,7 @@
       "groupCd": "AGENT_STATUS",
       "detailCd": "20",
       "detailNm": "OB작업",
-      "orderNo": 11,
+      "orderNo": 10,
       "useYn": "Y",
       "regId": "1",
       "modiId": "",
@@ -2401,7 +2579,7 @@
       "groupCd": "AGENT_STATUS",
       "detailCd": "99",
       "detailNm": "기타",
-      "orderNo": 12,
+      "orderNo": 11,
       "useYn": "Y",
       "regId": "1",
       "modiId": "",
@@ -2420,7 +2598,7 @@
       "regId": 5,
       "regDt": "2025/06/30 15:14:03",
       "modiId": 5,
-      "modiDt": "2025/06/30 15:14:20"
+      "modiDt": "2025-06-30 15:14:20"
     },
     {
       "id": "1751264214224",
@@ -2432,7 +2610,7 @@
       "groupCd": "TTTTTTT",
       "isNew": "",
       "regId": 5,
-      "regDt": "2025/06/30 15:18:00"
+      "regDt": "2025-06-30 15:18:00"
     },
     {
       "id": "1751266340077",
@@ -2444,9 +2622,9 @@
       "groupCd": "TTTTTTT",
       "isNew": "",
       "regId": 5,
-      "regDt": "2025/06/30 15:52:36",
+      "regDt": "2025-06-30 15:52:36",
       "modiId": 5,
-      "modiDt": "2025/06/30 15:53:06"
+      "modiDt": "2025-06-30 15:53:06"
     },
     {
       "id": "1751267344603",
@@ -2458,7 +2636,7 @@
       "groupCd": "TTTTTTT",
       "isNew": "",
       "regId": 5,
-      "regDt": "2025/06/30 16:10:37"
+      "regDt": "2025-06-30 16:10:37"
     },
     {
       "id": "1751267788069",
@@ -2470,7 +2648,7 @@
       "groupCd": "TTTTTTT",
       "isNew": "",
       "regId": 5,
-      "regDt": "2025/06/30 16:17:12"
+      "regDt": "2025-06-30 16:17:12"
     },
     {
       "id": "1751267848425",
@@ -2482,7 +2660,7 @@
       "groupCd": "TTTTTTT",
       "isNew": "",
       "regId": 5,
-      "regDt": "2025/06/30 16:17:41"
+      "regDt": "2025-06-30 16:17:41"
     },
     {
       "id": "1751325690469",
@@ -2494,9 +2672,143 @@
       "groupCd": "TTTTTTT",
       "isNew": "",
       "regId": 1,
-      "regDt": "2025/07/01 08:21:43",
+      "regDt": "2025-07-01 08:21:43",
       "modiId": 1,
-      "modiDt": "2025/07/01 08:25:35"
+      "modiDt": "2025-07-01 08:25:35"
+    },
+    {
+      "id": "1751592076378",
+      "key": "1751592076378",
+      "detailCd": "NEW_CONNECTED",
+      "detailNm": "신규접수",
+      "orderNo": 1,
+      "useYn": "Y",
+      "groupCd": "CHAT_STATUS",
+      "isNew": "",
+      "regId": 5,
+      "regDt": "2025-07-04 10:23:17"
+    },
+    {
+      "id": "1751592094308",
+      "key": "1751592094308",
+      "detailCd": "CONNECTED",
+      "detailNm": "진행중",
+      "orderNo": 2,
+      "useYn": "Y",
+      "groupCd": "CHAT_STATUS",
+      "isNew": "",
+      "regId": 5,
+      "regDt": "2025-07-04 10:23:17",
+      "modiId": 5,
+      "modiDt": "2025-07-04 10:46:06"
+    },
+    {
+      "id": "1751592104668",
+      "key": "1751592104668",
+      "detailCd": "ACW",
+      "detailNm": "후처리",
+      "orderNo": 3,
+      "useYn": "Y",
+      "groupCd": "CHAT_STATUS",
+      "isNew": "",
+      "regId": 5,
+      "regDt": "2025-07-04 10:23:17"
+    },
+    {
+      "id": "1751592113112",
+      "key": "1751592113112",
+      "detailCd": "HOLD",
+      "detailNm": "보류",
+      "orderNo": 4,
+      "useYn": "Y",
+      "groupCd": "CHAT_STATUS",
+      "isNew": "",
+      "regId": 5,
+      "regDt": "2025-07-04 10:23:17"
+    },
+    {
+      "id": "1751592166782",
+      "key": "1751592166782",
+      "detailCd": "TRANSFER",
+      "detailNm": "이관",
+      "orderNo": 5,
+      "useYn": "Y",
+      "groupCd": "CHAT_STATUS",
+      "isNew": "",
+      "regId": 5,
+      "regDt": "2025-07-04 10:23:17"
+    },
+    {
+      "id": "1751592185119",
+      "key": "1751592185119",
+      "detailCd": "COMPLETE",
+      "detailNm": "완료",
+      "orderNo": 6,
+      "useYn": "Y",
+      "groupCd": "CHAT_STATUS",
+      "isNew": "",
+      "regId": 5,
+      "regDt": "2025-07-04 10:23:17"
+    },
+    {
+      "id": "1751603822301",
+      "key": "1751603822301",
+      "detailCd": "Y",
+      "detailNm": "Y",
+      "orderNo": 1,
+      "useYn": "Y",
+      "groupCd": "YES_YN",
+      "isNew": "",
+      "regId": 5,
+      "regDt": "2025-07-04 13:37:39"
+    },
+    {
+      "id": "1751603841093",
+      "key": "1751603841093",
+      "detailCd": "N",
+      "detailNm": "N",
+      "orderNo": 2,
+      "useYn": "Y",
+      "groupCd": "YES_YN",
+      "isNew": "",
+      "regId": 5,
+      "regDt": "2025-07-04 13:37:39"
+    },
+    {
+      "id": "1751842542229",
+      "key": "1751842542229",
+      "detailCd": "OPEN",
+      "detailNm": "연결",
+      "orderNo": 1,
+      "useYn": "Y",
+      "groupCd": "SOCKET_STATUS",
+      "isNew": "",
+      "regId": 2,
+      "regDt": "2025/07/07 07:56:34"
+    },
+    {
+      "id": "1751842550177",
+      "key": "1751842550177",
+      "detailCd": "CLOSE",
+      "detailNm": "끊김",
+      "orderNo": 2,
+      "useYn": "Y",
+      "groupCd": "SOCKET_STATUS",
+      "isNew": "",
+      "regId": 2,
+      "regDt": "2025/07/07 07:56:34"
+    },
+    {
+      "id": "1751842565932",
+      "key": "1751842565932",
+      "detailCd": "ERORR",
+      "detailNm": "에러",
+      "orderNo": 3,
+      "useYn": "Y",
+      "groupCd": "SOCKET_STATUS",
+      "isNew": "",
+      "regId": 2,
+      "regDt": "2025/07/07 07:56:34"
     }
   ],
   "bbs": [
@@ -2519,7 +2831,7 @@
       "question": "내용내용 이런저런",
       "regId": "1",
       "modiId": "",
-      "regDt": "2025/06/30 16:17:12",
+      "regDt": "2025-06-30 16:17:12",
       "modiDt": ""
     },
     {
@@ -2541,7 +2853,7 @@
       "question": "내용내용 이런저런내용내용 이런저런",
       "regId": "1",
       "modiId": "",
-      "regDt": "2025/06/30 21:17:12",
+      "regDt": "2025-06-30 21:17:12",
       "modiDt": ""
     },
     {
@@ -2563,7 +2875,7 @@
       "question": "내용내용내용내용내용내용내용내용 이런저런",
       "regId": "1",
       "modiId": "",
-      "regDt": "2025/07/01 16:17:12",
+      "regDt": "2025-07-01 16:17:12",
       "modiDt": ""
     },
     {
@@ -2585,7 +2897,7 @@
       "question": "이런저런 이런저런",
       "regId": "1",
       "modiId": "",
-      "regDt": "2025/06/30 16:17:12",
+      "regDt": "2025-06-30 16:17:12",
       "modiDt": ""
     },
     {
@@ -2607,7 +2919,7 @@
       "question": "이런저런 이런저런",
       "regId": "1",
       "modiId": "",
-      "regDt": "2025/06/30 16:17:12",
+      "regDt": "2025-06-30 16:17:12",
       "modiDt": ""
     },
     {
@@ -2629,7 +2941,7 @@
       "question": "이런저런 이런저런",
       "regId": "1",
       "modiId": "",
-      "regDt": "2025/06/30 16:17:12",
+      "regDt": "2025-06-30 16:17:12",
       "modiDt": ""
     }
   ]

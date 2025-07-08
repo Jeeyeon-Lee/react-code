@@ -1,5 +1,10 @@
 {
   "compilerOptions": {
+    "target": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
       "@pages/*": ["src/pages/*"],
@@ -11,12 +16,13 @@
       "@utils/*": ["src/utils/*"]
     },
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "forceConsistentCasingInFileNames": true
   },
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ],
-  "types": ["node"]
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }

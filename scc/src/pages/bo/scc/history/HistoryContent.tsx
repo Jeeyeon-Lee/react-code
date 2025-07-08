@@ -1,24 +1,34 @@
 import {useSearchParams} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import {useChatDetail, useChatList} from "@pages/bo/scc/chat/useChat.ts";
+import {useMgrList} from '@pages/bo/base/mgr/useMgr.ts';
 import type {Chat} from "@pages/cmm";
 import CmmSearchForm from "@components/form/CmmSearchForm.tsx";
-import {Card, Col, Form, Input, Row, Select} from "antd";
+import {Card, Col, DatePicker, Form, Input, Row, Select} from "antd";
 import ChatTable from "@pages/bo/scc/chat/ChatTable.tsx";
 import ChatDetail from "@pages/bo/scc/chat/ChatDetail.tsx";
 import CmmForm from "@components/form/CmmForm.tsx";
+import CmmCodeSelect from "@components/form/CmmCodeSelect.tsx";
+import { formSearch } from '@utils/salmon.ts';
+import type {ColumnsType} from "antd/es/table";
+import ExcelDownloadButton from "@components/form/ExcelDownloadButton.tsx";
+
+const { RangePicker } = DatePicker;
 
 const HistoryContent = () => {
-    const [params] = useSearchParams();
+    const [searchParams, setSearchParams] = useState<Chat>({} as Chat);
+    const { data: chatList = [] } = useChatList(searchParams);
     const [selectedChatSeq, setSelectedChatSeq] = useState<string | null>(null);
+    const [params] = useSearchParams();
     const urlChatSeq = params.get('chatSeq');
     const chatSeq = selectedChatSeq || urlChatSeq;
 
-    const { data: chatList = [] } = useChatList({});
+    const { data: mgrList } = useMgrList();
     const { data: chatDetail } = useChatDetail(chatSeq ?? '');
-
     const [form] = Form.useForm();
-    const [searchParams, setSearchParams] = useState<Chat | null>(null);
+
+    const [selectedRows, setSelectedRows] = useState([]);
+    const [columns, setColumns] = useState<ColumnsType>([]);
 
     useEffect(() => {
         if (urlChatSeq) {
@@ -26,23 +36,15 @@ const HistoryContent = () => {
         }
     }, [urlChatSeq]);
 
+
     const onRowClick = (record: Chat) => ({
-        onClick: (e) => {
-            e.preventDefault();
+        onClick: () => {
             setSelectedChatSeq(record.chatSeq);
         },
     });
 
-    const handleSubmitSearch = (fieldsValue: any) => {
-
-        const rangeValue = fieldsValue['range-picker'];
-
-        const values = {
-            ...fieldsValue,
-            sd: rangeValue && rangeValue[0].format('YYYY-MM-DD'),
-            ed: rangeValue && rangeValue[1].format('YYYY-MM-DD'),
-        };
-
+    const handleSubmitSearch = async <Chat>(fieldsValue: any) => {
+        const values = formSearch<Chat>(fieldsValue);
         setSearchParams(values);
     };
 
@@ -51,27 +53,92 @@ const HistoryContent = () => {
             <CmmSearchForm
                 title="상담 이력 검색"
                 form={form}
+                resetBtn={'리셋'}
+                searchBtn={'서치'}
+                extraButtons={
+                    <ExcelDownloadButton<Chat>
+                        data={selectedRows.length > 0 ? selectedRows : chatList}
+                        columns={columns.map(col => ({
+                            key: col?.dataIndex,
+                            header: col.title as string,
+                        }))}
+                        sheetName="상담내역"
+                    />
+                }
             >
                 <CmmForm
                     form={form}
                     name="searchForm"
                     onFinish={handleSubmitSearch}
                 >
-                    <Form.Item name="userNm" label="이용자">
-                        <Input />
-                    </Form.Item>
-                    <Form.Item name="status" label="상태">
-                        <Select>
-                            <Select.Option value="대기중">대기중</Select.Option>
-                            <Select.Option value="상담중">상담중</Select.Option>
-                        </Select>
-                    </Form.Item>
+                    <Row gutter={12}>
+                        <Col span={12}>
+                            <Form.Item name="range-picker" label="등록일">
+                                <RangePicker />
+                            </Form.Item>
+                        </Col>
+
+                        <Col span={4}>
+                            <Form.Item name="sk" label="키워드" initialValue="title" tooltip="키워드를 선택하신 뒤 검색어를 입력하세요.">
+                                <Select style={{textAlign:'center'}}>
+                                    <Select.Option value="title">제목</Select.Option>
+                                    <Select.Option value="userNm">이용자</Select.Option>
+                                    <Select.Option value="mgrNm">상담사</Select.Option>
+                                </Select>
+                            </Form.Item>
+                        </Col>
+
+                        <Col span={8}>
+                            <Form.Item name="sv" label=" " colon={false} >
+                                <Input placeholder="검색어를 입력하세요." />
+                            </Form.Item>
+                        </Col>
+
+                        <Col span={12}>
+                            <Form.Item name="mgrId" label="상담사">
+                                <Select
+                                    options={mgrList
+                                        ?.filter((mgr) => mgr.id !== '5')
+                                        .map((mgr) => ({
+                                            label: mgr.mgrNm,
+                                            value: mgr.id
+                                        }))
+                                    }
+                                />
+                            </Form.Item>
+                        </Col>
+
+                        <Col span={12}>
+                            <Form.Item name="type" label="상담타입">
+                                <CmmCodeSelect group="CHANNEL" />
+                            </Form.Item>
+                        </Col>
+
+                        <Col span={12}>
+                            <Form.Item name="status" label="상담상태">
+                                <CmmCodeSelect group="CHAT_STATUS" />
+                            </Form.Item>
+                        </Col>
+
+                        <Col span={12}>
+                            <Form.Item name="transferYn" label="이관여부">
+                                <CmmCodeSelect group="YES_YN" />
+                            </Form.Item>
+                        </Col>
+                    </Row>
                 </CmmForm>
             </CmmSearchForm>
             <Row gutter={24}>
                 <Col span={12}>
-                    <Card title={'검색 결과'}>
-                        <ChatTable chatList={chatList} onRowClick={onRowClick} scrollY={400} />
+                    <Card title={`검색 결과 (총 ${chatList.length}건)`}>
+                        <ChatTable
+                            chatList={chatList}
+                            onRowClick={onRowClick}
+                            onSelectRows={setSelectedRows}
+                            setColumns={setColumns}
+                            scrollY={400}
+                            excludeColumns={['transferYn','callStartTm','callEndTm']}
+                        />
                     </Card>
                 </Col>
                 <Col span={12}>

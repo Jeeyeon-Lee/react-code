@@ -148,7 +148,7 @@ const ChatForm = () => {
                             icon={memoIsEdit ? <EditFilled/> : <SaveFilled/>}
                             htmlType="submit"
                             type="primary"
-                            buttonType='상담가능'
+                            buttonType='대기'
                         >
                             {memoIsEdit ? '수정' : '저장'}
                         </CmmButton>
@@ -156,7 +156,7 @@ const ChatForm = () => {
                             icon={<RedoOutlined/>}
                             htmlType="reset"
                             type="dashed"
-                            buttonType='상담가능'
+                            buttonType='대기'
                         />
                     </Space>
                 </Form>

@@ -1,13 +1,14 @@
 import {Breadcrumb, Layout, theme} from 'antd';
 import type {MenuType} from "@pages/cmm/index.ts";
-import {useMenuListStore, useMenuStore} from "@pages/bo/base/menu/menuStore.ts";
+import {useMenuListStore} from "@pages/bo/base/menu/menuStore.ts";
 import {Route, Routes, useLocation} from "react-router-dom";
 import MainContent from "@pages/bo/scc/chat/MainContent.tsx";
 import CodeContent from "@pages/bo/base/code/CodeContent.tsx";
 import MenuContent from "@pages/bo/base/menu/MenuContent.tsx";
-import ConsultContent from "@pages/bo/scc/mon/ConsultContent.tsx";
 import HistoryContent from "@pages/bo/scc/history/HistoryContent.tsx";
 import BbsContent from "@pages/bo/base/bbs/BbsContent.tsx";
+import ProcessContent from "@pages/bo/scc/process/ProcessContent.tsx";
+import HelloTest from "@pages/test/HelloTest.tsx";
 
 const { Content: AntContent } = Layout;
 
@@ -52,9 +53,13 @@ function Content() {
                     <Route path="/main" exact={true} element={<MainContent/>  }></Route>
                     <Route path="/code" exact={true} element={<CodeContent/>}></Route>
                     <Route path="/menu" exact={true} element={<MenuContent/>}></Route>
-                    <Route path="/notProcess" exact={true} element={<ConsultContent/>}></Route>
+                    <Route path="/notProcess" exact={true} element={<ProcessContent status="신규접수"/>}></Route>
+                    <Route path="/process" element={<ProcessContent status={["진행중", "보류"]} />} />
+                    <Route path="/acwProcess" exact={true} element={<ProcessContent status="후처리"/>}></Route>
+                    <Route path="/complete" exact={true} element={<ProcessContent status="완료"/>}></Route>
                     <Route path="/history" element={<HistoryContent />}></Route>
                     <Route path="/bbs/:bbsCd" exact={true} element={<BbsContent/>}></Route>
+                    <Route path="/hello" element={<HelloTest />} />
                 </Routes>
                 {/* 사용자 정의 라우터  components/router안에 있음*/}
             </AntContent>

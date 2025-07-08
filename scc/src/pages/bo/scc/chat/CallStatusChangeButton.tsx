@@ -40,6 +40,9 @@ function CallStatusChangeButton() {
     return (
         <div>
             <Space.Compact style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '8px' }} size="large">
+                
+                3652
+
                 <ChatMgrChangeButton chatSeq={chatSeq} />
 
                 {chatStatus === '보류' && (
@@ -62,7 +65,7 @@ function CallStatusChangeButton() {
                     </CmmButton>
                 )}
 
-                {chatStatus === '상담중' && (
+                {chatStatus === '진행중' && (
                     <CmmButton
                         icon={<PhoneOutlined />}
                         onClick={() => callEnd(mgrId, chatSeq)}

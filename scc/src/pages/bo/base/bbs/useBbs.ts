@@ -37,7 +37,7 @@ export const insertBbsMutation = () => {
         mutationFn: async (values:Bbs) => {
             if (!values.bbsCd) return;
 
-            const newDate = salmon.date.newDate().format('YYYY/MM/DD HH:mm:ss');
+            const newDate = salmon.date.newDate().format('YYYY-MM-DD HH:mm:ss');
             const loginInfo = await getLoginMgr();
             try {
                 const newMenuId = salmon.date.newDate().format('YYYYMMDD_HHmmss');
@@ -70,7 +70,7 @@ export const updateBbsMutation = () => {
         mutationFn: async (values:Bbs) => {
             if (!values.id) return;
 
-            const newDate = salmon.date.newDate().format('YYYY/MM/DD HH:mm:ss');
+            const newDate = salmon.date.newDate().format('YYYY-MM-DD HH:mm:ss');
             const loginInfo = await getLoginMgr();
             try {
                 values.modiDt = newDate;

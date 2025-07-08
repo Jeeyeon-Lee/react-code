@@ -45,7 +45,7 @@ export const insertGroupCodeMutation = () => {
     return useMutation({
         mutationFn: async (values:Code) => {
             if (!values.groupCd) return;
-            const newDate = salmon.date.newDate().format('YYYY/MM/DD HH:mm:ss');
+            const newDate = salmon.date.newDate().format(('YYYY-MM-DD HH:mm:ss'));
             const loginInfo = await getLoginMgr();
             try {
                 const newMenuId = salmon.date.newDate().format('YYYYMMDD_HHmmss');
@@ -79,7 +79,7 @@ export const updateGroupCodeMutation = () => {
     return useMutation({
         mutationFn: async ({ groupId, values } : { id: Code['id'], values:Code}) => {
             if (!groupId) return;
-            const newDate = salmon.date.newDate().format('YYYY/MM/DD HH:mm:ss');
+            const newDate = salmon.date.newDate().format(('YYYY-MM-DD HH:mm:ss'));
             const loginInfo = await getLoginMgr();
             try {
                 values.modiDt = newDate;

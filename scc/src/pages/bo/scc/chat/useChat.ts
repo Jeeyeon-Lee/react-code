@@ -16,21 +16,36 @@ const chatKeys = createQueryKeys('chat', {
     history: (userId: Chat['userId']) => ['history', userId]
 });
 
-type ChatSearchParams = {
-    mgrId?: Chat['mgrId'];
-    status?: Chat['status'];
-    type?: Chat['type'];
-};
 
-export const useChatList = (params: ChatSearchParams) => {
+export const useChatList = (params?: Chat) => {
     return useQuery({
-        queryKey: chatKeys.list(params.mgrId, params.status, params.type).queryKey,
+        queryKey: ['chat', 'chatList', params],
         queryFn: async () => {
             const searchParams = new URLSearchParams();
-            if (params.mgrId && params.mgrId != 5) searchParams.append('mgrId', params.mgrId);
-            if (params.status && params.status !== 'all') searchParams.append('status', params.status);
-            if (params.type && params.type !== 'all') searchParams.append('type', params.type);
+            const { status, ...rest } = params;
 
+            if (Array.isArray(status)) {
+                const result = await Promise.all(
+                    status.map(s => {
+                        const searchParams = new URLSearchParams();
+                        Object.entries({ ...rest, status: s }).forEach(([key, value]) => {
+                            if (value === undefined || value === null || value === '' || value === 'all') return;
+                            searchParams.append(key, value as string);
+                        });
+                        return axios.get<Chat[]>(`/chat?${searchParams.toString()}`);
+                    })
+                );
+                return result.flatMap(res => res.data);
+            }
+
+            Object.entries(params).forEach(([key, value]) => {
+                if (value === undefined || value === null || value === '' || value === 'all') return;
+                if (key === 'mgrId') {
+                    if (value != '5') searchParams.append(key, value);
+                } else {
+                    searchParams.append(key, value);
+                }
+            });
             const response = await axios.get<Chat[]>(`/chat?${searchParams.toString()}`);
             return response.data || [];
         },
@@ -41,7 +56,7 @@ export const useChatList = (params: ChatSearchParams) => {
 
 export const useChatDetail = (chatSeq:Chat['chatSeq']) => {
     return useQuery({
-        queryKey: chatKeys.detail(chatSeq).queryKey,
+        queryKey: ['chat', chatSeq],
         queryFn: async() => {
             const response = await axios.get<Chat[]>(`/chat?chatSeq=${chatSeq}`);
             return response.data[0];
@@ -51,7 +66,6 @@ export const useChatDetail = (chatSeq:Chat['chatSeq']) => {
 };
 export const useChatDataList = (chatSeq: Chat['chatSeq']) => {
     return useQuery<ChatData[]>({
-        // queryKey: chatKeys.detail(chatSeq).queryKey,
         queryKey: ['chat','chatData', chatSeq],
         queryFn: async () => {
             const response = await axios.get<ChatData[]>(`/chatData?chatSeq=${chatSeq}`);
@@ -60,6 +74,26 @@ export const useChatDataList = (chatSeq: Chat['chatSeq']) => {
         enabled: !!chatSeq,
     });
 };
+
+export const useChatCountByStatus = (status: any) => {
+    return useQuery({
+        queryKey: ['chat','chatCount', status],
+        queryFn: async () => {
+            if (Array.isArray(status)) {
+                const results = await Promise.all(
+                    status.map(s => axios.get(`/chat?status=${s}`))
+                );
+                const total = results.reduce((sum, res) => sum + res.data.length, 0);
+                return total;
+            } else {
+                const res = await axios.get(`/chat?status=${status}`);
+                return res.data.length;
+            }
+        },
+        staleTime: 1000 * 10,
+    });
+};
+
 
 export const updateChatStatusMutation = () => {
     const queryClient = useQueryClient();
@@ -110,7 +144,7 @@ export const updateChatMgrMutation = () => {
         mutationFn: async ({ chatSeq, mgrId }: { chatSeq: Chat['chatSeq']; mgrId: Mgr['mgrId'] }) => {
             try {
                 const mgrDetail = await getMgrDetail(mgrId);
-                const newDate = salmon.date.newDate().format('YYYY/MM/DD HH:mm:ss');
+                const newDate = salmon.date.newDate().format('YYYY-MM-DD HH:mm:ss');
 
                 // 1. 기존 상담 종료 처리
                 await axios.patch<Chat>(`/chat/${chatSeq}`, {
@@ -131,7 +165,7 @@ export const updateChatMgrMutation = () => {
                     chatSeq: newChatSeq.toString(),
                     mgrId: mgrId,
                     mgrNm: mgrDetail.mgrNm,
-                    status: '대기중',
+                    status: '신규접수',
                     transferYn: 'Y',
                     regDt:newDate,
                     callStartTm: newDate.split(' ')[1],
@@ -167,5 +201,4 @@ export const updateChatMgrMutation = () => {
         }
     });
 };
-
 

@@ -34,7 +34,7 @@ export const insertMenuMutation = () => {
     return useMutation({
             mutationFn: async (values:MenuType) => {
             if (!values.menuCd) return;
-            const newDate = salmon.date.newDate().format('YYYY/MM/DD HH:mm:ss');
+            const newDate = salmon.date.newDate().format(('YYYY-MM-DD HH:mm:ss'));
             const loginInfo = await getLoginMgr();
             try {
                 const newMenuId = salmon.date.newDate().format('YYYYMMDD_HHmmss');
@@ -69,7 +69,7 @@ export const updateMenuMutation = () => {
     return useMutation({
         mutationFn: async ({ menuId, values } : { menuCd: MenuType['id'], values:MenuType}) => {
             if (!menuId) return;
-            const newDate = salmon.date.newDate().format('YYYY/MM/DD HH:mm:ss');
+            const newDate = salmon.date.newDate().format(('YYYY-MM-DD HH:mm:ss'));
             const loginInfo = await getLoginMgr();
             try {
                 values.modiDt = newDate;
@@ -78,7 +78,7 @@ export const updateMenuMutation = () => {
 
                 await axios.patch<MenuType>(`/menus/${menuId}`, values);
             } catch (error) {
-                console.error('메뉴 수정 실패:', error);
+                console.log('메뉴 수정 실패:', error);
                 throw error;
             }
         },
@@ -123,7 +123,7 @@ export const MoveMenuMutation = () => {
     return useMutation({
         mutationFn: async ({ menuCd, values } : { menuCd: MenuType['id'], values: {}}) => {
             if (!menuCd || !values.highMenuCd) return;
-            const newDate = salmon.date.newDate().format('YYYY/MM/DD HH:mm:ss');
+            const newDate = salmon.date.newDate().format(('YYYY-MM-DD HH:mm:ss'));
             const loginInfo = await getLoginMgr();
 
             try {

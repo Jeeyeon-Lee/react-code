@@ -33,8 +33,8 @@ export const callStart = async (mgrId: string, chatSeq: string) => {
     });
 
     const { setMgrStatus, setChatStatus } = useCtiStore.getState?.();
-    setMgrStatus('상담중');
-    setChatStatus(chatSeq, '상담중');
+    setMgrStatus('작업');
+    setChatStatus(chatSeq, '진행중');
 };
 
 export const obCallStart = async (mgrId: string) => {
@@ -47,7 +47,7 @@ export const obCallStart = async (mgrId: string) => {
     });
 
     /*const { setMgrStatus, setChatStatus } = useCtiStore.getState?.();
-    setMgrStatus('상담중');*/
+    setMgrStatus('작업');*/
 };
 
 export const callbackStart = async (mgrId: string) => {
@@ -60,7 +60,7 @@ export const callbackStart = async (mgrId: string) => {
     });
 
     /*const { setMgrStatus, setChatStatus } = useCtiStore.getState?.();
-    setMgrStatus('상담중');*/
+    setMgrStatus('작업');*/
 };
 
 export const callEnd = async (mgrId: string, chatSeq: string) => {
@@ -112,7 +112,7 @@ export const resumeCall = async (chatSeq: string) => {
     });
 
     const { setChatStatus } = useCtiStore.getState?.();
-    setChatStatus(chatSeq, '상담중');
+    setChatStatus(chatSeq, '진행중');
 };
 
 export const changeChatStatus = async (chatSeq: string, status: string) => {
@@ -240,8 +240,8 @@ socket.onmessage = (e) => {
 
     switch (data.type) {
         case 'CALL_CONNECTED':
-            setMgrStatus('상담중');
-            setChatStatus(data.chatSeq, '상담중');
+            setMgrStatus('작업');
+            setChatStatus(data.chatSeq, '진행중');
             break;
         case 'CALL_ENDED':
             setMgrStatus('후처리');

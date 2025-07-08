@@ -34,10 +34,10 @@ const ChatHistory = ({chatSeq}) => {
     const getStepStatus = (target: string) => {
         const status = chatDetail?.status;
         if (!status) return 'wait';
-        if (status === '대기중') {
+        if (status === '신규접수') {
             return target === '인입' ? 'process' : 'wait';
         }
-        if (status === '상담중' || status === '후처리' || status === '보류') {
+        if (status === '진행중' || status === '후처리' || status === '보류') {
             return target === '인입' ? 'finish' :
                 target === '상담' ? 'process' : 'wait';
         }
