@@ -132,6 +132,20 @@ const ProcessContent = ({status}) => {
                                 <CmmCodeSelect group="CHANNEL" />
                             </Form.Item>
                         </Col>
+                        {status.includes('진행중') &&(
+                            <>
+                                <Col span={12}>
+                                    <Form.Item name="status" label="상담상태">
+                                        <CmmCodeSelect group="CHAT_STATUS" />
+                                    </Form.Item>
+                                </Col>
+                                <Col span={12}>
+                                    <Form.Item name="transferYn" label="이관여부">
+                                        <CmmCodeSelect group="YES_YN" />
+                                    </Form.Item>
+                                </Col>
+                            </>
+                        )}
                     </Row>
                 </CmmForm>
             </CmmSearchForm>
