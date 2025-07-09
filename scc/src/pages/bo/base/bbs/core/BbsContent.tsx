@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {Card, Col, Divider, Form, Row} from 'antd';
-import BbsSearchForm from "@pages/bo/base/bbs/BbsSearchForm.tsx";
-import BbsSearchList from "@pages/bo/base/bbs/BbsSearchList.tsx";
+import BbsSearchForm from "@pages/bo/base/bbs/core/BbsSearchForm.tsx";
+import BbsSearchList from "@pages/bo/base/bbs/core/BbsSearchList.tsx";
 import type {Bbs} from "@pages/cmm";
 import {useParams} from "react-router-dom";
-import BbsView from "@pages/bo/base/bbs/BbsView.tsx";
+import BbsView from "@pages/bo/base/bbs/core/BbsView.tsx";
 import CmmButton from "@components/form/CmmButton.tsx";
-import BbsForm from "@pages/bo/base/bbs/BbsForm.tsx";
+import BbsForm from "@pages/bo/base/bbs/core/BbsForm.tsx";
 import CmmSearchForm from "@components/form/CmmSearchForm.tsx";
 
 

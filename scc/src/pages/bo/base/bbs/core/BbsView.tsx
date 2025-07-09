@@ -1,5 +1,5 @@
 import {Descriptions, Form, message, Space, Typography} from 'antd';
-import {deleteBbsMutation, useBbsDetail} from "@pages/bo/base/bbs/useBbs.ts";
+import {deleteBbsMutation, useBbsDetail} from "@pages/bo/base/bbs/core/useBbs.ts";
 import type {Bbs} from "@pages/cmm";
 import React from "react";
 import CmmButton from "@components/form/CmmButton.tsx";

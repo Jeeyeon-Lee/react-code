@@ -6,4 +6,5 @@ export type { ChatData } from '@pages/bo/scc/chat/chatData.ts';
 export type { Login } from '@pages/cmm/login/login.ts';
 export type { MenuType } from '@pages/bo/base/menu/menu.ts';
 export type { ChatFormData } from '@pages/bo/scc/chat/chatFormData.ts';
-export type { Bbs } from '@pages/bo/base/bbs/bbs.ts';
+export type { Bbs } from '@pages/bo/base/bbs/core/bbs.ts';
+export type { BbsConf } from '@pages/bo/base/bbs/conf/BbsConf.ts';

@@ -6,9 +6,10 @@ import MainContent from "@pages/bo/scc/chat/MainContent.tsx";
 import CodeContent from "@pages/bo/base/code/CodeContent.tsx";
 import MenuContent from "@pages/bo/base/menu/MenuContent.tsx";
 import HistoryContent from "@pages/bo/scc/history/HistoryContent.tsx";
-import BbsContent from "@pages/bo/base/bbs/BbsContent.tsx";
+import BbsContent from "@pages/bo/base/bbs/core/BbsContent.tsx";
 import ProcessContent from "@pages/bo/scc/process/ProcessContent.tsx";
 import HelloTest from "@pages/test/HelloTest.tsx";
+import BbsConfContent from "@pages/bo/base/bbs/conf/BbsConfContent.tsx";
 
 const { Content: AntContent } = Layout;
 
@@ -58,7 +59,8 @@ function Content() {
                     <Route path="/acwProcess" exact={true} element={<ProcessContent status="후처리"/>}></Route>
                     <Route path="/complete" exact={true} element={<ProcessContent status="완료"/>}></Route>
                     <Route path="/history" element={<HistoryContent />}></Route>
-                    <Route path="/bbs/:bbsCd" exact={true} element={<BbsContent/>}></Route>
+                    <Route path="/bbs/core/:bbsCd" exact={true} element={<BbsContent/>}></Route>
+                    <Route path="/bbs/conf" exact={true} element={<BbsConfContent/>}></Route>
                     <Route path="/hello" element={<HelloTest />} />
                 </Routes>
                 {/* 사용자 정의 라우터  components/router안에 있음*/}

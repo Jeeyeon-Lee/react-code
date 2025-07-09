@@ -1,6 +1,6 @@
 import {Button, Descriptions, Form, Input, message, Radio, Select, Space, Typography, Upload} from 'antd';
 
-import {insertBbsMutation, updateBbsMutation, useBbsDetail} from "@pages/bo/base/bbs/useBbs.ts";
+import {insertBbsMutation, updateBbsMutation, useBbsDetail} from "@pages/bo/base/bbs/core/useBbs.ts";
 import type {Bbs} from "@pages/cmm";
 import React, {useEffect} from "react";
 import CmmButton from "@components/form/CmmButton.tsx";

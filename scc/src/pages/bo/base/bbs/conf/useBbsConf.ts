@@ -1,52 +1,52 @@
 import {useMutation, useQuery, useQueryClient} from '@tanstack/react-query';
 import axios from "@api/api.ts";
-import type {Bbs} from "@pages/bo/base/bbs/bbs.ts";
-import type {Bbs, Bbs} from "@pages/cmm";
+import type {BbsConf} from "@pages/cmm";
 import {salmon} from "@utils/salmon.ts";
 import {getLoginMgr} from "@api/cmm/loginApi.ts";
 import {message} from "antd";
 
-export const useBbsList = (values:Bbs) => {
+export const useBbsConfList = (values:BbsConf) => {
     return useQuery({
-        queryKey: ['bbsList', values],
+        queryKey: ['bbsConfList', values],
         queryFn: async () => {
+
+            console.log(values);
 
             const params = buildQueryParams(values);
 
-            const res = await axios.get<Bbs[]>('/bbs', { params });
+            const res = await axios.get<BbsConf[]>('/bbsConf', { params });
             return res.data;
         },
     });
 };
 
-export const useBbsDetail = (bbsSeq:Bbs['bbsSeq']) => {
+export const useBbsConfDetail = (bbsCd:BbsConf['bbsCd']) => {
     return useQuery({
-        queryKey: ['bbsSeq', bbsSeq],
+        queryKey: ['bbsCd', bbsCd],
         queryFn: async () => {
 
-            const res = await axios.get<Bbs[]>(`/bbs?bbsSeq=${bbsSeq}`);
+            const res = await axios.get<BbsConf[]>(`/bbsConf?bbsCd=${bbsCd}`);
             return res.data[0];
         },
-        enabled: !!bbsSeq
+        enabled: !!bbsCd
     });
 };
 
-export const insertBbsMutation = () => {
+export const insertBbsConfMutation = () => {
     const queryClient = useQueryClient();
     return useMutation({
-        mutationFn: async (values:Bbs) => {
-            if (!values.bbsCd) return;
+        mutationFn: async (values:BbsConf) => {
 
-            const newDate = salmon.date.newDate().format('YYYY-MM-DD HH:mm:ss');
+            const newDate = salmon.date.newDate().format('YYYY/MM/DD HH:mm:ss');
             const loginInfo = await getLoginMgr();
             try {
                 const newMenuId = salmon.date.newDate().format('YYYYMMDD_HHmmss');
                 values.id = newMenuId.toString();
-                values.bbsSeq = newMenuId.toString();
+                values.bbsCd = newMenuId.toString();
                 values.regDt = newDate;
                 values.regId = loginInfo?.mgrId;
 
-                await axios.post<Bbs>(`/bbs`, values);
+                await axios.post<BbsConf>(`/bbsConf`, values);
 
                 //TODO orderNo 라스트 체크
             } catch (error) {
@@ -55,7 +55,7 @@ export const insertBbsMutation = () => {
             }
         },
         onSuccess: async () => {
-            await queryClient.invalidateQueries({ queryKey: ['bbsList'] });
+            await queryClient.invalidateQueries({ queryKey: ['bbsConfList'] });
             message.success(`등록되었습니다.`);
         },
         onError: async () => {
@@ -64,19 +64,19 @@ export const insertBbsMutation = () => {
     });
 };
 
-export const updateBbsMutation = () => {
+export const updateBbsConfMutation = () => {
     const queryClient = useQueryClient();
     return useMutation({
-        mutationFn: async (values:Bbs) => {
+        mutationFn: async (values:BbsConf) => {
             if (!values.id) return;
 
-            const newDate = salmon.date.newDate().format('YYYY-MM-DD HH:mm:ss');
+            const newDate = salmon.date.newDate().format('YYYY/MM/DD HH:mm:ss');
             const loginInfo = await getLoginMgr();
             try {
                 values.modiDt = newDate;
                 values.modiId = loginInfo?.mgrId;
 
-                await axios.patch<Bbs>(`/bbs/${values.id}`, values);
+                await axios.patch<BbsConf>(`/bbsConf/${values.id}`, values);
 
             } catch (error) {
                 console.error('수정 실패:', error);
@@ -84,7 +84,7 @@ export const updateBbsMutation = () => {
             }
         },
         onSuccess: async () => {
-            await queryClient.invalidateQueries({ queryKey: ['bbsList'] });
+            await queryClient.invalidateQueries({ queryKey: ['bbsConfList'] });
             message.success(`수정되었습니다.`);
         },
         onError: async () => {
@@ -93,19 +93,19 @@ export const updateBbsMutation = () => {
     });
 };
 
-export const deleteBbsMutation = () => {
+export const deleteBbsConfMutation = () => {
     const queryClient = useQueryClient();
     return useMutation({
-        mutationFn: async (id: Bbs['id']) => {
+        mutationFn: async (id: BbsConf['id']) => {
             try {
-                await axios.delete<Bbs>(`/bbs/${id}` );
+                await axios.delete<BbsConf>(`/bbsConf/${id}` );
             } catch (error) {
                 console.error('삭제 실패:', error);
                 throw error;
             }
         },
         onSuccess: async () => {
-            await queryClient.invalidateQueries({ queryKey: ['bbsList'] });
+            await queryClient.invalidateQueries({ queryKey: ['bbsConfList'] });
             message.success(`삭제되었습니다.`);
         },
         onError: async () => {

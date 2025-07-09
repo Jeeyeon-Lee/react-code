@@ -2158,8 +2158,8 @@
       "regDt": "2025/06/30 15:15:26",
       "regId": 5,
       "regNm": "관리자",
-      "path": "/bbs/1000",
-      "modiDt": "2025/07/03 13:37:30",
+      "path": "/bbs/core/1000",
+      "modiDt": "2025-07-09 09:29:47",
       "modiId": 5,
       "modiNm": "관리자",
       "orderNo": 3
@@ -2285,8 +2285,8 @@
       "regDt": "2025/07/02 10:19:37",
       "regId": 5,
       "regNm": "관리자",
-      "path": "/bbs/2000",
-      "modiDt": "2025/07/03 13:37:30",
+      "path": "/bbs/core/2000",
+      "modiDt": "2025-07-09 09:29:51",
       "modiId": 5,
       "modiNm": "관리자",
       "orderNo": 4
@@ -2305,6 +2305,21 @@
       "modiDt": "2025-07-08 11:02:08",
       "modiId": 2,
       "modiNm": "이상담원"
+    },
+    {
+      "id": "20250709_093010",
+      "menuCd": "M_BBS_CONF",
+      "label": "게시판관리",
+      "option": "isSame",
+      "highMenuCd": "M_SYS",
+      "useYn": "Y",
+      "regDt": "2025-07-09 09:30:10",
+      "regId": 5,
+      "regNm": "관리자",
+      "path": "/bbs/conf",
+      "modiDt": "2025-07-09 09:30:17",
+      "modiId": 5,
+      "modiNm": "관리자"
     }
   ],
   "codeGroup": [
@@ -2943,6 +2958,25 @@
       "modiId": "",
       "regDt": "2025-06-30 16:17:12",
       "modiDt": ""
+    }
+  ],
+  "bbsConf": [
+    {
+      "id": "20250704_133914",
+      "bbsCd": "20250704_133914",
+      "bbsNm": "게시판",
+      "typeCd": "typeCd1",
+      "ctgYn": "Y",
+      "admYn": "Y",
+      "cmtYn": "Y",
+      "ntcYn": "Y",
+      "fileYn": "Y",
+      "fileCnt": "",
+      "htmlYn": "Y",
+      "regDt": "2025/07/04 13:39:14",
+      "regId": 5,
+      "modiDt": "2025/07/09 09:30:24",
+      "modiId": 5
     }
   ]
 }
