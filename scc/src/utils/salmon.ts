@@ -130,7 +130,7 @@ export const downloadExcel = async <T>({
             title: '다운로드 불가',
             content: '다운로드할 데이터가 없습니다.',
         });
-        return;
+        return false;
     }
 
     if (!columns || columns.length === 0) {
@@ -139,7 +139,7 @@ export const downloadExcel = async <T>({
             title: '다운로드 불가',
             content: '다운로드할 컬럼 정보가 없습니다.',
         });
-        return;
+        return false;
     }
 
     if (!sheetName) {
@@ -148,9 +148,8 @@ export const downloadExcel = async <T>({
             title: '다운로드 불가',
             content: '다운로드할 시트 파일명 정보가 없습니다.',
         });
-        return;
+        return false;
     }
-
     const workbook = new ExcelJS.Workbook();
     const worksheet = workbook.addWorksheet(sheetName);
 

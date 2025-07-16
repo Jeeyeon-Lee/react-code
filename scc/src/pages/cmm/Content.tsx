@@ -10,6 +10,7 @@ import BbsContent from "@pages/bo/base/bbs/core/BbsContent.tsx";
 import ProcessContent from "@pages/bo/scc/process/ProcessContent.tsx";
 import HelloTest from "@pages/test/HelloTest.tsx";
 import BbsConfContent from "@pages/bo/base/bbs/conf/BbsConfContent.tsx";
+import DsContent from "@pages/bo/scc/ds/DsContent.tsx";
 
 const { Content: AntContent } = Layout;
 
@@ -54,14 +55,12 @@ function Content() {
                     <Route path="/main" exact={true} element={<MainContent/>  }></Route>
                     <Route path="/code" exact={true} element={<CodeContent/>}></Route>
                     <Route path="/menu" exact={true} element={<MenuContent/>}></Route>
-                    <Route path="/notProcess" exact={true} element={<ProcessContent status="신규접수"/>}></Route>
-                    <Route path="/process" element={<ProcessContent status={["진행중", "보류"]} />} />
-                    <Route path="/acwProcess" exact={true} element={<ProcessContent status="후처리"/>}></Route>
-                    <Route path="/complete" exact={true} element={<ProcessContent status="완료"/>}></Route>
+                    <Route path="/process/:status" exact={true} element={<ProcessContent/>}></Route>
+                    <Route path="/tsm" element={<DsContent />}></Route>
                     <Route path="/history" element={<HistoryContent />}></Route>
                     <Route path="/bbs/core/:bbsCd" exact={true} element={<BbsContent/>}></Route>
                     <Route path="/bbs/conf" exact={true} element={<BbsConfContent/>}></Route>
-                    <Route path="/hello" element={<HelloTest />} />
+                    <Route path="/test" element={<HelloTest />} />
                 </Routes>
                 {/* 사용자 정의 라우터  components/router안에 있음*/}
             </AntContent>

@@ -58,7 +58,9 @@ const HistoryContent = () => {
                 extraButtons={
                     <ExcelDownloadButton<Chat>
                         data={selectedRows.length > 0 ? selectedRows : chatList}
-                        columns={columns.map(col => ({
+                        columns={columns
+                            .filter(col => (col.dataIndex ?? col.key) !== 'index')
+                            .map(col => ({
                             key: col?.dataIndex,
                             header: col.title as string,
                         }))}

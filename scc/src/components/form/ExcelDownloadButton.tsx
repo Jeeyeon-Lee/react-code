@@ -25,6 +25,7 @@ const ExcelDownloadButton = <T,>({
         <Button
             onClick={(e) => {
                 e.stopPropagation();
+
                 downloadExcel<T>({
                     data,
                     columns,

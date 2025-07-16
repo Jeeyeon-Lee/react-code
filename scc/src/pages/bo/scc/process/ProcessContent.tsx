@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import { useExcelStore } from '@pages/cmm/excel/excelStore.ts';
 import CmmSearchForm from "@components/form/CmmSearchForm.tsx";
 import CmmForm from "@components/form/CmmForm.tsx";
 import {Card, Col, Form, Input, Row, Select} from "antd";
@@ -7,41 +8,80 @@ import {deleteChatMutation, useChatDetail, useChatList} from "@pages/bo/scc/chat
 import {formSearch, modal} from '@utils/salmon.ts';
 import CmmCodeSelect from "@components/form/CmmCodeSelect.tsx";
 import type {ColumnsType} from "antd/es/table";
-import ExcelDownloadButton from "@components/form/ExcelDownloadButton.tsx";
 import ChatTable from "@pages/bo/scc/chat/ChatTable.tsx";
 import ChatDetail from "@pages/bo/scc/chat/ChatDetail.tsx";
 import CmmButton from "@components/form/CmmButton.tsx";
 import {DeleteOutlined} from "@ant-design/icons";
-import {deleteChatSession, transferCall} from "@pages/cmm/cti/useCti.ts";
-import {useChatStore} from "@pages/bo/scc/chat/chatStore.ts";
+import {useParams} from "react-router-dom";
+import CmmExcelButton from "@components/form/CmmExcelButton.tsx";
 
-const ProcessContent = ({status}) => {
-    const [searchParams, setSearchParams] = useState<Chat>({status:status} as Chat);
-    const { data: chatList = [] } = useChatList(searchParams);
-    const [selectedChatSeq, setSelectedChatSeq] = useState<string | null>(null);
-    const { data: processDetail } = useChatDetail(selectedChatSeq ?? '');
+const ProcessContent = () => {
     const [form] = Form.useForm();
+    const {status} = useParams();
+    const [searchParams, setSearchParams] = useState<Chat>({status:status} as Chat);
     const [selectedRows, setSelectedRows] = useState([]);
+    const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
     const [columns, setColumns] = useState<ColumnsType>([]);
+    const [selectedChatSeq, setSelectedChatSeq] = useState<string | null>(null);
+
+    const { data: chatList = [] } = useChatList(searchParams);
+    const { data: processDetail } = useChatDetail(selectedChatSeq ?? '');
     const { mutate: deleteChat } = deleteChatMutation();
-    const { chatSeq, clearChatSeq } = useChatStore();
 
-    const onRowClick = (record: Chat) => ({
-        onClick: () => {
-            setSelectedChatSeq(record.chatSeq);
-        },
-    });
+    useEffect(() => {
+        setSearchParams(prev => ({
+            ...prev,
+            status,
+        }));
+    }, [status]);
 
+    useEffect(() => {
+        useExcelStore.getState().setAllData(chatList);
+        useExcelStore.getState().setSheetName(`${status}_상담`);
+    }, [chatList]);
+
+    useEffect(() => {
+        useExcelStore.getState().setColumns(
+            [
+                { key: 'index', header: 'No' },
+                ...columns
+                    .filter(col => (col.dataIndex ?? col.key) !== 'index')
+                    .map(col => ({
+                        key: col.dataIndex ?? col.key ?? '',
+                        header: typeof col.title === 'string' ? col.title : '',
+                    })),
+            ]
+        );
+    }, [columns]);
+
+    useEffect(() => {
+        useExcelStore.getState().setSelectedData(selectedRows);
+    }, [selectedRows]);
+
+    /*검색하기*/
     const handleSubmitSearch = async <Chat>(fieldsValue: any) => {
         const values = formSearch<Chat>(fieldsValue);
         setSearchParams(values);
     };
 
-    useEffect(() => {
-        setSearchParams(prev => ({ ...prev, status }));
-    }, [status]);
+    /*초기화*/
+    const resetHandler = () => {
+        setSelectedChatSeq('');
+        setSelectedRows([]);
+        setSelectedRowKeys([]);
+    };
 
-    const handleDeleteChat = async () => {
+    /*테이블 로우 클릭*/
+    const onRowClick = (record: Chat): React.HTMLAttributes<HTMLElement> => {
+        return {
+            onClick: () => {
+                setSelectedChatSeq(record?.chatSeq);
+            },
+        };
+    };
+
+    /*삭제*/
+    const handleDeleteChat = () => {
         if (selectedRows.length === 0) {
             modal({
                 type:"warning",
@@ -50,7 +90,6 @@ const ProcessContent = ({status}) => {
             });
             return;
         }
-
         modal({
             type: 'confirm',
             title: '삭제 확인',
@@ -59,7 +98,6 @@ const ProcessContent = ({status}) => {
                 await Promise.all(
                     selectedRows.map(async (row) => {
                         await deleteChat(row.chatSeq);
-                        clearChatSeq();
                     })
                 );
             },
@@ -68,16 +106,11 @@ const ProcessContent = ({status}) => {
         return;
     };
 
-    //엑셀 no 설정
-    const excelData = (selectedRows.length > 0 ? selectedRows : chatList).map((row, idx) => ({
-        index: idx + 1,
-        ...row,
-    }));
-
     return (
         <>
             <CmmSearchForm
                 form={form}
+                onReset={resetHandler}
                 extraButtons={
                     <>
                         {status.includes('진행중') &&(
@@ -91,18 +124,9 @@ const ProcessContent = ({status}) => {
                                 삭제
                             </CmmButton>
                         )}
-                        <ExcelDownloadButton<Chat>
-                            data={excelData}
-                            columns={[
-                                { key: 'index', header: 'No' },
-                                ...columns
-                                    .filter(col => (col.dataIndex ?? col.key) !== 'index')
-                                    .map(col => ({
-                                        key: col.dataIndex ?? col.key ?? '',
-                                        header: typeof col.title === 'string' ? col.title : '',
-                                    })),
-                            ]}
-                            sheetName={`${status}_상담`}
+                        <CmmExcelButton
+                            defaultColumns={['userNm', 'mgrNm', 'title', 'regDt', 'index']}
+                            buttonText={"Excel Modal"}
                         />
                     </>
                 }
@@ -156,6 +180,8 @@ const ProcessContent = ({status}) => {
                             chatList={chatList}
                             onRowClick={onRowClick}
                             onSelectRows={setSelectedRows}
+                            selectedRowKeys={selectedRowKeys}
+                            setSelectedRowKeys={setSelectedRowKeys}
                             setColumns={setColumns}
                             scrollY={400}
                             rowSelect={true}

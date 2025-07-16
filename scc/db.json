@@ -825,7 +825,7 @@
       "userNm": "둘리",
       "mgrId": "1",
       "mgrNm": "김상담원",
-      "status": "신규접수",
+      "status": "진행중",
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
@@ -999,17 +999,17 @@
       "mgrId": 5,
       "mgrNm": "관리자",
       "dptNm": "운영팀",
-      "status": "대기"
+      "status": "작업"
     }
   ],
   "loginMgr": [
     {
       "id": "1",
-      "mgrId": 5,
-      "mgrNm": "관리자",
-      "dptNm": "운영팀",
+      "mgrId": 2,
+      "mgrNm": "이상담원",
+      "dptNm": "상담1팀",
       "status": "대기",
-      "loginTime": "2025-07-08T04:49:16.250Z"
+      "loginTime": "2025-07-15T23:09:23.564Z"
     }
   ],
   "socket": [
@@ -1138,6 +1138,16 @@
       "mgrNm": "김상담원",
       "text": "후처리 완료",
       "regDt": "2025-06-24 15:55:31",
+      "modiId": "",
+      "modiDt": ""
+    },
+    {
+      "id": "20250612_151029",
+      "chatSeq": "20250612_151029",
+      "mgrId": 1,
+      "mgrNm": "김상담원",
+      "text": "testetset",
+      "regDt": "2025-07-11 09:33:49",
       "modiId": "",
       "modiDt": ""
     }
@@ -2207,10 +2217,10 @@
       "regDt": "2025/07/01 16:51:22",
       "regId": 5,
       "regNm": "관리자",
-      "path": "/notProcess",
-      "modiDt": "2025-07-08 11:01:37",
+      "path": "/process/신규접수",
+      "modiDt": "2025-07-14 09:16:42",
       "modiId": 2,
-      "modiNm": "관리자",
+      "modiNm": "이상담원",
       "orderNo": 1
     },
     {
@@ -2223,10 +2233,10 @@
       "regDt": "2025/07/01 16:53:05",
       "regId": 5,
       "regNm": "관리자",
-      "path": "/process",
-      "modiDt": "2025-07-08 11:01:37",
+      "path": "/process/진행중",
+      "modiDt": "2025-07-14 09:16:32",
       "modiId": 2,
-      "modiNm": "관리자",
+      "modiNm": "이상담원",
       "orderNo": 2
     },
     {
@@ -2239,10 +2249,10 @@
       "regDt": "2025/07/01 16:53:19",
       "regId": 5,
       "regNm": "관리자",
-      "path": "/acwProcess",
-      "modiDt": "2025-07-08 11:01:37",
+      "path": "/process/후처리",
+      "modiDt": "2025-07-14 09:16:29",
       "modiId": 2,
-      "modiNm": "관리자",
+      "modiNm": "이상담원",
       "orderNo": 3
     },
     {
@@ -2301,8 +2311,8 @@
       "regDt": "2025-07-08 11:01:58",
       "regId": 2,
       "regNm": "이상담원",
-      "path": "/complete",
-      "modiDt": "2025-07-08 11:02:08",
+      "path": "/process/완료",
+      "modiDt": "2025-07-14 09:17:05",
       "modiId": 2,
       "modiNm": "이상담원"
     },
@@ -2318,6 +2328,32 @@
       "regNm": "관리자",
       "path": "/bbs/conf",
       "modiDt": "2025-07-09 09:30:17",
+      "modiId": 5,
+      "modiNm": "관리자"
+    },
+    {
+      "id": "20250710_160550",
+      "menuCd": "M_BACK",
+      "label": "BACK_TEST",
+      "option": "isRoot",
+      "highMenuCd": "ROOT",
+      "useYn": "Y",
+      "regDt": "2025-07-10 16:05:50",
+      "regId": 5,
+      "regNm": "관리자"
+    },
+    {
+      "id": "20250710_160630",
+      "menuCd": "M_TEST",
+      "label": "테스트",
+      "option": "isChild",
+      "highMenuCd": "M_BACK",
+      "useYn": "Y",
+      "regDt": "2025-07-10 16:06:30",
+      "regId": 5,
+      "regNm": "관리자",
+      "path": "/test",
+      "modiDt": "2025-07-10 16:06:39",
       "modiId": 5,
       "modiNm": "관리자"
     }

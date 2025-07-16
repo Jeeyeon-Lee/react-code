@@ -1,23 +1,30 @@
 import type {ColumnsType} from "antd/es/table";
 import type {Chat} from "@pages/cmm";
-import {Table, TableProps, Tag} from "antd";
+import {Table, Tag} from "antd";
 import React, {useEffect, useMemo, useRef, useState} from "react";
+import CmmButton from "@components/form/CmmButton.tsx";
+import {RedoOutlined} from "@ant-design/icons";
+import type {TableRowSelection} from "antd/es/table/interface";
 
 interface ChatTableProps {
     chatList: Chat[];
     onRowClick?: (record: Chat) => React.HTMLAttributes<HTMLElement>;
     scrollY?: number;
     rowSelect?: Boolean;
-    excludeColumns?: (string)[]; // 제외할 필드 이름들
+    excludeColumns?: (string)[];
     onSelectRows?: (rows: Chat[]) => void;
     setColumns?: (cols: ColumnsType<Chat>) => void;
+    selectedRowKeys?: [];
+    setSelectedRowKeys?: () => void;
 }
 
-
-const ChatTable = ({ chatList, onRowClick, onSelectRows, setColumns, scrollY = 200, rowSelect, excludeColumns }: ChatTableProps) => {
+const ChatTable = ({ chatList, onRowClick, scrollY = 200, rowSelect, excludeColumns, onSelectRows, setColumns, selectedRowKeys, setSelectedRowKeys }: ChatTableProps) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [pageNation, setPageNation] = useState(5);
-
+    const [selectionType, setSelectionType] = useState<'checkbox' | 'radio'>('checkbox');
+    const isColumnsSet = useRef(false);
+    const [selectedCount, setSelectedCount] = useState<number>(0);
+    
     const colorMap = {
         '신규접수': 'red',
         '진행중': 'blue',
@@ -41,7 +48,6 @@ const ChatTable = ({ chatList, onRowClick, onSelectRows, setColumns, scrollY = 2
             dataIndex: 'userNm',
             key: 'userNm',
             align: 'center',
-            // render: (text: string) => <a>{text}</a>,
         },
         {
             title: '상담사',
@@ -49,7 +55,6 @@ const ChatTable = ({ chatList, onRowClick, onSelectRows, setColumns, scrollY = 2
             key: 'mgrNm',
             align: 'center',
             sorter: (a, b) => (a.mgrNm || '').localeCompare(b.mgrNm || ''),
-            // render: (text: string) => <a>{text}</a>,
         },
         {
             title: '제목',
@@ -108,21 +113,27 @@ const ChatTable = ({ chatList, onRowClick, onSelectRows, setColumns, scrollY = 2
         );
     }, [excludeColumns, currentPage, pageNation]);
 
-    const [selectedCount, setSelectedCount] = useState<number>(0);
 
-    const rowSelection: TableProps<Chat>['rowSelection'] = {
+    const onSelectChange = (newSelectedRowKeys: React.Key[]) => {
+        setSelectedRowKeys(newSelectedRowKeys);
+    };
+
+    const rowSelection: TableRowSelection<Chat> = {
+        selectedRowKeys,
         onChange: (_keys, selectedRows) => {
             setSelectedCount(selectedRows.length);
             onSelectRows?.(selectedRows);
+            onSelectChange();
         },
         getCheckboxProps: (record: Chat) => ({
             name: record.userNm,
         }),
     };
+    const start = () => {
+        setSelectedRowKeys([]);
+        setSelectedCount(0);
+    };
 
-    const [selectionType, setSelectionType] = useState<'checkbox' | 'radio'>('checkbox');
-
-    const isColumnsSet = useRef(false);
 
     useEffect(() => {
         if (setColumns && !isColumnsSet.current) {
@@ -134,9 +145,17 @@ const ChatTable = ({ chatList, onRowClick, onSelectRows, setColumns, scrollY = 2
     return (
         <>
             <div style={{textAlign:'right', marginRight:'5px'}}>
-                {selectedCount > 0 && <span>총 {selectedCount}건 선택됨</span>}
+                {selectedRowKeys?.length > 0 && <span>총 {selectedCount}건 선택됨</span>}
+                <CmmButton
+                    icon={<RedoOutlined/>}
+                    htmlType="reset"
+                    type="dashed"
+                    onClick={start}
+                />
             </div>
             <Table
+                id={"chatTable"}
+                key={"chatTable"}
                 rowKey="chatSeq"
                 columns={columns}
                 dataSource={chatList}

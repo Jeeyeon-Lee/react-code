@@ -12,6 +12,7 @@ interface Props {
     form: FormInstance;
     extraButtons?: React.ReactNode;
     children: React.ReactNode;
+    onReset?: () => void;
 }
 
 function CmmSearchForm({
@@ -21,6 +22,7 @@ function CmmSearchForm({
                         form,
                         extraButtons,
                         children,
+                        onReset
                         }: Props) {
     const items = [
         {
@@ -34,6 +36,7 @@ function CmmSearchForm({
                         <CmmButton
                             onClick={(e) => {
                                 e.stopPropagation();
+                                onReset?.();
                                 form.resetFields?.();
                                 form.submit();
                             }}
