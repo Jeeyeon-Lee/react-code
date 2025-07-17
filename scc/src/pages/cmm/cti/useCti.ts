@@ -1,9 +1,9 @@
 import {useQuery, useMutation, useQueryClient} from '@tanstack/react-query';
 import axios from '@api/api.ts';
 import { useCtiStore } from '@pages/cmm/cti/ctiStore.ts';
-import { updateLoginStatus } from '@api/cmm/loginApi.ts';
+import {updateLoginStatus, updateMgrLoginStatus} from '@api/cmm/loginApi.ts';
 import { message } from 'antd';
-import type { Login } from "@pages/cmm";
+import type {Login, Mgr} from "@pages/cmm";
 
 // 사용자 상태변경
 export const useUpdateMgrStatusMutation = () => {
@@ -15,6 +15,20 @@ export const useUpdateMgrStatusMutation = () => {
             updateLoginStatus(loginInfo, status),
         onSuccess: (_, { status }) => {
             setMgrStatus(status);
+            queryClient.invalidateQueries({ queryKey: ['login'] });
+            message.success(`계정 상태를 변경하였습니다.`);
+        },
+    });
+};
+
+// 사용자 상태변경
+export const useUpdateMgrLoginStatusMutation = () => {
+    const queryClient = useQueryClient();
+
+    return useMutation({
+        mutationFn: ({ mgrId, login }: { mgrId: Mgr['mgrId']; login: Mgr['login'] }) =>
+            updateMgrLoginStatus(mgrId, login),
+        onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['login'] });
             message.success(`계정 상태를 변경하였습니다.`);
         },

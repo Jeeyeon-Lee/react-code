@@ -4,5 +4,7 @@ export interface Mgr {
     deptNm: string;
     mgrNm: string;
     mgrId: string;
+    mobile: string;
+    login: string;
     status: string;
 }

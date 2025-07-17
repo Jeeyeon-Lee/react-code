@@ -14,7 +14,7 @@ export const saveLoginMgr = async (mgrId:Mgr['mgrId']) => {
     try {
         const mgrDetail: Mgr = await getMgrDetail(mgrId);
         if (!mgrDetail) message.error('상담원 정보를 찾을 수 없습니다.');
-        const loginMgr: { mgrId: string; loginTime: string; mgrNm: string; id: string; deptNm: string; status: string } = {
+        const loginMgr: { mgrId: string; loginTime: string; mgrNm: string; id: string; deptNm: string; mobile:string; login: string; status: string } = {
             ...mgrDetail,
             status:'대기',
             loginTime: new Date().toISOString(),
@@ -42,6 +42,21 @@ export const updateLoginStatus = async (loginInfo:Login, status:Mgr['status']) =
 
         //로그인 상태 업데이트(서버)
         await axios.patch<Login>(`/loginMgr/1`, loginMgr);
+
+    } catch (error) {
+        console.error('로그인 정보 저장 실패:', error);
+        throw error;
+    }
+};
+
+//로그인 상태 변경
+export const  updateMgrLoginStatus = async (mgrId: Mgr['mgrId'], login:Mgr['login']) => {
+    console.log(login);
+    if(!mgrId) return;
+
+    try {
+        //직원 상태 업데이트(서버)
+        await axios.patch<Mgr>(`/mgr/${mgrId}`, {login});
 
     } catch (error) {
         console.error('로그인 정보 저장 실패:', error);

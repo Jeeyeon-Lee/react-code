@@ -971,6 +971,8 @@
       "mgrId": 1,
       "mgrNm": "김상담원",
       "dptNm": "상담1팀",
+      "mobile": "010-1111-1234",
+      "login": "false",
       "status": "대기"
     },
     {
@@ -978,6 +980,8 @@
       "mgrId": 2,
       "mgrNm": "이상담원",
       "dptNm": "상담1팀",
+      "mobile": "010-2222-1234",
+      "login": "false",
       "status": "작업"
     },
     {
@@ -985,6 +989,8 @@
       "mgrId": 3,
       "mgrNm": "최상담원",
       "dptNm": "상담2팀",
+      "mobile": "010-3333-1234",
+      "login": "false",
       "status": "대기"
     },
     {
@@ -992,6 +998,8 @@
       "mgrId": 4,
       "mgrNm": "상담팀장",
       "dptNm": "상담2팀",
+      "mobile": "010-4444-1234",
+      "login": "false",
       "status": "휴가"
     },
     {
@@ -999,17 +1007,21 @@
       "mgrId": 5,
       "mgrNm": "관리자",
       "dptNm": "운영팀",
+      "mobile": "010-5555-1234",
+      "login": "false",
       "status": "작업"
     }
   ],
   "loginMgr": [
     {
       "id": "1",
-      "mgrId": 2,
-      "mgrNm": "이상담원",
-      "dptNm": "상담1팀",
+      "mgrId": 5,
+      "mgrNm": "관리자",
+      "dptNm": "운영팀",
       "status": "대기",
-      "loginTime": "2025-07-15T23:09:23.564Z"
+      "loginTime": "2025-07-17T04:33:16.656Z",
+      "mobile": "010-5555-1234",
+      "login": "false"
     }
   ],
   "socket": [

@@ -2,6 +2,7 @@ import {useQuery, useMutation, useQueryClient} from '@tanstack/react-query';
 import { getLoginMgr, saveLoginMgr } from '@api/cmm/loginApi.ts';
 import type { Login, Mgr } from '@pages/cmm';
 import { message } from 'antd';
+import {useUpdateMgrStatusMutation} from "@pages/cmm/cti/useCti";
 
 
 export const useLogin = () => {

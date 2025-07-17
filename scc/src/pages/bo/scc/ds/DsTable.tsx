@@ -2,10 +2,16 @@ import type {ColumnsType} from "antd/es/table";
 import type {Mgr} from "@pages/cmm";
 import {Button, Space, Table, Tag} from "antd";
 import React, {useState} from "react";
+import {useUpdateMgrLoginStatusMutation} from "@pages/cmm/cti/useCti";
+import {useLogin} from "@pages/cmm/login/useLogin";
+import {useNavigate} from "react-router-dom";
 
 const DsTable = ({ mgrList, rowSelect}) => {
+    const navigate = useNavigate();
     const [currentPage, setCurrentPage] = useState(1);
     const [pageNation, setPageNation] = useState(5);
+    const { mutate: updateMgrLoginStatus } = useUpdateMgrLoginStatusMutation();
+    const { loginInfo } = useLogin();
 
     const colorMap = {
         '대기': 'red',
@@ -17,6 +23,14 @@ const DsTable = ({ mgrList, rowSelect}) => {
 
     type StatusKey = keyof typeof colorMap;
 
+    const logoutAction = (mgrId) => {
+        updateMgrLoginStatus({mgrId: mgrId, login: "false"})
+        if (String(mgrId) === String(loginInfo?.mgrId)) {
+            localStorage.clear();
+            navigate('/');
+        }
+    }
+
     const columns: ColumnsType<Mgr> = [
         {
             title: 'ID',
@@ -27,6 +41,11 @@ const DsTable = ({ mgrList, rowSelect}) => {
             title: '이름',
             dataIndex: 'mgrNm',
             key: 'mgrNm',
+        },
+        {
+            title: '연락처',
+            dataIndex: 'mobile',
+            key: 'mobile',
         },
         {
             title: '부서명',
@@ -42,13 +61,29 @@ const DsTable = ({ mgrList, rowSelect}) => {
             ),
         },
         {
+            title: '로그인여부',
+            key: 'login',
+            dataIndex: 'login',
+            render: (login: string, _record: Mgr) => (
+                <Tag color={login === "true" ? "red" : "blue"}>{login}</Tag>
+            ),
+        },
+        {
             title: '액션',
             key: 'action',
-            render: (_) => (
+            render: (_: any, record: Mgr) => (
                 <Space size="middle">
-                    <Button type="link">로그아웃</Button>
+                    <Button
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            logoutAction(record.id); // 또는 record.mgrId
+                        }}
+                        disabled={record.login !== "true"}
+                    >
+                        로그아웃
+                    </Button>
                 </Space>
-            ),
+            )
         }
     ];
 

@@ -13,7 +13,7 @@ const DsContent = () => {
         },
     });
     return (
-        <Card title="상담 관리">
+        <Card title="팀원 모니터링">
             <DsTable mgrList={mgrList} rowSelect={onRowClick} />
         </Card>
     );

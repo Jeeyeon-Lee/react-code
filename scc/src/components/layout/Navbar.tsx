@@ -4,6 +4,8 @@ import {CustomerServiceOutlined, HomeOutlined, SettingOutlined} from '@ant-desig
 import {useNavigate} from "react-router-dom";
 import {useMenuListStore, useMenuStore} from "@pages/bo/base/menu/menuStore.ts";
 import CmmButton from "@components/form/CmmButton.tsx";
+import {useUpdateMgrLoginStatusMutation} from "@pages/cmm/cti/useCti";
+import {useLogin} from "@pages/cmm/login/useLogin";
 
 const { Header } = Layout;
 
@@ -18,6 +20,8 @@ function Navbar() {
     const navigate = useNavigate();
     const menuList = useMenuListStore(state => state.menuList);
     const { setMenuCd } = useMenuStore();
+    const { mutate: updateMgrLoginStatus } = useUpdateMgrLoginStatusMutation();
+    const { loginInfo } = useLogin();
 
     const iconMap = {
         HomeOutlined: <HomeOutlined />,
@@ -75,8 +79,8 @@ function Navbar() {
 
     // logout action
     function logoutAction() {
-
         localStorage.clear();
+        updateMgrLoginStatus({mgrId: loginInfo?.mgrId, login: "false"})
         navigate('/');
     }
 

@@ -1,6 +1,6 @@
 import {useQuery} from '@tanstack/react-query';
-import { getMgrList, getMgrDetail } from '@api/bo/base/mgr/mgrApi.ts';
-import type {Login, Mgr} from '@pages/cmm';
+import {getMgrDetail, getMgrList} from '@api/bo/base/mgr/mgrApi.ts';
+import type {Mgr} from '@pages/cmm';
 import {createQueryKeys} from "@lukemorales/query-key-factory";
 
 const mgrKeys = createQueryKeys('mgr', {

@@ -9,7 +9,7 @@ import {useLogin, useSaveLoginMgrMutation} from "@pages/cmm/login/useLogin.ts";
 import {useMgrList} from "@pages/bo/base/mgr/useMgr.ts";
 import {useChatStore} from "@pages/bo/scc/chat/chatStore.ts";
 import {useUserStore} from "@pages/bo/base/user/userStore.ts";
-import {useUpdateMgrStatusMutation} from "@pages/cmm/cti/useCti.ts";
+import {useUpdateMgrLoginStatusMutation, useUpdateMgrStatusMutation} from "@pages/cmm/cti/useCti.ts";
 
 const LoginForm: React.FC = () => {
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const LoginForm: React.FC = () => {
   const { data: mgrList } = useMgrList();
   const { clearChatSeq } = useChatStore();
   const { setUserId } = useUserStore();
-  const { mutate: updateMgrStatus } = useUpdateMgrStatusMutation();
+  const { mutate: updateMgrLoginStatus } = useUpdateMgrLoginStatusMutation();
 
   console.log(menuList);
 
@@ -42,6 +42,7 @@ const LoginForm: React.FC = () => {
     // 로그인 성공
     if (values.username != null) {
       saveLoginMgr(values.username);
+      updateMgrLoginStatus({mgrId:values.username, login:"true"});
       clearChatSeq();
       setUserId('');
     }
