@@ -981,7 +981,7 @@
       "mgrNm": "이상담원",
       "dptNm": "상담1팀",
       "mobile": "010-2222-1234",
-      "login": "false",
+      "login": "true",
       "status": "작업"
     },
     {
@@ -1015,12 +1015,12 @@
   "loginMgr": [
     {
       "id": "1",
-      "mgrId": 5,
-      "mgrNm": "관리자",
-      "dptNm": "운영팀",
+      "mgrId": 2,
+      "mgrNm": "이상담원",
+      "dptNm": "상담1팀",
       "status": "대기",
-      "loginTime": "2025-07-17T04:33:16.656Z",
-      "mobile": "010-5555-1234",
+      "loginTime": "2025-07-17T07:06:42.062Z",
+      "mobile": "010-2222-1234",
       "login": "false"
     }
   ],

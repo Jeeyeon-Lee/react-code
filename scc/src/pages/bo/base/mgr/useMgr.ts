@@ -3,7 +3,7 @@ import {getMgrDetail, getMgrList} from '@api/bo/base/mgr/mgrApi.ts';
 import type {Mgr} from '@pages/cmm';
 import {createQueryKeys} from "@lukemorales/query-key-factory";
 
-const mgrKeys = createQueryKeys('mgr', {
+export const mgrKeys = createQueryKeys('mgr', {
     all: null,
     list: () => ['list'],
     detail: (mgrId:Mgr['mgrId']) => ['datail', mgrId],

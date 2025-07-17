@@ -4,6 +4,7 @@ import { useCtiStore } from '@pages/cmm/cti/ctiStore.ts';
 import {updateLoginStatus, updateMgrLoginStatus} from '@api/cmm/loginApi.ts';
 import { message } from 'antd';
 import type {Login, Mgr} from "@pages/cmm";
+import {mgrKeys} from "@pages/bo/base/mgr/useMgr";
 
 // 사용자 상태변경
 export const useUpdateMgrStatusMutation = () => {
@@ -29,7 +30,8 @@ export const useUpdateMgrLoginStatusMutation = () => {
         mutationFn: ({ mgrId, login }: { mgrId: Mgr['mgrId']; login: Mgr['login'] }) =>
             updateMgrLoginStatus(mgrId, login),
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ['login'] });
+            queryClient.invalidateQueries({ queryKey: ['login'], exact: false });
+            queryClient.invalidateQueries({ queryKey: mgrKeys.list().queryKey });
             message.success(`계정 상태를 변경하였습니다.`);
         },
     });

@@ -41,8 +41,6 @@ function CallStatusChangeButton() {
         <div>
             <Space.Compact style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '8px' }} size="large">
                 
-                3652
-
                 <ChatMgrChangeButton chatSeq={chatSeq} />
 
                 {chatStatus === '보류' && (
