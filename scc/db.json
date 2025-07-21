@@ -990,7 +990,7 @@
       "mgrNm": "최상담원",
       "dptNm": "상담2팀",
       "mobile": "010-3333-1234",
-      "login": "false",
+      "login": "true",
       "status": "대기"
     },
     {
@@ -1015,13 +1015,13 @@
   "loginMgr": [
     {
       "id": "1",
-      "mgrId": 2,
-      "mgrNm": "이상담원",
-      "dptNm": "상담1팀",
+      "mgrId": 3,
+      "mgrNm": "최상담원",
+      "dptNm": "상담2팀",
       "status": "대기",
-      "loginTime": "2025-07-17T07:06:42.062Z",
-      "mobile": "010-2222-1234",
-      "login": "false"
+      "loginTime": "2025-07-21T00:53:37.337Z",
+      "mobile": "010-3333-1234",
+      "login": "true"
     }
   ],
   "socket": [
@@ -2368,6 +2368,21 @@
       "modiDt": "2025-07-10 16:06:39",
       "modiId": 5,
       "modiNm": "관리자"
+    },
+    {
+      "id": "20250721_104614",
+      "menuCd": "M_ALL_PROCESS",
+      "label": "전체상담(tab)",
+      "option": "isSame",
+      "highMenuCd": "M_SCC_PROCESS",
+      "useYn": "Y",
+      "regDt": "2025-07-21 10:46:14",
+      "regId": 3,
+      "regNm": "최상담원",
+      "path": "/process/ALL",
+      "modiDt": "2025-07-21 10:46:29",
+      "modiId": 3,
+      "modiNm": "최상담원"
     }
   ],
   "codeGroup": [

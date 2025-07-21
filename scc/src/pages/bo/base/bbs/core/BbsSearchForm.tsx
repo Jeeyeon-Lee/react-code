@@ -5,7 +5,7 @@ import CmmForm from "@components/form/CmmForm.tsx";
 const { Option } = Select;
 const { RangePicker } = DatePicker;
 
-const BbsSearchForm = ({form, bbsCd, onSearch}) => {
+const BbsSearchForm = ({form, bbsCd, onSearch, setBbsSeq, setFormMode}) => {
     const { token } = theme.useToken();
 
     // bbsCd 변경 --> 게시판 메뉴 변경 상황
@@ -26,13 +26,14 @@ const BbsSearchForm = ({form, bbsCd, onSearch}) => {
     const handleSubmitSearch = (fieldsValue: any) => {
 
         const rangeValue = fieldsValue['range-picker'];
+        setBbsSeq(null);
+        setFormMode('none');
 
         const values = {
             ...fieldsValue,
             sd: rangeValue && rangeValue[0].format('YYYY-MM-DD'),
             ed: rangeValue && rangeValue[1].format('YYYY-MM-DD'),
         };
-
         onSearch(values); // ✅ 상태 변경
     };
 

@@ -27,11 +27,6 @@ const BbsSearchList = ({ bbsCd, searchParams, setSearchParams, setBbsSeq, setFor
 
     useEffect(() => {
         setDataSource(bbsList || []);
-
-        // 우측 상세 영역 초기화 세팅
-        setBbsSeq(null);
-        setFormMode('none');
-
     }, [bbsList, searchParams]);
 
 

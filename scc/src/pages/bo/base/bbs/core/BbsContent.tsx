@@ -3,7 +3,7 @@ import {Card, Col, Divider, Form, Row} from 'antd';
 import BbsSearchForm from "@pages/bo/base/bbs/core/BbsSearchForm.tsx";
 import BbsSearchList from "@pages/bo/base/bbs/core/BbsSearchList.tsx";
 import type {Bbs} from "@pages/cmm";
-import {useParams} from "react-router-dom";
+import {useParams, useSearchParams} from "react-router-dom";
 import BbsView from "@pages/bo/base/bbs/core/BbsView.tsx";
 import CmmButton from "@components/form/CmmButton.tsx";
 import BbsForm from "@pages/bo/base/bbs/core/BbsForm.tsx";
@@ -11,6 +11,8 @@ import CmmSearchForm from "@components/form/CmmSearchForm.tsx";
 
 
 const BbsContent = () => {
+    const [params] = useSearchParams();
+    const urlBbsSeq = params.get('bbsSeq');
     const [searchParams, setSearchParams] = useState<Bbs | null>(null);
     const [ bbsSeq, setBbsSeq ] = useState<Bbs['bbsSeq']>(null);
     const { bbsCd } = useParams();
@@ -21,6 +23,13 @@ const BbsContent = () => {
     useEffect(() => {
         setBbsSeq(null);
     }, [bbsCd]);
+
+    useEffect(() => {
+        if (urlBbsSeq) {
+            setBbsSeq(parseInt(urlBbsSeq));
+            setFormMode('none');
+        }
+    }, [urlBbsSeq]);
 
     const handleOpenInsertForm = () => {
         setFormMode('insert');
@@ -42,7 +51,7 @@ const BbsContent = () => {
                         </CmmButton>
                     }
                     title={'검색'}>
-                    <BbsSearchForm form={form} onSearch={setSearchParams} bbsCd={bbsCd}/>
+                    <BbsSearchForm form={form} onSearch={setSearchParams} bbsCd={bbsCd} setBbsSeq={setBbsSeq} setFormMode={setFormMode}/>
                 </Card>
                 <Divider />
                 </>
@@ -76,7 +85,7 @@ const BbsContent = () => {
                         </>
                     }
                 >
-                    <BbsSearchForm form={form} onSearch={setSearchParams} bbsCd={bbsCd}/>
+                    <BbsSearchForm form={form} onSearch={setSearchParams} bbsCd={bbsCd} setBbsSeq={setBbsSeq} setFormMode={setFormMode}/>
                 </CmmSearchForm>
             )}
 
