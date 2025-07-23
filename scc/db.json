@@ -411,7 +411,7 @@
       "type": "콜",
       "qusetion": "",
       "transferYn": "Y",
-      "regDt": "2025/06/18 16:26:20",
+      "regDt": "2025-06-18 16:26:20",
       "totalOperTm": "",
       "tatalCallTm": "",
       "callWaitTm": "",
@@ -973,7 +973,8 @@
       "dptNm": "상담1팀",
       "mobile": "010-1111-1234",
       "login": "false",
-      "status": "대기"
+      "status": "대기",
+      "position": "사원"
     },
     {
       "id": "2",
@@ -981,8 +982,9 @@
       "mgrNm": "이상담원",
       "dptNm": "상담1팀",
       "mobile": "010-2222-1234",
-      "login": "true",
-      "status": "작업"
+      "login": "false",
+      "status": "로그아웃",
+      "position": "대리"
     },
     {
       "id": "3",
@@ -991,16 +993,18 @@
       "dptNm": "상담2팀",
       "mobile": "010-3333-1234",
       "login": "true",
-      "status": "대기"
+      "status": "식사",
+      "position": "사원"
     },
     {
       "id": "4",
       "mgrId": 4,
-      "mgrNm": "상담팀장",
+      "mgrNm": "상담2팀장",
       "dptNm": "상담2팀",
       "mobile": "010-4444-1234",
       "login": "false",
-      "status": "휴가"
+      "status": "로그아웃",
+      "position": "팀장"
     },
     {
       "id": "5",
@@ -1009,7 +1013,28 @@
       "dptNm": "운영팀",
       "mobile": "010-5555-1234",
       "login": "false",
-      "status": "작업"
+      "status": "로그아웃",
+      "position": "관리자"
+    },
+    {
+      "id": "6",
+      "mgrId": 6,
+      "mgrNm": "상담1팀장",
+      "dptNm": "상담1팀",
+      "mobile": "010-5555-1234",
+      "login": "false",
+      "status": "로그아웃",
+      "position": "팀장"
+    },
+    {
+      "id": "7",
+      "mgrId": 7,
+      "mgrNm": "최상담원",
+      "dptNm": "상담2팀",
+      "mobile": "010-5555-1234",
+      "login": "false",
+      "status": "로그아웃",
+      "position": "대리"
     }
   ],
   "loginMgr": [
@@ -1018,10 +1043,11 @@
       "mgrId": 3,
       "mgrNm": "최상담원",
       "dptNm": "상담2팀",
-      "status": "대기",
-      "loginTime": "2025-07-21T00:53:37.337Z",
+      "status": "식사",
+      "loginTime": "2025-07-23T01:35:31.093Z",
       "mobile": "010-3333-1234",
-      "login": "true"
+      "login": "false",
+      "deptNm": ""
     }
   ],
   "socket": [
@@ -2383,6 +2409,105 @@
       "modiDt": "2025-07-21 10:46:29",
       "modiId": 3,
       "modiNm": "최상담원"
+    },
+    {
+      "id": "20250721_123612",
+      "menuCd": "M_STAT",
+      "label": "통계",
+      "option": "isRoot",
+      "highMenuCd": "ROOT",
+      "useYn": "Y",
+      "regDt": "2025-07-21 12:36:12",
+      "regId": 1,
+      "regNm": "김상담원"
+    },
+    {
+      "id": "20250721_123630",
+      "menuCd": "M_CALL_STAT",
+      "label": "콜상담",
+      "option": "isChild",
+      "highMenuCd": "M_STAT",
+      "useYn": "Y",
+      "regDt": "2025-07-21 12:36:30",
+      "regId": 1,
+      "regNm": "김상담원",
+      "orderNo": 1,
+      "modiId": 1,
+      "modiDt": "2025-07-21 12:37:20"
+    },
+    {
+      "id": "20250721_123643",
+      "menuCd": "M_CHAT_STAT",
+      "label": "채팅상담",
+      "option": "isChild",
+      "highMenuCd": "M_STAT",
+      "useYn": "Y",
+      "regDt": "2025-07-21 12:36:43",
+      "regId": 1,
+      "regNm": "김상담원",
+      "orderNo": 3,
+      "modiId": 1,
+      "modiDt": "2025-07-21 12:37:20"
+    },
+    {
+      "id": "20250721_123700",
+      "menuCd": "M_AGENT_STAT",
+      "label": "상담원 통계",
+      "option": "isChild",
+      "highMenuCd": "M_STAT",
+      "useYn": "Y",
+      "regDt": "2025-07-21 12:37:00",
+      "regId": 1,
+      "regNm": "김상담원",
+      "orderNo": 4,
+      "modiId": 1,
+      "modiDt": "2025-07-21 12:37:20"
+    },
+    {
+      "id": "20250721_123713",
+      "menuCd": "M_CALL_MONTHLY",
+      "label": "월간 리포트",
+      "option": "isChild",
+      "highMenuCd": "M_CALL_STAT",
+      "useYn": "Y",
+      "regDt": "2025-07-21 12:37:13",
+      "regId": 1,
+      "regNm": "김상담원",
+      "orderNo": 1,
+      "modiId": 1,
+      "modiDt": "2025-07-21 13:28:43",
+      "path": "/stat/callMon",
+      "modiNm": "김상담원"
+    },
+    {
+      "id": "20250721_123740",
+      "menuCd": "M_CHAT_MONTHLY",
+      "label": "월간 리포트",
+      "option": "isChild",
+      "highMenuCd": "M_CHAT_STAT",
+      "useYn": "Y",
+      "regDt": "2025-07-21 12:37:40",
+      "regId": 1,
+      "regNm": "김상담원",
+      "path": "/stat/chatMon",
+      "modiDt": "2025-07-21 13:28:52",
+      "modiId": 1,
+      "modiNm": "김상담원"
+    },
+    {
+      "id": "20250721_123757",
+      "menuCd": "M_WORK_REPORT",
+      "label": "근무 상태 리포트",
+      "option": "isChild",
+      "highMenuCd": "M_AGENT_STAT",
+      "useYn": "Y",
+      "regDt": "2025-07-21 12:37:57",
+      "regId": 1,
+      "regNm": "김상담원",
+      "path": "/stat/work",
+      "modiDt": "2025-07-21 13:29:06",
+      "modiId": 1,
+      "modiNm": "김상담원"
     }
   ],
   "codeGroup": [

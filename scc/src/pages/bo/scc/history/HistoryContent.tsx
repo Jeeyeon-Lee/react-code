@@ -9,7 +9,7 @@ import ChatTable from "@pages/bo/scc/chat/ChatTable.tsx";
 import ChatDetail from "@pages/bo/scc/chat/ChatDetail.tsx";
 import CmmForm from "@components/form/CmmForm.tsx";
 import CmmCodeSelect from "@components/form/CmmCodeSelect.tsx";
-import { formSearch } from '@utils/salmon.ts';
+import {formSearch} from '@utils/salmon.ts';
 import type {ColumnsType} from "antd/es/table";
 import ExcelDownloadButton from "@components/form/ExcelDownloadButton.tsx";
 
@@ -43,7 +43,7 @@ const HistoryContent = () => {
         },
     });
 
-    const handleSubmitSearch = async <Chat>(fieldsValue: any) => {
+    const handleSubmitSearch = (fieldsValue : Chat) => {
         const values = formSearch<Chat>(fieldsValue);
         setSearchParams(values);
     };
@@ -59,7 +59,7 @@ const HistoryContent = () => {
                     <ExcelDownloadButton<Chat>
                         data={selectedRows.length > 0 ? selectedRows : chatList}
                         columns={columns
-                            .filter(col => (col.dataIndex ?? col.key) !== 'index')
+                            .filter(col => (col?.dataIndex ?? col.key) !== 'index')
                             .map(col => ({
                             key: col?.dataIndex,
                             header: col.title as string,

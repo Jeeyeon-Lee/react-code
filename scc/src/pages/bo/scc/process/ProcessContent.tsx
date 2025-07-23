@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { useExcelStore } from '@pages/cmm/excel/excelStore.ts';
 import CmmSearchForm from "@components/form/CmmSearchForm.tsx";
 import CmmForm from "@components/form/CmmForm.tsx";
-import {Card, Col, Form, Input, Row, Select} from "antd";
+import {Card, Col, Form, Input, Row, Select, Tabs} from "antd";
 import type {Chat} from "@pages/bo/scc/chat/chat.ts";
 import {deleteChatMutation, useChatDetail, useChatList} from "@pages/bo/scc/chat/useChat.ts";
 import {formSearch, modal} from '@utils/salmon.ts';
@@ -27,12 +27,33 @@ const ProcessContent = () => {
     const { data: chatList = [] } = useChatList(searchParams);
     const { data: processDetail } = useChatDetail(selectedChatSeq ?? '');
     const { mutate: deleteChat } = deleteChatMutation();
+    const chatStatusTabs = [
+        { key: 'ALL', label: '전체' },
+        { key: '진행중', label: '진행중' },
+        { key: '완료', label: '완료' },
+        { key: '이관', label: '이관' },
+        { key: '보류', label: '보류' },
+    ];
+    const [activeTab, setActiveTab] = useState('ALL');
+
+    const onTabChange = (key: string) => {
+        setActiveTab(key);
+        if (key === 'ALL') {
+            setSearchParams({}); // 전체 조회
+        } else {
+            setSearchParams({ status: key } as Chat); // 상태 기반 조회
+        }
+    };
 
     useEffect(() => {
-        setSearchParams(prev => ({
-            ...prev,
-            status,
-        }));
+        if (status === 'ALL') {
+            setSearchParams({} as Chat); // 전체 조회
+        } else {
+            setSearchParams(prev => ({
+                ...prev,
+                status,
+            }));
+        }
     }, [status]);
 
     useEffect(() => {
@@ -47,7 +68,7 @@ const ProcessContent = () => {
                 ...columns
                     .filter(col => (col.dataIndex ?? col.key) !== 'index')
                     .map(col => ({
-                        key: col.dataIndex ?? col.key ?? '',
+                        key: col?.dataIndex ?? col.key ?? '',
                         header: typeof col.title === 'string' ? col.title : '',
                     })),
             ]
@@ -59,7 +80,7 @@ const ProcessContent = () => {
     }, [selectedRows]);
 
     /*검색하기*/
-    const handleSubmitSearch = async <Chat>(fieldsValue: any) => {
+    const handleSubmitSearch = (fieldsValue : Chat) => {
         const values = formSearch<Chat>(fieldsValue);
         setSearchParams(values);
     };
@@ -176,6 +197,16 @@ const ProcessContent = () => {
             <Row gutter={24}>
                 <Col span={12}>
                     <Card title={`검색 결과 (총 ${chatList.length}건)`}>
+                        {status === 'ALL' && (
+                            <Tabs
+                                activeKey={activeTab}
+                                onChange={onTabChange}
+                                items={chatStatusTabs?.map(tab => ({
+                                    key: tab.key,
+                                    label: tab.label,
+                                }))}
+                            />
+                        )}
                         <ChatTable
                             chatList={chatList}
                             onRowClick={onRowClick}
@@ -183,7 +214,7 @@ const ProcessContent = () => {
                             selectedRowKeys={selectedRowKeys}
                             setSelectedRowKeys={setSelectedRowKeys}
                             setColumns={setColumns}
-                            scrollY={400}
+                            scrollY={260}
                             rowSelect={true}
                             excludeColumns={
                                 Array.isArray(status)

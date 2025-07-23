@@ -12,7 +12,7 @@ export const useUpdateMgrStatusMutation = () => {
     const queryClient = useQueryClient();
 
     return useMutation({
-        mutationFn: ({ loginInfo, status }: { loginInfo: Login; status: Login['status'] }) =>
+        mutationFn: ({ loginInfo, status }: { loginInfo: any, status: Login['status'] }) =>
             updateLoginStatus(loginInfo, status),
         onSuccess: (_, { status }) => {
             setMgrStatus(status);

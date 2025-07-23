@@ -11,6 +11,7 @@ import ProcessContent from "@pages/bo/scc/process/ProcessContent.tsx";
 import HelloTest from "@pages/test/HelloTest.tsx";
 import BbsConfContent from "@pages/bo/base/bbs/conf/BbsConfContent.tsx";
 import DsContent from "@pages/bo/scc/ds/DsContent.tsx";
+import StatContent from "@pages/bo/scc/stat/StatContent.tsx";
 
 const { Content: AntContent } = Layout;
 
@@ -56,6 +57,7 @@ function Content() {
                     <Route path="/code" exact={true} element={<CodeContent/>}></Route>
                     <Route path="/menu" exact={true} element={<MenuContent/>}></Route>
                     <Route path="/process/:status" exact={true} element={<ProcessContent/>}></Route>
+                    <Route path="/stat/:type" exact={true} element={<StatContent/>}></Route>
                     <Route path="/tsm" element={<DsContent />}></Route>
                     <Route path="/history" element={<HistoryContent />}></Route>
                     <Route path="/bbs/core/:bbsCd" exact={true} element={<BbsContent/>}></Route>

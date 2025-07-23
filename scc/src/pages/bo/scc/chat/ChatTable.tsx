@@ -12,13 +12,13 @@ interface ChatTableProps {
     scrollY?: number;
     rowSelect?: Boolean;
     excludeColumns?: (string)[];
-    onSelectRows?: (rows: Chat[]) => void;
+    onSelectRows?: () => void;
     setColumns?: (cols: ColumnsType<Chat>) => void;
     selectedRowKeys?: [];
     setSelectedRowKeys?: () => void;
 }
 
-const ChatTable = ({ chatList, onRowClick, scrollY = 200, rowSelect, excludeColumns, onSelectRows, setColumns, selectedRowKeys, setSelectedRowKeys }: ChatTableProps) => {
+const ChatTable = ({ chatList, onRowClick, onSelectRows, setColumns, scrollY = 200, excludeColumns, rowSelect, selectedRowKeys, setSelectedRowKeys }: ChatTableProps) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [pageNation, setPageNation] = useState(5);
     const [selectionType, setSelectionType] = useState<'checkbox' | 'radio'>('checkbox');
@@ -146,12 +146,6 @@ const ChatTable = ({ chatList, onRowClick, scrollY = 200, rowSelect, excludeColu
         <>
             <div style={{textAlign:'right', marginRight:'5px'}}>
                 {selectedRowKeys?.length > 0 && <span>총 {selectedCount}건 선택됨</span>}
-                <CmmButton
-                    icon={<RedoOutlined/>}
-                    htmlType="reset"
-                    type="dashed"
-                    onClick={start}
-                />
             </div>
             <Table
                 id={"chatTable"}

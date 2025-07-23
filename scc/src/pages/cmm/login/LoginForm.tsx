@@ -10,6 +10,7 @@ import {useMgrList} from "@pages/bo/base/mgr/useMgr.ts";
 import {useChatStore} from "@pages/bo/scc/chat/chatStore.ts";
 import {useUserStore} from "@pages/bo/base/user/userStore.ts";
 import {useUpdateMgrLoginStatusMutation, useUpdateMgrStatusMutation} from "@pages/cmm/cti/useCti.ts";
+import type {Login} from "@pages/cmm";
 
 const LoginForm: React.FC = () => {
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ const LoginForm: React.FC = () => {
   const { clearChatSeq } = useChatStore();
   const { setUserId } = useUserStore();
   const { mutate: updateMgrLoginStatus } = useUpdateMgrLoginStatusMutation();
+  const {mutate: updateLoginStatus} = useUpdateMgrStatusMutation();
 
   console.log(menuList);
 
@@ -42,6 +44,15 @@ const LoginForm: React.FC = () => {
     // 로그인 성공
     if (values.username != null) {
       saveLoginMgr(values.username);
+      const loginInfo: Login = {
+        mgrId : values?.username,
+        id: 0,
+        deptNm: "",
+        mgrNm: "",
+        status: "",
+        loginTime: ""
+      };
+      updateLoginStatus({loginInfo, status : "대기"});
       updateMgrLoginStatus({mgrId:values.username, login:"true"});
       clearChatSeq();
       setUserId('');

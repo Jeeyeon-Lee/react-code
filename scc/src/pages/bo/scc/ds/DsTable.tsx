@@ -1,8 +1,8 @@
 import type {ColumnsType} from "antd/es/table";
-import type {Mgr} from "@pages/cmm";
+import type {Login, Mgr} from "@pages/cmm";
 import {Button, Space, Table, Tag} from "antd";
 import React, {useState} from "react";
-import {useUpdateMgrLoginStatusMutation} from "@pages/cmm/cti/useCti";
+import {useUpdateMgrLoginStatusMutation, useUpdateMgrStatusMutation} from "@pages/cmm/cti/useCti";
 import {useLogin} from "@pages/cmm/login/useLogin";
 import {useNavigate} from "react-router-dom";
 
@@ -11,6 +11,7 @@ const DsTable = ({ mgrList, rowSelect}) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [pageNation, setPageNation] = useState(5);
     const { mutate: updateMgrLoginStatus } = useUpdateMgrLoginStatusMutation();
+    const {mutate: updateLoginStatus} = useUpdateMgrStatusMutation();
     const { loginInfo } = useLogin();
 
     const colorMap = {
@@ -23,13 +24,22 @@ const DsTable = ({ mgrList, rowSelect}) => {
 
     type StatusKey = keyof typeof colorMap;
 
-    const logoutAction = (mgrId) => {
+    const logoutAction = (mgrId : Mgr['mgrId']) => {
+        const loginInfo: Login = {
+            mgrId,
+            id: 0,
+            deptNm: "",
+            mgrNm: "",
+            status: "",
+            loginTime: ""
+        };
+        updateLoginStatus({loginInfo, status : "로그아웃"});
         updateMgrLoginStatus({mgrId: mgrId, login: "false"})
         if (String(mgrId) === String(loginInfo?.mgrId)) {
             localStorage.clear();
             navigate('/');
         }
-    }
+    };
 
     const columns: ColumnsType<Mgr> = [
         {
