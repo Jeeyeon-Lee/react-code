@@ -30,7 +30,8 @@ const StatDeptChart = ({orgData}) => {
             ranksep: 80,
             marginx: 20,
             marginy: 20,
-        }
+        },
+        behaviors: ['level-of-detail'],
     };
     return (
         <OrganizationChart {...orgConfig} height={300} />

@@ -973,7 +973,7 @@
       "dptNm": "상담1팀",
       "mobile": "010-1111-1234",
       "login": "false",
-      "status": "대기",
+      "status": "로그아웃",
       "position": "사원"
     },
     {
@@ -982,8 +982,8 @@
       "mgrNm": "이상담원",
       "dptNm": "상담1팀",
       "mobile": "010-2222-1234",
-      "login": "false",
-      "status": "로그아웃",
+      "login": "true",
+      "status": "대기",
       "position": "대리"
     },
     {
@@ -992,8 +992,8 @@
       "mgrNm": "최상담원",
       "dptNm": "상담2팀",
       "mobile": "010-3333-1234",
-      "login": "true",
-      "status": "식사",
+      "login": "false",
+      "status": "로그아웃",
       "position": "사원"
     },
     {
@@ -1040,14 +1040,15 @@
   "loginMgr": [
     {
       "id": "1",
-      "mgrId": 3,
-      "mgrNm": "최상담원",
-      "dptNm": "상담2팀",
-      "status": "식사",
-      "loginTime": "2025-07-23T01:35:31.093Z",
-      "mobile": "010-3333-1234",
+      "mgrId": "2",
+      "mgrNm": "",
+      "dptNm": "상담1팀",
+      "status": "대기",
+      "loginTime": "2025-07-23T06:13:57.668Z",
+      "mobile": "010-2222-1234",
       "login": "false",
-      "deptNm": ""
+      "deptNm": "",
+      "position": "대리"
     }
   ],
   "socket": [
