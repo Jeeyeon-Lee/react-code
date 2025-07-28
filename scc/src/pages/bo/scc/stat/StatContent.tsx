@@ -1,14 +1,16 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import type { Chat } from "@pages/bo/scc/chat/chat.ts";
-import { useChatList } from "@pages/bo/scc/chat/useChat.ts";
+import {useParams} from "react-router-dom";
+import {useEffect, useState} from "react";
+import type {Chat} from "@pages/bo/scc/chat/chat.ts";
+import {useChatList} from "@pages/bo/scc/chat/useChat.ts";
 import {useMgrList} from "@pages/bo/base/mgr/useMgr.ts";
-import {Card} from "antd";
-import StatLineChart from "@pages/bo/scc/stat/StatLineChart.tsx";
+import {Card, Switch} from "antd";
 import StatPieChart from "@pages/bo/scc/stat/StatPieChart.tsx";
+import StatLineChart from "@pages/bo/scc/stat/StatLineChart.tsx";
 import StatDeptChart from "@pages/bo/scc/stat/StatDeptChart.tsx";
+import StatColumnChart from "@pages/bo/scc/stat/StatColumnChart.tsx";
 
 const StatContent = () => {
+    const [isBarChart, setIsBarChart] = useState(true);
     const { type } = useParams();
     const [searchParams, setSearchParams] = useState<Chat>({} as Chat);
     const [orgData, setOrgData] = useState<{ nodes: any[]; edges: any[] }>({ nodes: [], edges: [] });
@@ -18,8 +20,8 @@ const StatContent = () => {
 
     /*ant chart 색상용 : TODO pie 차트랑 통일 필요*/
     const getStatusColor = (status: string): 'online' | 'offline' | 'busy' => {
-        if (['로그인', '대기', '작업', '후처리', '모니터링', 'OB작업'].includes(status)) return 'online';
-        if (status === '로그아웃') return 'busy';
+        if (['로그인', '대기', '작업', '후처리', '모니터링', 'OB작업'].includes(status)) return 'busy';
+        if (status === '로그아웃') return 'online';
         return 'offline';
     };
 
@@ -38,6 +40,7 @@ const StatContent = () => {
                 phone: mgr?.mobile,
                 status: getStatusColor(mgr?.status) ?? 'offline',
                 position: mgr?.position,
+                id: mgr?.id,
             },
         }));
         /*dptNm 상담1팀인 id -> source : '6' , 상담2팀인 id -> source : '4', id 6, 4는 source 5로*/
@@ -60,8 +63,6 @@ const StatContent = () => {
             }
             return result;
         });
-
-
         setOrgData({ nodes, edges });
     }, [mgrList]);
 
@@ -75,8 +76,22 @@ const StatContent = () => {
             </div>
             <div style={{ flex: 1, minWidth: '0' }}>
             {type !== 'work' ? (
-                <Card title={`날짜별 통계`}>
-                    <StatLineChart chatList={chatList}/>
+                <Card
+                    title="날짜별 통계"
+                    extra={
+                        <Switch
+                            checkedChildren="막대"
+                            unCheckedChildren="라인"
+                            checked={isBarChart}
+                            onChange={(checked) => setIsBarChart(checked)}
+                        />
+                    }
+                >
+                    {isBarChart ? (
+                        <StatColumnChart chatList={chatList}/>
+                    ) : (
+                        <StatLineChart chatList={chatList}/>
+                    )}
                 </Card>
             ) : (
                 <Card title={`조직도`}>

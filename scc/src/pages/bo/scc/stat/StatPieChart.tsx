@@ -1,4 +1,3 @@
-import React from 'react';
 import { Pie } from '@ant-design/charts';
 
 const StatPieChart = ({type, chartedData}) => {
@@ -19,16 +18,16 @@ const StatPieChart = ({type, chartedData}) => {
         innerRadius: 0.5,
         label: {
             text: 'type',
-            style: {
-                fontWeight: 'bold',
-            },
         },
-        legend: {
-            color: {
-                title: true,
-                position: 'right',
-                rowPadding: 5,
-            },
+        legend: false,
+        tooltip: {
+            title: 'type',
+        },
+        interaction: {
+            elementHighlight: true,
+        },
+        state: {
+            inactive: { opacity: 0.5 },
         },
         annotations: [
             {
@@ -43,6 +42,11 @@ const StatPieChart = ({type, chartedData}) => {
                 },
             },
         ],
+        animate:{
+            enter:{
+                type:'fadeIn',
+            }
+        }
     };
 
     return (

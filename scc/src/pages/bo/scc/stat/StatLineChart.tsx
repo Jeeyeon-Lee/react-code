@@ -1,32 +1,60 @@
-import {Line} from '@ant-design/plots';
+import { Line } from '@ant-design/plots';
 
+const StatLineChart = ({ chatList }) => {
+    const dates = [...new Set(chatList.map((c) => c.regDt?.split(' ')[0]))];
+    const statuses = [...new Set(chatList.map((c) => c.status || '기타'))];
 
-const StatLineChart = ({chatList}) => {
-    const lineData = chatList.reduce((acc, cur) => {
-        const date = cur?.regDt?.split(" ")[0]; // YYYY-MM-DD
-        if (date) {
-            acc[date] = (acc[date] || 0) + 1;
+    const dataMap = new Map<string, { date: string; status: string; count: number }>();
+    chatList.forEach((c) => {
+        const date = c?.regDt?.split(' ')[0];
+        const status = c?.status || '기타';
+        const key = `${date}_${status}`;
+        if (!dataMap.has(key)) {
+            dataMap.set(key, { date, status, count: 0 });
         }
-        return acc;
-    }, {} as Record<string, number>);
+        dataMap.get(key)!.count += 1;
+    });
 
-    const chartData = Object.entries(lineData).map(([date, count]) => ({
-        date,
-        count,
-    }));
+    // 누락된 날짜+status 조합은 count=0으로 채움
+    dates.forEach((date) => {
+        statuses.forEach((status) => {
+            const key = `${date}_${status}`;
+            if (!dataMap.has(key)) {
+                dataMap.set(key, { date, status, count: 0 });
+            }
+        });
+    });
+
+    const chartData = Array.from(dataMap.values()).sort(
+        (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+    );
 
     const lineConfig = {
-        data: chartData ?? [],
+        data: chartData,
         xField: 'date',
+        axis: {
+            x: {
+                labelAutoRotate: false,
+            },
+        },
         yField: 'count',
-        point: {shapeField: 'circle', sizeField: 5},
-        style: {lineWidth: 2},
+        colorField: 'status',
+        point: {
+            shapeField: 'circle',
+            sizeField: 5,
+        },
+        style: {
+            lineWidth: 2,
+        },
+        height: 300,
+        animate:{
+            enter:{
+                type:'growInX',
+            }
+        }
     };
 
-    return (
-        <Line {...lineConfig} height={300} />
-    )
-}
-
+    return <Line {...lineConfig} />;
+};
 
 export default StatLineChart;

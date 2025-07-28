@@ -1040,11 +1040,11 @@
   "loginMgr": [
     {
       "id": "1",
-      "mgrId": "2",
-      "mgrNm": "",
+      "mgrId": 2,
+      "mgrNm": "이상담원",
       "dptNm": "상담1팀",
       "status": "대기",
-      "loginTime": "2025-07-23T06:13:57.668Z",
+      "loginTime": "2025-07-28T01:15:01.311Z",
       "mobile": "010-2222-1234",
       "login": "false",
       "deptNm": "",
